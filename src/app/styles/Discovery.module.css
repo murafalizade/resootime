@@ -1,0 +1,63 @@
+.sect {
+  min-height: 55vh;
+  height: 100%;
+  width: 100vw;
+  background: #f2f3fc;
+  padding: 1.9rem 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sect div {
+  margin-bottom: 1.25rem;
+}
+.sect h2 {
+  color: #2e343c;
+  font-weight: 700;
+}
+.sect h3 {
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+.sect h3,
+.sect p {
+  color: #2e343c;
+  text-align: center;
+  padding: 0 1.25;
+}
+.sect .discovery_img {
+  border-radius: 12px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.sect .heading {
+  font-size: 2.5rem;
+}
+.sect .text_border_primary {
+  color: #6a5ddf !important;
+  border-color: #6a5ddf !important;
+}
+.sect .number_field {
+  background-color: #f2f3fc;
+  border-radius: 25px;
+}
+.sect .number_field h5,
+.sect .number_field p {
+  text-align: left;
+}
+.sect .number_field a {
+  background-color: #f2f3fc !important;
+}
+.sect .number_field h5 {
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+
+.sect_banner {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.sect_contact {
+  min-height: 30vh;
+}/*# sourceMappingURL=Discovery.module.css.map */

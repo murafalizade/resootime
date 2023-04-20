@@ -1,0 +1,21 @@
+.footer {
+  min-height: 240px;
+  height: 100%;
+  background-color: #2E343C;
+  color: white;
+  padding: 1.9rem 2rem;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.list li {
+  padding: 0.3rem;
+  padding-left: 0;
+}
+.list li a {
+  color: white;
+  text-decoration: none;
+}/*# sourceMappingURL=Footer.module.css.map */

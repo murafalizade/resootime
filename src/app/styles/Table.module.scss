@@ -1,0 +1,89 @@
+.ctable {
+    position: absolute;
+}
+.table {
+    background-color: #383e4a;
+    width: 180px;
+    height: 100px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 12px;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    border-right: 15px solid;
+
+    p {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .input {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        font-size: 20px;
+        width: 100%;
+        font-weight: bold;
+        color: white;
+        background-color: transparent;
+        border: none;
+    }
+
+    span {
+        font-size: 12px;
+        color: white;
+        font-weight: bold;
+        display: block;
+        text-align: start;
+        padding-left: 10px;
+        padding-top: 5px;
+    }
+}
+
+.chairs {
+    display: flex;
+    justify-content: space-around;
+    width: 25px;
+
+    .chair {
+        width: 50px;
+        height: 15px;
+        background-color: #383e4a;
+        margin: 2px;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .lchair {
+        border-radius: 12px 0 0 12px;
+        width: 15px;
+        height: 45px;
+    }
+
+    .uchair {
+        border-radius: 0 12px 12px 0;
+        width: 15px;
+        height: 45px;
+    }
+
+    .down {
+        border-radius: 0 0 12px 12px;
+    }
+}
+
+.popup{
+    position: absolute;
+    width: 200px;
+    text-align: center;
+    border-color: transparent transparent #bfbfbf transparent;
+    z-index: 1;
+    right: calc(50% - 10px);
+    border-style: solid;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    padding: 3rem;
+    margin-left: 5.5rem;
+    border-width: 0 calc(200px/3px) 10px calc((200/3)/2);
+}

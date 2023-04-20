@@ -1,0 +1,47 @@
+{
+  "name": "reservationapp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/font": "13.1.6",
+    "@reduxjs/toolkit": "^1.9.2",
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
+    "axios": "^1.3.2",
+    "bootstrap": "^5.2.3",
+    "canvas": "^2.11.0",
+    "eslint": "8.33.0",
+    "eslint-config-next": "13.1.6",
+    "js-base64": "^3.7.5",
+    "konva": "^8.4.2",
+    "next": "13.1.6",
+    "next-redux-wrapper": "^8.1.0",
+    "nookies": "^2.5.2",
+    "react": "18.2.0",
+    "react-datepicker": "^4.10.0",
+    "react-dom": "18.2.0",
+    "react-draggable": "^4.4.5",
+    "react-icons": "^4.7.1",
+    "react-konva": "^18.2.5",
+    "react-redux": "^8.0.5",
+    "react-star-rate": "^0.2.0",
+    "react-xarrows": "^2.0.2",
+    "react-zoom-pan-pinch": "^3.0.1",
+    "sharp": "^0.32.0",
+    "sweetalert2": "^11.7.2",
+    "typescript": "4.9.5"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/bootstrap": "^5.2.6",
+    "@types/react-datepicker": "^4.8.0",
+    "sass": "^1.57.1"
+  }
+}

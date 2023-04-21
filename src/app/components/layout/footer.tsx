@@ -16,7 +16,7 @@ const Footer = () => {
                   alt="logo"
                   width={45}
                   height={45}
-                  className="img-fluid m-3 ms-0 nav-img"
+                  className="img-fluid m-3 ms-0 icon nav-img"
                 />
                 ResooTime
               </a>

@@ -143,6 +143,10 @@ input:focus {
   color: #6a5ddf !important;
 }
 
+.icon {
+  border-radius: 0.75rem;
+}
+
 .btn {
   border-radius: 12px !important;
 }
@@ -187,6 +191,9 @@ input:focus {
   }
   html .lists {
     font-size: 79%;
+  }
+  html .discovery-img-div {
+    width: 85% !important;
   }
 }
 @media screen and (max-width: 768px) {

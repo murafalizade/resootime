@@ -139,10 +139,6 @@ input:focus {
   border: 1px solid #6a5ddf !important;
 }
 
-.logo {
-  border-radius: 12px;
-}
-
 .primary {
   color: #6a5ddf !important;
 }
@@ -187,7 +183,7 @@ input:focus {
 }
 @media screen and (max-width: 992px) {
   html {
-    font-size: 96%;
+    font-size: 95%;
   }
   html .lists {
     font-size: 79%;
@@ -195,7 +191,7 @@ input:focus {
 }
 @media screen and (max-width: 768px) {
   html {
-    font-size: 94%;
+    font-size: 90%;
   }
   html .lists {
     font-size: 94%;
@@ -203,14 +199,14 @@ input:focus {
 }
 @media screen and (max-width: 576px) {
   html {
-    font-size: 90%;
+    font-size: 85%;
   }
   html .sect_banner img {
     width: 80%;
     height: 100%;
   }
 }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 426px) {
   html {
     font-size: 55%;
   }

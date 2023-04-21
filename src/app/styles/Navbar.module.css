@@ -43,7 +43,7 @@
 
 @media screen and (max-width: 767px) {
   .nav_links_mobile {
-    width: 110%;
+    width: 107%;
     min-height: 40vh;
     display: flex;
     flex-direction: column;

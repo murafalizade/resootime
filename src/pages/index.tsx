@@ -49,11 +49,10 @@ function Home({ restaurants }: any) {
       <Layout>
         <main>
           <div
-            style={{ backgroundColor: "#F2F3FC" }}
             className={`container-fluid ${styles.home_page}`}
           >
-            <div className={`${styles.heading_container} md-mx-0 `}>
-              <div className="col-12 col-xl-6 py-5 d-flex d-md-block justify-content-center align-items-center flex-column">
+            <div className={`${styles.heading_container} mx-md-5 `}>
+              <div className="col-12 col-xl-6 mx-md-5 my-5 py-5 d-flex d-md-block justify-content-center align-items-center flex-column">
                 <h1 className={`mb-5 mx-sm-3 ${styles.heading}`}>Masa Rezerv et</h1>
                 <div className={`input-group ${styles.heading_input}`}>
                   <Image
@@ -80,7 +79,7 @@ function Home({ restaurants }: any) {
               </div>
             </div>
           </div>
-          <div className="container mt-5">
+          <div className={`container mt-5 px-4 ${styles.card_section}`}>
             <div className="row">
               {rests.map((rest: IRestaurant, i: number) => (
                 <div key={i} className="col-6 col-lg-4 col-xl-3 my-3">

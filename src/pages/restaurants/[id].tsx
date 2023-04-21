@@ -24,7 +24,8 @@ import styles from "@/app/styles/CreateMapTool.module.scss";
 import { BiRestaurant } from "react-icons/bi";
 import { GetServerSideProps } from "next";
 import { formatDate } from "@/app/constants/date";
- 
+import ImageCoursel from "@/app/components/reservation/imageCoursel";
+
 const ReservationRestaurant = ({ res }: any) => {
   const isModalOpen = useSelector(selectIsModelOpen);
   const dispatch = useDispatch();
@@ -56,8 +57,14 @@ const ReservationRestaurant = ({ res }: any) => {
       <Head>
         <title>ResooTime</title>
         <meta name="description" content={res.description} />
-        <meta name="keywords" content={`restaran rezervasiya masa ${res.name} ${res.category?.name}`} />
-        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta
+          name="keywords"
+          content={`restaran rezervasiya masa ${res.name} ${res.category?.name}`}
+        />
+        <meta
+          httpEquiv="Cache-Control"
+          content="no-cache, no-store, must-revalidate"
+        />
         <meta httpEquiv="Pragma" content="no-cache" />
         <meta httpEquiv="Expires" content="0" />
       </Head>
@@ -68,39 +75,30 @@ const ReservationRestaurant = ({ res }: any) => {
             <div className="row">
               <div className="col-12 col-md-6">
                 <h1 className="fw-bold">{res.name}</h1>
-                <p style={{color: '#505050'}}>
-                  <IoLocationSharp className="me-1" style={{color: '#505050', fontSize: '25px'}} />
+                <p style={{ color: "#505050" }}>
+                  <IoLocationSharp
+                    className="me-1"
+                    style={{ color: "#505050", fontSize: "25px" }}
+                  />
                   {res.location}
                 </p>
                 <hr />
-                <p style={{color: '#505050'}}>{res.description}</p>
+                <p style={{ color: "#505050" }}>{res.description}</p>
               </div>
               <div className="col-12 col-md-6">
                 <div className="d-flex flex-column">
-                  <Image
-                    src={
-                      res.images[0]?.image
-                        ? baseUrl + res.images[0]?.image :
-                        "/images/rest_imag.png"
-                    }
-                    alt={res.name}
-                    width={400}
-                    objectFit="contain"
-                    height={400}
-                    className="img-fluid rounded"
-                  />
-                  <div>
-                    {res.images.slice(1)?.map((image: any) => (
+                  <ImageCoursel>
+                    {res.images?.map((image: any) => (
                       <Image
                         key={image.id}
                         src={baseUrl + image?.image}
                         alt={res.name}
-                        width={100}
-                        height={100}
-                        className="mx-3 img-fluid rounded"
+                        width={300}
+                        height={300}
+                        className="mx-3 rounded object-contain"
                       />
                     ))}
-                  </div>
+                  </ImageCoursel>
                 </div>
               </div>
             </div>
@@ -155,13 +153,12 @@ const ReservationRestaurant = ({ res }: any) => {
               </div>
               <div className="my-5 col-12 col-md-4">
                 <DateFinder
-                  allowed = {res.allowed}
+                  allowed={res.is_allowed}
                   restId={res.id}
                   restImage={
                     res.images[0]?.image
                       ? baseUrl + res.images[0]?.image
-                      : 
-                      "/images/rest_imag.png"
+                      : "/images/rest_imag.png"
                   }
                   restName={res.name}
                 />
@@ -193,7 +190,7 @@ const ReservationRestaurant = ({ res }: any) => {
 export default withAuth(ReservationRestaurant, false);
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const id  = params?.id;
+  const id = params?.id;
   const res = await RestaurantService.getRestaurant(parseInt(id as string));
   return { props: { res } };
-}
+};

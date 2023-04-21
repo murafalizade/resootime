@@ -47,6 +47,7 @@ const Discovery = () => {
                     src={"/images/discovery_img.png"}
                     width={530}
                     height={300}
+                    quality={100}
                     className={`discovery-img ${styles.discovery_img}`}
                   />
                 </div>

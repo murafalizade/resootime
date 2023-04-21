@@ -10,11 +10,9 @@ interface ICardProps {
 
 const Card = ({ cardInfo }: ICardProps) => {
   return (
-    <div className={`card rounded-4 ${styles.card}`}>
+    <div className={`card ${styles.card}`}>
       <Image
-        src={
-          cardInfo.images[0]?.image || 
-          "/images/rest_imag.png"}
+        src={cardInfo.images[0]?.image || "/images/rest_imag.png"}
         className={`card-img-top ${styles.card_img}`}
         alt={cardInfo.name}
         width={50}
@@ -37,9 +35,11 @@ const Card = ({ cardInfo }: ICardProps) => {
                 disabled
                 value={1}
               />
-              {cardInfo.rate??0}
+              {cardInfo.rate ?? 0}
             </span>
-            <p className="text-muted align-items-center d-flex mx-3 my-0 p-0">{cardInfo.location}</p>
+            <p className="text-muted align-items-center d-flex mx-3 my-0 p-0">
+              {cardInfo.location}
+            </p>
           </div>
         </h6>
       </div>

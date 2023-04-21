@@ -42,18 +42,21 @@ function Home({ restaurants }: any) {
       <Head>
         <title>ResooTime</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Bakıda 150-dən çox restoranı onlayn rezervasiya edin. Ailəvi məkanlar, kabinetli restoranlar, canlı musiqili restoranların hamısı bir saytda."/>
+        <meta
+          name="description"
+          content="ResooTime - bütün restoranlar burada. Sevimli restoranlarınızı onlayn rezerv edin və bonus qazanın.        "
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Layout>
         <main>
-          <div
-            className={`container-fluid ${styles.home_page}`}
-          >
+          <div className={`container-fluid ${styles.home_page}`}>
             <div className={`${styles.heading_container} mx-md-5 `}>
               <div className="col-12 col-xl-6 mx-md-5 my-5 py-5 d-flex d-md-block justify-content-center align-items-center flex-column">
-                <h1 className={`mb-5 mx-sm-3 ${styles.heading}`}>Masa Rezerv et</h1>
+                <h1 className={`mb-5 mx-sm-3 ${styles.heading}`}>
+                  Masa Rezerv et
+                </h1>
                 <div className={`input-group ${styles.heading_input}`}>
                   <Image
                     src="/icons/search-bar.svg"
@@ -113,7 +116,9 @@ function Home({ restaurants }: any) {
                 ).map((page: number) => (
                   <li
                     key={page}
-                    className={`page-item ${page == 1 ? `active ${styles.active}` : ""}`}
+                    className={`page-item ${
+                      page == 1 ? `active ${styles.active}` : ""
+                    }`}
                   >
                     <Link
                       className={`page-link ${styles.active_page_link}`}

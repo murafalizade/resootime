@@ -107,6 +107,10 @@ export default class RestaurantService {
     });
   }
 
+  static async deleteImage(id: number): Promise<any> {
+    return await fetch.delete(`/api/restaurant/${id}/delete-images/`);
+  }
+
   static async updateRestaurant(data: any, id: number): Promise<any> {
     return await fetch.put(`/api/complete-registration/${id}/`, data);
   }

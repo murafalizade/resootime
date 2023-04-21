@@ -9,10 +9,12 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
   const [selectedImages, setSelectedImages] = React.useState<any>(
     res?.images.map((item: any) => `${BASE_URL}${item.image}`)
   );
+
+  console.log(res.is_allowed)
   // create object state which will be used to store the form data
   const [formData, setFormData] = React.useState<any>({
-    allowed: false,
-    gallery: res.images,
+    allowed: res?.is_allowed,
+    gallery: [],
     address: res?.location,
     description: res?.description,
     googleMapLink: res?.googleMapLink,
@@ -22,8 +24,16 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
     profileImage: "",
     workTime: res.working_hours,
   });
+
   // create a state to store the file
-  const days = ["B.e", "Ç.a", "Ç", "C.a", "C", "Ş", "B"];
+  const days = [
+    { day: "B.e", name: "Bazar ertəsi" },
+    { day: "Ç.a", name: "Çərşənbə axşamı" },
+    { day: "Ç", name: "Çərşənbə" },
+    { day: "C.a", name: "Cümə axşamı" },
+    { day: "C", name: "Cümə" },
+    { day: "Ş", name: "Şənbə" },
+    { day: "B", name: "Bazar" }];
 
   // check if the day is selected in workTime array
   const checkingDaySelected = (day: string) => {
@@ -140,7 +150,7 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
       name: formData.name,
       phone: formData.phone,
       description: formData.description,
-      allowed: formData.allowed,
+      is_allowed: formData.allowed,
       location: formData.address,
       googleMapLink: formData.googleMapLink,
       working_hours_data: formData.workTime,
@@ -149,12 +159,15 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
     withErrorHandeler(
       async (req: any) => {
         await RestaurantService.updateRestaurant(req, res.id);
+        if(formData.gallery?.length > 0){
+          await RestaurantService.deleteImage(res.id);
           formData.gallery?.map(async (item: any) => {
             await RestaurantService.addImage(
               { image: item, restaurant: res.id },
               res.id
             );
           });
+        }
       },
       "Restoranın məlumatları yeniləndi",
       "/restaurant/create-map"
@@ -246,7 +259,7 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
           Digər şəkilləri yükləyin{" "}
         </label>
 
-        <div className="d-flex mt-4">
+        <div className="d-flex mt-4 overflow-auto">
           {selectedImages?.map((image: any, index: number) => {
             return (
               <Image
@@ -279,12 +292,12 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
             return (
               <div
                 key={index}
-                onClick={() => addDay(day)}
+                onClick={() => addDay(day.name)}
                 className={`border ${
-                  checkingDaySelected(day) ? "border-primary" : ""
+                  checkingDaySelected(day.name) ? "border-primary" : ""
                 } col-2 text-center py-2`}
               >
-                {day}
+                {day.day}
               </div>
             );
           })}
@@ -328,8 +341,10 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
         <label className="p-2 ps-0 pt-3">
           Onlayn rezervasiya etmək mümkünlüyü{" "}
           <input
-            value={formData.allowed}
+            checked={formData.allowed}
+            onChange={()=>setFormData({...formData,allowed:!formData.allowed})}
             type={"checkbox"}
+            name="allowed"
             className="p-2 m-2"
           />
         </label>

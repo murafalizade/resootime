@@ -35,7 +35,7 @@ const ReservationList = ({ reserv }: { reserv: IReservation[] }) => {
   }, [reserv]);
 
   return (
-    <div className={`${styles.rlist} rounded`}>
+    <div className={`${styles.rlist} ms-2 rounded`}>
       <input
         type="text"
         value={search}

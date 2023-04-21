@@ -60,6 +60,10 @@
 }
 .card .card_img {
   border-radius: 12px 12px 0 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .common_page_link {
@@ -90,6 +94,15 @@
   .card .card_img {
     height: 110px !important;
   }
+  .heading {
+    font-size: 3rem !important;
+  }
+  .heading_input input::-moz-placeholder {
+    font-size: 1rem;
+  }
+  .heading_input input::placeholder {
+    font-size: 1rem;
+  }
 }
 @media screen and (max-width: 290px) {
   .heading {
@@ -102,9 +115,9 @@
     top: 6px !important;
   }
   .card {
-    height: 120px !important;
+    height: 140px !important;
   }
   .card .card_img {
-    height: 70px !important;
+    height: 80px !important;
   }
 }/*# sourceMappingURL=Home.module.css.map */

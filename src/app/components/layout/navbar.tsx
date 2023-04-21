@@ -38,7 +38,7 @@ const Navbar = (props: IProps) => {
                 alt="logo"
                 width={45}
                 height={45}
-                className="img-fluid mx-3 logo nav-img"
+                className="img-fluid mx-3 logo icon nav-img"
               />
               ResooTime
             </a>

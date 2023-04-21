@@ -16,8 +16,6 @@ const Card = ({ cardInfo }: ICardProps) => {
         className={`card-img-top ${styles.card_img}`}
         alt={cardInfo.name}
         width={200}
-        objectFit="cover"
-          objectPosition="center"
         quality={100}
         height={200}
       />

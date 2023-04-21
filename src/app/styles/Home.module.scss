@@ -55,6 +55,8 @@
   border-radius: 12px;
   .card_img {
     border-radius: 12px 12px 0 0;
+    object-fit: cover;
+    object-position: center;
   }
 }
 

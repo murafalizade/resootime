@@ -49,7 +49,7 @@ const RestInfo = ({ workingTime, googleMapLink, location, phone }: any) => {
             className="me-1"
             style={{ color: "#505050", fontSize: "1.3rem" }}
           />
-          <div>
+          <div className="w-100">
             <div>
               <div className="row">
                 <span className={styles.info_title}>İş vaxtı</span>
@@ -64,7 +64,7 @@ const RestInfo = ({ workingTime, googleMapLink, location, phone }: any) => {
                 </div>
                 <div className="col-6">
                   <ul
-                    className={`d-flex flex-column justify-content-start align-items-start text-nowrap lists ${styles.lists}`}
+                    className={`d-flex float-end pe-4 flex-column justify-content-start align-items-start text-nowrap lists ${styles.lists}`}
                   >
                     {
                       workingTime?.map((item: any, index: number) => {

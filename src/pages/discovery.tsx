@@ -44,8 +44,8 @@ const Discovery = () => {
                 <div className="col-12 col-lg-6 mt-4 mt-md-0">
                   <Image
                     alt="resootime tablet"
-                    src={"/images/tablet.png"}
-                    width={450}
+                    src={"/images/discovery_img.png"}
+                    width={500}
                     height={300}
                     className={`discovery-img ${styles.discovery_img}`}
                   />

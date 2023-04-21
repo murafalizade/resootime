@@ -39,5 +39,13 @@
 .image {
   position: relative !important;
   max-height: 500px;
+  height: 500px !important;
+  width: 800px !important;
+  margin: 15px;
+}
+
+.image2 {
+  position: relative !important;
+  max-height: 500px;
   margin: 15px;
 }/*# sourceMappingURL=CreateMapTool.module.css.map */

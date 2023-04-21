@@ -153,11 +153,6 @@ input {
   }
 }
 
-// logo style
-.logo {
-  border-radius: 12px;
-}
-
 // color changing
 .primary {
   color: #6a5ddf !important;
@@ -207,7 +202,7 @@ input {
 
 @media screen and (max-width: 992px) {
   html {
-    font-size: 96%;
+    font-size: 95%;
 
     .lists {
       font-size: 79%;
@@ -217,20 +212,16 @@ input {
 
 @media screen and (max-width: 768px) {
   html {
-    font-size: 94%;
+    font-size: 90%;
     .lists {
       font-size: 94%;
     }
-  }
-  .md-mx-0 {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
   }
 }
 
 @media screen and (max-width: 576px) {
   html {
-    font-size: 90%;
+    font-size: 85%;
     .sect_banner {
       img {
         width: 80%;
@@ -240,7 +231,7 @@ input {
   }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 426px) {
   html {
     font-size: 55%;
     .nav-img {

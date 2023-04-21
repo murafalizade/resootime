@@ -44,7 +44,7 @@ const Navbar = (props: IProps) => {
             </a>
             <a
               href="/discovery"
-              className="btn-link fs-6 mx-5 text-dark dark text-decoration-none link d-none d-sm-inline"
+              className="btn-link fs-6 mx-5 text-dark dark text-decoration-none link d-none d-md-inline"
             >
               Restoranlar üçün
             </a>

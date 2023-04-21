@@ -51,7 +51,7 @@ function Home({ restaurants }: any) {
           <div
             className={`container-fluid ${styles.home_page}`}
           >
-            <div className={`${styles.heading_container}`}>
+            <div className={`${styles.heading_container} mx-md-5 `}>
               <div className="col-12 col-xl-6 mx-md-5 my-5 py-5 d-flex d-md-block justify-content-center align-items-center flex-column">
                 <h1 className={`mb-5 mx-sm-3 ${styles.heading}`}>Masa Rezerv et</h1>
                 <div className={`input-group ${styles.heading_input}`}>

@@ -41,11 +41,11 @@ const Discovery = () => {
                     </a>
                   </div>
                 </div>
-                <div className="col-12 col-lg-6 mt-4 mt-md-0">
+                <div className={`col-12 col-lg-6 mt-4 mt-md-0 discovery-img-div`}>
                   <Image
                     alt="resootime tablet"
                     src={"/images/discovery_img.png"}
-                    width={500}
+                    width={530}
                     height={300}
                     className={`discovery-img ${styles.discovery_img}`}
                   />

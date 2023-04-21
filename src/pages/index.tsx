@@ -82,7 +82,7 @@ function Home({ restaurants }: any) {
           <div className={`container mt-5 px-4 ${styles.card_section}`}>
             <div className="row">
               {rests.map((rest: IRestaurant, i: number) => (
-                <div key={i} className="col-6 col-lg-4 col-xl-3 my-3">
+                <div key={i} className="col-6 col-md-4 col-xl-3 my-3">
                   <Card cardInfo={rest} />
                 </div>
               ))}

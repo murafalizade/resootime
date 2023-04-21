@@ -17,7 +17,7 @@ const Card = ({ cardInfo }: ICardProps) => {
         alt={cardInfo.name}
         width={200}
         quality={100}
-        height={200}
+        height={140}
       />
       <div className="card-body">
         <a

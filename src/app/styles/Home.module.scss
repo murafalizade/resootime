@@ -73,9 +73,18 @@
 
 
 // media queries
+@media screen and (max-width: 768px) {
+  .card {
+    height: 240px !important;
+    .card_img {
+      height: 150px !important;
+    }
+  }
+}
+
 @media screen and (max-width: 426px) {
   .card {
-    height: 160px !important;
+    height: 180px !important;
     .card_img {
       height: 110px !important;
     }

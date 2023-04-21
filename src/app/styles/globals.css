@@ -215,7 +215,7 @@ input:focus {
 }
 @media screen and (max-width: 426px) {
   html {
-    font-size: 55%;
+    font-size: 77%;
   }
   html .nav-img {
     width: 30px;
@@ -225,10 +225,13 @@ input:focus {
     width: 80%;
     height: 100%;
   }
+  html .card-title, html .card-subtitle {
+    font-size: 95%;
+  }
 }
 @media screen and (max-width: 290px) {
   html {
-    font-size: 40%;
+    font-size: 70%;
   }
   html .nav-img {
     width: 20px;
@@ -238,6 +241,9 @@ input:focus {
     width: 70%;
     height: 100%;
   }
+  html .card-title, html .card-subtitle {
+    font-size: 80%;
+  }
 }
 ::-moz-selection {
   background-color: #6a5ddf;
@@ -246,4 +252,9 @@ input:focus {
 ::selection {
   background-color: #6a5ddf;
   color: #fff;
+}
+
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
 }/*# sourceMappingURL=globals.css.map */

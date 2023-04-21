@@ -91,6 +91,16 @@
       height: 110px !important;
     }
   }
+  .heading {
+    font-size: 3rem !important;
+  }
+  .heading_input {
+    input {
+      &::placeholder {
+        font-size: 1rem;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 290px) {
@@ -104,9 +114,9 @@
     top: 6px !important;
   }
   .card {
-    height: 120px !important;
+    height: 140px !important;
     .card_img {
-      height: 70px !important;
+      height: 80px !important;
     }
   }
 }

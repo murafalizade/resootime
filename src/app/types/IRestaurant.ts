@@ -1,6 +1,6 @@
-import IUser from "./IUser";
+import IUser from './IUser';
 
-export interface IRestaurant{
+export interface IRestaurant {
     id: number;
     name: string;
     location: string;
@@ -10,12 +10,12 @@ export interface IRestaurant{
     user_id?: IUser;
 }
 
-interface IImage{
+interface IImage {
     id: number;
     image: string;
 }
 
-interface ICategory{
+interface ICategory {
     id: number;
     name: string;
 }

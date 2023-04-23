@@ -42,7 +42,7 @@ const ReservationNav = ({ name }: any) => {
     return (
         <div className="px-5">
             <nav className="navbar d-flex justify-content-between">
-                <div className='sm-none'>
+                <div className="sm-none">
                     <h4 className="text-light p-2">{name}</h4>
                 </div>
                 <div>
@@ -53,7 +53,7 @@ const ReservationNav = ({ name }: any) => {
                         onChange={(date: Date) => changeDate(date)}
                     />
                 </div>
-                <div className='d-none d-md-block'>
+                <div className="d-none d-md-block">
                     {router.pathname === '/restaurant/reservations' ? (
                         <button
                             onClick={openReservationModal}

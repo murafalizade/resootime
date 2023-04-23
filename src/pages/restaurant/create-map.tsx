@@ -28,7 +28,7 @@ const CreateMap = ({ restId, tbls, wall }: any) => {
     return (
         <div className="d-flex">
             <InlineMenu />
-                <CreateMapTool restId={restId} wall={wall} />
+            <CreateMapTool restId={restId} wall={wall} />
         </div>
     );
 };

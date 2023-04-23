@@ -69,7 +69,7 @@ const ReservationMap = ({ restId }: any) => {
                         wrapperStyle={{
                             height: '89.1vh',
                             width: '91vw',
-                        }}> 
+                        }}>
                         {wall ? (
                             <Image
                                 className={styles.image}

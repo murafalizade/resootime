@@ -111,7 +111,7 @@ const CreateMapTool = ({ restId, wall }: any) => {
 
     return (
         <div className={styles.map_tool}>
-            <div className='d-flex justify-content-center align-items-center p-3 d-md-none'>
+            <div className="d-flex justify-content-center align-items-center p-3 d-md-none">
                 <p>
                     Bu səhifə 768px-dən kiçik olarsa, düzgün işləməyə bilər.
                     Lütfən 768px-dən böyük ekran seçin.

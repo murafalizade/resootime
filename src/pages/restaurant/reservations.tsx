@@ -15,7 +15,9 @@ const Reservations = ({ rest, rsx }: any) => {
     return (
         <>
             {isModalOpen ? <div className="overlay"></div> : null}
-            <main style={{ backgroundColor: '#212841' }} className='d-block d-xxl-inline-block'>
+            <main
+                style={{ backgroundColor: '#212841' }}
+                className="d-block d-xxl-inline-block">
                 <ReservationNav name={rest.name} />
                 <div className="d-flex d-md-inline-flex">
                     <InlineMenu />

@@ -55,9 +55,9 @@
     margin: 15px;
 }
 
-
 @media screen and (max-width: 768px) {
-    .table_bar, .table_map {
-        display: none!important;
+    .table_bar,
+    .table_map {
+        display: none !important;
     }
 }

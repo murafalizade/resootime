@@ -74,7 +74,7 @@
     }
 }
 
-.popup{
+.popup {
     position: absolute;
     width: 200px;
     text-align: center;
@@ -85,5 +85,5 @@
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     padding: 3rem;
     margin-left: 5.5rem;
-    border-width: 0 calc(200px/3px) 10px calc((200/3)/2);
+    border-width: 0 calc(200px / 3px) 10px calc((200 / 3) / 2);
 }

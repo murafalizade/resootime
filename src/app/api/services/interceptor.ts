@@ -1,12 +1,17 @@
-import  API_BASE_URL  from '@/app/constants/baseUrl';
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import API_BASE_URL from '@/app/constants/baseUrl';
+import axios, {
+    AxiosError,
+    AxiosInstance,
+    AxiosRequestConfig,
+    AxiosResponse,
+} from 'axios';
 
 // Configure request params
 const config: AxiosRequestConfig = {
-  baseURL: API_BASE_URL,
-  timeout: 30000,
-}
-const service: AxiosInstance = axios.create(config)
+    baseURL: API_BASE_URL,
+    timeout: 30000,
+};
+const service: AxiosInstance = axios.create(config);
 
 // Intercept request
 // service.interceptors.request.use(
@@ -39,12 +44,12 @@ const service: AxiosInstance = axios.create(config)
 
 // Intercept response
 service.interceptors.response.use(
-  (response: AxiosResponse) => {
-    return response.data
-  },
-  (error: AxiosError) => {
-    return Promise.reject(error.response?.data)
-  }
-)
+    (response: AxiosResponse) => {
+        return response.data;
+    },
+    (error: AxiosError) => {
+        return Promise.reject(error.response?.data);
+    },
+);
 
-export default service
+export default service;

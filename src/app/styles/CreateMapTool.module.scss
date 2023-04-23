@@ -1,26 +1,26 @@
-.map_tool{
+.map_tool {
     display: flex;
     width: 100vw;
     height: 100vh;
 
-    .table_bar{
+    .table_bar {
         display: flex;
         flex-direction: column;
         align-items: center;
         padding: 0 10px;
-        flex:1;
+        flex: 1;
         background-color: white;
         border-right: 1px solid #0000;
         overflow-y: scroll;
         overflow-x: hidden;
         scroll-behavior: smooth;
         max-height: 100%;
-        
-        h4{
+
+        h4 {
             margin: 20px 0;
         }
 
-        .table_bar_item{
+        .table_bar_item {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -29,29 +29,35 @@
             cursor: pointer;
             transition: all 0.3s ease-in-out;
 
-            &:hover{
+            &:hover {
                 background-color: #0000;
             }
         }
     }
 
-    .table_map{
+    .table_map {
         // padding: 0 10px;
-        flex:3;
+        flex: 3;
         background-color: black;
     }
-
 }
-.image{
-    position: relative!important;
+.image {
+    position: relative !important;
     max-height: 500px;
-    height: 500px!important;
-    width: 800px!important;
-    margin:15px;
+    height: 500px !important;
+    width: 800px !important;
+    margin: 15px;
 }
 
-.image2{
-    position: relative!important;
+.image2 {
+    position: relative !important;
     max-height: 500px;
-    margin:15px;
+    margin: 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .table_bar,
+    .table_map {
+        display: none !important;
+    }
 }

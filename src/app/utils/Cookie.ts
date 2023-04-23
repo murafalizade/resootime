@@ -2,37 +2,37 @@ import { parseCookies } from 'nookies';
 import Cryption from './Cryption';
 
 class Cookie {
-  static set(key: string, value: string, expDate: string) {
-    const encryptedKey = Cryption.encrypt(key)
-    const encryptedValue = Cryption.encrypt(value)
-    document.cookie = `${encryptedKey}=${encryptedValue};expires=${expDate};path=/`
-  }
+    static set(key: string, value: string, expDate: string) {
+        const encryptedKey = Cryption.encrypt(key);
+        const encryptedValue = Cryption.encrypt(value);
+        document.cookie = `${encryptedKey}=${encryptedValue};expires=${expDate};path=/`;
+    }
 
-  static get(key: string) {
-    const name = Cryption.encrypt(key) + '=';
-    const cDecoded = decodeURIComponent(document.cookie)
-    const cArr = cDecoded.split('; ')
-    let res = null
+    static get(key: string) {
+        const name = Cryption.encrypt(key) + '=';
+        const cDecoded = decodeURIComponent(document.cookie);
+        const cArr = cDecoded.split('; ');
+        let res = null;
 
-    cArr.forEach((val) => {
-      if (val.indexOf(name) === 0) {
-        res = Cryption.decrypt(val.substring(name.length))
-      }
-    })
+        cArr.forEach((val) => {
+            if (val.indexOf(name) === 0) {
+                res = Cryption.decrypt(val.substring(name.length));
+            }
+        });
 
-    return res
-  }
+        return res;
+    }
 
-  static getFromSSR(req:any,key: string) {
-    const cookies = parseCookies({ req });
-    const cryptedName = Cryption.encrypt(key).slice(0, 7);
-    const encryptedValue = cookies[cryptedName];
-    return Cryption.decrypt(encryptedValue);
-  }
+    static getFromSSR(req: any, key: string) {
+        const cookies = parseCookies({ req });
+        const cryptedName = Cryption.encrypt(key).slice(0, 7);
+        const encryptedValue = cookies[cryptedName];
+        return Cryption.decrypt(encryptedValue);
+    }
 
-  static delete(key: string) {
-    this.set(key, '', "")
-  }
+    static delete(key: string) {
+        this.set(key, '', '');
+    }
 }
 
-export default Cookie
+export default Cookie;

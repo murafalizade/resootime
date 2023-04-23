@@ -1,72 +1,73 @@
 .sect {
-  min-height: 55vh;
-  height: 100%;
-  width: 100vw;
-  background: #f2f3fc;
-  padding: 1.9rem 2rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    min-height: 55vh;
+    height: 100%;
+    width: 100vw;
+    background: #f2f3fc;
+    padding: 1.9rem 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  div {
-    margin-bottom: 1.25rem;
-  }
+    div {
+        margin-bottom: 1.25rem;
+    }
 
-  h2 {
-    color: #2e343c;
-    font-weight: 700;
-  }
+    h2 {
+        color: #2e343c;
+        font-weight: 700;
+    }
 
-  h3 {
-    margin-bottom: 1.25rem;
-    font-weight: 600;
-    font-size: 1.4rem;
-  }
+    h3 {
+        margin-bottom: 1.25rem;
+        font-weight: 600;
+        font-size: 1.4rem;
+    }
 
-  h3,
-  p {
-    color: #2e343c;
-    text-align: center;
-    padding: 0 1.25;
-  }
-
-  .discovery_img {
-    width: 100% !important;
-    border-radius: 12px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  }
-
-  .heading {
-    font-size: 2.5rem;
-  }
-
-  .text_border_primary {
-    color: #6a5ddf !important;
-    border-color: #6a5ddf !important;
-  }
-
-  .number_field {
-    background-color: #f2f3fc;
-    border-radius: 25px;
-    h5,
+    h3,
     p {
-      text-align: left;
+        color: #2e343c;
+        text-align: center;
+        padding: 0 1.25;
     }
-    a {
-      background-color: #f2f3fc !important;
+
+    .discovery_img {
+        width: 100% !important;
+        border-radius: 12px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+            rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     }
-    h5 {
-      font-weight: 500;
-      font-size: 1.6rem;
+
+    .heading {
+        font-size: 2.5rem;
     }
-  }
+
+    .text_border_primary {
+        color: #6a5ddf !important;
+        border-color: #6a5ddf !important;
+    }
+
+    .number_field {
+        background-color: #f2f3fc;
+        border-radius: 25px;
+        h5,
+        p {
+            text-align: left;
+        }
+        a {
+            background-color: #f2f3fc !important;
+        }
+        h5 {
+            font-weight: 500;
+            font-size: 1.6rem;
+        }
+    }
 }
 
 .sect_banner {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 }
 
 .sect_contact {
-  min-height: 30vh;
+    min-height: 30vh;
 }

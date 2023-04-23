@@ -1,9 +1,8 @@
-import { IRestaurant } from "@/app/types/IRestaurant";
-import fetch from "./interceptor";
+import { IRestaurant } from '@/app/types/IRestaurant';
+import fetch from './interceptor';
 
-export default class UserService{
+export default class UserService {
     static async getUsers(): Promise<any[]> {
-
         return await fetch.get('/api/user');
     }
 
@@ -11,15 +10,15 @@ export default class UserService{
         return await fetch.get(`/api/user/${id}`);
     }
 
-    static async getUserByToken(token:string): Promise<any> {
+    static async getUserByToken(token: string): Promise<any> {
         return await fetch.get(`/api/users/${token}`);
     }
 
-    static async login (data: any): Promise<any> {
+    static async login(data: any): Promise<any> {
         return await fetch.post('/api/login/', data);
     }
 
-    static async register (data: any): Promise<any> {
+    static async register(data: any): Promise<any> {
         return await fetch.post('/api/register/', data);
     }
 

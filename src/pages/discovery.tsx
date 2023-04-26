@@ -3,7 +3,7 @@ import React from 'react';
 import styles from '@/app/styles/Discovery.module.scss';
 import Image from 'next/image';
 import { ImPhone } from 'react-icons/im';
-import { Head } from 'next/document';
+import Head from 'next/head';
 
 const Discovery = () => {
     return (

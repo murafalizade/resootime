@@ -12,13 +12,12 @@ export function reportWebVitals(metric: any) {
 export default function App({ Component, pageProps }: AppProps) {
     return (
         <>
-        <Head>
-            <title>ResooTime</title>
-        </Head>
-        <Provider store={store}>
-            <Component {...pageProps} />
-        </Provider>
+            <Head>
+                <title>ResooTime</title>
+            </Head>
+            <Provider store={store}>
+                <Component {...pageProps} />
+            </Provider>
         </>
-
     );
 }

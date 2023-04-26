@@ -148,7 +148,7 @@ const AdminModal = ({ date, selectedTable, restId }: any) => {
                                 <input
                                     type="number"
                                     min="1"
-                                    max='10'
+                                    max="10"
                                     value={userInfo.people_count}
                                     name="people_count"
                                     onChange={(e: any) => inputHandler(e)}

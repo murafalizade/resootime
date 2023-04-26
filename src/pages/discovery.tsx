@@ -3,18 +3,19 @@ import React from 'react';
 import styles from '@/app/styles/Discovery.module.scss';
 import Image from 'next/image';
 import { ImPhone } from 'react-icons/im';
+import { Head } from 'next/document';
 
 const Discovery = () => {
     return (
         <Layout isRestuarantPage={true}>
-            {/* <Head>
-        <title>ResooTime</title>
-        <meta
-          name="description"
-          content="Öz restoranınızı qeydiyyatdan keçirin və müştərilərinizə onlayn rezervasiya imkanı təqdim edin. Bakıda 150-dən çox restoranı onlayn rezervasiya edin. Ailəvi məkanlar, kabinetli restoranlar, canlı musiqili restoranların hamısı bir saytda."
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head> */}
+            <Head>
+                <title>ResooTime</title>
+                <meta
+                    name="description"
+                    content="Öz restoranınızı qeydiyyatdan keçirin və müştərilərinizə onlayn rezervasiya imkanı təqdim edin. Bakıda 150-dən çox restoranı onlayn rezervasiya edin. Ailəvi məkanlar, kabinetli restoranlar, canlı musiqili restoranların hamısı bir saytda."
+                />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <main>
                 <section
                     className={`sect_banner ${styles.sect} ${styles.sect_banner}`}>

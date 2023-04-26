@@ -148,7 +148,7 @@ const CreateMapTool = ({ restId, wall }: any) => {
                                 )
                             }
                             src={tableImages[3]?.image}
-                            className="position-relative"
+                            className="position-relative object-contain"
                             alt="chair"
                             objectFit="contain"
                             fill

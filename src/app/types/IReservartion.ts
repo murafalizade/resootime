@@ -11,4 +11,6 @@ export default interface IReservation {
     last_name: string;
     email: string;
     phone_number: string;
+    comment?: string
+    people_count:number;
 }

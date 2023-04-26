@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from '@/app/styles/ReservationList.module.scss';
 import IReservation from '@/app/types/IReservartion';
-import Util from '@/app/utils/Util';
 import { BsFillPeopleFill } from 'react-icons/bs';
 
 const ReservationList = ({ reserv }: { reserv: IReservation[] }) => {
@@ -66,7 +65,7 @@ const ReservationList = ({ reserv }: { reserv: IReservation[] }) => {
                                     </span>
                                     <span
                                         className={`${styles.list_text} text-nowrap`}>
-                                        {r.table_id.count} <BsFillPeopleFill />
+                                        {r.people_count} <BsFillPeopleFill />
                                     </span>
                                 </div>
                                 <div className="border h-25 py-1 d-flex justify-content-center rounded align-items-center px-3 ms-auto">

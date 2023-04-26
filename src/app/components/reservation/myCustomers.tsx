@@ -26,6 +26,7 @@ const MyCustomers = ({ reserv }: { reserv: IReservation[] }) => {
                         <th scope="col">Tarix</th>
                         <th scope="col">Ziyarətçi sayı</th>
                         <th scope="col">Masa</th>
+                        <th scope='col'>Əlavələr</th>
                         <th scope="col">Vəziyyət</th>
 
                         <th scope="col"></th>
@@ -42,8 +43,9 @@ const MyCustomers = ({ reserv }: { reserv: IReservation[] }) => {
                             <td>{r.user_id?.email || r.email}</td>
                             <td>{r.user_id?.phone_number || r.phone_number}</td>
                             <td>{Util.formatDate(r.date)}</td>
-                            <td>{r.table_id.count}</td>
+                            <td>{r.people_count}</td>
                             <td>{r.table_id.name}</td>
+                            <td>{r.comment}</td>
                             <td>{r.is_active ? 'Aktiv' : 'Passiv'}</td>
                             <td>
                                 <button

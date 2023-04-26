@@ -11,7 +11,6 @@ import Image from 'next/dist/client/image';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IoLocationSharp } from 'react-icons/io5';
-import StarsRating from 'react-star-rate';
 import Layout from '@/app/components/layout/layout';
 import RestaurantService from '@/app/api/services/restaurantService';
 import baseUrl from '@/app/constants/baseUrl';
@@ -21,7 +20,6 @@ import Head from 'next/head';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import RestInfo from '@/app/components/reservation/restInfo';
 import styles from '@/app/styles/CreateMapTool.module.scss';
-import { BiRestaurant } from 'react-icons/bi';
 import { GetServerSideProps } from 'next';
 import { formatDate } from '@/app/constants/date';
 import ImageCoursel from '@/app/components/reservation/imageCoursel';
@@ -33,6 +31,7 @@ const ReservationRestaurant = ({ res }: any) => {
     const isLoading = useSelector(selectIsLoading);
     const [wall, setWall] = useState('');
     const [date, setDate] = useState(new Date());
+    const [canEdit, setCanEdit] = useState(false);
 
     const getTables = async () => {
         const map = await RestaurantService.getTables(res.id);
@@ -55,18 +54,12 @@ const ReservationRestaurant = ({ res }: any) => {
     return (
         <>
             <Head>
-                <title>ResooTime</title>
+                <title>{res.name} | ResooTime</title>
                 <meta name="description" content={res.description} />
                 <meta
                     name="keywords"
                     content={`restaran rezervasiya masa ${res.name} ${res.category?.name}`}
                 />
-                <meta
-                    httpEquiv="Cache-Control"
-                    content="no-cache, no-store, must-revalidate"
-                />
-                <meta httpEquiv="Pragma" content="no-cache" />
-                <meta httpEquiv="Expires" content="0" />
             </Head>
             <Layout>
                 <main>
@@ -113,6 +106,7 @@ const ReservationRestaurant = ({ res }: any) => {
                             <div className="col-12 col-md-8 pt-1">
                                 <h3 className="fw-bold">Masanızı Seçin</h3>
                                 <div
+                                    onClick={() => setCanEdit(!canEdit)}
                                     className="position-relative border bg-dark mb-4"
                                     style={{
                                         height: '600px',
@@ -137,6 +131,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                         initialScale={0.75}
                                         minScale={0.5}
                                         maxScale={2}
+                                        disabled={canEdit}
                                         limitToBounds={false}>
                                         <TransformComponent
                                             wrapperStyle={{

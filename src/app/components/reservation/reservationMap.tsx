@@ -1,6 +1,7 @@
 import RestaurantService from '@/app/api/services/restaurantService';
 import {
     filterTables,
+    makeLoading,
     selectChoosenTable,
     selectFilteredTables,
     selectIsLoading,
@@ -58,8 +59,8 @@ const ReservationMap = ({ restId }: any) => {
                 restId={restId}
                 selectedTable={selectedTable}
             />
+            {isLoading ? <Loading /> : null}
             <div className="position-relative">
-                {isLoading ? <Loading /> : null}
                 <TransformWrapper
                     initialScale={0.75}
                     minScale={0.5}

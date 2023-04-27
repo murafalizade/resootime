@@ -142,7 +142,6 @@ const AdminModal = ({ date, selectedTable, restId }: any) => {
                                     </option>
                                 </select>
                             </div>
-
                             <div className="mx-3 mt-3 mb-3">
                                 <label>Ziyarətiçi sayı</label>
                                 <input
@@ -155,7 +154,6 @@ const AdminModal = ({ date, selectedTable, restId }: any) => {
                                     className="form-control"
                                 />
                             </div>
-
                             <div className="d-flex justify-content-between">
                                 <div className="mx-3">
                                     <label className="form-label">Ad</label>
@@ -212,6 +210,7 @@ const AdminModal = ({ date, selectedTable, restId }: any) => {
                                     rows={3}
                                 />
                             </div>
+                                </div>
                         </div>
                         <div className="modal-footer">
                             <button

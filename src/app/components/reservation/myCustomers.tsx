@@ -28,7 +28,6 @@ const MyCustomers = ({ reserv }: { reserv: IReservation[] }) => {
                         <th scope="col">Masa</th>
                         <th scope="col">Əlavələr</th>
                         <th scope="col">Vəziyyət</th>
-
                         <th scope="col"></th>
                     </tr>
                 </thead>

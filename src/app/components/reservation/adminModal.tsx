@@ -210,15 +210,14 @@ const AdminModal = ({ date, selectedTable, restId }: any) => {
                                     rows={3}
                                 />
                             </div>
-                                </div>
-                        </div>
-                        <div className="modal-footer">
-                            <button
-                                onClick={makeReservation}
-                                type="button"
-                                className="btn btn-lg btn-primary">
-                                Rezervasiyanı tamamla
-                            </button>
+                            <div className="modal-footer">
+                                <button
+                                    onClick={makeReservation}
+                                    type="button"
+                                    className="btn btn-lg btn-primary">
+                                    Rezervasiyanı tamamla
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -140,7 +140,10 @@ const DateFinder = ({
                 <option value="2">2 nəfər</option>
                 <option value="3">3 nəfər</option>
                 <option value="4">4 nəfər</option>
-                <option value="5">5+ nəfər</option>
+                <option value="5">5 nəfər</option>
+                <option value="6">6 nəfər</option>
+                <option value="7">7 nəfər</option>
+                <option value="8">8 nəfər</option>
             </select>
             <div className="d-flex justify-content-center my-2">
                 <div className="mt-3 me-2 w-50">

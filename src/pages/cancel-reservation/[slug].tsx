@@ -10,10 +10,10 @@ const CancelReservation = () => {
 
     useEffect(() => {
         Swal.fire({
-            title: 'Are you sure that cancel the reservation?',
+            title: 'Rezervasınızı ləğv etmək istədiyinizə əminsiniz?',
             showCancelButton: true,
-            confirmButtonText: 'Yes',
-            cancelButtonText: 'No',
+            confirmButtonText: 'Bəli',
+            cancelButtonText: 'Xeyr',
         }).then(async (result) => {
             if (result.isConfirmed) {
                 if (slug && typeof slug === 'string') {

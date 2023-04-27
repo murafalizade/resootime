@@ -8,9 +8,8 @@ import { formatDate } from '@/app/constants/date';
 
 const AdminModal = ({ date, selectedTable, restId }: any) => {
     const isOpenModel = useSelector(selectIsModelOpen);
-    const [error, setError] = useState<any>({});
     const dispatch = useDispatch();
-    const [reservDate, setReservDate] = React.useState(
+    const [reservDate, setReservDate] = useState(
         date
             ? new Date(
                   date.split('/')[1] +
@@ -28,6 +27,8 @@ const AdminModal = ({ date, selectedTable, restId }: any) => {
         last_name: 'Admin',
         email: '',
         phone_number: '',
+        comment: '',
+        people_count: 1,
     });
 
     useEffect(() => {
@@ -44,27 +45,6 @@ const AdminModal = ({ date, selectedTable, restId }: any) => {
         );
     }, [date]);
     const makeReservation = async () => {
-        if (!userInfo?.first_name) {
-            setError({ first_name: 'Ad boş ola bilməz' });
-            return;
-        }
-        if (!userInfo?.last_name) {
-            setError({ last_name: 'Soyad boş ola bilməz' });
-            return;
-        }
-        if (!userInfo?.email) {
-            setError({ email: 'Email boş ola bilməz' });
-            return;
-        }
-        // valid email check
-        if (!userInfo?.email.includes('@') || !userInfo?.email.includes('.')) {
-            setError({ email: 'Email düzgün deyil' });
-            return;
-        }
-        if (!userInfo?.phone_number) {
-            setError({ phone_number: 'Telefon nömrəsi boş ola bilməz' });
-            return;
-        }
         const localDate = reservDate.toLocaleDateString(formatDate.locale);
         const req = {
             date:
@@ -84,6 +64,8 @@ const AdminModal = ({ date, selectedTable, restId }: any) => {
             phone_number: userInfo.phone_number,
             first_name: userInfo.first_name,
             last_name: userInfo.last_name,
+            comment: userInfo.comment,
+            people_count: userInfo.people_count,
         };
         await withErrorHandeler(
             async (args: any) => {
@@ -153,14 +135,25 @@ const AdminModal = ({ date, selectedTable, restId }: any) => {
                             </div>
 
                             <div className="mx-3 mt-3 mb-3">
-                                <label>Avaible tables</label>
+                                <label>Uyğun masalar</label>
                                 <select disabled className="form-select mx-1">
                                     <option value={selectedTable.name}>
                                         {selectedTable.name}
                                     </option>
                                 </select>
                             </div>
-
+                            <div className="mx-3 mt-3 mb-3">
+                                <label>Ziyarətiçi sayı</label>
+                                <input
+                                    type="number"
+                                    min="1"
+                                    max="10"
+                                    value={userInfo.people_count}
+                                    name="people_count"
+                                    onChange={(e: any) => inputHandler(e)}
+                                    className="form-control"
+                                />
+                            </div>
                             <div className="d-flex justify-content-between">
                                 <div className="mx-3">
                                     <label className="form-label">Ad</label>
@@ -171,9 +164,6 @@ const AdminModal = ({ date, selectedTable, restId }: any) => {
                                         type="text"
                                         className="form-control"
                                     />
-                                    <div className="invalid-feedback d-block">
-                                        {error?.first_name}
-                                    </div>
                                 </div>
                                 <div>
                                     <label className="form-label">Soyad</label>
@@ -184,9 +174,6 @@ const AdminModal = ({ date, selectedTable, restId }: any) => {
                                         type="text"
                                         className="form-control"
                                     />
-                                    <div className="invalid-feedback d-block">
-                                        {error?.last_name}
-                                    </div>
                                 </div>
                             </div>
                             <div className="d-flex justify-content-between mt-3">
@@ -201,9 +188,6 @@ const AdminModal = ({ date, selectedTable, restId }: any) => {
                                         type="text"
                                         className="form-control"
                                     />
-                                    <div className="invalid-feedback d-block">
-                                        {error?.phone_number}
-                                    </div>
                                 </div>
                                 <div>
                                     <label className="form-label">Email</label>
@@ -214,11 +198,19 @@ const AdminModal = ({ date, selectedTable, restId }: any) => {
                                         type="email"
                                         className="form-control"
                                     />
-                                    <div className="invalid-feedback d-block">
-                                        {error?.email}
-                                    </div>
                                 </div>
                             </div>
+                            <div className="mx-3 mt-3">
+                                <label>Əlavələriniz</label>
+                                <textarea
+                                    name="comment"
+                                    value={userInfo.comment}
+                                    onChange={(e: any) => inputHandler(e)}
+                                    className="form-control mt-1"
+                                    rows={3}
+                                />
+                            </div>
+                                </div>
                         </div>
                         <div className="modal-footer">
                             <button

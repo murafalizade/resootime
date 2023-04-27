@@ -61,7 +61,7 @@ const MyReservation = ({ reserv }: any) => {
                                 </div>
                             </th>
                             <td>{res.date}</td>
-                            <td>{res.table_id.count}</td>
+                            <td>{res.people_count}</td>
                             <td>
                                 {res.user_id
                                     ? `${res.user_id.first_name} ${res.user_id.last_name}`

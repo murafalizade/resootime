@@ -49,8 +49,24 @@ function Home({ restaurants }: any) {
                 />
                 <meta
                     name="description"
-                    content="ResooTime - bütün restoranlar burada. Sevimli restoranlarınızı onlayn rezerv edin və bonus qazanın.        "
+                    content="ResooTime - bütün restoranlar burada. Sevimli restoranlarınızı onlayn rezerv edin və bonus qazanın."
                 />
+                <meta
+                    name="keywords"
+                    content="rezervasiya sistemi, stol seçimi xəritəsindən, onlayn rezervasiya sistemi, restoran sifariş sistemi, stol sifarişi platforması, interaktiv stol xəritəsi, Azərbaycan restoranı rezervasiyası, veb üzərindəki sifariş proqramı, restoran stolu mövcudluğu, istifadəçi dostu sifariş sistemi, Azərbaycan restoranı sifariş saytı, real vaxt stol seçimi, Azərbaycan restoran idarəetmə proqramı"
+                />
+                <meta name="og:title" content="ResooTime" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://resootime.com/" />
+                <meta
+                    property="og:image"
+                    content="https://resootime.com/images/logo.png"
+                />
+                <meta
+                    property="og:description"
+                    content="ResooTime - bütün restoranlar burada. Sevimli restoranlarınızı onlayn rezerv edin və bonus qazanın."
+                />
+                <meta property="og:site_name" content="ResooTime" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 

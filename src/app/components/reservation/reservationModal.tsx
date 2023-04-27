@@ -32,6 +32,7 @@ const ReservationModal = (props: Props) => {
         last_name: '',
         email: '',
         phone_number: '',
+        comment: '',
     });
     const selectedTable = useSelector(selectChoosenTable);
     const dispatch = useDispatch();
@@ -85,6 +86,8 @@ const ReservationModal = (props: Props) => {
             phone_number: userInfo?.phone_number,
             first_name: userInfo?.first_name,
             last_name: userInfo?.last_name,
+            comment: userInfo?.comment,
+            people_count: props.people,
         };
         await withErrorHandeler(
             async (args: any) => {
@@ -226,7 +229,13 @@ const ReservationModal = (props: Props) => {
 
                             <div className="mx-3 mt-3">
                                 <label>Əlavələriniz</label>
-                                <textarea className="form-control" rows={3} />
+                                <textarea
+                                    name="comment"
+                                    value={userInfo.comment}
+                                    onChange={(e: any) => inputHandler(e)}
+                                    className="form-control"
+                                    rows={3}
+                                />
                             </div>
                         </div>
                         <div className="modal-footer">

@@ -51,10 +51,6 @@ const ReservationModal = (props: Props) => {
     }, []);
 
     const makeReservation = async () => {
-        if (!userInfo?.email) {
-            setError({ email: 'Email boş ola bilməz' });
-            return;
-        }
         if (!userInfo?.phone_number) {
             setError({ phone_number: 'Telefon nömrəsi boş ola bilməz' });
             return;

@@ -46,7 +46,7 @@
 @media screen and (max-width: 767px) {
     .nav_links_mobile {
         width: 107%;
-        min-height: 40vh;
+        min-height: 45vh;
         display: flex;
         flex-direction: column;
         background-color: #fff;
@@ -55,7 +55,7 @@
         position: absolute;
         right: -5%;
         left: -5%;
-        top: 6rem;
+        top: 100%;
         z-index: 100;
         transition: clip-path 0.3s linear;
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);

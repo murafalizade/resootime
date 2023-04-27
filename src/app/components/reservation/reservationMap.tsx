@@ -1,7 +1,6 @@
 import RestaurantService from '@/app/api/services/restaurantService';
 import {
     filterTables,
-
     selectChoosenTable,
     selectFilteredTables,
     selectIsLoading,

@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { ImPhone } from 'react-icons/im';
 //import Head from 'next/head';
 
-
 const Discovery = () => {
     return (
         <Layout isRestuarantPage={true}>

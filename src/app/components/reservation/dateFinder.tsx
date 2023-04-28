@@ -27,7 +27,7 @@ const DateFinder = ({
     restImage,
     restId,
     allowed = true,
-    data
+    data,
 }: DateFinderProps) => {
     // dates
     const now = new Date();
@@ -35,7 +35,7 @@ const DateFinder = ({
     const [noAllowed, setNoAllowed] = useState(false);
     const getMinHour = (now: Date) => {
         const time = data.find(
-            (item:any) => item.day === days[now.getDay()].name,
+            (item: any) => item.day === days[now.getDay()].name,
         )?.open_at;
         const today = new Date();
         if (!time) {
@@ -50,7 +50,7 @@ const DateFinder = ({
 
     const getMaxHour = (now: Date) => {
         const time = data.find(
-            (item:any) => item.day === days[now.getDay()].name,
+            (item: any) => item.day === days[now.getDay()].name,
         )?.close_at;
         if (!time) {
             return ['23', '59'];
@@ -93,8 +93,7 @@ const DateFinder = ({
     useEffect(() => {
         if (minTime.getTime() < maxTime.getTime()) {
             setNoAllowed(false);
-        }
-        else{
+        } else {
             setNoAllowed(true);
             console.log(noAllowed && !allowed);
         }

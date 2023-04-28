@@ -5,5 +5,5 @@ export const weekDay = [
     { day: 'Ç', name: 'Çərşənbə' },
     { day: 'C.a', name: 'Cümə axşamı' },
     { day: 'C', name: 'Cümə' },
-    { day: 'Ş', name: 'Şənbə' }
+    { day: 'Ş', name: 'Şənbə' },
 ];

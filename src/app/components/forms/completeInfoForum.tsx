@@ -18,15 +18,15 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
 
     // get token from cookie
     const [token, setToken] = React.useState<any>(null);
-    
+
     useEffect(() => {
         const token = Cookie.get('token');
         setToken(token);
     }, []);
-    
+
     const workTime = useSelector(selectWorkDays);
     const onlineReservHours = useSelector(selectReservationDay);
-    
+
     // create object state which will be used to store the form data
     const [formData, setFormData] = React.useState<any>({
         allowed: res?.is_allowed,
@@ -39,7 +39,6 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
         phone: res.phone,
         profileImage: '',
     });
-
 
     // handle the change of the input in typescript
     const handleChange = (
@@ -148,12 +147,12 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
             async (req: any) => {
                 await RestaurantService.updateRestaurant(req, res.id, token);
                 if (formData.gallery?.length > 0) {
-                    await RestaurantService.deleteImage(res.id,token);
+                    await RestaurantService.deleteImage(res.id, token);
                     formData.gallery?.map(async (item: any) => {
                         await RestaurantService.addImage(
                             { image: item, restaurant: res.id },
                             res.id,
-                            token
+                            token,
                         );
                     });
                     if (!isUpdate) {
@@ -294,7 +293,10 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
                 <label className="p-2 ps-0 pt-3 d-block">
                     Rezervasiya vaxtı
                 </label>
-                <OnlineDaySelector data={res.online_reserv_hours} disabled={!formData.allowed} />
+                <OnlineDaySelector
+                    data={res.online_reserv_hours}
+                    disabled={!formData.allowed}
+                />
                 <div className="invalid-feedback d-block">
                     {error?.onlineReservationTime}
                 </div>

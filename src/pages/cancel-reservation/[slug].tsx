@@ -10,7 +10,6 @@ const CancelReservation = () => {
     const { slug } = router.query;
 
     useEffect(() => {
-
         // Make sure that reservation is not already cancelled
         if (Cookie.get('reservation') === slug) {
             Swal.fire({

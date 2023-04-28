@@ -14,7 +14,7 @@ const WorkDaySelector = ({ working_hours }: any) => {
 
     // when compontent mount
     useEffect(() => {
-        if(working_hours.length > 0){
+        if (working_hours.length > 0) {
             dispatch(changeDay(working_hours));
         }
     }, []); // eslint-disable-line react-hooks/exhaustive-deps

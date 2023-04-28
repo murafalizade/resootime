@@ -21,7 +21,7 @@ const initialState: IState = {
     isLoading: false,
     deletedTables: [],
     reservationDay: [],
-    workDay: []
+    workDay: [],
 };
 
 export const commentSlice = createSlice({
@@ -121,7 +121,7 @@ export const {
     adddDeletedTables,
     setTables,
     changeReservationDay,
-    changeDay
+    changeDay,
 } = commentSlice.actions;
 export const selectReservationDay = (state: IState) => state.reservationDay;
 export const selectWorkDays = (state: IState) => state.workDay;

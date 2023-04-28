@@ -38,7 +38,7 @@ export default withClient(CreateMap);
 export async function getServerSideProps(context: any) {
     const { req } = context;
     const token = Cookie.getFromSSR(req, 'token');
-    const rest = await RestaurantService.getRestaurant(token);
+    const rest = await RestaurantService.getRestaurantByToken(token);
     const map = await RestaurantService.getTables(rest.id);
     return {
         props: {

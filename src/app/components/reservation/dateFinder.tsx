@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '@/app/styles/dateFinder.module.scss';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -12,12 +12,14 @@ import {
 import ReservationModal from './reservationModal';
 import RestaurantService from '@/app/api/services/restaurantService';
 import { formatDate } from '@/app/constants/date';
+import { weekDay } from '@/app/constants/weekDay';
 
 interface DateFinderProps {
     restName: string;
     restImage: string;
     restId: number;
     allowed?: boolean;
+    data: any;
 }
 
 const DateFinder = ({
@@ -25,20 +27,56 @@ const DateFinder = ({
     restImage,
     restId,
     allowed = true,
+    data
 }: DateFinderProps) => {
     // dates
     const now = new Date();
+    const days = weekDay;
+    const [noAllowed, setNoAllowed] = useState(false);
+    const getMinHour = (now: Date) => {
+        const time = data.find(
+            (item:any) => item.day === days[now.getDay()].name,
+        )?.open_at;
+        const today = new Date();
+        if (!time) {
+            return ['23', '59'];
+        }
+        if (today.getTime() >= now.getTime()) {
+            return time.split(':');
+        } else {
+            return [today.getHours(), today.getMinutes()];
+        }
+    };
+
+    const getMaxHour = (now: Date) => {
+        const time = data.find(
+            (item:any) => item.day === days[now.getDay()].name,
+        )?.close_at;
+        if (!time) {
+            return ['23', '59'];
+        }
+        return time.split(':');
+    };
+
     const [minTime, setMinTime] = useState(
         new Date(
             now.getFullYear(),
             now.getMonth(),
             now.getDate(),
-            now.getHours(),
-            now.getMinutes(),
+            Number(getMinHour(now)[0]),
+            Number(getMinHour(now)[1]),
+            0,
         ),
     );
     const [maxTime, setMaxTime] = useState(
-        new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 0),
+        new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate(),
+            Number(getMaxHour(now)[0]),
+            Number(getMaxHour(now)[1]),
+            0,
+        ),
     );
     const [date, setDate] = useState(now);
 
@@ -51,6 +89,16 @@ const DateFinder = ({
     const handleCount = (e: any) => {
         setCount(e.target.value);
     };
+
+    useEffect(() => {
+        if (minTime.getTime() < maxTime.getTime()) {
+            setNoAllowed(false);
+        }
+        else{
+            setNoAllowed(true);
+            console.log(noAllowed && !allowed);
+        }
+    }, [minTime, maxTime]);
 
     // open modal for make reservation
     const makeReservation = async () => {
@@ -73,11 +121,10 @@ const DateFinder = ({
         setDate(date);
         const now = new Date();
         const tomorrow = new Date(
-            now.getFullYear(),
-            now.getMonth(),
-            now.getDate() + 1,
+            date.getFullYear(),
+            date.getMonth(),
+            date.getDate(),
         );
-        console.log(date.getTime(), tomorrow.getTime());
         if (date.getTime() >= tomorrow.getTime()) {
             // Allow selecting from 00:01 tomorrow
             setMinTime(
@@ -85,8 +132,9 @@ const DateFinder = ({
                     tomorrow.getFullYear(),
                     tomorrow.getMonth(),
                     tomorrow.getDate(),
+                    Number(getMinHour(tomorrow)[0]),
+                    Number(getMinHour(tomorrow)[1]),
                     0,
-                    1,
                 ),
             );
             setMaxTime(
@@ -94,8 +142,9 @@ const DateFinder = ({
                     tomorrow.getFullYear(),
                     tomorrow.getMonth(),
                     tomorrow.getDate(),
-                    23,
-                    59,
+                    Number(getMaxHour(tomorrow)[0]),
+                    Number(getMaxHour(tomorrow)[1]),
+                    0,
                 ),
             );
         } else {
@@ -105,8 +154,8 @@ const DateFinder = ({
                     now.getFullYear(),
                     now.getMonth(),
                     now.getDate(),
-                    now.getHours(),
-                    now.getMinutes(),
+                    Number(getMinHour(now)[0]),
+                    Number(getMinHour(now)[1]),
                 ),
             );
             setMaxTime(
@@ -114,8 +163,9 @@ const DateFinder = ({
                     now.getFullYear(),
                     now.getMonth(),
                     now.getDate(),
-                    23,
-                    59,
+                    Number(getMaxHour(now)[0]),
+                    Number(getMaxHour(now)[1]),
+                    0,
                 ),
             );
         }
@@ -175,12 +225,12 @@ const DateFinder = ({
 
             <button
                 type="button"
-                disabled={!allowed}
+                disabled={!allowed || noAllowed}
                 onClick={makeReservation}
                 className="btn btn-primary btn-lg mt-4 mb-2">
                 {table ? `Reserv edin ${table.name}` : 'Masaları axtarın'}
             </button>
-            {!allowed ? (
+            {!allowed || noAllowed ? (
                 <span className="text-danger text-center fs-6">
                     Rezervasiya etmək halhazırda mümkün deyil
                 </span>

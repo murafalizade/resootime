@@ -1,4 +1,3 @@
-import { IRestaurant } from '@/app/types/IRestaurant';
 import fetch from './interceptor';
 
 export default class UserService {
@@ -11,15 +10,28 @@ export default class UserService {
     }
 
     static async getUserByToken(token: string): Promise<any> {
-        return await fetch.get(`/api/users/${token}`);
+        return await fetch.get(`/api/users/${token}`,{
+            headers: {
+                'public-request': true
+            },
+        });
     }
 
     static async login(data: any): Promise<any> {
-        return await fetch.post('/api/login/', data);
+        return await fetch.post('/api/login/', data,{
+            headers: {
+                'public-request': true,
+            },
+        });
     }
 
     static async register(data: any): Promise<any> {
-        return await fetch.post('/api/register/', data);
+        return await fetch.post('/api/register/', data,
+        {
+            headers: {
+                'public-request': true,
+            },
+        });
     }
 
     static async myReservations(id: number): Promise<any[]> {

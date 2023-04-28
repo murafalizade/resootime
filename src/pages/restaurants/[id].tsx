@@ -169,6 +169,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                             ? baseUrl + res.images[0]?.image
                                             : '/images/rest_imag.png'
                                     }
+                                    data={res.online_reserv_hours}
                                     restName={res.name}
                                 />
                                 <div className="d-none d-md-flex">

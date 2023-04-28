@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ITable } from '@/app/types/ITable';
+import { IDay } from '../types/IDay';
 
 interface IState {
     tables: ITable[];
@@ -8,6 +9,8 @@ interface IState {
     deletedTables: ITable[];
     filteredTables: ITable[];
     isLoading: boolean;
+    workDay: IDay[];
+    reservationDay: IDay[];
 }
 
 const initialState: IState = {
@@ -17,6 +20,8 @@ const initialState: IState = {
     filteredTables: [],
     isLoading: false,
     deletedTables: [],
+    reservationDay: [],
+    workDay: [],
 };
 
 export const commentSlice = createSlice({
@@ -41,6 +46,16 @@ export const commentSlice = createSlice({
         // Action to choose one of tables in the store
         chooceTable: (state, action) => {
             state.choosenTable = action.payload;
+        },
+
+        // Action to add day to the store
+        changeDay: (state, action) => {
+            state.workDay = action.payload;
+        },
+
+        // Action to add reservationDay to the store
+        changeReservationDay: (state, action) => {
+            state.reservationDay = action.payload;
         },
 
         // Action to open modal in the store
@@ -105,7 +120,11 @@ export const {
     makeLoading,
     adddDeletedTables,
     setTables,
+    changeReservationDay,
+    changeDay,
 } = commentSlice.actions;
+export const selectReservationDay = (state: IState) => state.reservationDay;
+export const selectWorkDays = (state: IState) => state.workDay;
 export const selectTables = (state: IState) => state.tables;
 export const selectChoosenTable = (state: IState) => state.choosenTable;
 export const selectIsModelOpen = (state: IState) => state.isModelOpen;

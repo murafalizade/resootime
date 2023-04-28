@@ -4,15 +4,29 @@ import withErrorHandeler from '@/app/hof/withErrorHandler';
 import Cookie from '@/app/utils/Cookie';
 import styles from '@/app/styles/Form.module.scss';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
+import WorkDaySelector from './workDaySelector';
+import { useSelector } from 'react-redux';
+import { selectReservationDay, selectWorkDays } from '@/app/redux/commonSlice';
+import OnlineDaySelector from './onlineDaySelector';
 
 const CompleteInfoForum = ({ res, isUpdate }: any) => {
     const [error, setError] = React.useState<any>(null);
     const [selectedImages, setSelectedImages] = React.useState<any>(
-        res?.images.map((item: any) => `${BASE_URL}${item.image}`),
+        res?.images?.map((item: any) => `${BASE_URL}${item.image}`),
     );
 
-    console.log(res.is_allowed);
+    // get token from cookie
+    const [token, setToken] = React.useState<any>(null);
+
+    useEffect(() => {
+        const token = Cookie.get('token');
+        setToken(token);
+    }, []);
+
+    const workTime = useSelector(selectWorkDays);
+    const onlineReservHours = useSelector(selectReservationDay);
+
     // create object state which will be used to store the form data
     const [formData, setFormData] = React.useState<any>({
         allowed: res?.is_allowed,
@@ -24,52 +38,7 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
         name: res?.name,
         phone: res.phone,
         profileImage: '',
-        workTime: res.working_hours,
     });
-
-    // create a state to store the file
-    const days = [
-        { day: 'B.e', name: 'Bazar ertəsi' },
-        { day: 'Ç.a', name: 'Çərşənbə axşamı' },
-        { day: 'Ç', name: 'Çərşənbə' },
-        { day: 'C.a', name: 'Cümə axşamı' },
-        { day: 'C', name: 'Cümə' },
-        { day: 'Ş', name: 'Şənbə' },
-        { day: 'B', name: 'Bazar' },
-    ];
-
-    // check if the day is selected in workTime array
-    const checkingDaySelected = (day: string) => {
-        const daySelected = formData?.workTime?.find(
-            (item: any) => item.day === day,
-        );
-        if (daySelected) {
-            return true;
-        }
-        return false;
-    };
-
-    // add or remove day from workTime array
-    const addDay = (day: string) => {
-        const daySelected = formData?.workTime?.find(
-            (item: any) => item.day === day,
-        );
-        if (daySelected) {
-            const newFormData = { ...formData };
-            newFormData.workTime = newFormData.workTime?.filter(
-                (item: any) => item.day !== day,
-            );
-            setFormData(newFormData);
-        } else {
-            const newFormData = { ...formData };
-            newFormData.workTime?.push({
-                day,
-                open_at: newFormData.workTime[0]?.open_at || '09:00',
-                close_at: newFormData.workTime[0]?.close_at || '18:00',
-            });
-            setFormData(newFormData);
-        }
-    };
 
     // handle the change of the input in typescript
     const handleChange = (
@@ -147,9 +116,17 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
             setError({ profileImage: 'Restoranın şəkli boş ola bilməz' });
             return;
         }
-        if (formData.workTime.length === 0) {
+        if (workTime.length === 0) {
             window.scrollTo({ top: 0, behavior: 'smooth' });
             setError({ workTime: 'Restoranın iş saatı boş ola bilməz' });
+            return;
+        }
+        if (onlineReservHours.length === 0) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setError({
+                onlineReservHours:
+                    'Restoranın online rezerv saatı boş ola bilməz',
+            });
             return;
         } else {
             setError({});
@@ -162,18 +139,20 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
             is_allowed: formData.allowed,
             location: formData.address,
             googleMapLink: formData.googleMapLink,
-            working_hours_data: formData.workTime,
+            working_hours_data: workTime,
+            online_reserv_hours_data: onlineReservHours,
         };
 
         withErrorHandeler(
             async (req: any) => {
-                await RestaurantService.updateRestaurant(req, res.id);
+                await RestaurantService.updateRestaurant(req, res.id, token);
                 if (formData.gallery?.length > 0) {
-                    await RestaurantService.deleteImage(res.id);
+                    await RestaurantService.deleteImage(res.id, token);
                     formData.gallery?.map(async (item: any) => {
                         await RestaurantService.addImage(
                             { image: item, restaurant: res.id },
                             res.id,
+                            token,
                         );
                     });
                     if (!isUpdate) {
@@ -306,60 +285,20 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
                 />
 
                 <label className="p-2 ps-0 pt-3 d-block">İş vaxtı</label>
-                <div className={`${styles.day_selector}`}>
-                    {days.map((day, index) => {
-                        return (
-                            <div
-                                key={index}
-                                onClick={() => addDay(day.name)}
-                                className={`border ${
-                                    checkingDaySelected(day.name)
-                                        ? 'border-primary'
-                                        : ''
-                                } col-2 text-center py-2`}>
-                                {day.day}
-                            </div>
-                        );
-                    })}
-                </div>
-                <div className="d-flex my-3  align-items-center">
-                    <input
-                        value={formData.workTime[0]?.open_at || '09:00'}
-                        onChange={(e) => {
-                            const newFormData = { ...formData };
-                            if (newFormData.workTime[0]) {
-                                newFormData.workTime[0].open_at =
-                                    e.target.value;
-                                setFormData(newFormData);
-                            } else {
-                                alert('Zəhmət olmasa ilk öncə iş gününü seçin');
-                            }
-                        }}
-                        type="time"
-                        placeholder="Açılma saatı"
-                        className="form-control"
-                    />
-                    <span className="mx-2">:</span>
-                    <input
-                        min={formData.workTime[0]?.open_at}
-                        value={formData.workTime[0]?.close_at || '18:00'}
-                        type="time"
-                        onChange={(e) => {
-                            const newFormData = { ...formData };
-                            if (newFormData.workTime[0]) {
-                                newFormData.workTime[0].close_at =
-                                    e.target.value;
-                                setFormData(newFormData);
-                            } else {
-                                alert('Zəhmət olmasa ilk öncə iş gününü seçin');
-                            }
-                        }}
-                        placeholder="Bağlanma saatı"
-                        className="form-control"
-                    />
-                </div>
+                <WorkDaySelector working_hours={res.working_hours} />
                 <div className="invalid-feedback d-block">
                     {error?.workTime}
+                </div>
+
+                <label className="p-2 ps-0 pt-3 d-block">
+                    Rezervasiya vaxtı
+                </label>
+                <OnlineDaySelector
+                    data={res.online_reserv_hours}
+                    disabled={!formData.allowed}
+                />
+                <div className="invalid-feedback d-block">
+                    {error?.onlineReservationTime}
                 </div>
 
                 <label className="p-2 ps-0 pt-3">

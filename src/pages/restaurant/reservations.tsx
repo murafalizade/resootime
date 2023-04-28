@@ -37,7 +37,7 @@ export async function getServerSideProps(context: any) {
     let { date } = query;
     const token = Cookie.getFromSSR(req, 'token');
 
-    const rest = await RestaurantService.getRestaurant(token);
+    const rest = await RestaurantService.getRestaurantByToken(token);
     if (!date) {
         date = new Date().toLocaleDateString(formatDate.locale);
     }

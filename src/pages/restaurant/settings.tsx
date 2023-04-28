@@ -20,7 +20,7 @@ export default Settings;
 export async function getServerSideProps(context: any) {
     const { req } = context;
     const token = Cookie.getFromSSR(req, 'token');
-    const res = await RestaurantService.getRestaurant(token);
+    const res = await RestaurantService.getRestaurantByToken(token);
     return {
         props: {
             res,

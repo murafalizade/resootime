@@ -54,23 +54,35 @@ const CreateMapTool = ({ restId, wall }: any) => {
                         count: table.count,
                     };
                     if (table.id && table.id < 0) {
-                        await RestaurantService.createTable(request, restId,token);
+                        await RestaurantService.createTable(
+                            request,
+                            restId,
+                            token,
+                        );
                     } else {
-                        await RestaurantService.updateTable(request, restId,token);
+                        await RestaurantService.updateTable(
+                            request,
+                            restId,
+                            token,
+                        );
                     }
                 });
             deletedTables.forEach(async (table: ITable) => {
                 if (!table.id || table.id! > 0) {
-                    await RestaurantService.deleteTable(restId, table.id!,token);
+                    await RestaurantService.deleteTable(
+                        restId,
+                        table.id!,
+                        token,
+                    );
                 }
             });
             var formData = new FormData();
             formData.append('wall', file!);
             if (file && !wall) {
-                await RestaurantService.createMap(formData, restId,token);
+                await RestaurantService.createMap(formData, restId, token);
             }
             if (file && wall) {
-                await RestaurantService.updateMap(formData, restId,token);
+                await RestaurantService.updateMap(formData, restId, token);
             }
         }, 'Masalarınız uğurla yeniləndi!')([]);
     };

@@ -15,6 +15,7 @@ import tableImages from '@/app/constants/tableImages';
 import RestaurantService from '@/app/api/services/restaurantService';
 import Util from '@/app/utils/Util';
 import withErrorHandeler from '@/app/hof/withErrorHandler';
+import Cookie from '@/app/utils/Cookie';
 
 const CreateMapTool = ({ restId, wall }: any) => {
     const tables: ITable[] = useSelector(selectTables);
@@ -26,6 +27,9 @@ const CreateMapTool = ({ restId, wall }: any) => {
     const imageRef = React.useRef<HTMLImageElement>(null);
     const [size, setSize] = useState<number>(1);
     const [zoom, setZoom] = useState<number>(1);
+
+    // Token
+    const [token, setToken] = useState<string>('');
 
     // deselect when clicked on empty area
     const checkDeselect = (e: any) => {
@@ -50,23 +54,23 @@ const CreateMapTool = ({ restId, wall }: any) => {
                         count: table.count,
                     };
                     if (table.id && table.id < 0) {
-                        await RestaurantService.createTable(request, restId);
+                        await RestaurantService.createTable(request, restId,token);
                     } else {
-                        await RestaurantService.updateTable(request, restId);
+                        await RestaurantService.updateTable(request, restId,token);
                     }
                 });
             deletedTables.forEach(async (table: ITable) => {
                 if (!table.id || table.id! > 0) {
-                    await RestaurantService.deleteTable(restId, table.id!);
+                    await RestaurantService.deleteTable(restId, table.id!,token);
                 }
             });
             var formData = new FormData();
             formData.append('wall', file!);
             if (file && !wall) {
-                await RestaurantService.createMap(formData, restId);
+                await RestaurantService.createMap(formData, restId,token);
             }
             if (file && wall) {
-                await RestaurantService.updateMap(formData, restId);
+                await RestaurantService.updateMap(formData, restId,token);
             }
         }, 'Masalarınız uğurla yeniləndi!')([]);
     };
@@ -108,6 +112,12 @@ const CreateMapTool = ({ restId, wall }: any) => {
             alert('Zoom limiti keçildi');
         }
     };
+
+    useEffect(() => {
+        // token
+        const token = Cookie.get('token');
+        setToken(token!);
+    }, []);
 
     return (
         <div className={styles.map_tool}>

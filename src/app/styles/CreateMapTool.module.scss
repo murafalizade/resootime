@@ -55,6 +55,11 @@
     margin: 15px;
 }
 
+.map_loader {
+    position: absolute;
+    border-radius: 12px;
+}
+
 @media screen and (max-width: 768px) {
     .table_bar,
     .table_map {

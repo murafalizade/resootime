@@ -126,7 +126,11 @@ const ReservationRestaurant = ({ res }: any) => {
                                             <br />
                                         </div>
                                     </div>
-                                    {isLoading ? <Loading /> : null}
+                                    {isLoading ? (
+                                        <Loading
+                                            className={styles.map_loader}
+                                        />
+                                    ) : null}
                                     <TransformWrapper
                                         initialScale={0.75}
                                         minScale={0.5}

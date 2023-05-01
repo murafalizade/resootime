@@ -1,2 +1,2 @@
-const BASE_URL = 'https://rmusayevr.pythonanywhere.com';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 export default BASE_URL;

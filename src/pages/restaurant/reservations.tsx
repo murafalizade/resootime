@@ -2,16 +2,24 @@ import RestaurantService from '@/app/api/services/restaurantService';
 import ReservationList from '@/app/components/reservation/reservationList';
 import ReservationMap from '@/app/components/reservation/reservationMap';
 import { selectIsModelOpen } from '@/app/redux/commonSlice';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import withClient from '@/app/hoc/withClient';
 import ReservationNav from '@/app/components/reservation/reservationNav';
 import InlineMenu from '@/app/components/reservation/inlineMenu';
 import Cookie from '@/app/utils/Cookie';
 import { formatDate } from '@/app/constants/date';
+import { useRouter } from 'next/router';
 
 const Reservations = ({ rest, rsx }: any) => {
     const isModalOpen = useSelector(selectIsModelOpen);
+    // const router = useRouter()
+    // const { id } = router.query
+
+    // useEffect(() => {
+    //   window.location.replace(`http://${id}.localhost:3000/reservations`)
+    // }, [id])
+
     return (
         <>
             {isModalOpen ? <div className="overlay"></div> : null}

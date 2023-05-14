@@ -53,7 +53,8 @@ function Home({ restaurants }: any) {
                 />
                 <meta
                     name="keywords"
-                    content="rezervasiya sistemi, stol seçimi xəritəsindən, onlayn rezervasiya sistemi, restoran sifariş sistemi, stol sifarişi platforması, interaktiv stol xəritəsi, Azərbaycan restoranı rezervasiyası, veb üzərindəki sifariş proqramı, restoran stolu mövcudluğu, istifadəçi dostu sifariş sistemi, Azərbaycan restoranı sifariş saytı, real vaxt stol seçimi, Azərbaycan restoran idarəetmə proqramı"
+                    content="rezerv, restoranlar, bakıda restoranlar, kiraye restoranlar,en meşhur restoranlar, en meşhur 10 restoran, meşhur restoranlar, restoranlar bakida, restoranlarin qiymetleri,
+                    rezervasiya sistemi, onlayn rezervasiya sistemi, restoran sifariş sistemi, stol sifarişi platforması, interaktiv stol xəritəsi, Azərbaycan restoranı rezervasiyası, restoran stolu mövcudluğu, istifadəçi dostu sifariş sistemi, Azərbaycan restoranı sifariş saytı, real vaxt stol seçimi, Azərbaycan restoran idarəetmə proqramı"
                 />
                 <meta name="og:title" content="ResooTime" />
                 <meta property="og:type" content="website" />
@@ -185,6 +186,17 @@ export default withAuth(Home, false);
 export async function getServerSideProps(context: any) {
     const { page } = context.query;
     const restaurants = await RestaurantService.getRestaurants(page);
+    let wildcard = context.req.headers.host.split('.')[0];
+
+    if (wildcard !== 'localhost:3000') {
+        return {
+            redirect: {
+                destination: `http://localhost:3000/`,
+                permanent: false,
+            },
+        };
+    }
+
     return {
         props: {
             restaurants,

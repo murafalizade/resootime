@@ -38,6 +38,17 @@ export async function getServerSideProps(context: any) {
     }
     const token = Cookie.getFromSSR(req, 'token');
     const rest = await RestaurantService.getRestaurantByToken(token);
+    let wildcard = req.headers.host.split('.')[0];
+
+    if (wildcard === 'localhost:3000') {
+        return {
+          redirect: {
+            destination: `http://${rest.name}.localhost:3000/customers`,
+            permanent: false,
+          },
+        };
+    }
+    
     const reserv = await RestaurantService.getReservationByDate(rest.id, date);
     return {
         props: {

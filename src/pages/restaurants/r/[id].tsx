@@ -54,12 +54,27 @@ const ReservationRestaurant = ({ res }: any) => {
     return (
         <>
             <Head>
-                <title>{res.name} | ResooTime</title>
-                <meta name="description" content={res.description} />
+                <title>{res.name} | ResooTime.com</title>
+                <meta
+                    name="description"
+                    content={`Indi istənilən vaxta masanı seçib rezerv et. ${res.name} - ${res.description}`}
+                />
                 <meta
                     name="keywords"
-                    content={`restaran rezervasiya masa ${res.name} ${res.category?.name}`}
+                    content={`${res.name}, restoran, rezerv et, restoran ${res.location}, rezervasiya et, masani sec, rezervasiya, masa,  ${res.category?.name}`}
                 />
+                <meta name="og:title" content={`${res.name} | ResooTime.com`} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://resootime.com/" />
+                <meta
+                    property="og:image"
+                    content="https://resootime.com/images/logo.png"
+                />
+                <meta
+                    property="og:description"
+                    content={`Indi istənilən vaxta masanı seçib rezerv et. ${res.name} - ${res.description}`}
+                />
+                <meta property="og:site_name" content="ResooTime" />
             </Head>
             <Layout>
                 <main>
@@ -203,8 +218,21 @@ const ReservationRestaurant = ({ res }: any) => {
 
 export default withAuth(ReservationRestaurant, false);
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+    params,
+    req,
+}) => {
     const id = params?.id;
-    const res = await RestaurantService.getRestaurant(parseInt(id as string));
+    let wildcard = req.headers.host?.split('.')[0];
+    if (wildcard !== 'localhost:3000') {
+        return {
+            redirect: {
+                destination: `http://localhost:3000/restaurants/r/${id}`,
+                permanent: false,
+            },
+        };
+    }
+
+    const res = await RestaurantService.getRestaurant(id! as string);
     return { props: { res } };
 };

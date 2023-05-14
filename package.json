@@ -8,7 +8,9 @@
         "start": "next start",
         "lint": "next lint",
         "formater": "prettier --write .",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "server": "nodemon server.js",
+        "sitemap": "next-sitemap"
     },
     "dependencies": {
         "@next/font": "13.1.6",
@@ -25,6 +27,8 @@
         "konva": "^8.4.2",
         "next": "13.1.6",
         "next-redux-wrapper": "^8.1.0",
+        "next-sitemap": "^4.0.9",
+        "nodemon": "^2.0.22",
         "nookies": "^2.5.2",
         "pretier": "^0.0.1",
         "react": "18.2.0",

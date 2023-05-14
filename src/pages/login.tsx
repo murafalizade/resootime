@@ -2,10 +2,35 @@ import LoginForum from '@/app/components/forms/loginForum';
 import React from 'react';
 import styles from '@/app/styles/Form.module.scss';
 import Image from 'next/dist/client/image';
+import  Head  from 'next/head';
 
 const Login = () => {
     return (
         <>
+            <Head>
+                <title>Hesabınıza daxil olun - Resootime.com</title>
+                <meta
+                    name="description"
+                    content="Hesabınıza özəl panelinizə daxil olun və tənzimləmələrinizi idarə edin."
+                />
+                <meta
+                    name="keywords"
+                    content="daxil ol, hesab, panel, giriş, mənim rezervasiyalarım, tənzimləmələr"
+                />
+                <meta
+                    property="og:title"
+                    content="Hesabınıza daxil olun - Resootime.com"
+                />
+                <meta
+                    property="og:description"
+                    content="Hesabınıza özəl panelinizə daxil olun və tənzimləmələrinizi idarə edin."
+                />
+               <meta
+                    property="og:image"
+                    content="https://resootime.com/images/logo.png"
+                />
+                <link rel="canonical" href="https://resootime.com/login" />
+            </Head>
             <nav>
                 <div className="container-fluid border-bottom">
                     <div className="navbar p-3">
@@ -13,7 +38,7 @@ const Login = () => {
                             <a href="/" className="navbar-brand">
                                 <Image
                                     src={'/images/logo.png'}
-                                    alt="logo"
+                                    alt="resootime logo"
                                     width={40}
                                     height={40}
                                     className="img-fluid mx-2 logo nav-img"

@@ -20,12 +20,12 @@ service.interceptors.request.use(
     (config) => {
         config.headers = config.headers ?? {};
         const accessToken = config.headers['permanent-token'];
-        console.log(accessToken);
+        // console.log(accessToken);
         // Check the access token
         if (accessToken) {
             config.headers['Authorization'] = `Token ${accessToken}`;
             delete config.headers['permanent-token'];
-            console.log(config.headers['Authorization']);
+            // console.log(config.headers['Authorization']);
         } else if (config.headers && !config.headers['public-request']) {
             Router.push('/login');
 
@@ -42,6 +42,7 @@ service.interceptors.request.use(
         return config;
     },
     (error) => {
+        console.log(error);
         Promise.reject(error);
     },
 );
@@ -52,6 +53,7 @@ service.interceptors.response.use(
         return response.data;
     },
     (error: AxiosError) => {
+        console.log(error);
         return Promise.reject(error.response?.data);
     },
 );

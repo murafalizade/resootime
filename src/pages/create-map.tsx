@@ -39,6 +39,17 @@ export async function getServerSideProps(context: any) {
     const { req } = context;
     const token = Cookie.getFromSSR(req, 'token');
     const rest = await RestaurantService.getRestaurantByToken(token);
+    let wildcard = req.headers.host.split('.')[0];
+
+    if (wildcard === 'localhost:3000') {
+        return {
+            redirect: {
+                destination: `http://${rest.name}.localhost:3000/create-map`,
+                permanent: false,
+            },
+        };
+    }
+
     const map = await RestaurantService.getTables(rest.id);
     return {
         props: {

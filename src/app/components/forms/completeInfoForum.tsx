@@ -161,7 +161,7 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
                 }
             },
             'Restoranın məlumatları yeniləndi',
-            '/restaurant/create-map',
+            '/create-map',
         )(request);
     };
 

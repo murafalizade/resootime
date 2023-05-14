@@ -11,22 +11,14 @@ app.prepare().then(() => {
         const parsedUrl = parse(req.url, true);
         const { pathname, query } = parsedUrl;
         const subdomain = req.headers.host.split('.')[0];
-
-        if (subdomain === 'localhost' || subdomain === 'www') {
-            // Handle requests to the default domain
-            handle(req, res, parsedUrl);
-        } else if (pathname.startsWith('/restaurant')) {
-            // Redirect requests to restaurant subdomains
-            app.render(
-                req,
-                res,
-                `http://${query.id}.${subdomain}:3000`,
-                parsedUrl.query,
-            );
-        } else {
-            // Handle requests to other subdomains
-            res.statusCode = 404;
-            res.end(`Cannot access subdomain ${subdomain}`);
+        console.log(parsedUrl.href,"asd");
+        let yes = false;
+        if (parsedUrl.href == '/reservations') {
+            yes = true;
+            app.render(req, res, `/restaurant/${subdomain}/reservations`);
+        }
+        if(yes){
+            app.render(req, res, `/restaurant/${subdomain}/reservations`);
         }
     }).listen(3000, (err) => {
         if (err) throw err;

@@ -22,7 +22,7 @@ export default class RestaurantService {
     }
 
     static async getRestaurantByToken(token: string): Promise<IRestaurant> {
-        return await fetch.get(`/api/restaurant/${token}`, {
+        return await fetch.get(`/api/restaurant/token/${token}`, {
             headers: {
                 'public-request': true,
             },

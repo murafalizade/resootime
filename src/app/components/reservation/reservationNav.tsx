@@ -28,7 +28,7 @@ const ReservationNav = ({ name }: any) => {
     };
 
     useEffect(() => {
-        if (router.pathname === '/restaurant/reservations') {
+        if (router.pathname === ' /reservations') {
             let { date } = router.query;
             if (!date || typeof date !== 'string') {
                 date = new Date().toLocaleDateString(formatDate.locale);
@@ -54,7 +54,7 @@ const ReservationNav = ({ name }: any) => {
                     />
                 </div>
                 <div className="d-none d-md-block">
-                    {router.pathname === '/restaurant/reservations' ? (
+                    {router.pathname === ' /reservations' ? (
                         <button
                             onClick={openReservationModal}
                             className="btn btn-primary rounded text-nowrap sm-m-0">

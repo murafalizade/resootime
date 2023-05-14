@@ -3,11 +3,29 @@ import React from 'react';
 import styles from '@/app/styles/Discovery.module.scss';
 import Image from 'next/image';
 import { ImPhone } from 'react-icons/im';
-//import Head from 'next/head';
+import Head from 'next/head';
 
 const Discovery = () => {
     return (
         <Layout isRestuarantPage={true}>
+            <Head>
+                <title>Restoranlar üçün ən yaxşı rezervasiya sistemi və üstünlükləri ilə tanış olun - Resootime.com</title>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                />
+                <meta
+                    name="description"
+                    content="Restoran rezervasiyası
+                    və müştəri məmnuniyyəti
+                    bir arada"
+                />
+                <meta
+                    name="keywords"
+                    content="rezervasiya, Effektiv istifadə, Müştəri bazası, Daimi Müştərilər, Masaların Xəritəsi
+, Xatırladıcı, Effektiv istifadə, ödenissiz yoxla, Dolu Masalar, bizim iş modeli, xüsusiyyətlər, viziya, restoran, sahib, Azərbaycan"
+                />
+            </Head>
             <main>
                 <section
                     className={`sect_banner ${styles.sect} ${styles.sect_banner}`}>

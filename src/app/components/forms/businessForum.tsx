@@ -51,7 +51,8 @@ const BusinessForum = () => {
         try {
             const user = await UserService.register(data);
             // set cookie token
-            Cookie.set('token', user.token, user.expiry);
+            
+            Cookie.set('token', user.token, user.expire,user.restaurant);
             // set cookie for complete notification
             Cookie.set('CompleteInfo', 'true', user.expiry);
 

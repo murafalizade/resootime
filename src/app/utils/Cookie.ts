@@ -2,10 +2,12 @@ import { parseCookies } from 'nookies';
 import Cryption from './Cryption';
 
 class Cookie {
-    static set(key: string, value: string, expDate: string) {
+    static set(key: string, value: string, expDate: string, domain?: string) {
         const encryptedKey = Cryption.encrypt(key);
         const encryptedValue = Cryption.encrypt(value);
-        document.cookie = `${encryptedKey}=${encryptedValue};expires=${expDate};path=/`;
+        document.cookie = `${encryptedKey}=${encryptedValue};expires=${expDate};`;
+        console.log(domain);
+        document.cookie = `${encryptedKey}=${encryptedValue};expires=${expDate};path=/;domain=${domain}.localhost;`;
     }
 
     static get(key: string) {

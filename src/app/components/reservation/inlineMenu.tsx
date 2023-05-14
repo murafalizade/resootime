@@ -17,7 +17,7 @@ const InlineMenu = () => {
             className="d-flex flex-column justify-content-between">
             <div>
                 <a
-                    href="/restaurant/reservations"
+                    href=" /reservations"
                     title="Reservations"
                     className="text-decoration-none">
                     <div className="d-flex justify-content-center my-4">
@@ -25,7 +25,7 @@ const InlineMenu = () => {
                     </div>
                 </a>
                 <a
-                    href="/restaurant/customers"
+                    href=" /customers"
                     title="Customer"
                     className="text-decoration-none">
                     <div className="d-flex justify-content-center my-4">
@@ -33,7 +33,7 @@ const InlineMenu = () => {
                     </div>
                 </a>
                 <a
-                    href="/restaurant/create-map"
+                    href=" /create-map"
                     title="Create Map"
                     className="text-decoration-none">
                     <div className="d-flex justify-content-center my-4">
@@ -41,7 +41,7 @@ const InlineMenu = () => {
                     </div>
                 </a>
                 <a
-                    href="/restaurant/settings"
+                    href=" /settings"
                     title="Settings"
                     className="text-decoration-none">
                     <div className="d-flex justify-content-center my-4">

@@ -9,16 +9,9 @@ import ReservationNav from '@/app/components/reservation/reservationNav';
 import InlineMenu from '@/app/components/reservation/inlineMenu';
 import Cookie from '@/app/utils/Cookie';
 import { formatDate } from '@/app/constants/date';
-import { useRouter } from 'next/router';
 
 const Reservations = ({ rest, rsx }: any) => {
     const isModalOpen = useSelector(selectIsModelOpen);
-    // const router = useRouter()
-    // const { id } = router.query
-
-    // useEffect(() => {
-    //   window.location.replace(`http://${id}.localhost:3000/reservations`)
-    // }, [id])
 
     return (
         <>
@@ -44,12 +37,24 @@ export async function getServerSideProps(context: any) {
     const { req, query } = context;
     let { date } = query;
     const token = Cookie.getFromSSR(req, 'token');
-
+    console.log(token);
     const rest = await RestaurantService.getRestaurantByToken(token);
+    let wildcard = req.headers.host.split('.')[0];
+
+    if (wildcard === 'localhost:3000') {
+        return {
+          redirect: {
+            destination: `http://${rest.name}.localhost:3000/reservations`,
+            permanent: false,
+          },
+        };
+      }
+
     if (!date) {
         date = new Date().toLocaleDateString(formatDate.locale);
     }
     const rsx = await RestaurantService.getReservationByDate(rest.id, date);
+    
     return {
         props: {
             rest: rest,

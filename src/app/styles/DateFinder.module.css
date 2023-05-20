@@ -1,30 +1,76 @@
 .date_finder {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    padding: 1.5rem !important;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 2.95864px 1.97242px rgba(175, 172, 172, 0.15);
+  border: 1px solid rgba(155, 155, 155, 0.25);
+  border-radius: 10px;
+  padding: 1.5rem;
 }
-.date_finder h4 {
-    text-align: center;
-    margin-bottom: 1.9rem;
+.date_finder .modal_title {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  color: #6a5ddf;
+  border-bottom: 1px solid #a5a5a5;
+  width: 7rem;
+  padding-bottom: 0.5rem;
+  text-align: center;
 }
 .date_finder .label {
-    display: block;
-    margin-bottom: 0.6rem;
-    color: #505050 !important;
+  display: block;
+  margin-bottom: 0.9rem;
+  color: #505050 !important;
 }
 .date_finder .info_title {
-    font-weight: 700 !important;
+  font-weight: 700 !important;
+}
+.date_finder .picker_container {
+  width: 8rem;
+}
+.date_finder .picker {
+  font-size: 0.9rem;
+}
+.date_finder .res_name {
+  color: #000;
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+.date_finder .social_media_icon {
+  color: #6a5ddf;
+}
+.date_finder .map_link {
+  color: #505050;
+  border-bottom: 1px solid #505050;
 }
 
 .lists {
-    list-style: none;
+  list-style: none;
 }
 
 .date_picker {
-    width: 100% !important;
-} /*# sourceMappingURL=DateFinder.module.css.map */
+  width: 100% !important;
+}
+
+.icon {
+  font-size: 1.8rem;
+}
+
+.info,
+.info_type {
+  font-weight: 500;
+}
+
+.info,
+.icon {
+  color: #6a5ddf;
+}
+
+.add_info {
+  font-weight: 600;
+  line-height: 1.4rem;
+  color: #505050;
+}
+
+.fw_600 {
+  font-weight: 600;
+}/*# sourceMappingURL=DateFinder.module.css.map */

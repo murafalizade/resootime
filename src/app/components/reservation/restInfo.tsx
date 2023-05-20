@@ -3,56 +3,68 @@ import styles from '@/app/styles/DateFinder.module.scss';
 import { Loading } from '../layout/loading';
 import { IoLocationSharp } from 'react-icons/io5';
 import { AiOutlineClockCircle } from 'react-icons/ai';
-import { BsFillTelephoneFill } from 'react-icons/bs';
+import { BsFacebook, BsInstagram, BsLinkedin } from 'react-icons/bs';
+import { TbWorld } from 'react-icons/tb';
+import { ImPhone } from 'react-icons/im';
 
-const RestInfo = ({ workingTime, googleMapLink, location, phone }: any) => {
+const RestInfo = ({ name, workingTime, googleMapLink, location, phone, instagramLink, facebookLink }: any) => {
     return (
-        <div className={`mt-3 mb-5 p-4 ${styles.date_finder}`}>
+        <div className={`mt-3 mb-5 p-0 ${styles.date_finder}`}>
             <div>
                 <div style={{ width: '100%' }}>
                     <iframe
                         width="100%"
                         height="250px"
                         src={googleMapLink}
-                        loading="lazy"></iframe>
+                        loading="lazy"
+                        style={{
+                            borderTopLeftRadius: '10px',
+                            borderTopRightRadius: '10px',
+                        }}></iframe>
                 </div>
             </div>
             <div style={{ color: '#505050' }} className="mt-3">
-                <div className="d-flex">
-                    <IoLocationSharp
-                        className="me-1"
-                        style={{ color: '#505050', fontSize: '1.3rem' }}
-                    />
-                    <div>
-                        <span className={styles.info_title}>Ünvan</span>
-                        <p className="" style={{ color: '#3366CC' }}>
-                            {location}
-                        </p>
-                    </div>
+                <div className='mx-4'>
+                    <h4 className={`${styles.res_name}`}>{name}</h4>
+                    <p>{location}</p>
+                    <a
+                        className={`my-3 link ${styles.social_media_icon}`}
+                        href={instagramLink}
+                        target="_blank"
+                        rel="noreferrer">
+                        <BsInstagram size={'1.5em'} />
+                    </a>
+                    <a
+                        className={`my-3 ms-4 link ${styles.social_media_icon}`}
+                        href={facebookLink}
+                        target="_blank"
+                        rel="noreferrer">
+                        <BsFacebook size={'1.5em'} />
+                    </a>
                 </div>
                 <hr />
                 <div className="d-flex">
-                    <BsFillTelephoneFill
-                        className="me-1"
-                        style={{ color: '#505050', fontSize: '1rem' }}
-                    />
-                    <div>
-                        <span className={styles.info_title}>Nömrə</span>
-                        <p className="">{phone}</p>
-                    </div>
+                    <IoLocationSharp className={`mx-3 ${styles.icon}`} />
+                    <a href={googleMapLink} target='_blank' rel='noreferrer' className={`btn-link text-decoration-none link ${styles.map_link}`}>Xəritəyə keç</a>
                 </div>
                 <hr />
-
                 <div className="d-flex">
-                    <AiOutlineClockCircle
-                        className="me-1"
-                        style={{ color: '#505050', fontSize: '1.3rem' }}
-                    />
+                    <ImPhone className={`fs-4 mx-3 ${styles.icon}`} />
+                    <span>{phone}</span>
+                </div>
+                <hr />
+                <div className="d-flex">
+                    <TbWorld className={`mx-3 ${styles.icon}`} />
+                    <span>http://www.marivanna.az/</span>
+                </div>
+                <hr />
+                <div className="d-flex">
+                    <AiOutlineClockCircle className={`mx-3 ${styles.icon}`} />
                     <div className="w-100">
                         <div>
                             <div className="row">
                                 <span className={styles.info_title}>
-                                    İş vaxtı
+                                    İş saatları
                                 </span>
                                 <div className="col-6">
                                     <ul

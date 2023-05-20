@@ -1,51 +1,102 @@
 .map_tool {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
 }
 .map_tool .table_bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 10px;
-    flex: 1;
-    background-color: white;
-    border-right: 1px solid rgba(0, 0, 0, 0);
-    overflow-y: scroll;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10px;
+  flex: 1;
+  background-color: white;
+  border-right: 1px solid rgba(0, 0, 0, 0);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  max-height: 100%;
 }
 .map_tool .table_bar h4 {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 .map_tool .table_bar .table_bar_item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0);
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 .map_tool .table_bar .table_bar_item:hover {
-    background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
 }
 .map_tool .table_map {
-    flex: 3;
-    background-color: black;
+  flex: 3;
+  background-color: black;
 }
 
 .image {
-    position: relative !important;
-    max-height: 500px;
-    height: 500px !important;
-    width: 800px !important;
-    margin: 15px;
+  position: relative !important;
+  max-height: 500px;
+  height: 500px !important;
+  width: 800px !important;
+  margin: 15px;
 }
 
 .image2 {
-    position: relative !important;
-    max-height: 500px;
-    margin: 15px;
-} /*# sourceMappingURL=CreateMapTool.module.css.map */
+  position: relative !important;
+  max-height: 500px;
+  margin: 15px;
+}
+
+.map_loader {
+  position: absolute;
+  border-radius: 12px;
+}
+
+@media screen and (max-width: 768px) {
+  .table_bar,
+  .table_map {
+    display: none !important;
+  }
+}
+.res_name {
+  font-size: 2.3rem;
+  font-weight: 600;
+  line-height: 2.7rem;
+}
+
+.res_type {
+  font-size: 1.1rem;
+  line-height: 1.3rem;
+  color: #505050;
+  margin-bottom: 0;
+}
+
+.res_rating {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.res_description {
+  font-size: 0.9rem;
+  line-height: 1.1rem;
+  color: #59595A;
+}
+
+.description_link {
+  text-decoration: none;
+  color: #6A5DDF;
+}
+
+.bottom_border {
+  border-bottom: 1px solid #fff;
+  padding: 0.7rem;
+}
+
+.tags {
+  border: 1px solid #868686;
+  font-size: 0.6rem;
+}/*# sourceMappingURL=CreateMapTool.module.css.map */

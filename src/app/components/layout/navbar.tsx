@@ -3,9 +3,9 @@ import Image from 'next/dist/client/image';
 import React, { useEffect, useState } from 'react';
 import styles from '@/app/styles/Navbar.module.scss';
 import Router from 'next/dist/client/router';
-import { BiMenuAltRight } from 'react-icons/bi';
-import { IoClose } from 'react-icons/io5';
+import { IoClose, IoMenu } from 'react-icons/io5';
 import { TiDeleteOutline } from 'react-icons/ti';
+import { FiSearch } from 'react-icons/fi';
 
 interface IProps {
     isRestuarantPage?: boolean;
@@ -118,19 +118,18 @@ const Navbar = (props: IProps) => {
                                 </a>
                             </div>
                             <div className={`d-sm-none ${styles.sidebar}`}>
+                                <FiSearch size={'1.7em'} className='me-3' />
                                 {isClicked ? (
                                     <IoClose
                                         size={'2em'}
-                                        color="#374167"
                                         onClick={() => {
                                             setIsMobile(!isMobile),
                                                 setIsClicked(!isClicked);
                                         }}
                                     />
                                 ) : (
-                                    <BiMenuAltRight
+                                    <IoMenu
                                         size={'2em'}
-                                        color="#374167"
                                         onClick={() => {
                                             setIsMobile(!isMobile),
                                                 setIsClicked(!isClicked);

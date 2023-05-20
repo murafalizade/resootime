@@ -4,6 +4,27 @@
     background-color: #2e343c;
     color: white;
     padding: 1.9rem 2rem;
+
+    * {
+        font-family: 'Inter', sans-serif !important;
+    }
+
+    .footer_brand {
+        font-family: 'Inter', sans-serif !important;
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 1.7rem;
+        letter-spacing: 0em;
+        padding: 0.5rem 2rem !important;
+    }
+
+    .link_heading {
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: 1.2rem;
+        letter-spacing: 0em;
+        color: #A0A0A0;
+    }
 }
 
 .list {

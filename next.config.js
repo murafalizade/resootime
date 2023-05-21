@@ -8,7 +8,10 @@ const nextConfig = {
         includePaths: [path.join(__dirname, 'styles')],
     },
     images: {
-        domains: process.env.NODE_ENV==="production"?['api.resootime.com']:['rmusayevr.pythonanywhere.com'],
+        domains:
+            process.env.NODE_ENV === 'production'
+                ? ['api.resootime.com']
+                : ['rmusayevr.pythonanywhere.com'],
     },
     productionBrowserSourceMaps: true,
 };

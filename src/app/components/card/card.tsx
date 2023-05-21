@@ -11,7 +11,12 @@ interface ICardProps {
 const Card = ({ cardInfo }: ICardProps) => {
     return (
         <div className={`card ${styles.card}`}>
-            <a href={`/restaurants/r/${cardInfo.name.replace(' ', '-').replace("(","").replace(")","").toLocaleLowerCase()}`}>
+            <a
+                href={`/restaurants/r/${cardInfo.name
+                    .replace(' ', '-')
+                    .replace('(', '')
+                    .replace(')', '')
+                    .toLocaleLowerCase()}`}>
                 <Image
                     src={cardInfo.images[0]?.image || '/images/rest_imag.png'}
                     className={`card-img-top ${styles.card_img}`}
@@ -23,7 +28,11 @@ const Card = ({ cardInfo }: ICardProps) => {
             </a>
             <div className="card-body">
                 <a
-                    href={`/restaurants/r/${cardInfo.name.replace(' ', '-').replace("(","").replace(")","").toLocaleLowerCase()}`}
+                    href={`/restaurants/r/${cardInfo.name
+                        .replace(' ', '-')
+                        .replace('(', '')
+                        .replace(')', '')
+                        .toLocaleLowerCase()}`}
                     className="text-decoration-none text-dark link">
                     <h5 className="card-title">{cardInfo.name}</h5>
                 </a>

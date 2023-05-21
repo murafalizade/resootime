@@ -51,8 +51,8 @@ const BusinessForum = () => {
         try {
             const user = await UserService.register(data);
             // set cookie token
-            
-            Cookie.set('token', user.token, user.expire,user.restaurant);
+
+            Cookie.set('token', user.token, user.expire, user.restaurant);
             // set cookie for complete notification
             Cookie.set('CompleteInfo', 'true', user.expiry);
 
@@ -134,7 +134,7 @@ const BusinessForum = () => {
                         className="form-control"
                     />
                 </div>
-                <div>
+                {/* <div>
                     <label htmlFor="location">
                         Restoranın yerləşdiyi şəhər
                     </label>
@@ -146,7 +146,7 @@ const BusinessForum = () => {
                         placeholder="Restoranın yerləşdiyi şəhər"
                         className="form-control"
                     />
-                </div>
+                </div> */}
                 <div>
                     <label htmlFor="password">Şifrə</label>
                     <input

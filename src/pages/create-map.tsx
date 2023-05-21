@@ -41,10 +41,10 @@ export async function getServerSideProps(context: any) {
     const rest = await RestaurantService.getRestaurantByToken(token);
     let wildcard = req.headers.host.split('.')[0];
 
-    if (wildcard === 'localhost:3000') {
+    if (wildcard === 'wwww') {
         return {
             redirect: {
-                destination: `http://${rest.name}.localhost:3000/create-map`,
+                destination: `http://${rest.name}.${process.env.BASE_URL}.com/create-map`,
                 permanent: false,
             },
         };

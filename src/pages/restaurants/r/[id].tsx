@@ -184,7 +184,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                     allowed={res.is_allowed}
                                     restId={res.id}
                                     restImage={
-                                        res.images[0]?.image
+                                        res?.images[0]?.image
                                             ? baseUrl + res.images[0]?.image
                                             : '/images/rest_imag.png'
                                     }
@@ -222,17 +222,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     params,
     req,
 }) => {
-    const id = params?.id;
-    let wildcard = req.headers.host?.split('.')[0];
-    if (wildcard !== 'localhost:3000') {
-        return {
-            redirect: {
-                destination: `http://localhost:3000/restaurants/r/${id}`,
-                permanent: false,
-            },
-        };
-    }
-
-    const res = await RestaurantService.getRestaurant(id! as string);
+    let id = params?.id?.toString();
+    const res = await RestaurantService.getRestaurant(id as string);
     return { props: { res } };
 };

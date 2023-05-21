@@ -11,20 +11,19 @@ interface ICardProps {
 const Card = ({ cardInfo }: ICardProps) => {
     return (
         <div className={`card ${styles.card}`}>
-            <a href={`restaurants/r/${cardInfo.name}`}>
-
-            <Image
-                src={cardInfo.images[0]?.image || '/images/rest_imag.png'}
-                className={`card-img-top ${styles.card_img}`}
-                alt={cardInfo.name}
-                width={200}
-                quality={100}
-                height={140}
-            />
+            <a href={`/restaurants/r/${cardInfo.name.replace(' ', '-').replace("(","").replace(")","").toLocaleLowerCase()}`}>
+                <Image
+                    src={cardInfo.images[0]?.image || '/images/rest_imag.png'}
+                    className={`card-img-top ${styles.card_img}`}
+                    alt={cardInfo.name}
+                    width={200}
+                    quality={100}
+                    height={140}
+                />
             </a>
             <div className="card-body">
                 <a
-                    href={`/restaurants/r/${cardInfo.name}`}
+                    href={`/restaurants/r/${cardInfo.name.replace(' ', '-').replace("(","").replace(")","").toLocaleLowerCase()}`}
                     className="text-decoration-none text-dark link">
                     <h5 className="card-title">{cardInfo.name}</h5>
                 </a>
@@ -41,7 +40,7 @@ const Card = ({ cardInfo }: ICardProps) => {
                             {cardInfo.rate ?? 0}
                         </span>
                         <p className="text-muted align-items-center d-flex mx-3 my-0 p-0">
-                            {cardInfo.location}
+                            {cardInfo?.city}
                         </p>
                     </div>
                 </h6>

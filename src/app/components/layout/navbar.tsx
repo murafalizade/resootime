@@ -14,6 +14,7 @@ interface IProps {
 const Navbar = (props: IProps) => {
     const [isLogin, setIsLogin] = useState(false);
     const [completeInfo, setCompleteInfo] = useState('');
+    const [show, setShow] = useState(true);
 
     useEffect(() => {
         const token = Cookie.get('token');
@@ -40,6 +41,18 @@ const Navbar = (props: IProps) => {
                     </p>
                     <span
                         onClick={() => setCompleteInfo('')}
+                        className="pt-3 text-center">
+                        <TiDeleteOutline size={'1.5rem'} color="white" />
+                    </span>
+                </div>
+            ) : null}
+            {show ? (
+                <div className="container-fluid justify-content-between d-flex bg-warning text-center border-bottom">
+                    <p className="text-light pt-3 text-center ">
+                        Sayt tezliklə yenilənəcəkdir
+                    </p>
+                    <span
+                        onClick={() => setShow(false)}
                         className="pt-3 text-center">
                         <TiDeleteOutline size={'1.5rem'} color="white" />
                     </span>

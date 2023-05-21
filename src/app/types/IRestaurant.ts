@@ -8,6 +8,7 @@ export interface IRestaurant {
     images: IImage[];
     category?: ICategory;
     user_id?: IUser;
+    city?: string;
 }
 
 interface IImage {

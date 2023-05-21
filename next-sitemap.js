@@ -6,13 +6,12 @@ module.exports = {
     generateRobotsTxt: true,
     exclude: ['/restaurant/**'],
     robotsTxtOptions: {
-      policies: [
-        {
-          userAgent: '*',
-          allow: '/',
-        },
-      ],
+        policies: [
+            {
+                userAgent: '*',
+                allow: '/',
+            },
+        ],
     },
     // Define any other options or rules for your sitemap here
-  };
-  
+};

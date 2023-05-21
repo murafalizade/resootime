@@ -31,7 +31,12 @@ const LoginForum = () => {
             const user = await UserService.login(data);
             // set cookie token
             console.log(user);
-            Cookie.set('token', user.token, 'Tue, 19 Jan 2038 03:14:07 GMT',user.restaurant);
+            Cookie.set(
+                'token',
+                user.token,
+                'Tue, 19 Jan 2038 03:14:07 GMT',
+                user.restaurant,
+            );
             // redirect to home page
             Router.push('/');
         } catch (err: any) {

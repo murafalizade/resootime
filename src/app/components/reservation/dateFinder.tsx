@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from '@/app/styles/dateFinder.module.scss';
+import styles from '@/app/styles/DateFinder.module.scss';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch, useSelector } from 'react-redux';
@@ -179,39 +179,44 @@ const DateFinder = ({
                 hotelName={restName}
                 img={restImage}
             />
-            <h4 className="fw-bold">Rezervasiya</h4>
-            <label className={styles.label}>Ziyarətçi sayı</label>
-
-            <select
-                onChange={(e: any) => handleCount(e)}
-                className="form-select mx-1 p-3 rounded-pill">
-                <option value="1">1 nəfər</option>
-                <option value="2">2 nəfər</option>
-                <option value="3">3 nəfər</option>
-                <option value="4">4 nəfər</option>
-                <option value="5">5 nəfər</option>
-                <option value="6">6 nəfər</option>
-                <option value="7">7 nəfər</option>
-                <option value="8">8 nəfər</option>
-            </select>
-            <div className="d-flex justify-content-center my-2">
-                <div className="mt-3 me-2 w-50">
+            <div className="d-flex justify-content-center mb-4">
+                <h4 className={`${styles.modal_title}`}>Rezervasiya</h4>
+            </div>
+            <div className="d-flex justify-content-around mb-2">
+                <div className={`${styles.picker_container}`}>
+                    <label className={styles.label}>Qonaq sayı</label>
+                    <div>
+                        <select
+                            onChange={(e: any) => handleCount(e)}
+                            className={`form-select py-2 text-center rounded-pill fw-bold`}>
+                            <option value="1">1 nəfər</option>
+                            <option value="2">2 nəfər</option>
+                            <option value="3">3 nəfər</option>
+                            <option value="4">4 nəfər</option>
+                            <option value="5">5 nəfər</option>
+                            <option value="6">6 nəfər</option>
+                            <option value="7">7 nəfər</option>
+                            <option value="8">8 nəfər</option>
+                        </select>
+                    </div>
+                </div>
+                <div className={`${styles.picker_container}`}>
                     <label className={styles.label}>Tarix</label>
                     <DatePicker
                         selected={date}
-                        className="form-control p-3 rounded-pill"
+                        className="form-control py-2 text-center rounded-pill fw-bold"
                         dateFormat="dd MMM"
                         minDate={now}
                         onChange={handleChangeDate}
                     />
                 </div>
-                <div className="mt-3 ms-2 w-50">
-                    <label className={styles.label}>Saat</label>
+                <div className={`${styles.picker_container}`}>
+                    <label className={styles.label}>Vaxt</label>
                     <DatePicker
                         selected={date}
                         onChange={handleChangeDate}
                         showTimeSelect
-                        className="form-select p-3 rounded-pill"
+                        className="form-select py-2 text-center rounded-pill fw-bold"
                         showTimeSelectOnly
                         timeIntervals={30}
                         minTime={minTime}

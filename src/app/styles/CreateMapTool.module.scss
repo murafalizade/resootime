@@ -65,4 +65,112 @@
     .table_map {
         display: none !important;
     }
+    .map {
+        height: 350px !important;
+    }
+}
+
+// Restaurant Details
+.res_name {
+    font-size: 2.3rem;
+    font-weight: 600;
+    line-height: 2.7rem;
+}
+
+.res_type {
+    font-size: 1.1rem;
+    line-height: 1.3rem;
+    color: #505050;
+    margin-bottom: 0;
+}
+
+.res_rating {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.res_description {
+    font-size: 0.9rem;
+    line-height: 1.1rem;
+    color: #59595a;
+    background-color: transparent;
+    border: none;
+}
+
+.description_link {
+    text-decoration: none;
+    color: #6a5ddf;
+}
+
+.bottom_border {
+    border-bottom: 1px solid #fff;
+    padding: 0.7rem;
+}
+
+.tag_container {
+    overflow: auto;
+    scroll-behavior: smooth;
+    &::-webkit-scrollbar {
+        height: 5px;
+    }
+    &::-webkit-scrollbar-track {
+        background: #fff;
+        -webkit-box-shadow: inset 0 0 0 #fff;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #808080;
+        border: none;
+        border-radius: 10px;
+        display: none;
+    }
+    &:hover {
+        &::-webkit-scrollbar-thumb {
+            display: block;
+        }
+    }
+    .tags {
+        min-width: 5rem;
+        height: 2rem;
+        border: 1px solid #868686;
+        font-size: 0.6rem;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0.3rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.img_container {
+    height: 19rem;
+    overflow-y: hidden;
+    img {
+        height: 19rem !important;
+    }
+}
+
+.show_img_btn {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: none;
+    background-color: #fff;
+    padding: 0.5rem 1.3rem;
+    border-radius: 5px;
+}
+
+.heart_icon {
+    position: absolute;
+    right: 7%;
+    top: 7%;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #fff;
+    border: none;
+    color: #ff0000;
+    font-size: 1.4rem;
 }

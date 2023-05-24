@@ -18,9 +18,7 @@ const withAuth = (WrappedComponent: ComponentType, isActive?: boolean) => {
                 console.log(userData);
                 if (userData.is_client) {
                     setShouldRedirect(true);
-                    Router.push(
-                        `http://${userData.restaurant_name}.${process.env.BASE_URL}/reservations`,
-                    );
+                    Router.push(`/reservations`);
                 }
             };
             if (token) {

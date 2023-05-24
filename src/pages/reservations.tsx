@@ -39,6 +39,8 @@ export async function getServerSideProps(context: any) {
     const token = Cookie.getFromSSR(req, 'token');
     console.log(token);
     const rest = await RestaurantService.getRestaurantByToken(token);
+    console.log(rest);
+    console.log(process.env.BASE_URL);
     let wildcard = req.headers.host.split('.')[0];
 
     if (wildcard === 'www') {

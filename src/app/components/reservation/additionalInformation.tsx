@@ -3,6 +3,7 @@ import { GiReceiveMoney, GiMeal } from 'react-icons/gi';
 import { FaRegMoneyBillAlt, FaChild } from 'react-icons/fa';
 import { IoMdCard } from 'react-icons/io';
 import { CiParking1 } from 'react-icons/ci';
+import { rest } from 'cypress/types/lodash';
 
 const AdditionalInfo = ({
     cuisine,
@@ -10,6 +11,7 @@ const AdditionalInfo = ({
     payment,
     maximumPrice,
     minimumPrice,
+    service_charge
 }: any) => {
     return (
         <div>
@@ -48,7 +50,7 @@ const AdditionalInfo = ({
                     </div>
                     <span
                         className={`d-flex align-items-center ${styles.info}`}>
-                        7%
+                        {service_charge}%
                     </span>
                 </div>
                 <hr />

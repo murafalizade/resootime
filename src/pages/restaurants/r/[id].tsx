@@ -7,7 +7,7 @@ import {
     selectIsLoading,
     selectIsModelOpen,
 } from '@/app/redux/commonSlice';
-import Image from 'next/dist/client/image';
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Layout from '@/app/components/layout/layout';
@@ -27,6 +27,7 @@ import AdditionalInfo from '@/app/components/reservation/additionalInformation';
 import Menu from '@/app/components/reservation/menu';
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
+import BASE_URL from '@/app/constants/baseUrl';
 
 const ReservationRestaurant = ({ res }: any) => {
     const isModalOpen = useSelector(selectIsModelOpen);
@@ -39,9 +40,6 @@ const ReservationRestaurant = ({ res }: any) => {
     const [showMore, setShowMore] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
 
-    const resDes =
-        'Gənc şəfxanə Həsənov tərəfindən yaradılan Marivanna restoranı, zəngin Azərbaycan mətbəxi ənənələrini modern bir şəkildə təqdim edir. Restoranın interyeri, mətbəxin zənginliyinə uyğun olaraq tərtib edilmişdir. Burada təklif olunan yeməklər, ən peşəkar dadlara sahib Azərbaycan və rus mətbəxləri üsullarına uyğun olaraq Marivanna restoranı, zəngin Azərbaycan mətbəxi ənənələrini modern bir şəkildə təqdim edir. Restoranın interyeri, mətbəxin zənginliyinə uyğun olaraq tərtib edilmişdir. Burada təklif olunan yeməklər, ən peşəkar dadlara sahib Azərbaycan və rus mətbəxləri üsullarına uyğun olaraq';
-
     const getTables = async () => {
         const map = await RestaurantService.getTables(res.id);
         setWall(map?.wall);
@@ -52,6 +50,8 @@ const ReservationRestaurant = ({ res }: any) => {
         );
         dispatch(filterTables(filterTable));
     };
+
+
 
     useEffect(() => {
         dispatch(makeLoading());
@@ -102,18 +102,15 @@ const ReservationRestaurant = ({ res }: any) => {
                         </button>
                         <div
                             className={`d-flex flex-column ${styles.img_container}`}>
-                            {res.images?.map((image: any) => (
-                                <Image
-                                    key={image.id}
-                                    src={
-                                        image.id == 1 && baseUrl + image?.image
-                                    }
-                                    alt={res.name}
-                                    width={386}
-                                    height={300}
-                                    className="w-100 object-fill"
-                                />
-                            ))}
+                            <Image
+                                src={
+                                    res.images[0]?.image || '/images/rest_imag.png'
+                                }
+                                alt={res.name}
+                                width={386}
+                                height={300}
+                                className="w-100 object-fill"
+                            />
                         </div>
                         {res.images?.length > 1 && (
                             <button
@@ -190,8 +187,8 @@ const ReservationRestaurant = ({ res }: any) => {
                                 <p
                                     className={`d-lg-block d-none ${styles.res_description}`}>
                                     {showMore
-                                        ? resDes
-                                        : `${resDes.substring(0, 317)}...`}{' '}
+                                        ? res.description
+                                        : `${res.description.substring(0, 317)}...`}{' '}
                                     <br />
                                     <button
                                         className={`${styles.res_description} ${styles.description_link}`}
@@ -225,19 +222,13 @@ const ReservationRestaurant = ({ res }: any) => {
                                 </button>
                                 <div
                                     className={`d-flex flex-column ${styles.img_container}`}>
-                                    {res.images?.map((image: any) => (
-                                        <Image
-                                            key={image.id}
-                                            src={
-                                                image.id == 1 &&
-                                                baseUrl + image?.image
-                                            }
-                                            alt={res.name}
-                                            width={386}
-                                            height={300}
-                                            className="w-100 rounded object-fill"
-                                        />
-                                    ))}
+                                    <Image
+                                        src={res.images[0]?.image || '/images/rest_imag.png'}
+                                        alt={res.name}
+                                        width={386}
+                                        height={300}
+                                        className="w-100 object-fill"
+                                    />
                                 </div>
                                 {res.images?.length > 1 && (
                                     <button
@@ -366,6 +357,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                         payment={res.payment}
                                         maximumPrice={res.maximum_price}
                                         minimumPrice={res.minimum_price}
+                                        service_charge={res.service_charge}
                                     />
                                 </div>
                             </div>

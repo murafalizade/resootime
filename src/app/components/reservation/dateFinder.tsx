@@ -26,7 +26,7 @@ const DateFinder = ({
     restName,
     restImage,
     restId,
-    allowed = true,
+    allowed = false,
     data,
 }: DateFinderProps) => {
     // dates
@@ -38,6 +38,7 @@ const DateFinder = ({
             (item: any) => item.day === days[now.getDay()].name,
         )?.open_at;
         const today = new Date();
+        console.log(time);
         if (!time) {
             return ['23', '59'];
         }
@@ -55,6 +56,7 @@ const DateFinder = ({
         if (!time) {
             return ['23', '59'];
         }
+        console.log(time);
         return time.split(':');
     };
 
@@ -229,12 +231,12 @@ const DateFinder = ({
 
             <button
                 type="button"
-                disabled={!allowed || noAllowed}
+                disabled={!allowed && noAllowed}
                 onClick={makeReservation}
                 className="btn btn-primary btn-lg mt-4 mb-2">
                 {table ? `Reserv edin ${table.name}` : 'Masaları axtarın'}
             </button>
-            {!allowed || noAllowed ? (
+            {allowed || noAllowed ? (
                 <span className="text-danger text-center fs-6">
                     Rezervasiya etmək halhazırda mümkün deyil
                 </span>

@@ -11,7 +11,7 @@ const ReservationNav = ({ name }: any) => {
     const dispatch = useDispatch();
     const router = useRouter();
 
-    console.log(router.pathname)
+    console.log(router.pathname);
 
     const changeDate = async (date: Date) => {
         setStartDate(date);

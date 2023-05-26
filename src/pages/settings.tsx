@@ -23,14 +23,14 @@ export async function getServerSideProps(context: any) {
     const res = await RestaurantService.getRestaurantByToken(token);
     let wildcard = req.headers.host.split('.')[0];
 
-    if (wildcard === 'www') {
-        return {
-            redirect: {
-                destination: `http://${res.name}.${process.env.BASE_URL}.com/settings`,
-                permanent: false,
-            },
-        };
-    }
+    // if (wildcard === 'www') {
+    //     return {
+    //         redirect: {
+    //             destination: `http://${res.name}.${process.env.BASE_URL}.com/settings`,
+    //             permanent: false,
+    //         },
+    //     };
+    // }
     return {
         props: {
             res,

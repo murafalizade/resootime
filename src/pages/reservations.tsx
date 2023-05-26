@@ -43,14 +43,14 @@ export async function getServerSideProps(context: any) {
     console.log(process.env.BASE_URL);
     let wildcard = req.headers.host.split('.')[0];
 
-    if (wildcard === 'www') {
-        return {
-            redirect: {
-                destination: `http://${rest.name}.${process.env.BASE_URL}.com/reservations`,
-                permanent: false,
-            },
-        };
-    }
+    // if (wildcard === 'www') {
+    //     return {
+    //         redirect: {
+    //             destination: `http://${rest.name}.${process.env.BASE_URL}.com/reservations`,
+    //             permanent: false,
+    //         },
+    //     };
+    // }
 
     if (!date) {
         date = new Date().toLocaleDateString(formatDate.locale);

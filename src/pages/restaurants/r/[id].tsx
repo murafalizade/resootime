@@ -51,8 +51,6 @@ const ReservationRestaurant = ({ res }: any) => {
         dispatch(filterTables(filterTable));
     };
 
-
-
     useEffect(() => {
         dispatch(makeLoading());
         getTables();
@@ -104,7 +102,8 @@ const ReservationRestaurant = ({ res }: any) => {
                             className={`d-flex flex-column ${styles.img_container}`}>
                             <Image
                                 src={
-                                    res.images[0]?.image || '/images/rest_imag.png'
+                                    BASE_URL+ res.images[0]?.image ||
+                                    '/images/rest_imag.png'
                                 }
                                 alt={res.name}
                                 width={386}
@@ -188,7 +187,10 @@ const ReservationRestaurant = ({ res }: any) => {
                                     className={`d-lg-block d-none ${styles.res_description}`}>
                                     {showMore
                                         ? res.description
-                                        : `${res.description.substring(0, 317)}...`}{' '}
+                                        : `${res.description.substring(
+                                              0,
+                                              317,
+                                          )}...`}{' '}
                                     <br />
                                     <button
                                         className={`${styles.res_description} ${styles.description_link}`}
@@ -223,7 +225,10 @@ const ReservationRestaurant = ({ res }: any) => {
                                 <div
                                     className={`d-flex flex-column ${styles.img_container}`}>
                                     <Image
-                                        src={res.images[0]?.image || '/images/rest_imag.png'}
+                                        src={
+                                            BASE_URL+ res.images[0]?.image ||
+                                            '/images/rest_imag.png'
+                                        }
                                         alt={res.name}
                                         width={386}
                                         height={300}
@@ -277,6 +282,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                             disabled={canEdit}
                                             limitToBounds={false}>
                                             <TransformComponent
+                                                
                                                 wrapperStyle={{
                                                     height: '520px',
                                                     width: '98.5%',

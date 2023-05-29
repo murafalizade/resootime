@@ -8,7 +8,7 @@ const nextConfig = {
         includePaths: [path.join(__dirname, 'styles')],
     },
     images: {
-        domains:['api.resootime.com']
+        domains: ['api.resootime.com'],
     },
     productionBrowserSourceMaps: true,
 };

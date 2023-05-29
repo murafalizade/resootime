@@ -2,15 +2,15 @@ import fetch from './interceptor';
 
 export default class UserService {
     static async getUsers(): Promise<any[]> {
-        return await fetch.get('/api/user');
+        return await fetch.get('/api/user/');
     }
 
     static async getUser(id: number): Promise<any> {
-        return await fetch.get(`/api/user/${id}`);
+        return await fetch.get(`/api/user/${id}/`);
     }
 
     static async getUserByToken(token: string): Promise<any> {
-        return await fetch.get(`/api/users/${token}`, {
+        return await fetch.get(`/api/users/${token}/`, {
             headers: {
                 'public-request': true,
             },
@@ -33,7 +33,11 @@ export default class UserService {
         });
     }
 
-    static async myReservations(id: number): Promise<any[]> {
-        return await fetch.get(`/api/users/${id}/my-reservations/`);
+    static async myReservations(id: number,token?:string): Promise<any[]> {
+        return await fetch.get(`/api/users/${id}/my-reservations/`,{
+            headers: {
+                'permanent-token': token,
+            },
+        });
     }
 }

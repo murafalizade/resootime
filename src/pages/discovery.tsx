@@ -55,7 +55,7 @@ const Discovery = () => {
                                 </div>
                             </div>
                             <div
-                                className={`col-12 col-lg-6 mt-4 mt-md-0 discovery-img-div`}>
+                                className={`col-12 col-lg-6 mt-4 mt-md-0 ${styles.discovery_img_div}`}>
                                 <Image
                                     alt="resootime tablet"
                                     src={'/images/discovery_img.png'}

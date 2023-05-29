@@ -13,6 +13,7 @@ const withAuth = (WrappedComponent: ComponentType, isActive?: boolean) => {
 
         useEffect(() => {
             const token = Cookie.get('token');
+            console.log(token);
             const getInfo = async (token: string) => {
                 const userData = await UserService.getUserByToken(token);
                 console.log(userData);

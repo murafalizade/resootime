@@ -7,7 +7,15 @@ import { BsFacebook, BsInstagram, BsLinkedin } from 'react-icons/bs';
 import { TbWorld } from 'react-icons/tb';
 import { ImPhone } from 'react-icons/im';
 
-const RestInfo = ({ name, workingTime, googleMapLink, location, phone, instagramLink, facebookLink }: any) => {
+const RestInfo = ({
+    name,
+    workingTime,
+    googleMapLink,
+    location,
+    phone,
+    instagramLink,
+    facebookLink,
+}: any) => {
     return (
         <div className={`mt-3 mb-5 p-0 ${styles.date_finder}`}>
             <div>
@@ -24,7 +32,7 @@ const RestInfo = ({ name, workingTime, googleMapLink, location, phone, instagram
                 </div>
             </div>
             <div style={{ color: '#505050' }} className="mt-3">
-                <div className='mx-4'>
+                <div className="mx-4">
                     <h4 className={`${styles.res_name}`}>{name}</h4>
                     <p>{location}</p>
                     <a
@@ -45,7 +53,13 @@ const RestInfo = ({ name, workingTime, googleMapLink, location, phone, instagram
                 <hr />
                 <div className="d-flex">
                     <IoLocationSharp className={`mx-3 ${styles.icon}`} />
-                    <a href={googleMapLink} target='_blank' rel='noreferrer' className={`btn-link text-decoration-none link ${styles.map_link}`}>Xəritəyə keç</a>
+                    <a
+                        href={googleMapLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={`btn-link text-decoration-none link ${styles.map_link}`}>
+                        Xəritəyə keç
+                    </a>
                 </div>
                 <hr />
                 <div className="d-flex">

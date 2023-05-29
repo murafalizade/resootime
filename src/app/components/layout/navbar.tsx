@@ -131,7 +131,7 @@ const Navbar = (props: IProps) => {
                                 </a>
                             </div>
                             <div className={`d-sm-none ${styles.sidebar}`}>
-                                <FiSearch size={'1.7em'} className='me-3' />
+                                <FiSearch size={'1.7em'} className="me-3" />
                                 {isClicked ? (
                                     <IoClose
                                         size={'2em'}

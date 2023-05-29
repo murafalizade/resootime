@@ -10,7 +10,7 @@ import { GiReceiveMoney, GiMeal } from 'react-icons/gi';
 import { FaRegMoneyBillAlt, FaChild } from 'react-icons/fa';
 import { IoMdCard } from 'react-icons/io';
 import { CiParking1 } from 'react-icons/ci';
-import { RiPagesLine } from 'react-icons/ri'
+import { RiPagesLine } from 'react-icons/ri';
 
 const allRestInfo = ({ workingTime, googleMapLink, location, phone }: any) => {
     return (
@@ -188,7 +188,7 @@ const allRestInfo = ({ workingTime, googleMapLink, location, phone }: any) => {
                     <div className="d-flex align-items-center">
                         <CiParking1
                             className={`me-2 ${styles.icon}`}
-                            style={{ color: '#6A5DDF', fontSize: '1.8rem'}}
+                            style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
                         />
                         <span className={`${styles.info_type}`}>Parketmə</span>
                     </div>

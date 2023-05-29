@@ -3,7 +3,8 @@ function Error({ statusCode }: { statusCode: number }) {
     return (
         <div className="d-flex justify-content-center align-items-center">
             <p className="text-center">
-                Serverdə halhazırda deyişiklik edilir. Zəhmət olmasa biraz sonra yenidən cəhd edin.
+                Serverdə halhazırda deyişiklik edilir. Zəhmət olmasa biraz sonra
+                yenidən cəhd edin.
             </p>
         </div>
     );

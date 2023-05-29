@@ -73,13 +73,15 @@ const Menu = () => {
                 <button onClick={handleMenuBtnClick}>Ana yeməklər</button>
             </div>
             <div className={`ps-2 ${styles.menu}`}>
-                <ul className='p-1'>
+                <ul className="p-1">
                     {menu.map((menu_item: any) => {
                         return (
-                            <li className={` ${styles.menu_item}`} key={menu_item.id}>
+                            <li
+                                className={` ${styles.menu_item}`}
+                                key={menu_item.id}>
                                 <div
                                     className={`d-flex align-items-center justify-content-between pt-4`}>
-                                    <div className=''>
+                                    <div className="">
                                         <h5 className="fw-bold my-1">
                                             {menu_item.name}
                                         </h5>

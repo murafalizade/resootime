@@ -11,7 +11,7 @@ const AdditionalInfo = ({
     payment,
     maximumPrice,
     minimumPrice,
-    service_charge
+    service_charge,
 }: any) => {
     return (
         <div>

@@ -12,65 +12,91 @@
   line-height: 1.2rem;
   color: #6a5ddf;
   border-bottom: 1px solid #a5a5a5;
-  width: 7rem;
+  width: 9rem;
   padding-bottom: 0.5rem;
   text-align: center;
+}
+.date_finder .reservation_btn {
+  font-size: 1rem;
+  line-height: 1.2rem;
 }
 .date_finder .label {
   display: block;
   margin-bottom: 0.9rem;
   color: #505050 !important;
 }
-.date_finder .info_title {
-  font-weight: 700 !important;
+.date_finder .picker_container .label {
+  font-size: 0.7rem;
 }
-.date_finder .picker_container {
-  width: 8rem;
+.date_finder .picker_container .picker {
+  font-size: 0.7rem;
+  font-weight: 700;
 }
-.date_finder .picker {
-  font-size: 0.9rem;
+.date_finder .rest_info {
+  color: #505050;
 }
-.date_finder .res_name {
+.date_finder .rest_info .res_name {
   color: #000;
   font-weight: 500;
   line-height: 1.5rem;
+  font-size: 1.2rem;
 }
-.date_finder .social_media_icon {
-  color: #6a5ddf;
+.date_finder .rest_info .location {
+  font-size: 0.8rem;
+  line-height: 1rem;
 }
 .date_finder .map_link {
   color: #505050;
   border-bottom: 1px solid #505050;
 }
-
-.lists {
-  list-style: none;
+.date_finder .location_link {
+  border-bottom: 1px solid #6a5ddf;
 }
-
-.date_picker {
+.date_finder .date_picker {
   width: 100% !important;
 }
 
-.icon {
-  font-size: 1.8rem;
-}
-
-.info,
-.info_type {
-  font-weight: 500;
-}
-
-.info,
-.icon {
+.additional_info .info {
+  text-transform: capitalize;
   color: #6a5ddf;
 }
-
-.add_info {
+.additional_info .details_icon {
+  color: #6a5ddf;
+  font-size: 1.5rem;
+}
+.additional_info .add_info_title {
   font-weight: 600;
   line-height: 1.4rem;
   color: #505050;
+  font-size: 1.1rem;
 }
 
-.fw_600 {
+.lists {
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.info_type {
   font-weight: 600;
+}
+
+.icon {
+  color: #6a5ddf;
+  text-transform: capitalize;
+  font-size: 1.3rem;
+}
+
+.info {
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 0.9rem;
+}
+
+.social_media_icon {
+  color: #6a5ddf;
+}
+
+.all_rest_info {
+  border: none !important;
+  box-shadow: none !important;
 }/*# sourceMappingURL=DateFinder.module.css.map */

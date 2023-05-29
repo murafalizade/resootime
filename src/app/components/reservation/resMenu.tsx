@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '@/app/styles/Menu.module.scss';
 import Image from 'next/image';
 
-const Menu = () => {
+const ResMenu = () => {
     const handleMenuBtnClick = () => {};
     const menu = [
         {
@@ -63,42 +63,46 @@ const Menu = () => {
         },
     ];
     return (
-        <div className={`p-4 ${styles.menu_container}`}>
-            <h2 className={`text-center py-4 ${styles.menu_title}`}>Menu</h2>
-            <div className="d-flex align-items-center justify-content-around">
-                <button onClick={handleMenuBtnClick}>Şorbalar</button>
-                <button onClick={handleMenuBtnClick}>Qəlyanaltılar</button>
-                <button onClick={handleMenuBtnClick}>Qarnirlər</button>
-                <button onClick={handleMenuBtnClick}>Kreplər</button>
-                <button onClick={handleMenuBtnClick}>Ana yeməklər</button>
+        <div className={`p-4  ${styles.menu_container}`}>
+            <h2 className={`text-center py-4 d-none d-md-block ${styles.menu_title}`}>Menu</h2>
+            <div className={`${styles.menu_nav}`}>
+                <div className="d-flex align-items-center justify-content-between">
+                    <button onClick={handleMenuBtnClick}>Şorbalar</button>
+                    <button onClick={handleMenuBtnClick}>Qəlyanaltılar</button>
+                    <button onClick={handleMenuBtnClick}>Qarnirlər</button>
+                    <button onClick={handleMenuBtnClick}>Kreplər</button>
+                    <button onClick={handleMenuBtnClick}>Ana yeməklər</button>
+                </div>
             </div>
-            <div className={`ps-2 ${styles.menu}`}>
-                <ul className='p-1'>
+            <div className={`${styles.menu}`}>
+                <ul className="p-1">
                     {menu.map((menu_item: any) => {
                         return (
-                            <li className={` ${styles.menu_item}`} key={menu_item.id}>
+                            <li
+                                className={`${styles.menu_item}`}
+                                key={menu_item.id}>
                                 <div
-                                    className={`d-flex align-items-center justify-content-between pt-4`}>
-                                    <div className=''>
-                                        <h5 className="fw-bold my-1">
+                                    className={`row pt-4 ps-0`}>
+                                    <div className={`col-8`}>
+                                        <h5 className={`fw-bold my-1 ${styles.item_name}`}>
                                             {menu_item.name}
                                         </h5>
                                         <p
                                             className={`w-75 ${styles.description}`}>
                                             {menu_item.description}
                                         </p>
-                                        <p className={`${styles.price}`}>
+                                        <p className={`mt-2 ${styles.price}`}>
                                             {`${menu_item.price} Azn`}
                                         </p>
                                     </div>
-                                    <div className="d-flex align-items-center">
+                                    <div className="col-4 d-flex align-items-center ps-0">
                                         <Image
                                             alt={menu_item.name}
                                             src={menu_item.image}
-                                            width={164}
-                                            height={90}
+                                            width={160}
+                                            height={85}
                                             quality={100}
-                                            className={`${styles.menu_item_img}`}
+                                            className={`object-cover ${styles.menu_item_img}`}
                                         />
                                     </div>
                                 </div>
@@ -111,4 +115,4 @@ const Menu = () => {
     );
 };
 
-export default Menu;
+export default ResMenu;

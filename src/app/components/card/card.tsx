@@ -12,15 +12,14 @@ const Card = ({ cardInfo }: ICardProps) => {
     return (
         <div className={`card ${styles.card}`}>
             <a href={`restaurants/r/${cardInfo.name}`}>
-
-            <Image
-                src={cardInfo.images[0]?.image || '/images/rest_imag.png'}
-                className={`card-img-top ${styles.card_img}`}
-                alt={cardInfo.name}
-                width={200}
-                quality={100}
-                height={140}
-            />
+                <Image
+                    src={cardInfo.images[0]?.image || '/images/rest_imag.png'}
+                    className={`card-img-top ${styles.card_img}`}
+                    alt={cardInfo.name}
+                    width={200}
+                    quality={100}
+                    height={140}
+                />
             </a>
             <div className="card-body">
                 <a

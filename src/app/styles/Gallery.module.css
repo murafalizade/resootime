@@ -1,0 +1,17 @@
+.gallery {
+  overflow-x: hidden;
+}
+.gallery .heading {
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.35rem;
+  border-bottom: none;
+}
+.gallery .gallery_container {
+  padding-bottom: 7.8rem;
+}
+.gallery .gallery_container .gallery_img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100% !important;
+}/*# sourceMappingURL=Gallery.module.css.map */

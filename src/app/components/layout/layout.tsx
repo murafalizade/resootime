@@ -10,11 +10,11 @@ const Layout = ({
     isRestuarantPage?: boolean;
 }) => {
     return (
-        <>
+        <div className='position-relative'>
             <Navbar isRestuarantPage={isRestuarantPage} />
             {children}
             <Footer />
-        </>
+        </div>
     );
 };
 

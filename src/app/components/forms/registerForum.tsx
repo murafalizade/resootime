@@ -56,7 +56,7 @@ const LoginForum = () => {
         try {
             const user = await UserService.register(data);
             // set cookie token
-            Cookie.set('token', user.token, user.expiry,user.restaurant);
+            Cookie.set('token', user.token, user.expiry, user.restaurant);
             // redirect to home page
             Router.push('/');
         } catch (err: any) {

@@ -39,22 +39,24 @@ export async function getServerSideProps(context: any) {
     const token = Cookie.getFromSSR(req, 'token');
     console.log(token);
     const rest = await RestaurantService.getRestaurantByToken(token);
+    console.log(rest);
+    console.log(process.env.BASE_URL);
     let wildcard = req.headers.host.split('.')[0];
 
-    if (wildcard === 'localhost:3000') {
-        return {
-          redirect: {
-            destination: `http://${rest.name}.localhost:3000/reservations`,
-            permanent: false,
-          },
-        };
-      }
+    // if (wildcard === 'www') {
+    //     return {
+    //         redirect: {
+    //             destination: `http://${rest.name}.${process.env.BASE_URL}.com/reservations`,
+    //             permanent: false,
+    //         },
+    //     };
+    // }
 
     if (!date) {
         date = new Date().toLocaleDateString(formatDate.locale);
     }
     const rsx = await RestaurantService.getReservationByDate(rest.id, date);
-    
+
     return {
         props: {
             rest: rest,

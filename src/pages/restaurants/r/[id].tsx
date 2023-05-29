@@ -7,7 +7,7 @@ import {
     selectIsLoading,
     selectIsModelOpen,
 } from '@/app/redux/commonSlice';
-import Image from 'next/dist/client/image';
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Layout from '@/app/components/layout/layout';
@@ -29,6 +29,7 @@ import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
 import GalleryModal from '@/app/components/reservation/galleryModal';
 import Gallery from '@/pages/gallery';
+import BASE_URL from '@/app/constants/baseUrl';
 
 const ReservationRestaurant = ({ res }: any) => {
     const isModalOpen = useSelector(selectIsModelOpen);
@@ -42,9 +43,6 @@ const ReservationRestaurant = ({ res }: any) => {
     const [isClicked, setIsClicked] = useState(false);
     const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
-    const resDes =
-        'Gənc şəfxanə Həsənov tərəfindən yaradılan Marivanna restoranı, zəngin Azərbaycan mətbəxi ənənələrini modern bir şəkildə təqdim edir. Restoranın interyeri, mətbəxin zənginliyinə uyğun olaraq tərtib edilmişdir. Burada təklif olunan yeməklər, ən peşəkar dadlara sahib Azərbaycan və rus mətbəxləri üsullarına uyğun olaraq Marivanna restoranı, zəngin Azərbaycan mətbəxi ənənələrini modern bir şəkildə təqdim edir. Restoranın interyeri, mətbəxin zənginliyinə uyğun olaraq tərtib edilmişdir. Burada təklif olunan yeməklər, ən peşəkar dadlara sahib Azərbaycan və rus mətbəxləri üsullarına uyğun olaraq';
-
     const getTables = async () => {
         const map = await RestaurantService.getTables(res.id);
         setWall(map?.wall);
@@ -55,6 +53,8 @@ const ReservationRestaurant = ({ res }: any) => {
         );
         dispatch(filterTables(filterTable));
     };
+
+
 
     useEffect(() => {
         dispatch(makeLoading());
@@ -294,7 +294,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                                 className={`position-relative border bg-dark mb-4 mt-4 mt-md-0 ${styles.map}`}
                                                 style={{
                                                     height: '23.5rem',
-                                                    borderRadius: '15px',
+                                                    borderRadius: '15px'
                                                 }}>
                                                 <div
                                                     style={{ zIndex: 2 }}
@@ -447,17 +447,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     params,
     req,
 }) => {
-    const id = params?.id;
-    let wildcard = req.headers.host?.split('.')[0];
-    if (wildcard !== 'localhost:3000') {
-        return {
-            redirect: {
-                destination: `http://localhost:3000/restaurants/r/${id}`,
-                permanent: false,
-            },
-        };
-    }
-
-    const res = await RestaurantService.getRestaurant(id! as string);
+    let id = params?.id?.toString();
+    const res = await RestaurantService.getRestaurant(id as string);
     return { props: { res } };
 };

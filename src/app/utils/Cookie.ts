@@ -6,8 +6,7 @@ class Cookie {
         const encryptedKey = Cryption.encrypt(key);
         const encryptedValue = Cryption.encrypt(value);
         document.cookie = `${encryptedKey}=${encryptedValue};expires=${expDate};`;
-        console.log(domain);
-        document.cookie = `${encryptedKey}=${encryptedValue};expires=${expDate};path=/;domain=${domain}.localhost;`;
+        document.cookie = `${encryptedKey}=${encryptedValue};expires=${expDate};path=/;domain=.resootime.com;`;
     }
 
     static get(key: string) {

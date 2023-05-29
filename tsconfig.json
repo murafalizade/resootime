@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        // "esModuleInterop": true,
         "target": "es5",
         "lib": ["dom", "dom.iterable", "esnext"],
         "allowJs": true,
@@ -20,6 +21,12 @@
             "@/*": ["./src/*"]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next-sitemap.js"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        "next-sitemap.js",
+        "src/__tests__/index.test.js"
+    ],
     "exclude": ["node_modules"]
 }

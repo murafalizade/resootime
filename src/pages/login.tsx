@@ -2,7 +2,7 @@ import LoginForum from '@/app/components/forms/loginForum';
 import React from 'react';
 import styles from '@/app/styles/Form.module.scss';
 import Image from 'next/dist/client/image';
-import  Head  from 'next/head';
+import Head from 'next/head';
 
 const Login = () => {
     return (
@@ -25,7 +25,7 @@ const Login = () => {
                     property="og:description"
                     content="Hesabınıza özəl panelinizə daxil olun və tənzimləmələrinizi idarə edin."
                 />
-               <meta
+                <meta
                     property="og:image"
                     content="https://resootime.com/images/logo.png"
                 />

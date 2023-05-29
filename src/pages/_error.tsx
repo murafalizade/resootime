@@ -1,10 +1,11 @@
 function Error({ statusCode }: { statusCode: number }) {
+    console.log(statusCode);
     return (
-        <p className="text-center">
-            {statusCode
-                ? `An error ${statusCode} occurred on server`
-                : 'An error occurred on client'}
-        </p>
+        <div className="d-flex justify-content-center align-items-center">
+            <p className="text-center">
+                Serverdə halhazırda deyişiklik edilir. Zəhmət olmasa biraz sonra yenidən cəhd edin.
+            </p>
+        </div>
     );
 }
 

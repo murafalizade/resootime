@@ -8,7 +8,7 @@ const nextConfig = {
         includePaths: [path.join(__dirname, 'styles')],
     },
     images: {
-        domains: ['rmusayevr.pythonanywhere.com'],
+        domains:['api.resootime.com']
     },
     productionBrowserSourceMaps: true,
 };

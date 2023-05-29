@@ -186,16 +186,6 @@ export default withAuth(Home, false);
 export async function getServerSideProps(context: any) {
     const { page } = context.query;
     const restaurants = await RestaurantService.getRestaurants(page);
-    let wildcard = context.req.headers.host.split('.')[0];
-
-    if (wildcard !== 'localhost:3000') {
-        return {
-            redirect: {
-                destination: `http://localhost:3000/`,
-                permanent: false,
-            },
-        };
-    }
 
     return {
         props: {

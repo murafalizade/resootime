@@ -1,4 +1,4 @@
-import API_BASE_URL from '@/app/constants/baseUrl';
+import API_BASE_URL from '../../constants/baseUrl';
 import Cookie from '@/app/utils/Cookie';
 import axios, {
     AxiosError,

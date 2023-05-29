@@ -9,7 +9,10 @@ const Discovery = () => {
     return (
         <Layout isRestuarantPage={true}>
             <Head>
-                <title>Restoranlar üçün ən yaxşı rezervasiya sistemi və üstünlükləri ilə tanış olun - Resootime.com</title>
+                <title>
+                    Restoranlar üçün ən yaxşı rezervasiya sistemi və
+                    üstünlükləri ilə tanış olun - Resootime.com
+                </title>
                 <meta
                     name="viewport"
                     content="width=device-width, initial-scale=1.0"
@@ -174,7 +177,7 @@ const Discovery = () => {
                                     <span>
                                         <Image
                                             className="me-2"
-                                            alt="Effektiv istifadə"
+                                            alt="Masaların Xəritəsi"
                                             src="/icons/notif.svg"
                                             width={25}
                                             height={25}
@@ -195,7 +198,7 @@ const Discovery = () => {
                                     <span>
                                         <Image
                                             className="me-2"
-                                            alt="Effektiv istifadə"
+                                            alt="Xatırladıcı"
                                             src="/icons/table.svg"
                                             width={25}
                                             height={25}

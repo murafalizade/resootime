@@ -3,6 +3,7 @@ import { GiReceiveMoney, GiMeal } from 'react-icons/gi';
 import { FaRegMoneyBillAlt, FaChild } from 'react-icons/fa';
 import { IoMdCard } from 'react-icons/io';
 import { CiParking1 } from 'react-icons/ci';
+import { rest } from 'cypress/types/lodash';
 
 const AdditionalInfo = ({
     cuisine,

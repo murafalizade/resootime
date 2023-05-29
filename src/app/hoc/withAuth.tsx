@@ -15,10 +15,10 @@ const withAuth = (WrappedComponent: ComponentType, isActive?: boolean) => {
             const token = Cookie.get('token');
             const getInfo = async (token: string) => {
                 const userData = await UserService.getUserByToken(token);
-                console.log(userData)
+                console.log(userData);
                 if (userData.is_client) {
                     setShouldRedirect(true);
-                    Router.push(`http://${userData.restaurant_name}.localhost:3000/reservations`);
+                    Router.push(`/reservations`);
                 }
             };
             if (token) {

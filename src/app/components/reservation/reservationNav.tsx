@@ -11,6 +11,8 @@ const ReservationNav = ({ name }: any) => {
     const dispatch = useDispatch();
     const router = useRouter();
 
+    console.log(router.pathname);
+
     const changeDate = async (date: Date) => {
         setStartDate(date);
         const pathName = Router.pathname;
@@ -54,7 +56,7 @@ const ReservationNav = ({ name }: any) => {
                     />
                 </div>
                 <div className="d-none d-md-block">
-                    {router.pathname === ' /reservations' ? (
+                    {router.pathname === '/reservations' ? (
                         <button
                             onClick={openReservationModal}
                             className="btn btn-primary rounded text-nowrap sm-m-0">

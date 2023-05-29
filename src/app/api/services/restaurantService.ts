@@ -12,9 +12,8 @@ export default class RestaurantService {
 
     static async getRestaurant(id: number): Promise<IRestaurant>;
     static async getRestaurant(id: string): Promise<IRestaurant>;
-
     static async getRestaurant(id: any): Promise<IRestaurant> {
-        return await fetch.get(`/api/restaurant/${id}`, {
+        return await fetch.get(`/api/restaurant/${id}/`, {
             headers: {
                 'public-request': true,
             },

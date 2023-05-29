@@ -40,8 +40,8 @@ const Menu = ({ res }: any) => {
                 />
                 <meta property="og:site_name" content="ResooTime" />
             </Head>
-            <div className="d-md-none ">
-                <div className="navbar py-4">
+            <div className="d-md-none">
+                <div className={`navbar py-4 ${menuStyles.navbar}`}>
                     <div>
                         <a
                             href="#"
@@ -64,14 +64,15 @@ const Menu = ({ res }: any) => {
                 <div className={`${menuStyles.menu_container}`}>
                     <div className="ps-3 pe-4 d-flex align-items-center justify-content-between">
                         <a
-                            href={`/restaurants/r/ResooTime`}
+                            onClick={() => {
+                                history.back();
+                            }}
                             className="text-dark ">
                             <IoIosArrowBack size={'2rem'} />
                         </a>
                         <h2
                             className={`text-center pt-4 pb-2 ${menuStyles.res_name}`}>
                             {res.name}
-                            Menu
                         </h2>
                         <FiSearch size={'2rem'} />
                     </div>

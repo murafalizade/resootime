@@ -91,150 +91,31 @@ const ReservationRestaurant = ({ res }: any) => {
             <Layout>
                 <main className="mb-md-5 pb-5">
                     {isModalOpen ? <div className="overlay"></div> : null}
-                    <div
-                        className={`d-flex flex-column d-block d-lg-none position-relative`}>
-                        <button
-                            className={`${styles.heart_icon}`}
-                            onClick={() => {
-                                setIsClicked(!isClicked);
-                            }}>
-                            {!isClicked && <FiHeart />}
-                            {isClicked && <FaHeart />}
-                        </button>
+                    {isGalleryOpen ? (
+                        <GalleryModal
+                            setIsGalleryOpen={setIsGalleryOpen}
+                            images={res.images}
+                        />
+                    ) : null}
+                    <div className="main-container">
                         <div
-                            className={`d-flex flex-column ${styles.img_container}`}>
-                            <Image
-                                src={
-                                    res.images[0]?.image ||
-                                    '/images/rest_imag.png'
-                                }
-                                alt={res.name}
-                                width={386}
-                                height={300}
-                                className="w-100 object-fill"
-                            />
-                        </div>
-                        {res.images?.length > 1 && (
+                            className={`d-flex flex-column d-block d-md-none position-relative`}>
                             <button
-                                className={`${styles.show_img_btn}`}>{`Bütün şəkillər (+${
-                                res.images?.length - 1
-                            })`}</button>
-                        )}
-                    </div>
-                    <div className="container fluid mt-lg-5 pb-3 pb-lg-5 px-lg-0">
-                        <div className="row">
-                            <div className="col-12 col-lg-7 pe-lg-5">
-                                <div className="d-flex justify-content-between">
-                                    <div>
-                                        <h1
-                                            className={`mt-4 mt-lg-0 mb-0 mb-lg-1 ${styles.res_name}`}>
-                                            {res.name}
-                                        </h1>
-                                        <div className="d-flex flex-lg-column">
-                                            <h4
-                                                className={`d-flex align-items-center me-3 ${styles.res_type}`}>
-                                                {res.type?.map(
-                                                    (type: any) => type?.type,
-                                                )}
-                                            </h4>
-                                            <span
-                                                className={`d-lg-flex d-none ${styles.res_rating}`}>
-                                                <StarsRating
-                                                    count={5}
-                                                    style={{
-                                                        style: {
-                                                            fontSize: '1.5rem',
-                                                        },
-                                                    }}
-                                                    disabled
-                                                    value={res.rate ?? 0}
-                                                />
-                                                <span
-                                                    className={`fs-4 fw-bold ${styles.res_description}`}>
-                                                    {`${res.rate ?? 0}.0`}
-                                                </span>
-                                            </span>
-                                            <span
-                                                className={`d-flex d-lg-none align-items-center justify-content-center ${styles.res_rating}`}>
-                                                <StarsRating
-                                                    count={1}
-                                                    style={{
-                                                        style: {
-                                                            fontSize: '1.5rem',
-                                                            marginRight:
-                                                                '-0.2rem',
-                                                            marginTop:
-                                                                '-0.2rem',
-                                                        },
-                                                    }}
-                                                    disabled
-                                                    value={res.rate ?? 0}
-                                                />
-                                                <span
-                                                    className={`fs-5 fw-bold ${styles.res_description}`}>
-                                                    {`${res.rate ?? 0}.0`}
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div className="d-flex d-lg-none align-items-center">
-                                        <a
-                                            type="button"
-                                            href={`/restaurants/r/menu/${res.name
-                                                .replace(' ', '-')
-                                                .replace('(', '')
-                                                .replace(')', '')
-                                                .toLocaleLowerCase()}`}
-                                            className="btn btn-primary btn-lg mt-4 mb-2">
-                                            Menyu
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr className="d-lg-block d-none" />
-                                <p
-                                    className={`d-lg-block d-none ${styles.res_description}`}>
-                                    {showMore
-                                        ? res.description
-                                        : `${res.description.substring(
-                                              0,
-                                              317,
-                                          )}...`}{' '}
-                                    <br />
-                                    <button
-                                        className={`${styles.res_description} ${styles.description_link}`}
-                                        onClick={() => {
-                                            setShowMore(!showMore);
-                                        }}>
-                                        {!showMore ? '+ Daha çox' : '- Daha az'}
-                                    </button>
-                                </p>
-                                <div
-                                    className={`d-flex align-items-center justify-content-between py-2 py-lg-0 ${styles.tag_container}`}>
-                                    <div className="d-flex align-items-center justify-content-between py-3 py-lg-0">
-                                        <div
-                                            className={`rounded-pill ${styles.tags}`}>
-                                            {res.tag?.map(
-                                                (tag: any) => tag?.name,
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                className={`d-flex align-items-center justify-content-center ${styles.heart_icon}`}
+                                onClick={() => {
+                                    setIsClicked(!isClicked);
+                                }}>
+                                {!isClicked && <FiHeart />}
+                                {isClicked && <FaHeart />}
+                            </button>
                             <div
-                                className={`col-5 d-none d-lg-block position-relative`}>
-                                <button
-                                    className={`${styles.heart_icon}`}
-                                    onClick={() => {
-                                        setIsClicked(!isClicked);
-                                    }}>
-                                    {!isClicked && <FiHeart />}
-                                    {isClicked && <FaHeart />}
-                                </button>
-                                <div
-                                    className={`d-flex flex-column ${styles.img_container}`}>
+                                className={`d-flex flex-column ${styles.img_container}`}>
+                                {res.images?.map((image: any) => (
                                     <Image
+                                        key={image.id}
                                         src={
-                                            res.images[0]?.image ||
+                                            (image.id == 1 &&
+                                                baseUrl + image?.image) ||
                                             '/images/rest_imag.png'
                                         }
                                         alt={res.name}
@@ -242,127 +123,318 @@ const ReservationRestaurant = ({ res }: any) => {
                                         height={300}
                                         className="w-100 object-fill"
                                     />
-                                </div>
-                                {res.images?.length > 1 && (
-                                    <a
-                                        href={`/restaurants/r/gallery/${res.name
-                                            .replace(' ', '-')
-                                            .replace('(', '')
-                                            .replace(')', '')
-                                            .toLocaleLowerCase()}`}
-                                        className={`${styles.show_img_btn}`}>{`Bütün şəkillər (+${
-                                        res.images?.length - 1
-                                    })`}</a>
-                                )}
+                                ))}
                             </div>
+                            {res.images?.length > 1 && (
+                                <a
+                                    href={`/restaurants/r/gallery/${res.name
+                                        .replace(' ', '-')
+                                        .replace('(', '')
+                                        .replace(')', '')
+                                        .toLocaleLowerCase()}`}
+                                    className={`${styles.show_img_btn}`}>{`Bütün şəkillər (+${
+                                    res.images?.length - 1
+                                })`}</a>
+                            )}
                         </div>
-                    </div>
-                    <div className="container fluid px-lg-0">
-                        <div className="row d-flex flex-lg-row md-reverse">
-                            <div className="col-12 col-lg-7 pe-lg-5 order-first">
-                                <div>
-                                    <h4
-                                        className={`d-inline d-lg-none fw-bold`}>
-                                        Masanızı Seçin
-                                    </h4>
-                                    <div
-                                        onClick={() => setCanEdit(!canEdit)}
-                                        className={`position-relative border bg-dark mb-4 mt-4 mt-lg-0 ${styles.map}`}
-                                        style={{
-                                            height: '600px',
-                                            borderRadius: '15px',
-                                        }}>
-                                        <div
-                                            style={{ zIndex: 2 }}
-                                            className="text-light p-3">
-                                            <div className="d-flex my-2 align-items-center justify-content-center">
-                                                <span
-                                                    className={`d-none d-lg-inline ${styles.bottom_border}`}>
-                                                    Masanızı Seçin
-                                                </span>
-                                                <br />
+                        <div className="px-3 px-md-0">
+                            <div className="container fluid mt-md-5 pb-md-5 px-3 px-md-0">
+                                <div className="row">
+                                    <div className="col-12 col-md-7 pe-md-5">
+                                        <div className="d-flex justify-content-between">
+                                            <div>
+                                                <h1
+                                                    className={`mt-4 mt-md-0 mb-0 mb-md-1 ${styles.res_name}`}>
+                                                    {res.name}
+                                                </h1>
+                                                <div className="d-flex flex-md-column">
+                                                    <h4
+                                                        className={`d-flex align-items-center me-3 ${styles.res_type}`}>
+                                                        {res.type?.map(
+                                                            (type: any) =>
+                                                                type?.type,
+                                                        )}
+                                                    </h4>
+                                                    <span
+                                                        className={`d-md-flex d-none ${styles.res_rating}`}>
+                                                        <StarsRating
+                                                            count={5}
+                                                            style={{
+                                                                style: {
+                                                                    fontSize:
+                                                                        '1.5rem',
+                                                                },
+                                                            }}
+                                                            disabled
+                                                            value={
+                                                                res.rate ?? 0
+                                                            }
+                                                        />
+                                                        <span
+                                                            className={`fs-4 fw-bold ${styles.res_description}`}>
+                                                            {`${
+                                                                res.rate ?? 0
+                                                            }.0`}
+                                                        </span>
+                                                    </span>
+                                                    <span
+                                                        className={`d-flex d-md-none align-items-center justify-content-center ${styles.res_rating}`}>
+                                                        <StarsRating
+                                                            count={1}
+                                                            style={{
+                                                                style: {
+                                                                    fontSize:
+                                                                        '1.5rem',
+                                                                    marginRight:
+                                                                        '-0.2rem',
+                                                                    marginTop:
+                                                                        '-0.2rem',
+                                                                },
+                                                            }}
+                                                            disabled
+                                                            value={
+                                                                res.rate ?? 0
+                                                            }
+                                                        />
+                                                        <span
+                                                            className={`fs-5 fw-bold ${styles.res_description}`}>
+                                                            {`${
+                                                                res.rate ?? 0
+                                                            }.0`}
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div className="d-flex d-md-none align-items-center">
+                                                <a
+                                                    type="button"
+                                                    href={`/restaurants/r/menu/${res.name
+                                                        .replace(' ', '-')
+                                                        .replace('(', '')
+                                                        .replace(')', '')
+                                                        .toLocaleLowerCase()}`}
+                                                    className="btn btn-primary btn-md mt-4 mb-2">
+                                                    Menyu
+                                                </a>
                                             </div>
                                         </div>
-                                        {isLoading ? (
-                                            <Loading
-                                                className={styles.map_loader}
-                                            />
-                                        ) : null}
-                                        <TransformWrapper
-                                            initialScale={0.75}
-                                            minScale={0.5}
-                                            maxScale={2}
-                                            disabled={canEdit}
-                                            limitToBounds={false}>
-                                            <TransformComponent
-                                                wrapperStyle={{
-                                                    height: '520px',
-                                                    width: '98.5%',
-                                                    marginLeft: '5px',
+                                        <hr className="d-md-block d-none" />
+                                        <p
+                                            className={`d-md-block d-none ${styles.res_description}`}>
+                                            {showMore
+                                                ? res.description
+                                                : `${res.description.substring(
+                                                      0,
+                                                      317,
+                                                  )}...`}{' '}
+                                            <br />
+                                            <button
+                                                className={`${styles.res_description} ${styles.description_link}`}
+                                                onClick={() => {
+                                                    setShowMore(!showMore);
                                                 }}>
-                                                {wall ? (
-                                                    <Image
-                                                        className={`position-relative ${styles.image}`}
-                                                        src={wall}
-                                                        alt={res.name}
-                                                        fill
-                                                        objectFit="contain"
-                                                    />
-                                                ) : null}
-                                                {resTable?.map(
-                                                    (
-                                                        table: any,
-                                                        index: number,
-                                                    ) => (
-                                                        <Table
-                                                            key={index}
-                                                            table={table}
-                                                        />
-                                                    ),
-                                                )}
-                                            </TransformComponent>
-                                        </TransformWrapper>
+                                                {!showMore
+                                                    ? '+ Daha çox'
+                                                    : '- Daha az'}
+                                            </button>
+                                        </p>
+                                        <div
+                                            className={`d-flex align-items-center justify-content-between py-2 py-md-0 ${styles.tag_container}`}>
+                                            <div className="d-flex align-items-center justify-content-between pt-2 pb-3 py-md-0">
+                                                <div
+                                                    className={`rounded-pill ${styles.tags}`}>
+                                                    {res.tag?.map(
+                                                        (tag: any) => tag?.name,
+                                                    )}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div
-                                        className={`pb-2 pt-2 ${styles.notes}`}>
-                                        <h5 className={`${styles.fw_600}`}>
-                                            Qeydlər
-                                        </h5>
-                                        <p>
-                                            {res.notes ||
-                                                'Saat 12:00-dan 00:00-a kimiişləyirik 23:40-da mətbəx bağlanır / Siz ancaq kiçik heyvanlarıkabinetdən çıxarmadan gələbilərsiniz /Kabinetlərdə siqaretçəkmək olar / Özünüzlə tort gətirəbilərsiniz pulsuz. / Gətirdiyinizhər spirtli içki üçün 20 manatödəmək lazımdır'}
-                                        </p>
-                                    </div>
-                                    <div className="d-none d-lg-block mt-2">
-                                        <ResMenu id={res.id} />
+                                        className={`col-5 d-none d-md-block position-relative`}>
+                                        <button
+                                            className={`d-flex align-items-center justify-content-center ${styles.heart_icon}`}
+                                            onClick={() => {
+                                                setIsClicked(!isClicked);
+                                            }}>
+                                            {!isClicked && <FiHeart />}
+                                            {isClicked && <FaHeart />}
+                                        </button>
+                                        <div
+                                            className={`d-flex flex-column ${styles.img_container}`}>
+                                            {res.images?.map((image: any) => (
+                                                <Image
+                                                    key={image.id}
+                                                    src={
+                                                        (image.id == 1 &&
+                                                            baseUrl +
+                                                                image?.image) ||
+                                                        '/images/rest_imag.png'
+                                                    }
+                                                    alt={res.name}
+                                                    width={386}
+                                                    height={300}
+                                                    className="w-100 rounded object-fill"
+                                                />
+                                            ))}
+                                        </div>
+                                        {res.images?.length > 1 && (
+                                            <button
+                                                className={`${styles.show_img_btn}`}
+                                                onClick={() => {
+                                                    setIsGalleryOpen(true);
+                                                }}>{`Bütün şəkillər (+${
+                                                res.images?.length - 1
+                                            })`}</button>
+                                        )}
                                     </div>
                                 </div>
                             </div>
-                            <div className="mb-5 col-12 col-lg-5 order-lg-first">
-                                <DateFinder
-                                    allowed={res.is_allowed}
-                                    restId={res.id}
-                                    restImage={
-                                        res?.images[0]?.image
-                                            ? baseUrl + res.images[0]?.image
-                                            : '/images/rest_imag.png'
-                                    }
-                                    data={res.online_reserv_hours}
-                                    restName={res.name}
-                                />
-                                <div className="d-none d-lg-flex">
-                                    <RestInfo
-                                        name={res.name}
+                            <div className="container fluid px-md-0">
+                                <div className="row d-flex flex-md-row md-reverse">
+                                    <div className="col-12 col-md-7 pe-md-5 order-first">
+                                        <div>
+                                            <h4
+                                                className={`d-inline d-md-none fw-bold`}>
+                                                Masanızı Seçin
+                                            </h4>
+                                            <div
+                                                onClick={() =>
+                                                    setCanEdit(!canEdit)
+                                                }
+                                                className={`position-relative border bg-dark mb-4 mt-4 mt-md-0 ${styles.map}`}
+                                                style={{
+                                                    height: '23.5rem',
+                                                    borderRadius: '15px',
+                                                }}>
+                                                <div
+                                                    style={{ zIndex: 2 }}
+                                                    className="text-light p-3">
+                                                    <div className="d-flex my-2 align-items-center justify-content-center">
+                                                        <span
+                                                            className={`d-none d-md-inline ${styles.bottom_border}`}>
+                                                            Masanızı Seçin
+                                                        </span>
+                                                        <br />
+                                                    </div>
+                                                </div>
+                                                {isLoading ? (
+                                                    <Loading
+                                                        className={
+                                                            styles.map_loader
+                                                        }
+                                                    />
+                                                ) : null}
+                                                <TransformWrapper
+                                                    initialScale={0.75}
+                                                    minScale={0.5}
+                                                    maxScale={2}
+                                                    disabled={canEdit}
+                                                    limitToBounds={false}>
+                                                    <TransformComponent
+                                                        wrapperStyle={{
+                                                            height: '23.5rem',
+                                                            width: '98.5%',
+                                                            marginLeft: '5px',
+                                                        }}>
+                                                        {wall ? (
+                                                            <Image
+                                                                className={`position-relative ${styles.image}`}
+                                                                src={wall}
+                                                                alt={res.name}
+                                                                fill
+                                                                objectFit="contain"
+                                                            />
+                                                        ) : null}
+                                                        {resTable?.map(
+                                                            (
+                                                                table: any,
+                                                                index: number,
+                                                            ) => (
+                                                                <Table
+                                                                    key={index}
+                                                                    table={
+                                                                        table
+                                                                    }
+                                                                />
+                                                            ),
+                                                        )}
+                                                    </TransformComponent>
+                                                </TransformWrapper>
+                                            </div>
+                                            <div
+                                                className={`pb-4 pt-3 ${styles.notes}`}>
+                                                <h5 className={`fw-600`}>
+                                                    Qeydlər
+                                                </h5>
+                                                <p>
+                                                    {res.notes ||
+                                                        'Saat 12:00-dan 00:00-a kimiişləyirik 23:40-da mətbəx bağlanır / Siz ancaq kiçik heyvanlarıkabinetdən çıxarmadan gələbilərsiniz /Kabinetlərdə siqaretçəkmək olar / Özünüzlə tort gətirəbilərsiniz pulsuz. / Gətirdiyinizhər spirtli içki üçün 20 manatödəmək lazımdır'}
+                                                </p>
+                                            </div>
+                                            <div className="d-none d-md-block mt-2">
+                                                <ResMenu id={res.id} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="mb-5 col-12 col-md-5 order-md-first">
+                                        <DateFinder
+                                            allowed={res.is_allowed}
+                                            restId={res.id}
+                                            restImage={
+                                                res?.images[0]?.image
+                                                    ? baseUrl +
+                                                      res.images[0]?.image
+                                                    : '/images/rest_imag.png'
+                                            }
+                                            data={res.online_reserv_hours}
+                                            restName={res.name}
+                                        />
+                                        <div className="d-none d-md-flex">
+                                            <RestInfo
+                                                name={res.name}
+                                                phone={res.phone}
+                                                location={res.location}
+                                                workingTime={res.working_hours}
+                                                googleMapLink={
+                                                    res.googleMapLink
+                                                }
+                                                websiteLink={
+                                                    res.websiteLink ||
+                                                    'www.resootime.com'
+                                                }
+                                                instagramLink={
+                                                    res.instagramLink
+                                                }
+                                                facebookLink={res.facebookLink}
+                                            />
+                                        </div>
+                                        <div className="d-none d-md-block">
+                                            <AdditionalInfo
+                                                cuisine={res.cuisine}
+                                                parking={res.parking}
+                                                payment={res.payment}
+                                                maximumPrice={res.maximum_price}
+                                                minimumPrice={res.minimum_price}
+                                                serviceCharge={
+                                                    res.service_charge
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="d-md-none d-flex">
+                                    <AllRestInfo
                                         phone={res.phone}
                                         location={res.location}
                                         workingTime={res.working_hours}
                                         googleMapLink={res.googleMapLink}
-                                        cuisine={res.cuisine}
-                                        parking={res.parking}
                                         websiteLink={
                                             res.websiteLink ||
                                             'www.resootime.com'
                                         }
+                                        cuisine={res.cuisine}
+                                        parking={res.parking}
                                         payment={res.payment}
                                         maximumPrice={res.maximum_price}
                                         minimumPrice={res.minimum_price}

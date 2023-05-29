@@ -33,7 +33,7 @@ const RestInfo = ({
                 </div>
             </div>
             <div className={`${styles.rest_info}`}>
-                <div className="mx-4">
+                <div className="mx-3">
                     <h4 className={`mt-2 mb-0 ${styles.res_name}`}>{name}</h4>
                     <p className={`mb-2 ${styles.location}`}>{location}</p>
                     <a
@@ -63,18 +63,24 @@ const RestInfo = ({
                     </a>
                 </div>
                 <hr />
-                <div className="d-flex">
+                <div className="d-flex align-items-center">
                     <ImPhone className={`mx-3 ${styles.icon}`} />
-                    <span className={`${styles.info}`}>{phone}</span>
+                    <a
+                        href=""
+                        target="_blank"
+                        rel="noreferrer"
+                        className={`btn-link text-decoration-none link ${styles.link} ${styles.info}`}>
+                        {phone}
+                    </a>
                 </div>
                 <hr />
-                <div className="d-flex">
+                <div className="d-flex align-items-center">
                     <TbWorld className={`mx-3 ${styles.icon}`} />
                     <a
                         href={websiteLink}
                         target="_blank"
                         rel="noreferrer"
-                        className={`btn-link text-decoration-none link ${styles.map_link} ${styles.info}`}>
+                        className={`btn-link text-decoration-none link ${styles.link} ${styles.info}`}>
                         {websiteLink}
                     </a>
                 </div>

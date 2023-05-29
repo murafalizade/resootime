@@ -56,10 +56,13 @@
     .map_link {
         color: #505050;
         border-bottom: 1px solid #505050;
+        &:hover {
+            border-bottom: 1px solid #6a5ddf;
+        }
     }
 
-    .location_link {
-        border-bottom: 1px solid #6a5ddf;
+    .link {
+        color: #505050;
     }
 
     .date_picker {

@@ -26,6 +26,7 @@ const allRestInfo = ({
     facebookLink,
     description,
     serviceCharge,
+    websiteLink
 }: any) => {
     return (
         <div
@@ -43,22 +44,28 @@ const allRestInfo = ({
                 </div>
             </div>
             <div style={{ color: '#505050' }} className="mt-3">
-                <div className="d-flex">
+                <div className="d-flex py-2 align-items-center">
                     <IoLocationSharp className={`me-3 ${styles.icon}`} />
                     <p
-                        className={`btn-link text-decoration-none link main-color ${styles.map_link} ${styles.location_link}`}>
+                        className={`btn-link text-decoration-none link m-0 ${styles.map_link} ${styles.link}`}>
                         {location}
                     </p>
                 </div>
                 <hr />
-                <div className="d-flex main-color py-2">
+                <div className="d-flex py-2 align-items-center">
                     <ImPhone className={`fs-4 me-3 ${styles.icon}`} />
-                    <span>{phone}</span>
+                    <a
+                        href=""
+                        target="_blank"
+                        rel="noreferrer"
+                        className={`btn-link text-decoration-none link ${styles.link}`}>
+                        {phone}
+                    </a>
                 </div>
                 <hr />
-                <div className="d-flex main-color py-2">
+                <div className="d-flex py-2 align-items-center">
                     <TbWorld className={`me-3 ${styles.icon}`} />
-                    <span>http://www.marivanna.az/</span>
+                    <span>{websiteLink}</span>
                 </div>
                 <hr />
                 <div className="me-4 py-2">

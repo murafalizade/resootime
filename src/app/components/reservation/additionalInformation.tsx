@@ -47,7 +47,7 @@ const AdditionalInfo = ({
                     </div>
                     <span
                         className={`d-flex align-items-center fw-600 ${styles.info}`}>
-                        {serviceCharge}%
+                        {serviceCharge ?? 0}%
                     </span>
                 </div>
                 <hr />

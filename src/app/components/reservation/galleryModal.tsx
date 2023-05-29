@@ -11,30 +11,13 @@ import baseUrl from '@/app/constants/baseUrl';
 const GalleryModal = ({ setIsGalleryOpen, images }: any) => {
     const [galleryImages, setGalleryImages] = useState<ImageType[]>();
 
-    // useEffect(() => {
-    //     setGalleryImages(
-    // images?.map((image: any) => (
-    //     <Image
-    //         key={image.id}
-    //         src={
-    //             baseUrl + image?.image
-    //         }
-    //         alt={'Restoran Image'}
-    //         width={386}
-    //         height={300}
-    //         className="w-100 object-fill"
-    //     />
-    // ))
-    //     );
-    // }, []);
-
     useEffect(() => {
         setGalleryImages(images);
     }, [images]);
     return (
         <div className={`${galleryStyles.gallery_background}`}>
             <div className={`${galleryStyles.gallery_modal}`}>
-                <div className="navbar p-4">
+                <div className={`navbar py-4 ${galleryStyles.navbar}`}>
                     <div>
                         <a
                             href="/"

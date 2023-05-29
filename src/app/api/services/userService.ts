@@ -40,4 +40,16 @@ export default class UserService {
             },
         });
     }
+
+    static async updateUser(
+        data: any,
+        id: number,
+        token?: string,
+    ): Promise<any> {
+        return await fetch.put(`/api/user/${id}/update/`, data, {
+            headers: {
+                'permanent-token': token,
+            },
+        });
+    }
 }

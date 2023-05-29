@@ -3,7 +3,7 @@ import styles from '@/app/styles/DateFinder.module.scss';
 import { Loading } from '../layout/loading';
 import { IoLocationSharp } from 'react-icons/io5';
 import { AiOutlineClockCircle } from 'react-icons/ai';
-import { BsInstagram, BsLinkedin } from 'react-icons/bs';
+import { BsInstagram, BsFacebook } from 'react-icons/bs';
 import { TbWorld } from 'react-icons/tb';
 import { ImPhone } from 'react-icons/im';
 import { GiReceiveMoney, GiMeal } from 'react-icons/gi';
@@ -12,10 +12,24 @@ import { IoMdCard } from 'react-icons/io';
 import { CiParking1 } from 'react-icons/ci';
 import { RiPagesLine } from 'react-icons/ri';
 
-const allRestInfo = ({ workingTime, googleMapLink, location, phone }: any) => {
+const allRestInfo = ({
+    workingTime,
+    googleMapLink,
+    location,
+    phone,
+    cuisine,
+    parking,
+    payment,
+    maximumPrice,
+    minimumPrice,
+    instagramLink,
+    facebookLink,
+    description,
+    serviceCharge,
+}: any) => {
     return (
         <div
-            className={`mt-3 mb-5 p-0 ${styles.date_finder} ${styles.all_rest_info}`}>
+            className={`mt-3 mb-5 p-0 ${styles.date_finder} ${styles.all_rest_info} ${styles.additional_info}`}>
             <div>
                 <div style={{ width: '100%' }}>
                     <iframe
@@ -50,17 +64,17 @@ const allRestInfo = ({ workingTime, googleMapLink, location, phone }: any) => {
                 <div className="me-4 py-2">
                     <a
                         className={`my-3 link ${styles.social_media_icon}`}
-                        href="https://instagram.com/resootime?igshid=YmMyMTA2M2Y="
+                        href={instagramLink}
                         target="_blank"
                         rel="noreferrer">
-                        <BsInstagram size={'1.5em'} />
+                        <BsInstagram size={'1.2rem'} />
                     </a>
                     <a
                         className={`my-3 ms-4 link ${styles.social_media_icon}`}
-                        href="https://www.linkedin.com/company/resootime/"
+                        href={facebookLink}
                         target="_blank"
                         rel="noreferrer">
-                        <BsLinkedin size={'1.5em'} />
+                        <BsFacebook size={'1.2rem'} />
                     </a>
                 </div>
                 <hr />
@@ -69,7 +83,7 @@ const allRestInfo = ({ workingTime, googleMapLink, location, phone }: any) => {
                     <div className="w-100">
                         <div>
                             <div className="row">
-                                <span className={styles.info_title}>
+                                <span className={styles.info_type}>
                                     İş saatları
                                 </span>
                                 <div className="col-6">
@@ -109,21 +123,29 @@ const allRestInfo = ({ workingTime, googleMapLink, location, phone }: any) => {
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
                         <GiMeal
-                            className={`me-2 ${styles.icon}`}
+                            className={`me-3 ${styles.details_icon}`}
                             style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
                         />
                         <span className={`${styles.info_type}`}>Mətbəx</span>
                     </div>
                     <span
-                        className={`d-flex align-items-center ${styles.info}`}>
-                        Azərbaycan, rus
+                        className={`d-flex align-items-center pe-3 ${styles.info}`}>
+                        {cuisine?.map((item: any, index: number) => {
+                            return (
+                                <span
+                                    className={`d-flex align-items-center fw-600 text-capitalize ${styles.info}`}
+                                    key={index}>
+                                    {item.name}
+                                </span>
+                            );
+                        })}
                     </span>
                 </div>
                 <hr />
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
                         <GiReceiveMoney
-                            className={`me-2 ${styles.icon}`}
+                            className={`me-3 ${styles.details_icon}`}
                             style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
                         />
                         <span className={`${styles.info_type}`}>
@@ -131,15 +153,15 @@ const allRestInfo = ({ workingTime, googleMapLink, location, phone }: any) => {
                         </span>
                     </div>
                     <span
-                        className={`d-flex align-items-center ${styles.info}`}>
-                        7%
+                        className={`d-flex align-items-center text-capitalize pe-3 ${styles.info}`}>
+                        {serviceCharge ?? 0}%
                     </span>
                 </div>
                 <hr />
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
                         <FaChild
-                            className={`me-2 ${styles.icon}`}
+                            className={`me-3 ${styles.details_icon}`}
                             style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
                         />
                         <span className={`${styles.info_type}`}>
@@ -147,7 +169,7 @@ const allRestInfo = ({ workingTime, googleMapLink, location, phone }: any) => {
                         </span>
                     </div>
                     <span
-                        className={`d-flex align-items-center ${styles.info}`}>
+                        className={`d-flex align-items-center text-capitalize pe-3 ${styles.info}`}>
                         10+
                     </span>
                 </div>
@@ -155,7 +177,7 @@ const allRestInfo = ({ workingTime, googleMapLink, location, phone }: any) => {
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
                         <FaRegMoneyBillAlt
-                            className={`me-2 ${styles.icon}`}
+                            className={`me-3 ${styles.details_icon}`}
                             style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
                         />
                         <span className={`${styles.info_type}`}>
@@ -163,15 +185,15 @@ const allRestInfo = ({ workingTime, googleMapLink, location, phone }: any) => {
                         </span>
                     </div>
                     <span
-                        className={`d-flex align-items-center ${styles.info}`}>
-                        25-60 azn
+                        className={`d-flex align-items-center text-capitalize pe-3 ${styles.info}`}>
+                        {minimumPrice ?? 0}-{maximumPrice ?? 0} azn
                     </span>
                 </div>
                 <hr />
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
                         <IoMdCard
-                            className={`me-2 ${styles.icon}`}
+                            className={`me-3 ${styles.details_icon}`}
                             style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
                         />
                         <span className={`${styles.info_type}`}>
@@ -179,8 +201,8 @@ const allRestInfo = ({ workingTime, googleMapLink, location, phone }: any) => {
                         </span>
                     </div>
                     <span
-                        className={`d-flex align-items-center ${styles.info}`}>
-                        Nəğd, kart
+                        className={`d-flex align-items-center text-capitalize pe-3 ${styles.info}`}>
+                        {payment}
                     </span>
                 </div>
                 <hr />
@@ -193,7 +215,7 @@ const allRestInfo = ({ workingTime, googleMapLink, location, phone }: any) => {
                         <span className={`${styles.info_type}`}>Parketmə</span>
                     </div>
                     <span
-                        className={`d-flex align-items-center ${styles.info}`}>
+                        className={`d-flex align-items-center text-capitalize pe-3 ${styles.info}`}>
                         Şəxsi, ictimai
                     </span>
                 </div>
@@ -202,7 +224,7 @@ const allRestInfo = ({ workingTime, googleMapLink, location, phone }: any) => {
                     <div className="d-flex">
                         <div>
                             <RiPagesLine
-                                className={`me-2 ${styles.icon}`}
+                                className={`me-3 ${styles.details_icon}`}
                                 style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
                             />
                         </div>
@@ -210,11 +232,7 @@ const allRestInfo = ({ workingTime, googleMapLink, location, phone }: any) => {
                             <span className={`${styles.info_type}`}>
                                 Təsvir
                             </span>
-                            <p className={``}>
-                                Azərbaycanın dadlarını yenilikçi bir tərzdə
-                                yenidən təqdim edən Marivanna Restoranının
-                                Bakıda zövqünü yaşayın.
-                            </p>
+                            <p className={``}>{description}</p>
                         </div>
                     </div>
                 </div>

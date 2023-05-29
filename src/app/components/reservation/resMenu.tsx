@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from '@/app/styles/Menu.module.scss';
 import Image from 'next/image';
+import RestaurantService from '@/app/api/services/restaurantService';
 
-const Menu = () => {
+const Menu = ({ id }: { id: number }) => {
     const handleMenuBtnClick = () => {};
     const menu = [
         {
@@ -62,6 +63,16 @@ const Menu = () => {
             image: '/images/soup_img.png',
         },
     ];
+    const [menuItems, setMenuItems] = React.useState(menu);
+    const getMenuItem = async (id: any) => {
+        const menu = await RestaurantService.getMenu(id);
+        setMenuItems(menu);
+    };
+
+    React.useEffect(() => {
+        getMenuItem(id);
+    }, []);
+
     return (
         <div className={`p-4 ${styles.menu_container}`}>
             <h2 className={`text-center py-4 ${styles.menu_title}`}>Menu</h2>
@@ -74,7 +85,7 @@ const Menu = () => {
             </div>
             <div className={`ps-2 ${styles.menu}`}>
                 <ul className="p-1">
-                    {menu.map((menu_item: any) => {
+                    {menuItems.map((menu_item: any) => {
                         return (
                             <li
                                 className={` ${styles.menu_item}`}

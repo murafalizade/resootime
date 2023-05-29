@@ -11,26 +11,24 @@ const AdditionalInfo = ({
     payment,
     maximumPrice,
     minimumPrice,
-    service_charge,
+    serviceCharge,
 }: any) => {
     return (
-        <div>
-            <h4 className={`my-4 d-md-block d-none ${styles.add_info}`}>
+        <div className={`${styles.additional_info}`}>
+            <h4
+                className={`mb-3 d-md-block d-none fw-600 ${styles.add_info_title}`}>
                 Əlavə Məlumatlar
             </h4>
             <div>
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
-                        <GiMeal
-                            className={`me-2 ${styles.icon}`}
-                            style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
-                        />
+                        <GiMeal className={`me-2 ${styles.details_icon}`} />
                         <span className={`${styles.info_type}`}>Mətbəx</span>
                     </div>
                     {cuisine?.map((item: any, index: number) => {
                         return (
                             <span
-                                className={`d-flex align-items-center ${styles.info}`}
+                                className={`d-flex align-items-center fw-600 ${styles.info}`}
                                 key={index}>
                                 {item.name}
                             </span>
@@ -41,31 +39,27 @@ const AdditionalInfo = ({
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
                         <GiReceiveMoney
-                            className={`me-2 ${styles.icon}`}
-                            style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
+                            className={`me-2 ${styles.details_icon}`}
                         />
                         <span className={`${styles.info_type}`}>
                             Servis haqqı
                         </span>
                     </div>
                     <span
-                        className={`d-flex align-items-center ${styles.info}`}>
-                        {service_charge}%
+                        className={`d-flex align-items-center fw-600 ${styles.info}`}>
+                        {serviceCharge}%
                     </span>
                 </div>
                 <hr />
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
-                        <FaChild
-                            className={`me-2 ${styles.icon}`}
-                            style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
-                        />
+                        <FaChild className={`me-2 ${styles.details_icon}`} />
                         <span className={`${styles.info_type}`}>
                             Min. yaş həddi{' '}
                         </span>
                     </div>
                     <span
-                        className={`d-flex align-items-center ${styles.info}`}>
+                        className={`d-flex align-items-center fw-600 ${styles.info}`}>
                         10+
                     </span>
                 </div>
@@ -73,45 +67,38 @@ const AdditionalInfo = ({
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
                         <FaRegMoneyBillAlt
-                            className={`me-2 ${styles.icon}`}
-                            style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
+                            className={`me-2 ${styles.details_icon}`}
                         />
                         <span className={`${styles.info_type}`}>
                             Ortalama qiymət
                         </span>
                     </div>
                     <span
-                        className={`d-flex align-items-center ${styles.info}`}>
+                        className={`d-flex align-items-center fw-600 ${styles.info}`}>
                         {minimumPrice ?? 0}-{maximumPrice ?? 0} azn
                     </span>
                 </div>
                 <hr />
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
-                        <IoMdCard
-                            className={`me-2 ${styles.icon}`}
-                            style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
-                        />
+                        <IoMdCard className={`me-2 ${styles.details_icon}`} />
                         <span className={`${styles.info_type}`}>
                             Ödəniş variantları
                         </span>
                     </div>
                     <span
-                        className={`d-flex align-items-center ${styles.info}`}>
+                        className={`d-flex align-items-center fw-600 ${styles.info}`}>
                         {payment}
                     </span>
                 </div>
                 <hr />
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
-                        <CiParking1
-                            className={`me-2 ${styles.icon}`}
-                            style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
-                        />
+                        <CiParking1 className={`me-2 ${styles.details_icon}`} />
                         <span className={`${styles.info_type}`}>Parketmə</span>
                     </div>
                     <span
-                        className={`d-flex align-items-center ${styles.info}`}>
+                        className={`d-flex align-items-center fw-600 ${styles.info}`}>
                         {parking}
                     </span>
                 </div>

@@ -196,6 +196,14 @@ export default class RestaurantService {
         });
     }
 
+    static async getMenu(id: number): Promise<any> {
+        return await fetch.get(`/api/restaurant/${id}/menu/`, {
+            headers: {
+                'public-request': true,
+            },
+        });
+    }
+
     static async updateRestaurant(
         data: any,
         id: number,

@@ -115,12 +115,8 @@ th {
     display: none !important;
 }
 
-.main-color {
-    color: #6a5ddf !important;
-}
-
-.main-border-bottom {
-    border-bottom: 1px solid #505050;
+.fw-600 {
+    font-weight: 600;
 }
 
 // Media Queries
@@ -183,7 +179,7 @@ input {
 
 // button styles
 .btn {
-    border-radius: 12px !important;
+    border-radius: 10px !important;
 }
 
 .btn-primary {
@@ -208,7 +204,7 @@ input {
     }
 }
 
-// link hover
+// link
 .link {
     transition: color 0.3s ease;
     &:hover {
@@ -216,10 +212,28 @@ input {
     }
 }
 
+.side-link {
+    color: grey !important;
+    transition: color 0.3s ease;
+    &:hover {
+        color: #000 !important;
+    }
+}
+.visited-side-link {
+    color: #000 !important;
+}
+
 // media quaries
 @media screen and (max-width: 1200px) {
     html {
         font-size: 100%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .main-container {
+        padding-left: 12.7rem;
+        padding-right: 12.7rem;
     }
 }
 

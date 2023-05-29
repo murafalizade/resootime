@@ -24,10 +24,13 @@ import { GetServerSideProps } from 'next';
 import { formatDate } from '@/app/constants/date';
 import StarsRating from 'react-star-rate';
 import AdditionalInfo from '@/app/components/reservation/additionalInformation';
-import Menu from '@/app/components/reservation/menu';
+import ResMenu from '@/app/components/reservation/resMenu';
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
+import GalleryModal from '@/app/components/reservation/galleryModal';
+import Gallery from '@/pages/restaurants/r/gallery/[slug]';
 import BASE_URL from '@/app/constants/baseUrl';
+import Menu from '@/pages/restaurants/r/menu/[slug]';
 
 const ReservationRestaurant = ({ res }: any) => {
     const isModalOpen = useSelector(selectIsModelOpen);
@@ -39,6 +42,7 @@ const ReservationRestaurant = ({ res }: any) => {
     const [canEdit, setCanEdit] = useState(false);
     const [showMore, setShowMore] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
+    const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
     const getTables = async () => {
         const map = await RestaurantService.getTables(res.id);
@@ -59,7 +63,6 @@ const ReservationRestaurant = ({ res }: any) => {
     }, []);
 
     console.log(res);
-
     return (
         <>
             <Head>
@@ -86,7 +89,7 @@ const ReservationRestaurant = ({ res }: any) => {
                 <meta property="og:site_name" content="ResooTime" />
             </Head>
             <Layout>
-                <main className="mb-lg-5 pb-5">
+                <main className="mb-md-5 pb-5">
                     {isModalOpen ? <div className="overlay"></div> : null}
                     <div
                         className={`d-flex flex-column d-block d-lg-none position-relative`}>
@@ -102,7 +105,7 @@ const ReservationRestaurant = ({ res }: any) => {
                             className={`d-flex flex-column ${styles.img_container}`}>
                             <Image
                                 src={
-                                    BASE_URL + res.images[0]?.image ||
+                                    res.images[0]?.image ||
                                     '/images/rest_imag.png'
                                 }
                                 alt={res.name}
@@ -175,11 +178,16 @@ const ReservationRestaurant = ({ res }: any) => {
                                         </div>
                                     </div>
                                     <div className="d-flex d-lg-none align-items-center">
-                                        <button
+                                        <a
                                             type="button"
+                                            href={`/restaurants/r/menu/${res.name
+                                                .replace(' ', '-')
+                                                .replace('(', '')
+                                                .replace(')', '')
+                                                .toLocaleLowerCase()}`}
                                             className="btn btn-primary btn-lg mt-4 mb-2">
                                             Menyu
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                                 <hr className="d-lg-block d-none" />
@@ -226,7 +234,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                     className={`d-flex flex-column ${styles.img_container}`}>
                                     <Image
                                         src={
-                                            BASE_URL + res.images[0]?.image ||
+                                            res.images[0]?.image ||
                                             '/images/rest_imag.png'
                                         }
                                         alt={res.name}
@@ -236,10 +244,15 @@ const ReservationRestaurant = ({ res }: any) => {
                                     />
                                 </div>
                                 {res.images?.length > 1 && (
-                                    <button
+                                    <a
+                                        href={`/restaurants/r/gallery/${res.name
+                                            .replace(' ', '-')
+                                            .replace('(', '')
+                                            .replace(')', '')
+                                            .toLocaleLowerCase()}`}
                                         className={`${styles.show_img_btn}`}>{`Bütün şəkillər (+${
                                         res.images?.length - 1
-                                    })`}</button>
+                                    })`}</a>
                                 )}
                             </div>
                         </div>
@@ -316,19 +329,12 @@ const ReservationRestaurant = ({ res }: any) => {
                                             Qeydlər
                                         </h5>
                                         <p>
-                                            Saat 12:00-dan 00:00-a kimi
-                                            işləyirik 23:40-da mətbəx bağlanır /
-                                            Siz ancaq kiçik heyvanları
-                                            kabinetdən çıxarmadan gələ
-                                            bilərsiniz /Kabinetlərdə siqaret
-                                            çəkmək olar / Özünüzlə tort gətirə
-                                            bilərsiniz pulsuz. / Gətirdiyiniz
-                                            hər spirtli içki üçün 20 manat
-                                            ödəmək lazımdır
+                                            {res.notes ||
+                                                'Saat 12:00-dan 00:00-a kimiişləyirik 23:40-da mətbəx bağlanır / Siz ancaq kiçik heyvanlarıkabinetdən çıxarmadan gələbilərsiniz /Kabinetlərdə siqaretçəkmək olar / Özünüzlə tort gətirəbilərsiniz pulsuz. / Gətirdiyinizhər spirtli içki üçün 20 manatödəmək lazımdır'}
                                         </p>
                                     </div>
                                     <div className="d-none d-lg-block mt-2">
-                                        <Menu />
+                                        <ResMenu id={res.id} />
                                     </div>
                                 </div>
                             </div>
@@ -351,29 +357,22 @@ const ReservationRestaurant = ({ res }: any) => {
                                         location={res.location}
                                         workingTime={res.working_hours}
                                         googleMapLink={res.googleMapLink}
-                                        instagramLink={res.instagramLink}
-                                        facebookLink={res.facebookLink}
-                                    />
-                                </div>
-                                <div className="d-none d-lg-block">
-                                    <AdditionalInfo
                                         cuisine={res.cuisine}
                                         parking={res.parking}
+                                        websiteLink={
+                                            res.websiteLink ||
+                                            'www.resootime.com'
+                                        }
                                         payment={res.payment}
                                         maximumPrice={res.maximum_price}
                                         minimumPrice={res.minimum_price}
-                                        service_charge={res.service_charge}
+                                        instagramLink={res.instagramLink}
+                                        facebookLink={res.facebookLink}
+                                        description={res.description}
+                                        serviceCharge={res.service_charge}
                                     />
                                 </div>
                             </div>
-                        </div>
-                        <div className="d-lg-none d-flex">
-                            <AllRestInfo
-                                phone={res.phone}
-                                location={res.location}
-                                workingTime={res.working_hours}
-                                googleMapLink={res.googleMapLink}
-                            />
                         </div>
                     </div>
                 </main>

@@ -184,13 +184,13 @@ const DateFinder = ({
             <div className="d-flex justify-content-center mb-4">
                 <h4 className={`${styles.modal_title}`}>Rezervasiya</h4>
             </div>
-            <div className="d-flex justify-content-around mb-2">
-                <div className={`${styles.picker_container}`}>
+            <div className="row d-flex justify-content-around mb-2">
+                <div className={`col-4 ${styles.picker_container}`}>
                     <label className={styles.label}>Qonaq sayı</label>
                     <div>
                         <select
                             onChange={(e: any) => handleCount(e)}
-                            className={`form-select py-2 text-center rounded-pill fw-bold`}>
+                            className={`form-select py-2 text-center rounded-pill ${styles.picker}`}>
                             <option value="1">1 nəfər</option>
                             <option value="2">2 nəfər</option>
                             <option value="3">3 nəfər</option>
@@ -202,23 +202,23 @@ const DateFinder = ({
                         </select>
                     </div>
                 </div>
-                <div className={`${styles.picker_container}`}>
+                <div className={`col-4 ${styles.picker_container}`}>
                     <label className={styles.label}>Tarix</label>
                     <DatePicker
                         selected={date}
-                        className="form-control py-2 text-center rounded-pill fw-bold"
+                        className={`form-select py-2 text-center rounded-pill ${styles.picker}`}
                         dateFormat="dd MMM"
                         minDate={now}
                         onChange={handleChangeDate}
                     />
                 </div>
-                <div className={`${styles.picker_container}`}>
+                <div className={`col-4 ${styles.picker_container}`}>
                     <label className={styles.label}>Vaxt</label>
                     <DatePicker
                         selected={date}
                         onChange={handleChangeDate}
                         showTimeSelect
-                        className="form-select py-2 text-center rounded-pill fw-bold"
+                        className={`form-select py-2 text-center rounded-pill ${styles.picker}`}
                         showTimeSelectOnly
                         timeIntervals={30}
                         minTime={minTime}
@@ -233,7 +233,7 @@ const DateFinder = ({
                 type="button"
                 disabled={!allowed && noAllowed}
                 onClick={makeReservation}
-                className="btn btn-primary btn-lg mt-4 mb-2">
+                className={`btn btn-primary btn-lg mt-4 mb-2 ${styles.reservation_btn}`}>
                 {table ? `Reserv edin ${table.name}` : 'Masaları axtarın'}
             </button>
             {allowed || noAllowed ? (

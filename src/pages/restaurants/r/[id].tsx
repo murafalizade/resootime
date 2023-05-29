@@ -102,7 +102,7 @@ const ReservationRestaurant = ({ res }: any) => {
                             className={`d-flex flex-column ${styles.img_container}`}>
                             <Image
                                 src={
-                                    BASE_URL+ res.images[0]?.image ||
+                                    BASE_URL + res.images[0]?.image ||
                                     '/images/rest_imag.png'
                                 }
                                 alt={res.name}
@@ -226,7 +226,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                     className={`d-flex flex-column ${styles.img_container}`}>
                                     <Image
                                         src={
-                                            BASE_URL+ res.images[0]?.image ||
+                                            BASE_URL + res.images[0]?.image ||
                                             '/images/rest_imag.png'
                                         }
                                         alt={res.name}
@@ -282,7 +282,6 @@ const ReservationRestaurant = ({ res }: any) => {
                                             disabled={canEdit}
                                             limitToBounds={false}>
                                             <TransformComponent
-                                                
                                                 wrapperStyle={{
                                                     height: '520px',
                                                     width: '98.5%',

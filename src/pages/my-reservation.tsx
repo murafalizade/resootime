@@ -8,11 +8,11 @@ import React, { useEffect, useState } from 'react';
 
 const Myreservation = () => {
     const [reserv, setReserv] = useState<any[]>([]);
-    const [user,setUser] = useState<any>();
+    const [user, setUser] = useState<any>();
     useEffect(() => {
         const getUser = async (token: string) => {
             const user = await UserService.getUserByToken(token);
-            const reserv = await UserService.myReservations(user.id,token);
+            const reserv = await UserService.myReservations(user.id, token);
             setUser(user);
             setReserv(reserv);
         };
@@ -22,7 +22,7 @@ const Myreservation = () => {
 
     return (
         <>
-         <Head>
+            <Head>
                 <title>Rezervasiyalarım | ResooTime.com</title>
                 <meta
                     name="description"
@@ -32,7 +32,10 @@ const Myreservation = () => {
                     name="keywords"
                     content={`${user?.first_name}, restoran, rezerv et, restoran, rezervasiya et, masani sec, rezervasiya, masa`}
                 />
-                <meta name="og:title" content={`Rezervasiyalarım | ResooTime.com`} />
+                <meta
+                    name="og:title"
+                    content={`Rezervasiyalarım | ResooTime.com`}
+                />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://resootime.com/" />
                 <meta
@@ -45,16 +48,15 @@ const Myreservation = () => {
                 />
                 <meta property="og:site_name" content="ResooTime" />
             </Head>
-        <Layout>
-            <main style={{ backgroundColor: '#f2f3f4', height: '100vh' }}>
-                <h4 className="p-3 mx-5">
-                    <b>Rezervasiyalarım</b>
-                </h4>
-                <MyReservation reserv={reserv} />
-            </main>
-        </Layout>
+            <Layout>
+                <main style={{ backgroundColor: '#f2f3f4', height: '100vh' }}>
+                    <h4 className="p-3 mx-5">
+                        <b>Rezervasiyalarım</b>
+                    </h4>
+                    <MyReservation reserv={reserv} />
+                </main>
+            </Layout>
         </>
-
     );
 };
 

@@ -3,7 +3,7 @@ import styles from '@/app/styles/DateFinder.module.scss';
 import { Loading } from '../layout/loading';
 import { IoLocationSharp } from 'react-icons/io5';
 import { AiOutlineClockCircle } from 'react-icons/ai';
-import { BsFacebook, BsInstagram, BsLinkedin } from 'react-icons/bs';
+import { BsFacebook, BsInstagram } from 'react-icons/bs';
 import { TbWorld } from 'react-icons/tb';
 import { ImPhone } from 'react-icons/im';
 
@@ -14,7 +14,7 @@ const RestInfo = ({ name, workingTime, googleMapLink, location, phone, instagram
                 <div style={{ width: '100%' }}>
                     <iframe
                         width="100%"
-                        height="250px"
+                        height="129px"
                         src={googleMapLink}
                         loading="lazy"
                         style={{
@@ -23,39 +23,39 @@ const RestInfo = ({ name, workingTime, googleMapLink, location, phone, instagram
                         }}></iframe>
                 </div>
             </div>
-            <div style={{ color: '#505050' }} className="mt-3">
+            <div className={`${styles.rest_info}`}>
                 <div className='mx-4'>
-                    <h4 className={`${styles.res_name}`}>{name}</h4>
-                    <p>{location}</p>
+                    <h4 className={`mt-2 mb-0 ${styles.res_name}`}>{name}</h4>
+                    <p className={`mb-2 ${styles.location}`}>{location}</p>
                     <a
-                        className={`my-3 link ${styles.social_media_icon}`}
+                        className={`my-2 link ${styles.social_media_icon}`}
                         href={instagramLink}
                         target="_blank"
                         rel="noreferrer">
-                        <BsInstagram size={'1.5em'} />
+                        <BsInstagram size={'1.2rem'} />
                     </a>
                     <a
-                        className={`my-3 ms-4 link ${styles.social_media_icon}`}
+                        className={`my-2 ms-4 link ${styles.social_media_icon}`}
                         href={facebookLink}
                         target="_blank"
                         rel="noreferrer">
-                        <BsFacebook size={'1.5em'} />
+                        <BsFacebook size={'1.2rem'} />
                     </a>
                 </div>
                 <hr />
                 <div className="d-flex">
                     <IoLocationSharp className={`mx-3 ${styles.icon}`} />
-                    <a href={googleMapLink} target='_blank' rel='noreferrer' className={`btn-link text-decoration-none link ${styles.map_link}`}>Xəritəyə keç</a>
+                    <a href={googleMapLink} target='_blank' rel='noreferrer' className={`btn-link text-decoration-none link ${styles.map_link} ${styles.info}`}>Xəritəyə keç</a>
                 </div>
                 <hr />
                 <div className="d-flex">
-                    <ImPhone className={`fs-4 mx-3 ${styles.icon}`} />
-                    <span>{phone}</span>
+                    <ImPhone className={`mx-3 ${styles.icon}`} />
+                    <span className={`${styles.info}`}>{phone}</span>
                 </div>
                 <hr />
                 <div className="d-flex">
                     <TbWorld className={`mx-3 ${styles.icon}`} />
-                    <span>http://www.marivanna.az/</span>
+                    <a href='#' target='_blank' rel='noreferrer' className={`btn-link text-decoration-none link ${styles.map_link} ${styles.info}`}>http://www.marivanna.az/</a>
                 </div>
                 <hr />
                 <div className="d-flex">
@@ -63,7 +63,7 @@ const RestInfo = ({ name, workingTime, googleMapLink, location, phone, instagram
                     <div className="w-100">
                         <div>
                             <div className="row">
-                                <span className={styles.info_title}>
+                                <span className={styles.info_type}>
                                     İş saatları
                                 </span>
                                 <div className="col-6">

@@ -3,9 +3,10 @@ import Image from 'next/dist/client/image';
 import React, { useEffect, useState } from 'react';
 import styles from '@/app/styles/Navbar.module.scss';
 import Router from 'next/dist/client/router';
-import { IoClose, IoMenu } from 'react-icons/io5';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { IoClose } from 'react-icons/io5';
 import { TiDeleteOutline } from 'react-icons/ti';
-import { FiSearch } from 'react-icons/fi';
+import {FiSearch} from 'react-icons/fi';
 
 interface IProps {
     isRestuarantPage?: boolean;
@@ -59,7 +60,7 @@ const Navbar = (props: IProps) => {
                 </div>
             ) : null}
             <div className="container-fluid border-bottom">
-                <div className="navbar p-4">
+                <div className="navbar py-4">
                     <div>
                         <a
                             href="/"
@@ -131,22 +132,25 @@ const Navbar = (props: IProps) => {
                                 </a>
                             </div>
                             <div className={`d-sm-none ${styles.sidebar}`}>
-                                <FiSearch size={'1.7em'} className='me-3' />
+                            <FiSearch size={'2rem'} className='me-4'/>
                                 {isClicked ? (
                                     <IoClose
                                         size={'2em'}
+                                        color="#374167"
                                         onClick={() => {
                                             setIsMobile(!isMobile),
                                                 setIsClicked(!isClicked);
                                         }}
                                     />
                                 ) : (
-                                    <IoMenu
+                                    <GiHamburgerMenu
                                         size={'2em'}
+                                        color="#374167"
                                         onClick={() => {
                                             setIsMobile(!isMobile),
                                                 setIsClicked(!isClicked);
                                         }}
+                                        className='text-dark'
                                     />
                                 )}
                             </div>
@@ -165,6 +169,11 @@ const Navbar = (props: IProps) => {
                                     href="/my-reservation"
                                     className={styles.dropdown_link}>
                                     Rezervasiyalarım
+                                </a>
+                                <a
+                                    href="/user-settings"
+                                    className={styles.dropdown_link}>
+                                    Parametrlər
                                 </a>
                                 <a
                                     role="button"

@@ -35,6 +35,7 @@
 .brand_name {
   font-weight: 400;
   font-size: 1.4rem;
+  font-family: "Inter", sans-serif !important;
 }
 
 .d_none {

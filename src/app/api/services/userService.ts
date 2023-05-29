@@ -36,4 +36,16 @@ export default class UserService {
     static async myReservations(id: number): Promise<any[]> {
         return await fetch.get(`/api/users/${id}/my-reservations/`);
     }
+
+    static async updateUser(
+        data: any,
+        id: number,
+        token?: string,
+    ): Promise<any> {
+        return await fetch.put(`/api/user/${id}/update/`, data, {
+            headers: {
+                'permanent-token': token,
+            },
+        });
+    }
 }

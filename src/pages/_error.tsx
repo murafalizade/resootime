@@ -1,4 +1,4 @@
-import Head from "next/head";
+import Head from 'next/head';
 
 function Error({ statusCode }: { statusCode: number }) {
     return (
@@ -6,7 +6,7 @@ function Error({ statusCode }: { statusCode: number }) {
             <Head>
                 <title>{statusCode} - Səhifə tapılmadı</title>
             </Head>
-            
+
             <div
                 style={{ height: '100vh' }}
                 className="d-flex justify-content-center align-items-center">

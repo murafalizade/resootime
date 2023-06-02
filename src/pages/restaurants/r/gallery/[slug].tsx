@@ -11,7 +11,7 @@ import Head from 'next/head';
 
 const Gallery = ({ res }: any) => {
     const gallery = res?.images;
-    const arrayLength = Math.round( gallery.length /3);
+    const arrayLength = Math.round(gallery.length / 3);
     console.log(arrayLength);
     return (
         <>
@@ -78,7 +78,8 @@ const Gallery = ({ res }: any) => {
                             .fill('')
                             .map((item: any, index: number) => (
                                 <>
-                                    <div className={`row ${galleryStyles.img_mb}`}>
+                                    <div
+                                        className={`row ${galleryStyles.img_mb}`}>
                                         <div className="col-12">
                                             <Image
                                                 src={
@@ -93,11 +94,11 @@ const Gallery = ({ res }: any) => {
                                                 height={144}
                                                 quality={100}
                                                 className={`${galleryStyles.gallery_img}`}
-                                                
                                             />
                                         </div>
                                     </div>
-                                    <div className={`row ${galleryStyles.img_mb}`}>
+                                    <div
+                                        className={`row ${galleryStyles.img_mb}`}>
                                         <div className={`col-8 pe-0`}>
                                             <Image
                                                 src={
@@ -114,7 +115,8 @@ const Gallery = ({ res }: any) => {
                                                 className={`${galleryStyles.gallery_img}`}
                                             />
                                         </div>
-                                        <div className={`col-4 ${galleryStyles.img_pe}`}>
+                                        <div
+                                            className={`col-4 ${galleryStyles.img_pe}`}>
                                             <Image
                                                 src={
                                                     gallery[3 * index + 2]

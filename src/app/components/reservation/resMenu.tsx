@@ -75,7 +75,10 @@ const Menu = ({ id }: { id: number }) => {
 
     return (
         <div className={`p-4 ${styles.menu_container}`}>
-            <h2 className={`text-center py-4 d-none d-md-block ${styles.menu_title}`}>Menu</h2>
+            <h2
+                className={`text-center py-4 d-none d-md-block ${styles.menu_title}`}>
+                Menu
+            </h2>
             <div className={`${styles.menu_nav}`}>
                 <div className="d-flex align-items-center justify-content-between">
                     <button onClick={handleMenuBtnClick}>Şorbalar</button>
@@ -92,10 +95,9 @@ const Menu = ({ id }: { id: number }) => {
                             <li
                                 className={` ${styles.menu_item}`}
                                 key={menu_item.id}>
-                                <div
-                                     className={`row pt-4 ps-0`}>
+                                <div className={`row pt-4 ps-0`}>
                                     <div className={`col-8`}>
-                                    <h5
+                                        <h5
                                             className={`fw-bold my-1 ${styles.item_name}`}>
                                             {menu_item.name}
                                         </h5>

@@ -26,7 +26,7 @@ const allRestInfo = ({
     facebookLink,
     description,
     serviceCharge,
-    websiteLink
+    websiteLink,
 }: any) => {
     return (
         <div

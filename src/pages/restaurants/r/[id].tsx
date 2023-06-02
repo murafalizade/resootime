@@ -362,9 +362,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                                 <h5 className={`fw-600`}>
                                                     Qeydlər
                                                 </h5>
-                                                <p>
-                                                    {res.notes}
-                                                </p>
+                                                <p>{res.notes}</p>
                                             </div>
                                             <div className="d-none d-md-block mt-2">
                                                 <ResMenu id={res.id} />

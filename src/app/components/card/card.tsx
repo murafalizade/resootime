@@ -11,8 +11,7 @@ interface ICardProps {
 const Card = ({ cardInfo }: ICardProps) => {
     return (
         <div className={`card ${styles.card}`}>
-            <a
-                href={`/restaurants/r/${cardInfo.slug}`}>
+            <a href={`/restaurants/r/${cardInfo.slug}`}>
                 <Image
                     src={cardInfo.images[0]?.image || '/images/rest_imag.png'}
                     className={`card-img-top ${styles.card_img}`}

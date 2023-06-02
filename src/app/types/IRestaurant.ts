@@ -9,7 +9,7 @@ export interface IRestaurant {
     category?: ICategory;
     user_id?: IUser;
     city?: string;
-    slug:string;
+    slug: string;
 }
 
 interface IImage {

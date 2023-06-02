@@ -21,7 +21,7 @@ const ImageCarousel: React.FC<{ images?: ImageType[] }> = ({ images }) => {
                 images?.map((image: any) => {
                     if (image.id == 1) {
                         setSelectedImage(image?.image);
-                    setSelectedImageIndex(image.id);
+                        setSelectedImageIndex(image.id);
                     }
                 });
             }
@@ -56,7 +56,7 @@ const ImageCarousel: React.FC<{ images?: ImageType[] }> = ({ images }) => {
             handleSelectedImageChange(newIdx);
         }
     };
-    
+
     return (
         <div className={`position-relative ${styles.carousel_container}`}>
             <div className="w-100 d-flex align-items-center justify-content-center">

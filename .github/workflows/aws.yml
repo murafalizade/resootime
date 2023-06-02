@@ -32,5 +32,5 @@ jobs:
           region: eu-north-1
           application_name: resootime-react
           environment_name: Resootime-react-env
-          version_label: '[ "v2" ]'
+          version_label: '[ "v1" ]'
 

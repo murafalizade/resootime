@@ -39,7 +39,7 @@ const ReservationRestaurant = ({ res }: any) => {
     const isLoading = useSelector(selectIsLoading);
     const [wall, setWall] = useState('');
     const [date, setDate] = useState(new Date());
-    const [canEdit, setCanEdit] = useState(false);
+    const [canEdit, setCanEdit] = useState(true);
     const [showMore, setShowMore] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
     const [isGalleryOpen, setIsGalleryOpen] = useState(false);
@@ -62,7 +62,6 @@ const ReservationRestaurant = ({ res }: any) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    console.log(res);
     return (
         <>
             <Head>
@@ -208,11 +207,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                             <div className="d-flex d-md-none align-items-center">
                                                 <a
                                                     type="button"
-                                                    href={`/restaurants/r/menu/${res.name
-                                                        .replace(' ', '-')
-                                                        .replace('(', '')
-                                                        .replace(')', '')
-                                                        .toLocaleLowerCase()}`}
+                                                    href={`/restaurants/r/menu/${res.slug}`}
                                                     className="btn btn-primary btn-md mt-4 mb-2">
                                                     Menyu
                                                 </a>
@@ -333,7 +328,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                                     limitToBounds={false}>
                                                     <TransformComponent
                                                         wrapperStyle={{
-                                                            height: '23.5rem',
+                                                            height: '17.5rem',
                                                             width: '98.5%',
                                                             marginLeft: '5px',
                                                         }}>
@@ -368,8 +363,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                                     Qeydlər
                                                 </h5>
                                                 <p>
-                                                    {res.notes ||
-                                                        'Saat 12:00-dan 00:00-a kimiişləyirik 23:40-da mətbəx bağlanır / Siz ancaq kiçik heyvanlarıkabinetdən çıxarmadan gələbilərsiniz /Kabinetlərdə siqaretçəkmək olar / Özünüzlə tort gətirəbilərsiniz pulsuz. / Gətirdiyinizhər spirtli içki üçün 20 manatödəmək lazımdır'}
+                                                    {res.notes}
                                                 </p>
                                             </div>
                                             <div className="d-none d-md-block mt-2">

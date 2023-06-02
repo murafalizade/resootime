@@ -33,6 +33,8 @@ function Home({ restaurants }: any) {
         setRests(filteredRestaurants);
     };
 
+    console.log(rests);
+
     // search restaurant when page loaded
     useEffect(() => {
         searchRestaurant(name);

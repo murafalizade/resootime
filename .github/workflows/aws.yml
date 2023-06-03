@@ -18,11 +18,8 @@ jobs:
         with:
           node-version: 14
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build Next.js app
-        run: npm run build
+      - name: Build Next.js app & Generate zip file
+        run: npm run deploy
 
       - name: Deploy to AWS Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v17
@@ -33,4 +30,5 @@ jobs:
           application_name: resootime-react
           environment_name: Resootime-react-env
           version_label: resootime-react-${{ steps.buildnumber.outputs.build_number }}
+          deployment_package: app.zip
 

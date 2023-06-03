@@ -8,6 +8,7 @@
         "start": "next start",
         "lint": "next lint",
         "test": "jest",
+        "deploy":"sh package.sh",
         "formater": "prettier --write .",
         "prepare": "husky install",
         "server": "nodemon server.js",

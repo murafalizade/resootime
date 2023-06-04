@@ -11,8 +11,7 @@ import Head from 'next/head';
 
 const Gallery = ({ res }: any) => {
     const gallery = res?.images;
-    const arrayLength = Math.round( gallery.length /3);
-    console.log(arrayLength);
+    const arrayLength = Math.round(gallery.length / 3);
     return (
         <>
             <Head>
@@ -42,10 +41,14 @@ const Gallery = ({ res }: any) => {
                 <meta property="og:site_name" content="ResooTime" />
             </Head>
             <div className={`${galleryStyles.gallery}`}>
-                <div className="navbar py-4">
+                <div className={`navbar py-4 px-0`}>
                     <div>
                         <a
-                            href="/"
+                            href="#"
+                            onClick={() => {
+                                history.back();
+                            }}
+                            title="Geri"
                             className={`navbar-brand ${navStyles.brand_name}`}>
                             <Image
                                 src={'/images/logo.png'}
@@ -58,7 +61,7 @@ const Gallery = ({ res }: any) => {
                         </a>
                     </div>
                 </div>
-                <div className={``}>
+                <div className={`${galleryStyles.gallery_container}`}>
                     <div className="ps-3 pe-4 d-flex align-items-center justify-content-between">
                         <a
                             onClick={() => {
@@ -78,7 +81,8 @@ const Gallery = ({ res }: any) => {
                             .fill('')
                             .map((item: any, index: number) => (
                                 <>
-                                    <div className={`row ${galleryStyles.img_mb}`}>
+                                    <div
+                                        className={`row ${galleryStyles.img_mb}`}>
                                         <div className="col-12">
                                             <Image
                                                 src={
@@ -93,11 +97,11 @@ const Gallery = ({ res }: any) => {
                                                 height={144}
                                                 quality={100}
                                                 className={`${galleryStyles.gallery_img}`}
-                                                
                                             />
                                         </div>
                                     </div>
-                                    <div className={`row ${galleryStyles.img_mb}`}>
+                                    <div
+                                        className={`row ${galleryStyles.img_mb}`}>
                                         <div className={`col-8 pe-0`}>
                                             <Image
                                                 src={
@@ -114,7 +118,8 @@ const Gallery = ({ res }: any) => {
                                                 className={`${galleryStyles.gallery_img}`}
                                             />
                                         </div>
-                                        <div className={`col-4 ${galleryStyles.img_pe}`}>
+                                        <div
+                                            className={`col-4 ${galleryStyles.img_pe}`}>
                                             <Image
                                                 src={
                                                     gallery[3 * index + 2]

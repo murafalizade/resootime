@@ -18,45 +18,46 @@ const ImageCarousel: React.FC<{ images?: ImageType[] }> = ({ images }) => {
             );
 
             {
-                images?.map((image: any) => {
-                    if (image.id == 1) {
+                images?.map((image: any, index: any) => {
+                    if (index == 0) {
                         setSelectedImage(image?.image);
-                    setSelectedImageIndex(image.id);
+                        setSelectedImageIndex(index);
                     }
                 });
             }
         }
     }, [images]);
-
-    const handleSelectedImageChange = (newIdx: number) => {
+    const handleSelectedImageChange = (newIndex: number) => {
         {
-            images?.map((image: any) => {
+            images?.map((image: any, index: any) => {
                 if (images && images.length > 0) {
-                    if (image.id == newIdx) {
+                    if (index == newIndex) {
                         setSelectedImage(image?.image);
-                        setSelectedImageIndex(image.id);
+                        setSelectedImageIndex(index);
                     }
                 }
             });
         }
     };
-
     const handleRightClick = () => {
         if (images && images.length > 0) {
-            let newIdx = selectedImageIndex + 1;
-            handleSelectedImageChange(newIdx);
+            let newIndex = selectedImageIndex + 1;
+            if (newIndex >= images.length) {
+                newIndex = 0;
+              }
+            handleSelectedImageChange(newIndex);
         }
     };
     const handleLeftClick = () => {
         if (images && images.length > 0) {
-            let newIdx = selectedImageIndex - 1;
-            if (newIdx < 0) {
-                newIdx = images.length - 1;
+            let newIndex = selectedImageIndex - 1;
+            if (newIndex < 0) {
+                newIndex = images.length - 1;
             }
-            handleSelectedImageChange(newIdx);
+            handleSelectedImageChange(newIndex);
         }
     };
-    
+
     return (
         <div className={`position-relative ${styles.carousel_container}`}>
             <div className="w-100 d-flex align-items-center justify-content-center">
@@ -69,23 +70,23 @@ const ImageCarousel: React.FC<{ images?: ImageType[] }> = ({ images }) => {
             <div className={`${styles.carousel}`}>
                 <div className={`${styles.carousel__images}`}>
                     {images &&
-                        images.map((image: any) => (
+                        images.map((image: any, index: any) => (
                             <div
                                 onClick={() =>
-                                    handleSelectedImageChange(image.id)
+                                    handleSelectedImageChange(index)
                                 }
                                 style={{
                                     backgroundImage: `url(${
                                         baseUrl + image?.image
                                     })`,
                                 }}
-                                key={image.id}
+                                key={index}
                                 className={`${styles.carousel__image} ${
-                                    selectedImageIndex === image.id &&
+                                    selectedImageIndex === index &&
                                     styles.carousel__image_selected
                                 }`}
                                 ref={(el) =>
-                                    (carouselItemsRef.current[image.id] = el)
+                                    (carouselItemsRef.current[index] = el)
                                 }
                             />
                         ))}

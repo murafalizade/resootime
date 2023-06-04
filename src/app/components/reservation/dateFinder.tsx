@@ -181,7 +181,7 @@ const DateFinder = ({
                 hotelName={restName}
                 img={restImage}
             />
-            <div className="d-flex justify-content-center mb-4">
+            <div className="d-flex justify-content-center mb-3">
                 <h4 className={`${styles.modal_title}`}>Rezervasiya</h4>
             </div>
             <div className="row d-flex justify-content-around mb-2">
@@ -190,15 +190,15 @@ const DateFinder = ({
                     <div>
                         <select
                             onChange={(e: any) => handleCount(e)}
-                            className={`form-select py-2 text-center rounded-pill ${styles.picker}`}>
-                            <option value="1">1 nəfər</option>
-                            <option value="2">2 nəfər</option>
-                            <option value="3">3 nəfər</option>
-                            <option value="4">4 nəfər</option>
-                            <option value="5">5 nəfər</option>
-                            <option value="6">6 nəfər</option>
-                            <option value="7">7 nəfər</option>
-                            <option value="8">8 nəfər</option>
+                            className={`form-select ps-3 rounded-pill ${styles.picker}`}>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
                         </select>
                     </div>
                 </div>
@@ -206,7 +206,7 @@ const DateFinder = ({
                     <label className={styles.label}>Tarix</label>
                     <DatePicker
                         selected={date}
-                        className={`form-select py-2 text-center rounded-pill ${styles.picker}`}
+                        className={`form-select ps-3 rounded-pill ${styles.picker}`}
                         dateFormat="dd MMM"
                         minDate={now}
                         onChange={handleChangeDate}
@@ -218,7 +218,7 @@ const DateFinder = ({
                         selected={date}
                         onChange={handleChangeDate}
                         showTimeSelect
-                        className={`form-select py-2 text-center rounded-pill ${styles.picker}`}
+                        className={`form-select ps-3 rounded-pill ${styles.picker}`}
                         showTimeSelectOnly
                         timeIntervals={30}
                         minTime={minTime}
@@ -233,11 +233,11 @@ const DateFinder = ({
                 type="button"
                 disabled={!allowed && noAllowed}
                 onClick={makeReservation}
-                className={`btn btn-primary btn-lg mt-4 mb-2 ${styles.reservation_btn}`}>
+                className={`btn btn-primary btn-lg mt-3 mb-2 ${styles.reservation_btn}`}>
                 {table ? `Reserv edin ${table.name}` : 'Masaları axtarın'}
             </button>
             {allowed || noAllowed ? (
-                <span className="text-danger text-center fs-6">
+                <span className={`text-danger text-center ${styles.warning}`}>
                     Rezervasiya etmək halhazırda mümkün deyil
                 </span>
             ) : null}

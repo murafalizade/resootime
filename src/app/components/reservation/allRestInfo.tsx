@@ -26,7 +26,8 @@ const allRestInfo = ({
     facebookLink,
     description,
     serviceCharge,
-    websiteLink
+    websiteLink,
+    minimumAge
 }: any) => {
     return (
         <div
@@ -137,12 +138,14 @@ const allRestInfo = ({
                     </div>
                     <span
                         className={`d-flex align-items-center pe-3 ${styles.info}`}>
-                        {cuisine?.map((item: any, index: number) => {
+                       {cuisine?.map((item: any) => {
                             return (
                                 <span
-                                    className={`d-flex align-items-center fw-600 text-capitalize ${styles.info}`}
-                                    key={index}>
-                                    {item.name}
+                                    className={`d-flex align-items-center fw-600 ms-1 ${styles.info}`}
+                                    key={item.id}>
+                                    {item.id == cuisine.length
+                                        ? `${item?.name}`
+                                        : `${item?.name} |`}
                                 </span>
                             );
                         })}
@@ -165,21 +168,23 @@ const allRestInfo = ({
                     </span>
                 </div>
                 <hr />
-                <div className="d-flex justify-content-between me-2 py-2">
-                    <div className="d-flex align-items-center">
-                        <FaChild
-                            className={`me-3 ${styles.details_icon}`}
-                            style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
-                        />
-                        <span className={`${styles.info_type}`}>
-                            Min. yaş həddi{' '}
+                {minimumAge && (
+                    <div className="d-flex justify-content-between me-2 py-2">
+                        <div className="d-flex align-items-center">
+                            <FaChild
+                                className={`me-3 ${styles.details_icon}`}
+                                style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
+                            />
+                            <span className={`${styles.info_type}`}>
+                                Min. yaş həddi{' '}
+                            </span>
+                        </div>
+                        <span
+                            className={`d-flex align-items-center text-capitalize pe-3 ${styles.info}`}>
+                            {minimumAge}+
                         </span>
                     </div>
-                    <span
-                        className={`d-flex align-items-center text-capitalize pe-3 ${styles.info}`}>
-                        10+
-                    </span>
-                </div>
+                )}
                 <hr />
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
@@ -209,7 +214,7 @@ const allRestInfo = ({
                     </div>
                     <span
                         className={`d-flex align-items-center text-capitalize pe-3 ${styles.info}`}>
-                        {payment}
+                        {`${payment}`}
                     </span>
                 </div>
                 <hr />
@@ -223,7 +228,7 @@ const allRestInfo = ({
                     </div>
                     <span
                         className={`d-flex align-items-center text-capitalize pe-3 ${styles.info}`}>
-                        Şəxsi, ictimai
+                        {`${parking}`}
                     </span>
                 </div>
                 <hr />
@@ -239,7 +244,7 @@ const allRestInfo = ({
                             <span className={`${styles.info_type}`}>
                                 Təsvir
                             </span>
-                            <p className={``}>{description}</p>
+                            <p>{description}</p>
                         </div>
                     </div>
                 </div>

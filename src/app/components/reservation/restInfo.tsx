@@ -18,7 +18,7 @@ const RestInfo = ({
     websiteLink,
 }: any) => {
     return (
-        <div className={`mt-3 mb-5 p-0 ${styles.date_finder}`}>
+        <div className={`mb-5 p-0 ${styles.date_finder}`}>
             <div>
                 <div style={{ width: '100%' }}>
                     <iframe

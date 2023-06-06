@@ -61,7 +61,7 @@ const ReservationRestaurant = ({ res }: any) => {
         dispatch(makeLoading());
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
+    console.log(res);
     return (
         <>
             <Head>
@@ -120,7 +120,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                         alt={res.name}
                                         width={386}
                                         height={300}
-                                        className="w-100 object-fill"
+                                        className={`w-100 ${styles.banner_img}`}
                                     />
                                 ))}
                             </div>
@@ -137,9 +137,9 @@ const ReservationRestaurant = ({ res }: any) => {
                             )}
                         </div>
                         <div className="px-3 px-md-0">
-                            <div className="container fluid mt-md-5 pb-md-5 px-3 px-md-0">
-                                <div className="row">
-                                    <div className="col-12 col-md-7 pe-md-5">
+                            <div className="container fluid mt-md-4 pt-md-2 px-3 px-md-0 pb-md-44">
+                                <div className="row row-width">
+                                    <div className="col-12 col-md-7 pe-md-5 ps-md-0">
                                         <div className="d-flex justify-content-between">
                                             <div>
                                                 <h1
@@ -147,21 +147,31 @@ const ReservationRestaurant = ({ res }: any) => {
                                                     {res.name}
                                                 </h1>
                                                 <div className="d-flex flex-md-column">
-                                                    <h4
-                                                        className={`d-flex align-items-center me-3 ${styles.res_type}`}>
+                                                    <div className="d-flex">
                                                         {res.type?.map(
-                                                            (type: any) =>
-                                                                type?.type,
+                                                            (type: any) => (
+                                                                <span
+                                                                    className={`d-flex align-items-center me-1 ${styles.res_type}`}
+                                                                    key={
+                                                                        type?.id
+                                                                    }>
+                                                                    {type.id ==
+                                                                    res.type
+                                                                        .length
+                                                                        ? `${type?.type}`
+                                                                        : `${type?.type} |`}
+                                                                </span>
+                                                            ),
                                                         )}
-                                                    </h4>
+                                                    </div>
                                                     <span
-                                                        className={`d-md-flex d-none ${styles.res_rating}`}>
+                                                        className={`d-md-flex d-none align-items-center ${styles.res_rating}`}>
                                                         <StarsRating
                                                             count={5}
                                                             style={{
                                                                 style: {
                                                                     fontSize:
-                                                                        '1.5rem',
+                                                                        '1.2rem',
                                                                 },
                                                             }}
                                                             disabled
@@ -170,24 +180,24 @@ const ReservationRestaurant = ({ res }: any) => {
                                                             }
                                                         />
                                                         <span
-                                                            className={`fs-4 fw-bold ${styles.res_description}`}>
+                                                            className={`fs-6 fw-bold ${styles.res_description}`}>
                                                             {`${
                                                                 res.rate ?? 0
                                                             }.0`}
                                                         </span>
                                                     </span>
                                                     <span
-                                                        className={`d-flex d-md-none align-items-center justify-content-center ${styles.res_rating}`}>
+                                                        className={`d-flex d-md-none align-items-center justify-content-center ps-2 ${styles.res_rating}`}>
                                                         <StarsRating
                                                             count={1}
                                                             style={{
                                                                 style: {
                                                                     fontSize:
-                                                                        '1.5rem',
+                                                                        '1.2rem',
                                                                     marginRight:
-                                                                        '-0.2rem',
+                                                                        '-0.5rem',
                                                                     marginTop:
-                                                                        '-0.2rem',
+                                                                        '-0.1rem',
                                                                 },
                                                             }}
                                                             disabled
@@ -207,13 +217,14 @@ const ReservationRestaurant = ({ res }: any) => {
                                             <div className="d-flex d-md-none align-items-center">
                                                 <a
                                                     type="button"
+                                                    className="btn btn-primary btn-md mt-2 mb-2">
                                                     href={`/restaurants/r/menu/${res.slug}`}
                                                     className="btn btn-primary btn-md mt-4 mb-2">
                                                     Menyu
                                                 </a>
                                             </div>
                                         </div>
-                                        <hr className="d-md-block d-none" />
+                                        <hr className="d-md-block d-none my-2" />
                                         <p
                                             className={`d-md-block d-none ${styles.res_description}`}>
                                             {showMore
@@ -236,17 +247,18 @@ const ReservationRestaurant = ({ res }: any) => {
                                         <div
                                             className={`d-flex align-items-center justify-content-between py-2 py-md-0 ${styles.tag_container}`}>
                                             <div className="d-flex align-items-center justify-content-between pt-2 pb-3 py-md-0">
-                                                <div
-                                                    className={`rounded-pill ${styles.tags}`}>
-                                                    {res.tag?.map(
-                                                        (tag: any) => tag?.name,
-                                                    )}
-                                                </div>
+                                                {res.tag?.map((tag: any) => (
+                                                    <div
+                                                        className={`rounded-pill ${styles.tags}`}
+                                                        key={tag.id}>
+                                                        {tag?.name}
+                                                    </div>
+                                                ))}
                                             </div>
                                         </div>
                                     </div>
                                     <div
-                                        className={`col-5 d-none d-md-block position-relative`}>
+                                        className={`col-5 d-none d-md-block position-relative ps-md-0`}>
                                         <button
                                             className={`d-flex align-items-center justify-content-center ${styles.heart_icon}`}
                                             onClick={() => {
@@ -267,9 +279,9 @@ const ReservationRestaurant = ({ res }: any) => {
                                                         '/images/rest_imag.png'
                                                     }
                                                     alt={res.name}
-                                                    width={386}
-                                                    height={300}
-                                                    className="w-100 rounded object-fill"
+                                                    width={353}
+                                                    height={272}
+                                                    className={`w-100 ${styles.banner_img}`}
                                                 />
                                             ))}
                                         </div>
@@ -286,28 +298,28 @@ const ReservationRestaurant = ({ res }: any) => {
                                 </div>
                             </div>
                             <div className="container fluid px-md-0">
-                                <div className="row d-flex flex-md-row md-reverse">
-                                    <div className="col-12 col-md-7 pe-md-5 order-first">
+                                <div className="row d-flex flex-md-row md-reverse row-width">
+                                    <div className="col-12 col-md-7 pe-md-5 order-first ps-md-0">
                                         <div>
                                             <h4
-                                                className={`d-inline d-md-none fw-bold`}>
+                                                className={`d-inline d-md-none fw-bold mt-4`}>
                                                 Masanızı Seçin
                                             </h4>
                                             <div
                                                 onClick={() =>
                                                     setCanEdit(!canEdit)
                                                 }
-                                                className={`position-relative border bg-dark mb-4 mt-4 mt-md-0 ${styles.map}`}
+                                                className={`overflow-hidden position-relative border bg-dark mb-4 mt-4 mt-md-0 ${styles.map}`}
                                                 style={{
                                                     height: '23.5rem',
                                                     borderRadius: '15px',
                                                 }}>
                                                 <div
                                                     style={{ zIndex: 2 }}
-                                                    className="text-light p-3">
-                                                    <div className="d-flex my-2 align-items-center justify-content-center">
+                                                    className="text-light">
+                                                    <div className="d-none d-md-flex my-2 align-items-center justify-content-center">
                                                         <span
-                                                            className={`d-none d-md-inline ${styles.bottom_border}`}>
+                                                            className={`${styles.bottom_border}`}>
                                                             Masanızı Seçin
                                                         </span>
                                                         <br />
@@ -328,7 +340,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                                     limitToBounds={false}>
                                                     <TransformComponent
                                                         wrapperStyle={{
-                                                            height: '17.5rem',
+                                                            maxHeight: '28rem',
                                                             width: '98.5%',
                                                             marginLeft: '5px',
                                                         }}>
@@ -357,31 +369,38 @@ const ReservationRestaurant = ({ res }: any) => {
                                                     </TransformComponent>
                                                 </TransformWrapper>
                                             </div>
-                                            <div
-                                                className={`pb-4 pt-3 ${styles.notes}`}>
-                                                <h5 className={`fw-600`}>
-                                                    Qeydlər
-                                                </h5>
-                                                <p>{res.notes}</p>
-                                            </div>
-                                            <div className="d-none d-md-block mt-2">
+                                            {res.notes && (
+                                                <div
+                                                    className={`pt-3 ${styles.notes}`}>
+                                                    <h5 className={`fw-600`}>
+                                                        Qeydlər
+                                                    </h5>
+                                                    <p>
+                                                        {res.notes ||
+                                                            'Saat 12:00-dan 00:00-a kimiişləyirik 23:40-da mətbəx bağlanır / Siz ancaq kiçik heyvanlarıkabinetdən çıxarmadan gələbilərsiniz /Kabinetlərdə siqaretçəkmək olar / Özünüzlə tort gətirəbilərsiniz pulsuz. / Gətirdiyinizhər spirtli içki üçün 20 manatödəmək lazımdır'}
+                                                    </p>
+                                                </div>
+                                            )}
+                                            <div className="d-none d-md-block mt-5">
                                                 <ResMenu id={res.id} />
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="mb-5 col-12 col-md-5 order-md-first">
-                                        <DateFinder
-                                            allowed={res.is_allowed}
-                                            restId={res.id}
-                                            restImage={
-                                                res?.images[0]?.image
-                                                    ? baseUrl +
-                                                      res.images[0]?.image
-                                                    : '/images/rest_imag.png'
-                                            }
-                                            data={res.online_reserv_hours}
-                                            restName={res.name}
-                                        />
+                                    <div className="col-12 col-md-5 order-md-first ps-md-0">
+                                        <div className="pb-md-44 mb-4 mb-md-0">
+                                            <DateFinder
+                                                allowed={res.is_allowed}
+                                                restId={res.id}
+                                                restImage={
+                                                    res?.images[0]?.image
+                                                        ? baseUrl +
+                                                          res.images[0]?.image
+                                                        : '/images/rest_imag.png'
+                                                }
+                                                data={res.online_reserv_hours}
+                                                restName={res.name}
+                                            />
+                                        </div>
                                         <div className="d-none d-md-flex">
                                             <RestInfo
                                                 name={res.name}
@@ -411,6 +430,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                                 serviceCharge={
                                                     res.service_charge
                                                 }
+                                                minimumAge={res.minimum_age}
                                             />
                                         </div>
                                     </div>
@@ -434,6 +454,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                         facebookLink={res.facebookLink}
                                         description={res.description}
                                         serviceCharge={res.service_charge}
+                                        minimumAge={res.minimum_age}
                                     />
                                 </div>
                             </div>

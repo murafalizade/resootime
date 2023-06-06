@@ -60,7 +60,7 @@ const Navbar = (props: IProps) => {
                 </div>
             ) : null}
             <div className="container-fluid border-bottom">
-                <div className="navbar py-4">
+                <div className="navbar">
                     <div>
                         <a
                             href="/"
@@ -68,9 +68,9 @@ const Navbar = (props: IProps) => {
                             <Image
                                 src={'/images/logo.png'}
                                 alt="logo"
-                                width={45}
-                                height={45}
-                                className="img-fluid mx-3 logo icon nav-img"
+                                width={34}
+                                height={34}
+                                className="img-fluid logo icon nav-img"
                             />
                             ResooTime
                         </a>
@@ -89,12 +89,12 @@ const Navbar = (props: IProps) => {
                                             ? '/forbusiness-login'
                                             : '/register'
                                     }
-                                    className="btn btn-primary mx-2">
+                                    className="btn btn-outline-primary mx-2">
                                     Qeydiyyat
                                 </a>
                                 <a
                                     href="/login"
-                                    className="btn btn-outline-primary mx-2">
+                                    className="btn btn-primary mx-2">
                                     Giriş
                                 </a>
                             </div>

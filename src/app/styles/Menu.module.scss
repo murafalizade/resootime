@@ -24,10 +24,16 @@
             border: none;
             transition: all 0.3s ease-in;
             white-space: nowrap;
-            &:hover {
+            &:hover, .active {
                 background-color: #dedafc;
                 color: #6a5ddf;
             }
+            
+            
+        }
+        .active {
+            background-color: #dedafc;
+            color: #6a5ddf;
         }
     }
 
@@ -62,7 +68,8 @@
                 border-radius: 6px;
                 width: 100%;
                 height: 5.5rem;
-                object-fit: cover;
+                object-fit: cover !important;
+                object-position: center !important;
             }
         }
     }
@@ -106,7 +113,7 @@
 
 @media screen and (min-width: 768px) {
     .menu {
-        height: 42rem;
+        max-height: 42rem;
     }
 }
 
@@ -115,6 +122,7 @@
         border: none;
         padding-top: 0 !important;
         padding-bottom: 7.8rem;
+        min-height: 28vh;
         .menu {
             overflow-y: visible !important;
             .menu_item {

@@ -2,12 +2,16 @@
     "name": "reservationapp",
     "version": "0.1.0",
     "private": true,
+    "engines": {
+        "node": "18"
+    },
     "scripts": {
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
         "test": "jest",
+        "deploy":"sh package.sh",
         "formater": "prettier --write .",
         "prepare": "husky install",
         "server": "nodemon server.js",

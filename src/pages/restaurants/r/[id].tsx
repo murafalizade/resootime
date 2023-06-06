@@ -39,7 +39,7 @@ const ReservationRestaurant = ({ res }: any) => {
     const isLoading = useSelector(selectIsLoading);
     const [wall, setWall] = useState('');
     const [date, setDate] = useState(new Date());
-    const [canEdit, setCanEdit] = useState(false);
+    const [canEdit, setCanEdit] = useState(true);
     const [showMore, setShowMore] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
     const [isGalleryOpen, setIsGalleryOpen] = useState(false);
@@ -217,12 +217,9 @@ const ReservationRestaurant = ({ res }: any) => {
                                             <div className="d-flex d-md-none align-items-center">
                                                 <a
                                                     type="button"
-                                                    href={`/restaurants/r/menu/${res.name
-                                                        .replace(' ', '-')
-                                                        .replace('(', '')
-                                                        .replace(')', '')
-                                                        .toLocaleLowerCase()}`}
                                                     className="btn btn-primary btn-md mt-2 mb-2">
+                                                    href={`/restaurants/r/menu/${res.slug}`}
+                                                    className="btn btn-primary btn-md mt-4 mb-2">
                                                     Menyu
                                                 </a>
                                             </div>

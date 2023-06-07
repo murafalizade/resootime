@@ -26,7 +26,7 @@
     background-color: #fff;
     z-index: 1000;
     position: absolute;
-    top: 0;
+    top: 10%;
     .gallery_modal {
         .close_button {
             background-color: transparent;
@@ -50,6 +50,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    border: 1px solid black;
 }
 
 .carousel {

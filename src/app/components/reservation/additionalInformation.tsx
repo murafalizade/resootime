@@ -12,6 +12,7 @@ const AdditionalInfo = ({
     maximumPrice,
     minimumPrice,
     serviceCharge,
+    minimumAge,
 }: any) => {
     return (
         <div className={`${styles.additional_info}`}>
@@ -25,15 +26,19 @@ const AdditionalInfo = ({
                         <GiMeal className={`me-2 ${styles.details_icon}`} />
                         <span className={`${styles.info_type}`}>Mətbəx</span>
                     </div>
-                    {cuisine?.map((item: any, index: number) => {
-                        return (
-                            <span
-                                className={`d-flex align-items-center fw-600 ${styles.info}`}
-                                key={index}>
-                                {item.name}
-                            </span>
-                        );
-                    })}
+                    <div className="d-flex">
+                        {cuisine?.map((item: any) => {
+                            return (
+                                <span
+                                    className={`d-flex align-items-center fw-600 ms-1 ${styles.info}`}
+                                    key={item.id}>
+                                    {item.id == cuisine.length
+                                        ? `${item?.name}`
+                                        : `${item?.name} |`}
+                                </span>
+                            );
+                        })}
+                    </div>
                 </div>
                 <hr />
                 <div className="d-flex justify-content-between me-2 py-2">
@@ -51,18 +56,22 @@ const AdditionalInfo = ({
                     </span>
                 </div>
                 <hr />
-                <div className="d-flex justify-content-between me-2 py-2">
-                    <div className="d-flex align-items-center">
-                        <FaChild className={`me-2 ${styles.details_icon}`} />
-                        <span className={`${styles.info_type}`}>
-                            Min. yaş həddi{' '}
+                {minimumAge && (
+                    <div className="d-flex justify-content-between me-2 py-2">
+                        <div className="d-flex align-items-center">
+                            <FaChild
+                                className={`me-2 ${styles.details_icon}`}
+                            />
+                            <span className={`${styles.info_type}`}>
+                                Min. yaş həddi{' '}
+                            </span>
+                        </div>
+                        <span
+                            className={`d-flex align-items-center fw-600 ${styles.info}`}>
+                            {minimumAge}+
                         </span>
                     </div>
-                    <span
-                        className={`d-flex align-items-center fw-600 ${styles.info}`}>
-                        10+
-                    </span>
-                </div>
+                )}
                 <hr />
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
@@ -88,7 +97,7 @@ const AdditionalInfo = ({
                     </div>
                     <span
                         className={`d-flex align-items-center fw-600 ${styles.info}`}>
-                        {payment}
+                        {`${payment}`}
                     </span>
                 </div>
                 <hr />
@@ -99,7 +108,7 @@ const AdditionalInfo = ({
                     </div>
                     <span
                         className={`d-flex align-items-center fw-600 ${styles.info}`}>
-                        {parking}
+                        {`${parking}`}
                     </span>
                 </div>
                 <hr />

@@ -17,24 +17,27 @@ const GalleryModal = ({ setIsGalleryOpen, images }: any) => {
     return (
         <div className={`${galleryStyles.gallery_background}`}>
             <div className={`${galleryStyles.gallery_modal}`}>
-                <div className={`navbar py-4 ${galleryStyles.navbar}`}>
-                    <div>
-                        <a
-                            href="/"
-                            className={`navbar-brand ${navStyles.brand_name}`}>
-                            <Image
-                                src={'/images/logo.png'}
-                                alt="logo"
-                                width={45}
-                                height={45}
-                                className="img-fluid mx-3 logo icon nav-img"
-                            />
-                            ResooTime
-                        </a>
+                <div className="container-fluid border-bottom">
+                    <div className="navbar">
+                        <div>
+                            <a
+                                href="/"
+                                className={`navbar-brand ${navStyles.brand_name}`}>
+                                <Image
+                                    src={'/images/logo.png'}
+                                    alt="logo"
+                                    width={34}
+                                    height={34}
+                                    className="img-fluid logo icon nav-img"
+                                />
+                                ResooTime
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div className="container fluid">
-                    <div className="d-flex align-items-center justify-content-end">
+                <div className="main-container flex-column">
+                    <div className="row justify-content-center">
+                    <div className="col-10 col-xl-12 d-flex align-items-end justify-content-end">
                         <button
                             className={`${galleryStyles.close_button}`}
                             onClick={() => {
@@ -44,8 +47,11 @@ const GalleryModal = ({ setIsGalleryOpen, images }: any) => {
                             <IoClose size={'1rem'} color="#000" />
                         </button>
                     </div>
-                    <div className={`${galleryStyles.gallary_carousel}`}>
-                        <ImageCarousel images={galleryImages} />
+                    </div>
+                    <div className={`row justify-content-center ${galleryStyles.gallery_carousel}`}>
+                        <div className="col-10 col-xl-12">
+                            <ImageCarousel images={galleryImages} />
+                        </div>
                     </div>
                 </div>
             </div>

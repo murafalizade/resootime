@@ -7,11 +7,36 @@ import Cookie from '@/app/utils/Cookie';
 import styles from '@/app/styles/Form.module.scss';
 import UserChangePasswordForum from '@/app/components/forms/userChangePasswordForum';
 import withAuth from '@/app/hoc/withAuth';
+import Head from 'next/head';
 
 const UserSettings = ({ user }: any) => {
     const [isProfil, setIsProfil] = useState(true);
 
     return (
+        <>
+         <Head>
+                <title>{user.first_name} | ResooTime.com</title>
+                <meta
+                    name="description"
+                    content={`Indi istənilən vaxta masanı seçib rezerv et.`}
+                />
+                <meta
+                    name="keywords"
+                    content={`restoran, rezerv et, restoran, rezervasiya et, masani sec, rezervasiya, masa}`}
+                />
+                <meta name="og:title" content={`ResooTime.com`} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://resootime.com/" />
+                <meta
+                    property="og:image"
+                    content="https://resootime.com/images/logo.png"
+                />
+                <meta
+                    property="og:description"
+                    content={`Indi istənilən vaxta masanı seçib rezerv et.`}
+                />
+                <meta property="og:site_name" content="ResooTime" />
+            </Head>
         <Layout>
             <div className={`p-5 ${styles.form_bg}`}>
                 <div className="row">
@@ -62,6 +87,7 @@ const UserSettings = ({ user }: any) => {
                 </div>
             </div>
         </Layout>
+        </>
     );
 };
 

@@ -60,6 +60,11 @@
     border-radius: 12px;
 }
 
+.banner_img {
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
 @media screen and (max-width: 768px) {
     .table_bar,
     .table_map {
@@ -73,12 +78,12 @@
 // Restaurant Details
 .res_name {
     font-size: 2.3rem;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 2.7rem;
 }
 
 .res_type {
-    font-size: 1.1rem;
+    font-size: 1.09rem;
     line-height: 1.3rem;
     color: #505050;
     margin-bottom: 0;
@@ -105,7 +110,7 @@
 
 .bottom_border {
     border-bottom: 1px solid #fff;
-    padding: 0.7rem;
+    padding: 0.6rem 0.7rem 0.4rem;
 }
 
 .tag_container {
@@ -143,10 +148,10 @@
 }
 
 .img_container {
-    height: 19rem;
+    height: 17rem;
     overflow-y: hidden;
     img {
-        height: 19rem !important;
+        height: 17rem !important;
     }
 }
 
@@ -157,24 +162,27 @@
     transform: translateX(-50%);
     border: none;
     background-color: #fff;
-    padding: 0.5rem 1.3rem;
+    padding: 0.4rem 1.5rem;
     border-radius: 5px;
     white-space: nowrap;
     text-decoration: none;
     color: #000;
+    font-size: 0.75rem;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 .heart_icon {
     position: absolute;
     right: 7%;
-    top: 7%;
+    top: 5%;
     border-radius: 50%;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2rem;
     background-color: #fff;
     border: none;
     color: #ff0000;
-    font-size: 1.4rem;
+    box-shadow: 0px 1.44px 4.32px rgba(90, 90, 90, 0.17);
+    font-size: 1.2rem;
 }
 
 .notes {
@@ -190,4 +198,11 @@
     .show_img_btn {
         bottom: 8%;
     }
+    .img_container {
+        border-radius: 3px;
+        .banner_img {
+            border-radius: 3px;
+        }
+    }
 }
+ 

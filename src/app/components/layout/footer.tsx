@@ -101,7 +101,7 @@ const Footer = () => {
                                 </ul>
                             </div>
                         </div>
-                        <div className="col-md-4 d-none d-md-flex col-12">
+                        <div className="col-md-4 d-none d-md-flex col-12 justify-content-end">
                             <div className="text-end">
                                 <a
                                     className={`navbar-brand ${styles.link_heading}`}>

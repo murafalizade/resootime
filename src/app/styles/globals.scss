@@ -91,6 +91,10 @@ th {
     font-family: 'Roboto', sans-serif;
 }
 
+a, button {
+    cursor: pointer !important;
+}
+
 .overlay {
     position: fixed;
     top: 0;
@@ -116,24 +120,12 @@ th {
     font-weight: 600;
 }
 
-// Media Queries
-@media screen and (max-width: 1024px) {
-    .md-reverse {
-        flex-direction: column-reverse !important;
-    }
-}
-
-@media screen and (max-width: 426px) {
-    .sm-none {
-        display: none !important;
-    }
-
-    .sm-block {
-        display: block !important;
-    }
-
-    .sm-m-0 {
-        margin: 0 !important;
+.navbar {
+    padding: 1.22rem 1rem !important;
+    height: 5rem;
+    .logo {
+        margin-right: 0.58rem;
+        margin-left: 20px;
     }
 }
 
@@ -169,19 +161,15 @@ input {
     color: #6a5ddf !important;
 }
 
-// icon style
-.icon {
-    border-radius: 0.75rem;
-}
-
 // button styles
 .btn {
     border-radius: 10px !important;
+    font-size: 0.8rem !important;
 }
 
 .btn-primary {
     background-color: #6a5ddf !important;
-    padding: 9px 30px !important;
+    padding: 10px 29px !important;
     border-color: #6a5ddf !important;
     transition: all 0.3s ease !important;
     &:hover {
@@ -191,7 +179,7 @@ input {
 }
 
 .btn-outline-primary {
-    padding: 9px 27px !important;
+    padding: 10px 16px !important;
     border-color: #6a5ddf !important;
     color: #6a5ddf !important;
     transition: all 0.3s ease !important;
@@ -220,7 +208,27 @@ input {
     color: #000 !important;
 }
 
-// media quaries
+// Media Queries
+@media screen and (max-width: 1024px) {
+    .md-reverse {
+        flex-direction: column-reverse !important;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .sm-none {
+        display: none !important;
+    }
+
+    .sm-block {
+        display: block !important;
+    }
+
+    .sm-m-0 {
+        margin: 0 !important;
+    }
+}
+
 @media screen and (max-width: 1200px) {
     html {
         font-size: 100%;
@@ -229,8 +237,13 @@ input {
 
 @media screen and (min-width: 1200px) {
     .main-container {
-        padding-left: 12.7rem;
-        padding-right: 12.7rem;
+        padding-left: 229.5px;
+        padding-right: 229.5px;
+        display: flex;
+        justify-content: center;
+    }
+    .row-width {
+        width: 907px;
     }
 }
 
@@ -253,6 +266,12 @@ input {
         .lists {
             font-size: 94%;
         }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .pb-md-44 {
+        padding-bottom: 44px;
     }
 }
 

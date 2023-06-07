@@ -9,10 +9,16 @@ import { Suspense, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styles from '@/app/styles/Home.module.scss';
+import CardCarousel from '@/app/components/reservation/cardCarousel';
 
 function Home({ restaurants }: any) {
     // search restaurant state
     const [search, setSearch] = useState<string>('');
+
+    // filters
+    const [isShowNewOnes, setIsShowNewOnes] = useState<boolean>(false);
+    const [isShowPopularOnes, setIsShowPopularOnes] = useState<boolean>(false);
+    const [isShowNearOnes, setIsShowNearOnes] = useState<boolean>(false);
 
     // restaurant state
     const [rests, setRests] = useState<IRestaurant[]>(restaurants.results);
@@ -40,7 +46,14 @@ function Home({ restaurants }: any) {
         searchRestaurant(name);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [name]);
-
+    console.log(rests);
+    const items = [
+        rests.map((rest: IRestaurant, i: number) => (
+            <div key={i} className="">
+                <Card cardInfo={rest} />
+            </div>
+        )),
+    ];
     return (
         <>
             <Head>
@@ -74,108 +87,176 @@ function Home({ restaurants }: any) {
             </Head>
 
             <Layout>
-                <main>
-                    <div className={`container-fluid ${styles.home_page}`}>
-                        <div className={`${styles.heading_container} mx-md-5 `}>
-                            <div className="col-12 col-xl-6 mx-md-5 my-5 py-5 d-flex d-md-block justify-content-center align-items-center flex-column">
-                                <h1
-                                    className={`mb-5 mx-sm-3 ${styles.heading}`}>
-                                    Masa Rezerv et
-                                </h1>
-                                <div
-                                    className={`input-group ${styles.heading_input}`}>
-                                    <Image
-                                        src="/icons/search-bar.svg"
-                                        alt="axtaris ikonu"
-                                        width={17}
-                                        height={17}
-                                        className={`position-relative ${styles.search_btn}`}
-                                    />
-                                    <input
-                                        placeholder="Restoran, Kafe"
-                                        type="text"
-                                        value={search}
-                                        onChange={(e) =>
-                                            setSearch(e.target.value)
-                                        }
-                                        className="form-control"
-                                    />
-                                    <Link
-                                        href={{
-                                            pathname: '',
-                                            query: { name: search },
-                                        }}
-                                        className={`btn btn-primary position-relative ${styles.input_btn}`}>
-                                        Axtar
-                                    </Link>
+                <main className={``}>
+                    <div className={`${styles.home_page}`}>
+                        <div className={`main-container`}>
+                            <div
+                                className={`container fluid ${styles.heading_container}`}>
+                                <div className="col-12 col-xl-6 d-flex justify-content-center flex-column pb-4">
+                                    <h1 className={`${styles.heading}`}>
+                                        Masanı Rezerv et
+                                    </h1>
+                                    <div
+                                        className={`input-group ${styles.heading_input}`}>
+                                        <input
+                                            placeholder="Restoran, Kafe"
+                                            type="text"
+                                            value={search}
+                                            onChange={(e) =>
+                                                setSearch(e.target.value)
+                                            }
+                                            className="form-control"
+                                        />
+                                        <Link
+                                            href={{
+                                                pathname: '',
+                                                query: { name: search },
+                                            }}
+                                            className={`btn btn-primary position-relative ${styles.input_btn}`}>
+                                            Axtar
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div
-                        className={`container mt-5 px-4 ${styles.card_section}`}>
-                        <div className="row">
-                            {rests.map((rest: IRestaurant, i: number) => (
-                                <div
-                                    key={i}
-                                    className="col-6 col-md-4 col-xl-3 my-3">
-                                    <Card cardInfo={rest} />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                    <nav
-                        className="d-flex justify-content-center mt-3"
-                        aria-label="Page navigation example">
-                        <ul className="pagination mb-5">
-                            <li
-                                className={`page-item ${
-                                    !page || page == '1' ? 'disabled' : ''
-                                }`}>
-                                <Link
-                                    className={`page-link ${styles.common_page_link}`}
-                                    href={{ pathname: '', query: { page: 1 } }}>
-                                    Geri
-                                </Link>
-                            </li>
-                            {
-                                // pagination
-                                Array.from(
-                                    { length: restaurants.count / 20 + 1 },
-                                    (_, i) => i + 1,
-                                ).map((page: number) => (
-                                    <li
-                                        key={page}
-                                        className={`page-item ${
-                                            page == 1
-                                                ? `active ${styles.active}`
-                                                : ''
-                                        }`}>
-                                        <Link
-                                            className={`page-link ${styles.active_page_link}`}
-                                            href={{
-                                                pathname: '',
-                                                query: { page },
-                                            }}>
-                                            {page}
-                                        </Link>
-                                    </li>
-                                ))
-                            }
-                            {restaurants.count / 20 + 1 > 2 ? (
-                                <li className="page-item">
-                                    <Link
-                                        className="page-link"
-                                        href={{
-                                            pathname: '',
-                                            query: { page: 4 },
+                    <div className={`pb-5 ${styles.card_section}`}>
+                        {!isShowNewOnes ? (
+                            <div>
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <h3 className={`${styles.filters}`}>
+                                        Yeni əlavə olunanlar
+                                    </h3>
+                                    <a
+                                        href="#"
+                                        className={`text-decoration-none ${styles.see_all_btn}`}
+                                        onClick={() => {
+                                            setIsShowNewOnes(true);
                                         }}>
-                                        Irəli
-                                    </Link>
-                                </li>
-                            ) : null}
-                        </ul>
-                    </nav>
+                                        Hamısına bax
+                                    </a>
+                                </div>
+                                <div className="row">
+                                    <CardCarousel show={4}>
+                                                {rests.map(
+                                                    (
+                                                        rest: IRestaurant,
+                                                        i: number,
+                                                    ) => (
+                                                        <div
+                                                            key={i}
+                                                            >
+                                                            <Card
+                                                                cardInfo={rest}
+                                                            />
+                                                        </div>
+                                                    ),
+                                                )}
+                                    </CardCarousel>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="row ps-4 pt-5">
+                                {rests.map((rest: IRestaurant, i: number) => (
+                                    <div
+                                        key={i}
+                                        className="col-6 col-md-4 col-xl-3">
+                                        <Card cardInfo={rest} />
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                        {!isShowPopularOnes ? (
+                            <div>
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <h3 className={`${styles.filters}`}>
+                                        Populyar olanlar
+                                    </h3>
+                                    <a
+                                        href="#"
+                                        className={`text-decoration-none ${styles.see_all_btn}`}
+                                        onClick={() => {
+                                            setIsShowNewOnes(true);
+                                        }}>
+                                        Hamısına bax
+                                    </a>
+                                </div>
+                                <div className="row">
+                                    <CardCarousel show={4}>
+                                                {rests.map(
+                                                    (
+                                                        rest: IRestaurant,
+                                                        i: number,
+                                                    ) => (
+                                                        <div
+                                                            key={i}
+                                                            >
+                                                            <Card
+                                                                cardInfo={rest}
+                                                            />
+                                                        </div>
+                                                    ),
+                                                )}
+                                    </CardCarousel>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="row ps-4 pt-5">
+                                {rests.map((rest: IRestaurant, i: number) => (
+                                    <div
+                                        key={i}
+                                        className="col-6 col-md-4 col-xl-3">
+                                        <Card cardInfo={rest} />
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                        {!isShowNewOnes ? (
+                            <div>
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <h3 className={`${styles.filters}`}>
+                                        Yaxındakılar
+                                    </h3>
+                                    <a
+                                        href="#"
+                                        className={`text-decoration-none ${styles.see_all_btn}`}
+                                        onClick={() => {
+                                            setIsShowNewOnes(true);
+                                        }}>
+                                        Hamısına bax
+                                    </a>
+                                </div>
+                                <div className="row">
+                                    <CardCarousel show={4}>
+                                                {rests.map(
+                                                    (
+                                                        rest: IRestaurant,
+                                                        i: number,
+                                                    ) => (
+                                                        <div
+                                                            key={i}
+                                                            >
+                                                            <Card
+                                                                cardInfo={rest}
+                                                            />
+                                                        </div>
+                                                    ),
+                                                )}
+                                    </CardCarousel>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="row ps-4 pt-5">
+                                {rests.map((rest: IRestaurant, i: number) => (
+                                    <div
+                                        key={i}
+                                        className="col-6 col-md-4 col-xl-3">
+                                        <Card cardInfo={rest} />
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
                 </main>
             </Layout>
         </>
@@ -188,6 +269,16 @@ export default withAuth(Home, false);
 export async function getServerSideProps(context: any) {
     const { page } = context.query;
     const restaurants = await RestaurantService.getRestaurants(page);
+    let wildcard = context.req.headers.host.split('.')[0];
+
+    if (wildcard !== 'localhost:3000') {
+        return {
+            redirect: {
+                destination: `http://localhost:3000/`,
+                permanent: false,
+            },
+        };
+    }
 
     return {
         props: {

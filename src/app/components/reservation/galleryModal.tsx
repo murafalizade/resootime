@@ -37,18 +37,19 @@ const GalleryModal = ({ setIsGalleryOpen, images }: any) => {
                 </div>
                 <div className="main-container flex-column">
                     <div className="row justify-content-center">
-                    <div className="col-10 col-xl-12 d-flex align-items-end justify-content-end">
-                        <button
-                            className={`${galleryStyles.close_button}`}
-                            onClick={() => {
-                                setIsGalleryOpen(false);
-                            }}>
-                            Bağla
-                            <IoClose size={'1rem'} color="#000" />
-                        </button>
+                        <div className="col-10 col-xl-12 d-flex align-items-end justify-content-end">
+                            <button
+                                className={`${galleryStyles.close_button}`}
+                                onClick={() => {
+                                    setIsGalleryOpen(false);
+                                }}>
+                                Bağla
+                                <IoClose size={'1rem'} color="#000" />
+                            </button>
+                        </div>
                     </div>
-                    </div>
-                    <div className={`row justify-content-center ${galleryStyles.gallery_carousel}`}>
+                    <div
+                        className={`row justify-content-center ${galleryStyles.gallery_carousel}`}>
                         <div className="col-10 col-xl-12">
                             <ImageCarousel images={galleryImages} />
                         </div>

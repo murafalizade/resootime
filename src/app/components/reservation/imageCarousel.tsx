@@ -44,7 +44,7 @@ const ImageCarousel: React.FC<{ images?: ImageType[] }> = ({ images }) => {
             let newIndex = selectedImageIndex + 1;
             if (newIndex >= images.length) {
                 newIndex = 0;
-              }
+            }
             handleSelectedImageChange(newIndex);
         }
     };
@@ -72,9 +72,7 @@ const ImageCarousel: React.FC<{ images?: ImageType[] }> = ({ images }) => {
                     {images &&
                         images.map((image: any, index: any) => (
                             <div
-                                onClick={() =>
-                                    handleSelectedImageChange(index)
-                                }
+                                onClick={() => handleSelectedImageChange(index)}
                                 style={{
                                     backgroundImage: `url(${
                                         baseUrl + image?.image

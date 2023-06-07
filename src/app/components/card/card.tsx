@@ -14,11 +14,7 @@ const Card = ({ cardInfo }: ICardProps) => {
             className={`d-flex align-items-center justify-content-center ${styles.card_container}`}>
             <div className={`card ${styles.card}`}>
                 <a
-                    href={`/restaurants/r/${cardInfo.name
-                        .replace(' ', '-')
-                        .replace('(', '')
-                        .replace(')', '')
-                        .toLocaleLowerCase()}`}>
+                    href={`/restaurants/r/${cardInfo.slug}`}>
                     <Image
                         // src={cardInfo.images[0]?.image || '/images/rest_imag.png'}
                         src={'/images/rest_imag.png'}

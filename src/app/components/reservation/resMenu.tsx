@@ -18,7 +18,7 @@ const Menu = ({ id }: { id: number }) => {
             if (index < lastIndex && menuItem.products.length > 0) {
                 setCategory(menuItem.category);
                 setActive(menuItem.id);
-                lastIndex = index
+                lastIndex = index;
             }
         });
     }, [menuItems]);

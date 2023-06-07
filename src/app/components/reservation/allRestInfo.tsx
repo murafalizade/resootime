@@ -27,7 +27,7 @@ const allRestInfo = ({
     description,
     serviceCharge,
     websiteLink,
-    minimumAge
+    minimumAge,
 }: any) => {
     return (
         <div
@@ -138,7 +138,7 @@ const allRestInfo = ({
                     </div>
                     <span
                         className={`d-flex align-items-center pe-3 ${styles.info}`}>
-                       {cuisine?.map((item: any) => {
+                        {cuisine?.map((item: any) => {
                             return (
                                 <span
                                     className={`d-flex align-items-center fw-600 ms-1 ${styles.info}`}

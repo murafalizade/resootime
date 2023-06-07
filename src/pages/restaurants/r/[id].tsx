@@ -218,9 +218,8 @@ const ReservationRestaurant = ({ res }: any) => {
                                                 <a
                                                     type="button"
                                                     className="btn btn-primary btn-md mt-2 mb-2"
-                                                    href={`/restaurants/r/menu/${res.slug}`}>
-                                                </a>
-                                                    Menyu
+                                                    href={`/restaurants/r/menu/${res.slug}`}></a>
+                                                Menyu
                                             </div>
                                         </div>
                                         <hr className="d-md-block d-none my-2" />

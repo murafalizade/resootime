@@ -24,12 +24,11 @@
             border: none;
             transition: all 0.3s ease-in;
             white-space: nowrap;
-            &:hover, .active {
+            &:hover,
+            .active {
                 background-color: #dedafc;
                 color: #6a5ddf;
             }
-            
-            
         }
         .active {
             background-color: #dedafc;

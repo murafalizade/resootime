@@ -14,7 +14,7 @@ const UserSettings = ({ user }: any) => {
 
     return (
         <>
-         <Head>
+            <Head>
                 <title>{user.first_name} | ResooTime.com</title>
                 <meta
                     name="description"
@@ -37,56 +37,56 @@ const UserSettings = ({ user }: any) => {
                 />
                 <meta property="og:site_name" content="ResooTime" />
             </Head>
-        <Layout>
-            <div className={`p-5 ${styles.form_bg}`}>
-                <div className="row">
-                    {isProfil ? (
-                        <h5 className="text-center">Profil</h5>
-                    ) : (
-                        <h5 className="text-center">Parolu Dəyişin</h5>
-                    )}
-                </div>
-                <div className="row">
-                    <div className="col-md-4 col-12 ps-md-5 mt-5">
-                        <div>
-                            <h5>
-                                <Link
-                                    href=""
-                                    className={`text-decoration-none side-link ${
-                                        isProfil && 'visited-side-link'
-                                    }`}
-                                    onClick={() => {
-                                        setIsProfil(true);
-                                    }}>
-                                    Hesab Məlumatları
-                                </Link>
-                            </h5>
-                        </div>
-                        <div>
-                            <h5>
-                                <Link
-                                    href=""
-                                    className={`text-decoration-none side-link ${
-                                        !isProfil && 'visited-side-link'
-                                    }`}
-                                    onClick={() => {
-                                        setIsProfil(false);
-                                    }}>
-                                    Parol
-                                </Link>
-                            </h5>
-                        </div>
-                    </div>
-                    <div className="col-md-8 col-12 mt-4">
+            <Layout>
+                <div className={`p-5 ${styles.form_bg}`}>
+                    <div className="row">
                         {isProfil ? (
-                            <UserProfilForum user={user} />
+                            <h5 className="text-center">Profil</h5>
                         ) : (
-                            <UserChangePasswordForum user={user} />
+                            <h5 className="text-center">Parolu Dəyişin</h5>
                         )}
                     </div>
+                    <div className="row">
+                        <div className="col-md-4 col-12 ps-md-5 mt-5">
+                            <div>
+                                <h5>
+                                    <Link
+                                        href=""
+                                        className={`text-decoration-none side-link ${
+                                            isProfil && 'visited-side-link'
+                                        }`}
+                                        onClick={() => {
+                                            setIsProfil(true);
+                                        }}>
+                                        Hesab Məlumatları
+                                    </Link>
+                                </h5>
+                            </div>
+                            <div>
+                                <h5>
+                                    <Link
+                                        href=""
+                                        className={`text-decoration-none side-link ${
+                                            !isProfil && 'visited-side-link'
+                                        }`}
+                                        onClick={() => {
+                                            setIsProfil(false);
+                                        }}>
+                                        Parol
+                                    </Link>
+                                </h5>
+                            </div>
+                        </div>
+                        <div className="col-md-8 col-12 mt-4">
+                            {isProfil ? (
+                                <UserProfilForum user={user} />
+                            ) : (
+                                <UserChangePasswordForum user={user} />
+                            )}
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </Layout>
+            </Layout>
         </>
     );
 };

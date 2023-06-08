@@ -28,9 +28,6 @@ import ResMenu from '@/app/components/reservation/resMenu';
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
 import GalleryModal from '@/app/components/reservation/galleryModal';
-import Gallery from '@/pages/restaurants/r/gallery/[slug]';
-import BASE_URL from '@/app/constants/baseUrl';
-import Menu from '@/pages/restaurants/r/menu/[slug]';
 
 const ReservationRestaurant = ({ res }: any) => {
     const isModalOpen = useSelector(selectIsModelOpen);
@@ -43,6 +40,7 @@ const ReservationRestaurant = ({ res }: any) => {
     const [showMore, setShowMore] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
     const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+    const [twoFingerGesture, setTwoFingerGesture] = useState(false);
 
     const getTables = async () => {
         const map = await RestaurantService.getTables(res.id);
@@ -55,13 +53,33 @@ const ReservationRestaurant = ({ res }: any) => {
         dispatch(filterTables(filterTable));
     };
 
+    let initialDelta: any = null;
+    const handleTouchMove = (event: any) => {
+        console.log(event);
+        if (event.deltaY !== 0) {
+            if (initialDelta === null) {
+                initialDelta = event.deltaY;
+            } else {
+                const deltaDiff = event.deltaY - initialDelta;
+
+                if (Math.abs(deltaDiff) > 100) {
+                    // Adjust this threshold based on your needs
+                    if (deltaDiff < 0) {
+                        console.log('Pinch-in detected');
+                    } else {
+                        console.log('Pinch-out detected');
+                    }
+                }
+            }
+        }
+    };
+
     useEffect(() => {
         dispatch(makeLoading());
         getTables();
         dispatch(makeLoading());
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    console.log(res);
     return (
         <>
             <Head>
@@ -304,9 +322,6 @@ const ReservationRestaurant = ({ res }: any) => {
                                                 Masanızı Seçin
                                             </h4>
                                             <div
-                                                onClick={() =>
-                                                    setCanEdit(!canEdit)
-                                                }
                                                 className={`overflow-hidden position-relative border bg-dark mb-4 mt-4 mt-md-0 ${styles.map}`}
                                                 style={{
                                                     height: '23.5rem',
@@ -334,7 +349,10 @@ const ReservationRestaurant = ({ res }: any) => {
                                                     initialScale={0.75}
                                                     minScale={0.5}
                                                     maxScale={2}
-                                                    disabled={canEdit}
+                                                    wheel={{
+                                                        step: 50,
+                                                    }}
+                                                    disabled={!twoFingerGesture}
                                                     limitToBounds={false}>
                                                     <TransformComponent
                                                         wrapperStyle={{

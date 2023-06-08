@@ -72,12 +72,12 @@
     padding-right: 229.5px;
 }
 .card_container {
-    width: 12.9rem;
+    width: 11.4rem;
     min-height: 15rem;
     border: 1px solid rgba(217, 217, 217, 0.04);
     box-shadow: 0px 0px 3.60333px rgba(103, 110, 118, 0.35);
     transition: all 0.3s ease-in;
-    padding: 9px 0 18px !important;
+    padding: 9px  9px !important;
     .card {
         width: 184px;
         box-sizing: border-box;
@@ -151,10 +151,16 @@
             height: 120px !important;
         }
     }
+
+    .card_section{
+        padding-left: 80px;
+        padding-right: 80px;
+    }
 }
 
 @media screen and (max-width: 426px) {
     .card {
+        
         height: 180px !important;
         .card_img {
             height: 100px !important;
@@ -169,6 +175,10 @@
                 font-size: 1rem;
             }
         }
+    }
+    .card_section{
+        padding-left: 25px;
+        padding-right: 25px;
     }
 }
 

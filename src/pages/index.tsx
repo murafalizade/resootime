@@ -7,9 +7,8 @@ import withAuth from '@/app/hoc/withAuth';
 import Link from 'next/link';
 import { Suspense, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import styles from '@/app/styles/Home.module.scss';
-import CardCarousel from '@/app/components/reservation/cardCarousel';
+import Carousel from '@/app/components/card/carousel';
 
 function Home({ restaurants }: any) {
     // search restaurant state
@@ -39,21 +38,12 @@ function Home({ restaurants }: any) {
         setRests(filteredRestaurants);
     };
 
-    console.log(rests);
-
     // search restaurant when page loaded
     useEffect(() => {
         searchRestaurant(name);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [name]);
-    console.log(rests);
-    const items = [
-        rests.map((rest: IRestaurant, i: number) => (
-            <div key={i} className="">
-                <Card cardInfo={rest} />
-            </div>
-        )),
-    ];
+
     return (
         <>
             <Head>
@@ -121,139 +111,94 @@ function Home({ restaurants }: any) {
                         </div>
                     </div>
                     <div className={`pb-5 ${styles.card_section}`}>
-                        {!isShowNewOnes ? (
+                    {rests.length > 4 ? (
                             <div>
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <h3 className={`${styles.filters}`}>
-                                        Yeni əlavə olunanlar
-                                    </h3>
-                                    <a
-                                        href="#"
-                                        className={`text-decoration-none ${styles.see_all_btn}`}
-                                        onClick={() => {
-                                            setIsShowNewOnes(true);
-                                        }}>
-                                        Hamısına bax
-                                    </a>
-                                </div>
-                                <div className="row">
-                                    <CardCarousel show={4}>
-                                                {rests.map(
-                                                    (
-                                                        rest: IRestaurant,
-                                                        i: number,
-                                                    ) => (
-                                                        <div
-                                                            key={i}
-                                                            >
-                                                            <Card
-                                                                cardInfo={rest}
-                                                            />
-                                                        </div>
-                                                    ),
-                                                )}
-                                    </CardCarousel>
+                                <div className="row mt-5">
+                                    <Carousel title="Yeni əlavə olunanlar">
+                                        {rests.map((rest, i: number) => (
+                                            <Card key={i} cardInfo={rest} />
+                                        ))}
+                                    </Carousel>
                                 </div>
                             </div>
                         ) : (
-                            <div className="row ps-4 pt-5">
-                                {rests.map((rest: IRestaurant, i: number) => (
-                                    <div
-                                        key={i}
-                                        className="col-6 col-md-4 col-xl-3">
-                                        <Card cardInfo={rest} />
-                                    </div>
-                                ))}
+                            <div>
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <h3 className={`${styles.filters}`}>
+                                       Yeni əlavə olunanlar
+                                    </h3>
+                                </div>
+                                <div className="row">
+                                    {rests.map(
+                                        (rest: IRestaurant, i: number) => (
+                                            <div
+                                                key={i}
+                                                className="col-6 col-md-4 col-xl-3">
+                                                <Card cardInfo={rest} />
+                                            </div>
+                                        ),
+                                    )}
+                                </div>
                             </div>
                         )}
-                        {!isShowPopularOnes ? (
+                        {rests.length > 4 ? (
+                            <div>
+                                <div className="row mt-5">
+                                    <Carousel title="Populyar olanlar">
+                                        {rests.map((rest, i: number) => (
+                                            <Card key={i} cardInfo={rest} />
+                                        ))}
+                                    </Carousel>
+                                </div>
+                            </div>
+                        ) : (
                             <div>
                                 <div className="d-flex justify-content-between align-items-center">
                                     <h3 className={`${styles.filters}`}>
                                         Populyar olanlar
                                     </h3>
-                                    <a
-                                        href="#"
-                                        className={`text-decoration-none ${styles.see_all_btn}`}
-                                        onClick={() => {
-                                            setIsShowNewOnes(true);
-                                        }}>
-                                        Hamısına bax
-                                    </a>
                                 </div>
                                 <div className="row">
-                                    <CardCarousel show={4}>
-                                                {rests.map(
-                                                    (
-                                                        rest: IRestaurant,
-                                                        i: number,
-                                                    ) => (
-                                                        <div
-                                                            key={i}
-                                                            >
-                                                            <Card
-                                                                cardInfo={rest}
-                                                            />
-                                                        </div>
-                                                    ),
-                                                )}
-                                    </CardCarousel>
+                                    {rests.map(
+                                        (rest: IRestaurant, i: number) => (
+                                            <div
+                                                key={i}
+                                                className="col-6 col-md-4 col-xl-3">
+                                                <Card cardInfo={rest} />
+                                            </div>
+                                        ),
+                                    )}
+                                </div>
+                            </div>
+                        )}
+                        {rests.length > 4 ? (
+                            <div>
+                                <div className="row mt-5">
+                                    <Carousel title="Yaxındakılar">
+                                        {rests.map((rest, i: number) => (
+                                            <Card key={i} cardInfo={rest} />
+                                        ))}
+                                    </Carousel>
                                 </div>
                             </div>
                         ) : (
-                            <div className="row ps-4 pt-5">
-                                {rests.map((rest: IRestaurant, i: number) => (
-                                    <div
-                                        key={i}
-                                        className="col-6 col-md-4 col-xl-3">
-                                        <Card cardInfo={rest} />
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                        {!isShowNewOnes ? (
                             <div>
                                 <div className="d-flex justify-content-between align-items-center">
                                     <h3 className={`${styles.filters}`}>
                                         Yaxındakılar
                                     </h3>
-                                    <a
-                                        href="#"
-                                        className={`text-decoration-none ${styles.see_all_btn}`}
-                                        onClick={() => {
-                                            setIsShowNewOnes(true);
-                                        }}>
-                                        Hamısına bax
-                                    </a>
                                 </div>
                                 <div className="row">
-                                    <CardCarousel show={4}>
-                                                {rests.map(
-                                                    (
-                                                        rest: IRestaurant,
-                                                        i: number,
-                                                    ) => (
-                                                        <div
-                                                            key={i}
-                                                            >
-                                                            <Card
-                                                                cardInfo={rest}
-                                                            />
-                                                        </div>
-                                                    ),
-                                                )}
-                                    </CardCarousel>
+                                    {rests.map(
+                                        (rest: IRestaurant, i: number) => (
+                                            <div
+                                                key={i}
+                                                className="col-6 col-md-4 col-xl-3">
+                                                <Card cardInfo={rest} />
+                                            </div>
+                                        ),
+                                    )}
                                 </div>
-                            </div>
-                        ) : (
-                            <div className="row ps-4 pt-5">
-                                {rests.map((rest: IRestaurant, i: number) => (
-                                    <div
-                                        key={i}
-                                        className="col-6 col-md-4 col-xl-3">
-                                        <Card cardInfo={rest} />
-                                    </div>
-                                ))}
                             </div>
                         )}
                     </div>

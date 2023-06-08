@@ -210,12 +210,10 @@ input {
     color: #000 !important;
 }
 
-
 // Carousel style
-.slick-slide>div{
+.slick-slide > div {
     padding: 5px;
 }
-
 
 // // CardCarousel style
 // .carousel-container {
@@ -266,7 +264,8 @@ input {
 //     width: calc(100% / 4);
 // }
 
-.left-arrow, .right-arrow {
+.left-arrow,
+.right-arrow {
     position: absolute;
     z-index: 1;
     top: 50%;
@@ -287,11 +286,11 @@ input {
 }
 
 @media (hover: none) and (pointer: coarse) {
-    .left-arrow, .right-arrow {
+    .left-arrow,
+    .right-arrow {
         display: none;
     }
 }
-
 
 // Media Queries
 @media screen and (max-width: 1024px) {

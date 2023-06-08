@@ -35,7 +35,7 @@ const Card = ({ cardInfo }: ICardProps) => {
                             className="text-decoration-none text-dark link">
                             <h5 className="card-title">
                                 {cardInfo.name.length > 20
-                                    ? cardInfo.name.slice(0,20) + '...'
+                                    ? cardInfo.name.slice(0, 20) + '...'
                                     : cardInfo.name}
                             </h5>
                         </a>

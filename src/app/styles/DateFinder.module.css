@@ -1,113 +1,113 @@
 .date_finder {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0px 0px 2.95864px 1.97242px rgba(175, 172, 172, 0.15);
-  border: 1px solid rgba(155, 155, 155, 0.25);
-  border-radius: 10px;
-  padding: 1.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 2.95864px 1.97242px rgba(175, 172, 172, 0.15);
+    border: 1px solid rgba(155, 155, 155, 0.25);
+    border-radius: 10px;
+    padding: 1.5rem;
 }
 .date_finder .modal_title {
-  font-size: 1rem;
-  line-height: 1.2rem;
-  color: #6a5ddf;
-  border-bottom: 1px solid #a5a5a5;
-  width: 9rem;
-  padding-bottom: 0.5rem;
-  text-align: center;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    color: #6a5ddf;
+    border-bottom: 1px solid #a5a5a5;
+    width: 9rem;
+    padding-bottom: 0.5rem;
+    text-align: center;
 }
 .date_finder .warning {
-  font-size: 0.9rem;
+    font-size: 0.9rem;
 }
 .date_finder .reservation_btn {
-  font-size: 1rem !important;
-  line-height: 1.2rem;
+    font-size: 1rem !important;
+    line-height: 1.2rem;
 }
 .date_finder .label {
-  display: block;
-  margin-bottom: 0.9rem;
-  color: #505050 !important;
+    display: block;
+    margin-bottom: 0.9rem;
+    color: #505050 !important;
 }
 .date_finder .picker_container {
-  padding: 0 0.3rem;
+    padding: 0 0.3rem;
 }
 .date_finder .picker_container .label {
-  font-size: 0.9rem;
-  margin-bottom: 0.6rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
 }
 .date_finder .picker_container .picker {
-  font-size: 0.9rem;
-  font-weight: 700;
-  padding: 0.6rem 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.6rem 0;
 }
 .date_finder .rest_info {
-  color: #505050;
+    color: #505050;
 }
 .date_finder .rest_info .res_name {
-  color: #000;
-  font-weight: 500;
-  line-height: 1.5rem;
-  font-size: 1.2rem;
+    color: #000;
+    font-weight: 500;
+    line-height: 1.5rem;
+    font-size: 1.2rem;
 }
 .date_finder .rest_info .location {
-  font-size: 0.8rem;
-  line-height: 1rem;
+    font-size: 0.8rem;
+    line-height: 1rem;
 }
 .date_finder .map_link {
-  color: #505050;
-  border-bottom: 1px solid #505050;
+    color: #505050;
+    border-bottom: 1px solid #505050;
 }
 .date_finder .map_link:hover {
-  border-bottom: 1px solid #6a5ddf;
+    border-bottom: 1px solid #6a5ddf;
 }
 .date_finder .link {
-  color: #505050;
+    color: #505050;
 }
 .date_finder .date_picker {
-  width: 100% !important;
+    width: 100% !important;
 }
 
 .additional_info .info {
-  text-transform: capitalize;
-  color: #6a5ddf;
+    text-transform: capitalize;
+    color: #6a5ddf;
 }
 .additional_info .details_icon {
-  color: #6a5ddf;
-  font-size: 1.5rem;
+    color: #6a5ddf;
+    font-size: 1.5rem;
 }
 .additional_info .add_info_title {
-  font-weight: 600;
-  line-height: 1.4rem;
-  color: #505050;
-  font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.4rem;
+    color: #505050;
+    font-size: 1.1rem;
 }
 
 .lists {
-  list-style: none;
-  font-size: 0.9rem;
+    list-style: none;
+    font-size: 0.9rem;
 }
 
 .info_type {
-  font-weight: 600;
+    font-weight: 600;
 }
 
 .icon {
-  color: #6a5ddf;
-  text-transform: capitalize;
-  font-size: 1.3rem;
+    color: #6a5ddf;
+    text-transform: capitalize;
+    font-size: 1.3rem;
 }
 
 .info {
-  font-size: 0.9rem;
-  font-weight: 500;
-  line-height: 0.9rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 0.9rem;
 }
 
 .social_media_icon {
-  color: #6a5ddf;
+    color: #6a5ddf;
 }
 
 .all_rest_info {
-  border: none !important;
-  box-shadow: none !important;
-}/*# sourceMappingURL=DateFinder.module.css.map */
+    border: none !important;
+    box-shadow: none !important;
+} /*# sourceMappingURL=DateFinder.module.css.map */

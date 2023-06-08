@@ -10,8 +10,7 @@ interface CarouselProps {
     title: string;
 }
 
-const Carousel = ({ children,title }: CarouselProps) => {
-
+const Carousel = ({ children, title }: CarouselProps) => {
     const carouselRef = useRef(null);
 
     const settings = {
@@ -23,32 +22,37 @@ const Carousel = ({ children,title }: CarouselProps) => {
     };
 
     const next = () => {
-        if(carouselRef.current){
-           (carouselRef.current as any).slickNext();
+        if (carouselRef.current) {
+            (carouselRef.current as any).slickNext();
         }
     };
 
     const previous = () => {
-        if(carouselRef.current){
+        if (carouselRef.current) {
             (carouselRef.current as any).slickPrev();
         }
     };
 
-
     return (
-        <div >
+        <div>
             <div className="d-flex justify-content-between align-items-center">
                 <h3 className={styles.filters}>{title}</h3>
-                <div className='d-none d-md-block'>
-                    <button onClick={()=>previous()} className="btn mx-2 btn-outline-secondary btn-sm">
+                <div className="d-none d-md-block">
+                    <button
+                        onClick={() => previous()}
+                        className="btn mx-2 btn-outline-secondary btn-sm">
                         <MdArrowBackIosNew />
                     </button>
-                    <button  onClick={()=>next()} className="btn mx-2 btn-outline-secondary btn-sm">
+                    <button
+                        onClick={() => next()}
+                        className="btn mx-2 btn-outline-secondary btn-sm">
                         <MdArrowForwardIos />
                     </button>
                 </div>
             </div>
-            <Slider ref={carouselRef} {...settings}>{children}</Slider>
+            <Slider ref={carouselRef} {...settings}>
+                {children}
+            </Slider>
         </div>
     );
 };

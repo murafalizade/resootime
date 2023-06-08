@@ -111,7 +111,7 @@ function Home({ restaurants }: any) {
                         </div>
                     </div>
                     <div className={`pb-5 ${styles.card_section}`}>
-                    {rests.length > 4 ? (
+                        {rests.length > 4 ? (
                             <div>
                                 <div className="row mt-5">
                                     <Carousel title="Yeni əlavə olunanlar">
@@ -125,7 +125,7 @@ function Home({ restaurants }: any) {
                             <div>
                                 <div className="d-flex justify-content-between align-items-center">
                                     <h3 className={`${styles.filters}`}>
-                                       Yeni əlavə olunanlar
+                                        Yeni əlavə olunanlar
                                     </h3>
                                 </div>
                                 <div className="row">

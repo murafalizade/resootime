@@ -79,10 +79,10 @@ function Home({ restaurants }: any) {
             <Layout>
                 <main className={``}>
                     <div className={`${styles.home_page}`}>
-                        <div className={`main-container`}>
-                            <div
-                                className={`container fluid ${styles.heading_container}`}>
-                                <div className="col-12 col-xl-6 d-flex justify-content-center flex-column pb-4">
+                        <div className={``}>
+                            <div className={`${styles.heading_container} row-width`}>
+                                <div
+                                    className={`col-12 col-xl-6 d-flex justify-content-center flex-column pb-4`}>
                                     <h1 className={`${styles.heading}`}>
                                         Masanı Rezerv et
                                     </h1>
@@ -111,9 +111,9 @@ function Home({ restaurants }: any) {
                         </div>
                     </div>
                     <div className={`pb-5 ${styles.card_section}`}>
-                    {rests.length > 4 ? (
+                        {rests.length > 4 ? (
                             <div>
-                                <div className="row mt-5">
+                                <div className="row">
                                     <Carousel title="Yeni əlavə olunanlar">
                                         {rests.map((rest, i: number) => (
                                             <Card key={i} cardInfo={rest} />
@@ -125,7 +125,7 @@ function Home({ restaurants }: any) {
                             <div>
                                 <div className="d-flex justify-content-between align-items-center">
                                     <h3 className={`${styles.filters}`}>
-                                       Yeni əlavə olunanlar
+                                        Yeni əlavə olunanlar
                                     </h3>
                                 </div>
                                 <div className="row">
@@ -143,7 +143,7 @@ function Home({ restaurants }: any) {
                         )}
                         {rests.length > 4 ? (
                             <div>
-                                <div className="row mt-5">
+                                <div className="row">
                                     <Carousel title="Populyar olanlar">
                                         {rests.map((rest, i: number) => (
                                             <Card key={i} cardInfo={rest} />
@@ -173,7 +173,7 @@ function Home({ restaurants }: any) {
                         )}
                         {rests.length > 4 ? (
                             <div>
-                                <div className="row mt-5">
+                                <div className="row">
                                     <Carousel title="Yaxındakılar">
                                         {rests.map((rest, i: number) => (
                                             <Card key={i} cardInfo={rest} />

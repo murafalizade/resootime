@@ -8,7 +8,7 @@
 .heading_container {
     display: flex;
     flex-wrap: wrap;
-    height: 22.4rem !important;
+    height: 22.438rem !important;
 }
 
 // heading style
@@ -17,13 +17,16 @@
     font-weight: 400;
     line-height: 2.6rem;
     margin-bottom: 0.9rem;
+    margin-top: -0.7rem;
 }
 
 .heading_input {
     max-width: 27rem;
     height: 3rem;
+    filter: drop-shadow(4px 1px 5px rgba(255, 255, 255, 0.25));
     input {
         border-radius: 4px 0px 0px 4px !important;
+        padding-left: 0.9rem;
         &::placeholder {
             color: #707070;
             font-size: 0.9rem;
@@ -42,7 +45,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 1rem 1.8rem !important;
+        padding: 0.75rem 1.813rem !important;
         &:hover {
             background-color: #fff !important;
         }
@@ -50,11 +53,12 @@
 }
 
 .filters {
-    font-size: 1.6rem;
+    font-size: 1.563rem;
     font-weight: 400;
-    line-height: 1.8rem;
-    padding-top: 2rem;
-    padding-bottom: 1.5rem;
+    line-height: 1.838rem;
+    padding-top: 2.063rem;
+    padding-bottom: 1.188rem;
+    margin: 0;
     color: #2e343c;
 }
 
@@ -63,27 +67,29 @@
     font-weight: 400;
     line-height: 1.2rem;
     color: #6a5ddf;
+    right: -85%;
+    top: 10%;
+    position: absolute;
 }
 
 // card style
 .card_section {
     min-height: 45vh;
-    padding-left: 229.5px;
-    padding-right: 229.5px;
 }
 .card_container {
-    width: 11.4rem;
+    width: 12.9rem;
     min-height: 15rem;
     border: 1px solid rgba(217, 217, 217, 0.04);
     box-shadow: 0px 0px 3.60333px rgba(103, 110, 118, 0.35);
     transition: all 0.3s ease-in;
-    padding: 9px  9px !important;
+    padding: 0.56rem !important;
     .card {
-        width: 184px;
         box-sizing: border-box;
         border: none;
         border-radius: 0;
         .card_img {
+            width: 11.5rem !important;
+            height: 6rem;
             border-radius: 5px;
             object-fit: cover;
             object-position: center;
@@ -118,7 +124,7 @@
                 font-weight: 300;
                 line-height: 0.8rem;
                 color: #59595a;
-                padding: 4.5px 11px;
+                padding: 0.28rem 0.688rem;
                 border: 1px solid #6a5ddf;
                 border-radius: 5px;
                 margin-right: 0.1rem;
@@ -143,31 +149,63 @@
     border-radius: 0px !important;
 }
 
-// media queries
-@media screen and (max-width: 992px) {
-    .card {
-        height: 220px !important;
-        .card_img {
-            height: 120px !important;
-        }
-    }
+// card slider
+.arrow_button {
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 0.78847px solid #d9d9d9;
+    border-radius: 2.78593px !important;
+    color: #2e343c;
+}
 
-    .card_section{
-        padding-left: 80px;
-        padding-right: 80px;
+.back_arrow {
+    left: -4.875rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.forward_arrow {
+    right: -4.875rem;
+    bottom: 50%;
+    transform: translateY(50%);
+    z-index: 10;
+}
+
+// media queries
+@media screen and (min-width: 1440px) {
+    .home_page,
+    .card_section {
+        padding-left: 500px;
+        padding-right: 500px;
     }
 }
 
-@media screen and (max-width: 426px) {
-    .card {
-        
-        height: 180px !important;
-        .card_img {
-            height: 100px !important;
-        }
+@media screen and (max-width: 1440px) {
+    .home_page,
+    .card_section {
+        padding-left: 213.5px;
+        padding-right: 213.5px;
     }
-    .heading {
-        font-size: 3rem !important;
+}
+
+@media screen and (max-width: 1200px) {
+    .home_page, .card_section {
+        padding-left: 120px;
+        padding-right: 120px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .home_page, .card_section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .home_page, .card_section {
+        padding-right: 0px;
     }
     .heading_input {
         input {
@@ -175,10 +213,6 @@
                 font-size: 1rem;
             }
         }
-    }
-    .card_section{
-        padding-left: 25px;
-        padding-right: 25px;
     }
 }
 
@@ -191,11 +225,5 @@
     }
     .search_btn {
         top: 6px !important;
-    }
-    .card {
-        height: 140px !important;
-        .card_img {
-            height: 70px !important;
-        }
     }
 }

@@ -167,15 +167,13 @@ const ReservationRestaurant = ({ res }: any) => {
                                                 <div className="d-flex flex-md-column">
                                                     <div className="d-flex">
                                                         {res.type?.map(
-                                                            (type: any) => (
+                                                            (type: any, index: any) => (
                                                                 <span
                                                                     className={`d-flex align-items-center me-1 ${styles.res_type}`}
                                                                     key={
                                                                         type?.id
                                                                     }>
-                                                                    {type.id ==
-                                                                    res.type
-                                                                        .length
+                                                                    {(index==res.type.length-1)
                                                                         ? `${type?.type}`
                                                                         : `${type?.type} |`}
                                                                 </span>
@@ -241,25 +239,27 @@ const ReservationRestaurant = ({ res }: any) => {
                                             </div>
                                         </div>
                                         <hr className="d-md-block d-none my-2" />
-                                        <p
-                                            className={`d-md-block d-none ${styles.res_description}`}>
-                                            {showMore
-                                                ? res.description
-                                                : `${res.description.substring(
-                                                      0,
-                                                      317,
-                                                  )}...`}{' '}
-                                            <br />
-                                            <button
-                                                className={`${styles.res_description} ${styles.description_link}`}
-                                                onClick={() => {
-                                                    setShowMore(!showMore);
-                                                }}>
-                                                {!showMore
-                                                    ? '+ Daha çox'
-                                                    : '- Daha az'}
-                                            </button>
-                                        </p>
+                                        {res.description && (
+                                            <p
+                                                className={`d-md-block d-none ${styles.res_description}`}>
+                                                {showMore
+                                                    ? res.description
+                                                    : `${res.description.substring(
+                                                          0,
+                                                          317,
+                                                      )}...`}{' '}
+                                                <br />
+                                                <button
+                                                    className={`${styles.res_description} ${styles.description_link}`}
+                                                    onClick={() => {
+                                                        setShowMore(!showMore);
+                                                    }}>
+                                                    {!showMore
+                                                        ? '+ Daha çox'
+                                                        : '- Daha az'}
+                                                </button>
+                                            </p>
+                                        )}
                                         <div
                                             className={`d-flex align-items-center justify-content-between py-2 py-md-0 ${styles.tag_container}`}>
                                             <div className="d-flex align-items-center justify-content-between pt-2 pb-3 py-md-0">

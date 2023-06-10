@@ -21,8 +21,10 @@ const Card = ({ cardInfo }: ICardProps) => {
                         }
                         // src={'/images/rest_imag.png'}
                         className={`card-img-top ${styles.card_img}`}
-                        alt={cardInfo.name}
-                        width={186}
+                        alt={cardInfo.name.length > 17
+                            ? cardInfo.name.slice(0,17) + '...'
+                            : cardInfo.name}
+                        width={184}
                         quality={100}
                         height={96}
                     />
@@ -34,8 +36,8 @@ const Card = ({ cardInfo }: ICardProps) => {
                             href={`/restaurants/r/${cardInfo.slug}`}
                             className="text-decoration-none text-dark link">
                             <h5 className="card-title">
-                                {cardInfo.name.length > 20
-                                    ? cardInfo.name.slice(0,20) + '...'
+                                {cardInfo.name.length > 13
+                                    ? cardInfo.name.slice(0,13) + '...'
                                     : cardInfo.name}
                             </h5>
                         </a>

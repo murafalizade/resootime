@@ -131,31 +131,28 @@ const allRestInfo = ({
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
                         <GiMeal
-                            className={`me-3 ${styles.details_icon}`}
+                            className={`me-3 ${styles.icon}`}
                             style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
                         />
                         <span className={`${styles.info_type}`}>Mətbəx</span>
                     </div>
                     <span
                         className={`d-flex align-items-center pe-3 ${styles.info}`}>
-                        {cuisine?.map((item: any) => {
-                            return (
-                                <span
-                                    className={`d-flex align-items-center fw-600 ms-1 ${styles.info}`}
-                                    key={item.id}>
-                                    {item.id == cuisine.length
-                                        ? `${item?.name}`
-                                        : `${item?.name} |`}
-                                </span>
-                            );
-                        })}
+                        <span
+                            className={`d-flex align-items-center fw-600 ${styles.info}`}>
+                            {cuisine?.map((item: any, index: any) => {
+                                return index == cuisine.length - 1
+                                    ? `${item?.name}`
+                                    : `${item?.name} | `;
+                            })}
+                        </span>
                     </span>
                 </div>
                 <hr />
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
                         <GiReceiveMoney
-                            className={`me-3 ${styles.details_icon}`}
+                            className={`me-3 ${styles.icon}`}
                             style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
                         />
                         <span className={`${styles.info_type}`}>
@@ -172,24 +169,23 @@ const allRestInfo = ({
                     <div className="d-flex justify-content-between me-2 py-2">
                         <div className="d-flex align-items-center">
                             <FaChild
-                                className={`me-3 ${styles.details_icon}`}
-                                style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
+                                className={`me-2 ${styles.icon}`}
                             />
                             <span className={`${styles.info_type}`}>
                                 Min. yaş həddi{' '}
                             </span>
                         </div>
                         <span
-                            className={`d-flex align-items-center text-capitalize pe-3 ${styles.info}`}>
+                            className={`d-flex align-items-center fw-600 pe-3 ${styles.info}`}>
                             {minimumAge}+
                         </span>
                     </div>
                 )}
-                <hr />
+                {minimumAge && <hr />}
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
                         <FaRegMoneyBillAlt
-                            className={`me-3 ${styles.details_icon}`}
+                            className={`me-3 ${styles.icon}`}
                             style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
                         />
                         <span className={`${styles.info_type}`}>
@@ -205,7 +201,7 @@ const allRestInfo = ({
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
                         <IoMdCard
-                            className={`me-3 ${styles.details_icon}`}
+                            className={`me-3 ${styles.icon}`}
                             style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
                         />
                         <span className={`${styles.info_type}`}>
@@ -231,23 +227,28 @@ const allRestInfo = ({
                         {`${parking}`}
                     </span>
                 </div>
-                <hr />
-                <div className=" me-2 py-2">
-                    <div className="d-flex">
-                        <div>
-                            <RiPagesLine
-                                className={`me-3 ${styles.details_icon}`}
-                                style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
-                            />
-                        </div>
-                        <div>
-                            <span className={`${styles.info_type}`}>
-                                Təsvir
-                            </span>
-                            <p>{description}</p>
+                {description && <hr />}
+                {description && (
+                    <div className=" me-2 py-2">
+                        <div className="d-flex">
+                            <div>
+                                <RiPagesLine
+                                    className={`me-3 ${styles.icon}`}
+                                    style={{
+                                        color: '#6A5DDF',
+                                        fontSize: '1.8rem',
+                                    }}
+                                />
+                            </div>
+                            <div>
+                                <span className={`${styles.info_type}`}>
+                                    Təsvir
+                                </span>
+                                <p>{description}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                )}
             </div>
         </div>
     );

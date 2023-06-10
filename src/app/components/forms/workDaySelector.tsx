@@ -13,11 +13,11 @@ const WorkDaySelector = ({ working_hours }: any) => {
     const dispatch = useDispatch();
 
     // when compontent mount
-    useEffect(() => {
-        if (working_hours.length > 0) {
-            dispatch(changeDay(working_hours));
-        }
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    // useEffect(() => {
+    //     if (working_hours.length > 0) {
+    //         dispatch(changeDay(working_hours));
+    //     }
+    // }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const addDay = (day: string) => {
         // update redux
@@ -72,10 +72,10 @@ const WorkDaySelector = ({ working_hours }: any) => {
                         <div
                             key={index}
                             onClick={() => addDay(day.name)}
-                            className={`border ${
+                            className={`${
                                 checkingDaySelected(day.name)
-                                    ? 'border-primary'
-                                    : ''
+                                    ? 'selected-day'
+                                    : 'unselected-day'
                             } col-2 text-center py-2`}>
                             {day.day}
                         </div>
@@ -83,6 +83,11 @@ const WorkDaySelector = ({ working_hours }: any) => {
                 })}
             </div>
             <div className="d-flex my-3  align-items-center">
+                {/* <select className={`form-select`}>
+                    <option value="0">Seçin</option>
+                    <option value="1">Şəxsi</option>
+                    <option value="2">İctimai</option>
+                </select> */}
                 <input
                     value={workTime[0]?.open_at || '09:00'}
                     onChange={(e) => {

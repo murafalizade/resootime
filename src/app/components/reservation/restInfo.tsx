@@ -34,7 +34,7 @@ const RestInfo = ({
             </div>
             <div className={`${styles.rest_info}`}>
                 <div className="mx-3">
-                    <h4 className={`mt-2 mb-0 ${styles.res_name}`}>{name}</h4>
+                    <h4 className={`mt-2 mb-1 ${styles.res_name}`}>{name}</h4>
                     <p className={`mb-2 ${styles.location}`}>{location}</p>
                     <a
                         className={`my-2 link ${styles.social_media_icon}`}

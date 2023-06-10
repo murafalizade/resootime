@@ -30,6 +30,140 @@
     }
 }
 
+.form_heading {
+    font-size: 1.375rem;
+    font-weight: 400;
+    line-height: 1.625rem;
+}
+
+.complete_form {
+    label {
+        font-size: 0.94rem;
+        font-weight: 400;
+        line-height: 1.125rem;
+        .asterisk {
+            font-size: 0.75rem;
+            font-weight: 400;
+            line-height: 0.875rem;
+            color: #ff0000;
+        }
+    }
+    input,
+    textarea {
+        padding: 10px 55px 10px 16px;
+        width: 444px;
+        border-radius: 3.41px;
+        border: 0.7px solid #d3d3d3;
+        font-weight: 400;
+        font-size: 0.625rem;
+        line-height: 0.75rem;
+
+        &::placeholder {
+            color: #d3d3d3;
+        }
+    }
+    input {
+        height: 32px;
+    }
+    textarea {
+        height: 82.5px;
+    }
+    select {
+        height: 36px;
+        width: 193px;
+        border-radius: 3.41px;
+        padding: 10px 16px 10px 16px;
+        font-weight: 400;
+        font-size: 0.625rem;
+        line-height: 0.75rem;
+
+        option {
+            font-size: 0.8rem;
+            font-weight: 400;
+            line-height: 1rem;
+
+            &::after {
+                border-radius: 3.41px !important;
+                padding: 4px 11px 4px 11px !important;
+            }
+        }
+
+        &:focus {
+            border: 1.5px solid #6a5ddf;
+            box-shadow: none;
+        }
+    }
+    .profile_img_container {
+        height: 179px;
+        width: 232px;
+        border-radius: 4.5px;
+        background: rgba(165, 165, 165, 0.3);
+    }
+    .profile_img_btn {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        border-radius: 3.41px !important;
+        font-weight: 400 !important;
+        font-size: 0.625rem !important;
+        line-height: 0.75rem !important;
+        width: 95.4px !important;
+        height: 28px !important;
+    }
+    .multiple_img_container {
+        height: 68px;
+        width: 68px;
+        border-radius: 3.41px;
+        border: 0.681562px solid #6a5ddf;
+        &::before {
+            content: '+';
+            color: #6a5ddf;
+            border: 0.681562px solid #6a5ddf;
+            border-radius: 50%;
+            width: 16.36px;
+            height: 16.36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    .next_button {
+        height: 37px;
+        width: 110px;
+        border-radius: 4.5px !important;
+        padding: 25px 20px 25px 20px;
+        margin-bottom: 5rem;
+        margin-top: 4.3rem;
+    }
+    .increaser {
+        box-shadow: (0px 0px 2.74923px rgba(209, 209, 209, 0.31));
+        span {
+            width: 78px !important;
+            height: 38.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 400;
+            line-height: 0.8rem;
+            color: #6A5DDF;
+            
+
+        }
+        button {
+            padding: 11px 16px !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .increase_btn {
+            border-radius: 0 3.4px 3.4px 0 !important;
+        }
+        .decrease_btn {
+            border-radius: 3.4px 0px 0px 3.4px !important;
+        }
+    }
+}
+
 .complete_form {
     width: 38%;
     // media

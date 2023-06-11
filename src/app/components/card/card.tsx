@@ -9,7 +9,6 @@ interface ICardProps {
 }
 
 const Card = ({ cardInfo }: ICardProps) => {
-    console.log(cardInfo);
     return (
         <div
             className={`d-flex align-items-center justify-content-center ${styles.card_container}`}>
@@ -19,7 +18,6 @@ const Card = ({ cardInfo }: ICardProps) => {
                         src={
                             cardInfo.images[0]?.image || '/images/rest_imag.png'
                         }
-                        // src={'/images/rest_imag.png'}
                         className={`card-img-top ${styles.card_img}`}
                         alt={cardInfo.name}
                         width={186}
@@ -28,7 +26,7 @@ const Card = ({ cardInfo }: ICardProps) => {
                     />
                 </a>
                 <div className={`card-body px-0 ${styles.card_body}`}>
-                    <span className={`${styles.res_type}`}>Restoran</span>
+                    <span className={`${styles.res_type}`}>{cardInfo.type[0].type}</span>
                     <div className="d-flex align-items-center justify-content-between">
                         <a
                             href={`/restaurants/r/${cardInfo.slug}`}
@@ -50,9 +48,17 @@ const Card = ({ cardInfo }: ICardProps) => {
                             </p>
                         </div>
                     </h6>
-                    <div className={`d-flex`}>
-                        <div className={`${styles.res_tag}`}>Musiqili</div>
-                        <div className={`${styles.res_tag}`}>Mənzrəli</div>
+                    <div className={`d-flex ${styles.rest_tags}`}>
+                        {
+                            cardInfo?.tag?.map((tag) => (
+                                <div
+                                    key={tag.id}
+                                    className={`${styles.res_tag}`}>
+                                    {tag.name}
+                                </div>
+                            ))
+
+                        }
                     </div>
                 </div>
             </div>

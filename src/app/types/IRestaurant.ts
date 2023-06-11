@@ -6,10 +6,11 @@ export interface IRestaurant {
     location: string;
     rate: number;
     images: IImage[];
-    category?: ICategory;
     user_id?: IUser;
     city?: string;
     slug: string;
+    type: IType[];
+    tag?: ITag[];
 }
 
 interface IImage {
@@ -17,7 +18,12 @@ interface IImage {
     image: string;
 }
 
-interface ICategory {
+interface IType {
+    id: number;
+    type: string;
+}
+
+interface ITag {
     id: number;
     name: string;
 }

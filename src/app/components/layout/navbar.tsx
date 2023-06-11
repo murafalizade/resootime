@@ -38,7 +38,7 @@ const Navbar = (props: IProps) => {
                 <div className="container-fluid justify-content-between d-flex bg-warning text-center border-bottom">
                     <p className="text-light pt-3 text-center ">
                         Mail addressinizə hesabınızı tamamlamaq üçün link
-                        göndərildi.
+                        göndəriləcəkdir.
                     </p>
                     <span
                         onClick={() => setCompleteInfo('')}

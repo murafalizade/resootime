@@ -34,13 +34,18 @@
     font-size: 1.375rem;
     font-weight: 400;
     line-height: 1.625rem;
+    margin-top: 3.67rem;
+    margin-bottom: 2.4rem;
 }
 
 .complete_form {
+    width: 27.75rem;
     label {
         font-size: 0.94rem;
         font-weight: 400;
         line-height: 1.125rem;
+        padding-bottom: 12px;
+        padding-top: 24px;
         .asterisk {
             font-size: 0.75rem;
             font-weight: 400;
@@ -51,7 +56,7 @@
     input,
     textarea {
         padding: 10px 55px 10px 16px;
-        width: 444px;
+        width: 27.75rem;
         border-radius: 3.41px;
         border: 0.7px solid #d3d3d3;
         font-weight: 400;
@@ -61,18 +66,37 @@
         &::placeholder {
             color: #d3d3d3;
         }
+        &:focus {
+            border: 1.5px solid #6a5ddf;
+            box-shadow: none;
+        }
     }
     input {
         height: 32px;
     }
+    .phone_input {
+        padding-left: 6.44rem;
+    }
+    .flag {
+        width: 5.625rem;
+        height: 32px;
+        font-weight: 400;
+        font-size: 0.625rem;
+        line-height: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-right: 0.7px solid #D3D3D3;;
+    }
     textarea {
         height: 82.5px;
     }
-    select {
+    select, .little_input_size {
         height: 36px;
-        width: 193px;
+        width: 12rem;
         border-radius: 3.41px;
         padding: 10px 16px 10px 16px;
+        margin-bottom: 0.4rem;
         font-weight: 400;
         font-size: 0.625rem;
         line-height: 0.75rem;
@@ -94,8 +118,8 @@
         }
     }
     .profile_img_container {
-        height: 179px;
-        width: 232px;
+        height: 11.2rem;
+        width: 14.5rem;
         border-radius: 4.5px;
         background: rgba(165, 165, 165, 0.3);
     }
@@ -106,12 +130,12 @@
         font-weight: 400 !important;
         font-size: 0.625rem !important;
         line-height: 0.75rem !important;
-        width: 95.4px !important;
-        height: 28px !important;
+        width: 6rem !important;
+        height: 1.75rem !important;
     }
     .multiple_img_container {
-        height: 68px;
-        width: 68px;
+        height: 4.25rem;
+        width: 4.25rem;
         border-radius: 3.41px;
         border: 0.681562px solid #6a5ddf;
         &::before {
@@ -127,18 +151,20 @@
         }
     }
     .next_button {
-        height: 37px;
-        width: 110px;
+        height: 2.3rem;
+        min-width: 6.875rem;
         border-radius: 4.5px !important;
         padding: 25px 20px 25px 20px;
         margin-bottom: 5rem;
         margin-top: 4.3rem;
     }
     .increaser {
+        width: 7.4rem;
         box-shadow: (0px 0px 2.74923px rgba(209, 209, 209, 0.31));
         span {
-            width: 78px !important;
-            height: 38.5px;
+            width: 2.6rem;
+            height: 2.2rem;
+            padding: 11px 16px !important;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -149,11 +175,16 @@
             
 
         }
-        button {
+        div {
             padding: 11px 16px !important;
             display: flex;
             align-items: center;
             justify-content: center;
+            background-color: #6A5DDF;
+            color: #fff;
+            width: 2.4rem;
+            height: 2.2rem;
+            cursor: pointer;
         }
         .increase_btn {
             border-radius: 0 3.4px 3.4px 0 !important;
@@ -162,21 +193,29 @@
             border-radius: 3.4px 0px 0px 3.4px !important;
         }
     }
+    .add_btn {
+        border: none;
+        background-color: transparent;
+        color: #6A5DDF;
+        font-weight: 400;
+        font-size: 0.625rem;
+        line-height: 0.75rem;
+        cursor: pointer;
+    }
 }
 
-.complete_form {
-    width: 38%;
-    // media
-    @media screen and (max-width: 768px) {
-        width: 60%;
-    }
-
-    @media screen and (max-width: 426px) {
-        width: 80%;
-    }
+.select_hour {
+    width: 6.125rem;
 }
 
 .day_selector {
-    width: 85%;
+    width: 23.55rem;
     display: flex;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 320px) {
+    .complete_form{
+        width: 20rem
+    }
 }

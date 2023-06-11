@@ -64,11 +64,13 @@ const allRestInfo = ({
                     </a>
                 </div>
                 <hr />
-                <div className="d-flex py-2 align-items-center">
-                    <TbWorld className={`me-3 ${styles.icon}`} />
-                    <span>{websiteLink}</span>
-                </div>
-                <hr />
+                {websiteLink && (
+                    <div className="d-flex py-2 align-items-center">
+                        <TbWorld className={`me-3 ${styles.icon}`} />
+                        <span>{websiteLink}</span>
+                    </div>
+                )}
+                {websiteLink && <hr />}
                 <div className="me-4 py-2">
                     <a
                         className={`my-3 link ${styles.social_media_icon}`}
@@ -168,9 +170,7 @@ const allRestInfo = ({
                 {minimumAge && (
                     <div className="d-flex justify-content-between me-2 py-2">
                         <div className="d-flex align-items-center">
-                            <FaChild
-                                className={`me-2 ${styles.icon}`}
-                            />
+                            <FaChild className={`me-2 ${styles.icon}`} />
                             <span className={`${styles.info_type}`}>
                                 Min. yaş həddi{' '}
                             </span>

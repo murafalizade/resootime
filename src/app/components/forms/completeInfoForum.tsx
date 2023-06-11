@@ -9,7 +9,8 @@ import WorkDaySelector from './workDaySelector';
 import { useSelector } from 'react-redux';
 import { selectReservationDay, selectWorkDays } from '@/app/redux/commonSlice';
 import OnlineDaySelector from './onlineDaySelector';
-import Link from 'next/link';
+import SelectOptions from '@/app/components/forms/selectOptions';
+import MultiSelectOptions from '@/app/components/forms/multiSelectOptions';
 
 const CompleteInfoForum = ({ res, isUpdate }: any) => {
     const [error, setError] = React.useState<any>(null);
@@ -19,11 +20,65 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
     const [isFirstPage, setIsFirstPage] = React.useState<boolean>(true);
     const [isSecondPage, setIsSecondPage] = React.useState<boolean>(false);
     const [isThirdPage, setIsThirdPage] = React.useState<boolean>(false);
+    const [numberOfPhoneInputs, setNumberOfPhoneInputs] =
+        React.useState<number>(1);
     const [guestCount, setGuestCount] = React.useState<number>(1);
+    const [minAge, setMinAge] = React.useState<number>(0);
+    const typeOptions = [
+        { value: '1', label: 'Ailəvi' },
+        { value: '2', label: 'Restoran ' },
+        { value: '3', label: 'Coffee ' },
+        { value: '4', label: 'Cafe ' },
+        { value: '5', label: 'Pub ' },
+        { value: '6', label: 'Bar ' },
+        { value: '7', label: 'Lounge ' },
+    ];
+    const cityOptions = [
+        { value: '1', label: 'Bakı' },
+        { value: '2', label: 'Sumqayıt ' },
+    ];
+    const cuisineOptions = [
+        { value: '1', label: 'Azərbaycan' },
+        { value: '2', label: 'Türk' },
+        { value: '3', label: 'Amerikan' },
+        { value: '4', label: 'Çin' },
+        { value: '5', label: 'Gürcü' },
+        { value: '6', label: 'Rus' },
+        { value: '7', label: 'Ərəb' },
+        { value: '8', label: 'Hindistan' },
+        { value: '9', label: 'Yapon' },
+        { value: '10', label: 'Asiya' },
+        { value: '11', label: 'İtalyan' },
+        { value: '12', label: 'Koreya' },
+    ];
+    const paymentOptions = [
+        { value: '1', label: 'Nağd' },
+        { value: '2', label: 'Kart ' },
+    ];
+    const parkingOptions = [
+        { value: '1', label: 'Şəxsi' },
+        { value: '2', label: 'İctimai ' },
+    ];
+    const tagOptions = [
+        { value: '1', label: 'Mənzərəli' },
+        { value: '2', label: 'Qəlyan' },
+        { value: '3', label: 'Əyləncə' },
+        { value: '4', label: 'Romantik' },
+        { value: '5', label: 'Kabinet' },
+        { value: '6', label: 'Heyvana İcazə Verilən' },
+        { value: '7', label: 'Açıq Hava' },
+        { value: '8', label: 'Uşaq Zonası' },
+        { value: '9', label: 'Bufet' },
+        { value: '10', label: 'Stolüstü Oyun' },
+        { value: '11', label: 'Karaoke' },
+        { value: '12', label: 'Rahat Məkan' },
+        { value: '13', label: 'Qəhvə' },
+        { value: '14', label: 'Canlı Musiqi' },
+        { value: '15', label: 'Namaz Otağı' },
+    ];
 
     // get token from cookie
     const [token, setToken] = React.useState<any>(null);
-
     useEffect(() => {
         const token = Cookie.get('token');
         setToken(token);
@@ -44,6 +99,8 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
         name: res?.name,
         phone: res.phone,
         profileImage: '',
+        websiteLink: res?.websiteLink,
+        city: res?.city,
     });
 
     // handle the change of the input in typescript
@@ -86,7 +143,7 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
             setSelectedImages([selectedImages[0], ...srcs]);
         }
     };
-
+    
     // handle the submit of the form
     const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
@@ -115,6 +172,11 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
             setError({
                 googleMapLink: 'Restoranın google map linki boş ola bilməz',
             });
+            return;
+        }
+        if (!formData.city) {
+            setError({ city: 'Restoranın yerləşdiyi şəhər boş ola bilməz' });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             return;
         }
         if (selectedImages.length === 0) {
@@ -147,6 +209,8 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
             googleMapLink: formData.googleMapLink,
             working_hours_data: workTime,
             online_reserv_hours_data: onlineReservHours,
+            websiteLink: formData.websiteLink,
+            city: formData.city,
         };
 
         withErrorHandeler(
@@ -173,299 +237,330 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
 
     return (
         <div
-            className={`d-flex justify-content-center flex-column align-items-center`}>
-            <h5 className={`text-center m-4 ${styles.form_heading}`}>
-                {isUpdate ? 'Tənzimləmələr' : 'Biznes məlumatlarını tamamlayın'}
+            className={`d-flex justify-content-center flex-column align-items-center px-3 px-md-0`}>
+            <h5 className={`text-center ${styles.form_heading}`}>
+                {isUpdate
+                    ? 'Tənzimləmələr:'
+                    : 'Biznes məlumatlarını tamamlayın:'}
             </h5>
             {isFirstPage && (
                 <form className={`${styles.complete_form} form`}>
-                    <label className="p-2 ps-0 pt-3">
-                        Restoranın adı
-                        <span className={`${styles.asterisk}`}>*</span>
-                    </label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Restoranın adını daxil edin"
-                        className="form-control"
-                    />
-                    <div className="invalid-feedback d-block">
-                        {error?.name}
+                    <div className="w-444">
+                        <label className="pt-0">
+                            Restoranın adı
+                            <span className={`${styles.asterisk}`}>*</span>
+                        </label>
+                        <input
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder="Restoranın adını daxil edin"
+                            className="form-control"
+                        />
+                        <div className="invalid-feedback d-block">
+                            {error?.name}
+                        </div>
                     </div>
 
-                    <label className="p-2 ps-0 pt-3">
-                        Restoranın əlaqə nömrəsi
-                        <span className={`${styles.asterisk}`}>*</span>
-                    </label>
-                    <input
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="Əlaqə nömrəsi"
-                        className="form-control"
-                    />
-                    <div className="invalid-feedback d-block">
-                        {error?.phone}
+                    <div className="w-444">
+                        <label className="">
+                            Restoranın əlaqə nömrəsi
+                            <span className={`${styles.asterisk}`}>*</span>
+                        </label>
+                        {Array(numberOfPhoneInputs)
+                            .fill('')
+                            .map((index: number) => (
+                                <div
+                                    className={`position-relative pt-2`}
+                                    key={index}>
+                                    <span
+                                        className={`position-absolute ${styles.flag}`}>
+                                        <Image
+                                            src={'/images/flag-azerbaijan.png'}
+                                            alt={res.name}
+                                            width={18.4}
+                                            height={18.4}
+                                            quality={100}
+                                            className={`me-1`}
+                                        />
+                                        +994
+                                    </span>
+                                    <input
+                                        name="phone"
+                                        type="tel"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        placeholder="Əlaqə nömrəsi"
+                                        className={`form-control ${styles.phone_input}`}
+                                    />
+                                </div>
+                            ))}
+                        <div className="d-flex justify-content-between">
+                            <div className="invalid-feedback d-block">
+                                {error?.phone}
+                            </div>
+                            <div
+                                onClick={() => {
+                                    setNumberOfPhoneInputs(
+                                        numberOfPhoneInputs + 1,
+                                    );
+                                }}
+                                className={`text-nowrap pt-1 ${styles.add_btn}`}>
+                                + Əlavə et
+                            </div>
+                        </div>
                     </div>
 
-                    <label className="p-2 ps-0 pt-3">
-                        Restoranın təsviri
-                        <span className={`${styles.asterisk}`}>*</span>
-                    </label>
-                    <textarea
-                        value={formData.description}
-                        onChange={handleChange}
-                        name="description"
-                        rows={4}
-                        placeholder="Restoranı təsvir edin..."
-                        className="form-control"
-                    />
-                    <div className="invalid-feedback d-block">
-                        {error?.description}
+                    <div className="w-444">
+                        <label className="">
+                            Restoranın təsviri
+                            <span className={`${styles.asterisk}`}>*</span>
+                        </label>
+                        <textarea
+                            value={formData.description}
+                            onChange={handleChange}
+                            name="description"
+                            rows={4}
+                            placeholder="Restoranı təsvir edin..."
+                            className="form-control"
+                        />
+                        <div className="invalid-feedback d-block">
+                            {error?.description}
+                        </div>
                     </div>
 
-                    <label className="p-2 ps-0 pt-3">
-                        Restoranın yerləşdiyi şəhər
-                        <span className={`${styles.asterisk}`}>*</span>
-                    </label>
-                    <select className={`form-select`}>
-                        <option value="0">Şəhəri seçin</option>
-                        <option value="1">Bakı</option>
-                        <option value="2">Sumqayıt</option>
-                    </select>
-
-                    <label className="p-2 ps-0 pt-3">
-                        Restoranın ünvanı
-                        <span className={`${styles.asterisk}`}>*</span>
-                    </label>
-                    <input
-                        type="text"
-                        value={formData.address}
-                        onChange={handleChange}
-                        name="address"
-                        placeholder="15 Tarlan Aliyar St, Baku 1005"
-                        className="form-control"
-                    />
-                    <div className="invalid-feedback d-block">
-                        {error?.address}
+                    <div className="w-444 d-flex">
+                        <div>
+                            <label className="">
+                                Restoranın yerləşdiyi şəhər
+                                <span className={`${styles.asterisk}`}>*</span>
+                            </label>
+                            <SelectOptions
+                                options={cityOptions}
+                                placeholder={formData.city ?? 'Şəhəri seçin'}
+                            />
+                        </div>
+                        <div className="invalid-feedback d-block">
+                            {error?.city}
+                        </div>
                     </div>
 
-                    <label className="p-2 ps-0 pt-3">
-                        Restoranın “Google Xəritə”dəki ünvanının linki
-                        <span className={`${styles.asterisk}`}>*</span>
-                    </label>
-                    <input
-                        type="text"
-                        value={formData.googleMapLink}
-                        onChange={handleChange}
-                        name="googleMapLink"
-                        placeholder="https://maps.app.goo.gl/YdXkj5hEiBal3Ga"
-                        className="form-control"
-                    />
-                    <div className="invalid-feedback d-block">
-                        {error?.googleMapLink}
+                    <div className="w-444">
+                        <label className="">
+                            Restoranın ünvanı
+                            <span className={`${styles.asterisk}`}>*</span>
+                        </label>
+                        <input
+                            type="text"
+                            value={formData.address}
+                            onChange={handleChange}
+                            name="address"
+                            placeholder="15 Tarlan Aliyar St, Baku 1005"
+                            className="form-control"
+                        />
+                        <div className="invalid-feedback d-block">
+                            {error?.address}
+                        </div>
                     </div>
 
-                    <label className="p-2 ps-0 pt-3 d-block">
-                        Profil şəkili
-                        <span className={`${styles.asterisk}`}>*</span>
-                    </label>
-                    <div
-                        className={`d-flex align-items-center justify-content-center ${styles.profile_img_container}`}>
-                        {' '}
+                    <div className="w-444">
+                        <label className="">
+                            Restoranın “Google Xəritə”dəki ünvanının linki
+                            <span className={`${styles.asterisk}`}>*</span>
+                        </label>
+                        <input
+                            type="text"
+                            value={formData.googleMapLink}
+                            onChange={handleChange}
+                            name="googleMapLink"
+                            placeholder="https://maps.app.goo.gl/YdXkj5hEiBal3Ga"
+                            className="form-control"
+                        />
+                        <div className="invalid-feedback d-block">
+                            {error?.googleMapLink}
+                        </div>
+                    </div>
+
+                    <div className="w-444">
+                        <label className=" d-block">
+                            Profil şəkili
+                            <span className={`${styles.asterisk}`}>*</span>
+                        </label>
+                        <div
+                            className={`d-flex align-items-center justify-content-center ${styles.profile_img_container}`}>
+                            {' '}
+                            <label
+                                htmlFor="single_file"
+                                className={`btn text-nowrap btn-primary form-control d-flex align-items-center justify-content-center ${styles.profile_img_btn}`}>
+                                Şəkil əlavə edin{' '}
+                            </label>
+                        </div>
+                        <input
+                            onChange={handleFileUpload}
+                            hidden
+                            type="file"
+                            id="single_file"
+                        />
                         <label
                             htmlFor="single_file"
-                            className={`btn text-nowrap btn-primary form-control d-flex align-items-center justify-content-center ${styles.profile_img_btn}`}>
-                            Şəkil əlavə edin{' '}
+                            className={`btn text-nowrap btn-outline-primary form-control d-flex align-items-center justify-content-center mt-2 ${styles.profile_img_btn}`}>
+                            Şəkili dəyişin{' '}
                         </label>
-                    </div>
-                    <input
-                        onChange={handleFileUpload}
-                        hidden
-                        type="file"
-                        id="single_file"
-                    />
-                    <label
-                        htmlFor="single_file"
-                        className={`btn text-nowrap btn-outline-primary form-control d-flex align-items-center justify-content-center mt-3 ${styles.profile_img_btn}`}>
-                        Şəkili dəyişin{' '}
-                    </label>
-                    <div className="invalid-feedback d-block">
-                        {error?.profileImage}
+                        <div className="invalid-feedback d-block">
+                            {error?.profileImage}
+                        </div>
                     </div>
 
-                    <label className="p-2 ps-0 pt-3 d-block">
-                        Qalereya<span className={`${styles.asterisk}`}>*</span>
-                    </label>
-                    <label
-                        htmlFor="multipy_image"
-                        className={`form-control d-flex align-items-center justify-content-center ${styles.multiple_img_container}`}></label>
-                    <div className="d-flex mt-4 overflow-auto">
-                        {selectedImages?.map((image: any, index: number) => {
-                            return (
-                                <Image
-                                    src={image}
-                                    alt=""
-                                    key={index}
-                                    style={{
-                                        aspectRatio: '1/1',
-                                        objectFit: 'contain',
-                                    }}
-                                    width={80}
-                                    height={80}
-                                    className="img-fluid me-2"
-                                />
-                            );
-                        })}
+                    <div className="w-444">
+                        <label className=" d-block">
+                            Qalereya
+                            <span className={`${styles.asterisk}`}>*</span>
+                        </label>
+                        <label
+                            htmlFor="multipy_image"
+                            className={`form-control d-flex align-items-center justify-content-center p-0 ${styles.multiple_img_container}`}></label>
+                        <div className="d-flex mt-4 overflow-auto">
+                            {selectedImages?.map(
+                                (image: any, index: number) => {
+                                    return (
+                                        <Image
+                                            src={image}
+                                            alt=""
+                                            key={index}
+                                            style={{
+                                                aspectRatio: '1/1',
+                                                objectFit: 'contain',
+                                            }}
+                                            width={80}
+                                            height={80}
+                                            className="img-fluid me-2"
+                                        />
+                                    );
+                                },
+                            )}
+                        </div>
                     </div>
-                    <input
-                        onChange={handleGalleryFileUpload}
-                        id="multipy_image"
-                        type="file"
-                        hidden
-                        multiple
-                        className="form-control"
-                    />
-                    <div className="d-flex justify-content-end">
-                        <button
-                            onClick={() => {
-                                setIsFirstPage(false), setIsSecondPage(true);
-                            }}
-                            className={`btn btn-primary d-flex align-items-center justify-content-center ${styles.next_button}`}>
-                            Növbəti
-                        </button>
+
+                    <div className="w-444">
+                        <input
+                            onChange={handleGalleryFileUpload}
+                            id="multipy_image"
+                            type="file"
+                            hidden
+                            multiple
+                            className="form-control"
+                        />
+                        <div className="d-flex justify-content-end">
+                            <button
+                                onClick={() => {
+                                    setIsFirstPage(false),
+                                        setIsSecondPage(true);
+                                }}
+                                className={`btn btn-primary d-flex align-items-center justify-content-center ${styles.next_button}`}>
+                                Növbəti
+                            </button>
+                        </div>
                     </div>
                 </form>
             )}
             {isSecondPage && (
                 <form className={`${styles.complete_form} form`}>
-                    <div className="d-flex align-items-center justify-content-between">
+                    <div className="d-flex justify-content-between w-444">
                         <div>
-                            <label className="p-2 ps-0 pt-3">
+                            <label className="pt-0">
                                 Restoran tipi
                                 <span className={`${styles.asterisk}`}>*</span>
                             </label>
-                            <select className={`form-select`}>
-                                <option value="0">Seçin</option>
-                                <option value="1">Ailəvi</option>
-                                <option value="2">Restoran</option>
-                                <option value="3">Coffee Shop</option>
-                                <option value="4">Cafe</option>
-                                <option value="5">Pub</option>
-                                <option value="6">Bar</option>
-                                <option value="7">Lounge</option>
-                            </select>
+                            <SelectOptions
+                                options={typeOptions}
+                                placeholder={'Seçin'}
+                            />
                         </div>
                         <div>
-                            <label className="p-2 ps-0 pt-3">
+                            <label className="pt-0">
                                 Mətbəx
                                 <span className={`${styles.asterisk}`}>*</span>
                             </label>
-                            <select className={`form-select`}>
-                                <option value="0">Seçin</option>
-                                <option value="1">Azərbaycan</option>
-                                <option value="2">Türk</option>
-                                <option value="3">Amerikan</option>
-                                <option value="4">Çin</option>
-                                <option value="5">Gürcü</option>
-                                <option value="6">Rus</option>
-                                <option value="7">Ərəb</option>
-                                <option value="8">Hindistan</option>
-                                <option value="9">Yapon</option>
-                                <option value="10">Asiya</option>
-                                <option value="11">İtalyan</option>
-                                <option value="12">Koreya</option>
-                            </select>
+                            <SelectOptions
+                                options={cuisineOptions}
+                                placeholder={'Seçin'}
+                            />
                         </div>
                     </div>
-                    <div className="d-flex align-items-center justify-content-between">
+                    <div className="d-flex justify-content-between w-444">
                         <div>
-                            <label className="p-2 ps-0 pt-3">
+                            <label className="">
                                 Ödəniş variantları
                                 <span className={`${styles.asterisk}`}>*</span>
                             </label>
-                            <select className={`form-select`}>
-                                <option value="0">Seçin</option>
-                                <option value="1">Nağd</option>
-                                <option value="2">Kart</option>
-                            </select>
+                            <SelectOptions
+                                options={paymentOptions}
+                                placeholder={'Seçin'}
+                            />
                         </div>
                         <div>
-                            <label className="p-2 ps-0 pt-3">
+                            <label className="">
                                 Parkinq
                                 <span className={`${styles.asterisk}`}>*</span>
                             </label>
-                            <select className={`form-select`}>
-                                <option value="0">Seçin</option>
-                                <option value="1">Şəxsi</option>
-                                <option value="2">İctimai</option>
-                            </select>
+                            <SelectOptions
+                                options={parkingOptions}
+                                placeholder={'Seçin'}
+                            />
                         </div>
                     </div>
 
-                    <label className="p-2 ps-0 pt-3 d-block">
-                        Bir masada əyləşə biləcək maksimum qonaq sayı<span className={`${styles.asterisk}`}>*</span>
-                    </label>
-                    <div className={`d-flex ${styles.increaser}`}>
-                        <div
-                        onClick={()=>{guestCount>1 && setGuestCount(guestCount-1)}}
-                            className={`btn btn-primary ${styles.decrease_btn}`}>
-                            -
+                    <div className="w-444">
+                        <label className=" d-block">
+                            Bir masada əyləşə biləcək maksimum qonaq sayı
+                            <span className={`${styles.asterisk}`}>*</span>
+                        </label>
+                        <div className={`d-flex ${styles.increaser}`}>
+                            <div
+                                onClick={() => {
+                                    guestCount > 1 &&
+                                        setGuestCount(guestCount - 1);
+                                }}
+                                className={`${styles.decrease_btn}`}>
+                                -
+                            </div>
+                            <span>{guestCount}</span>
+                            <div
+                                onClick={() => {
+                                    setGuestCount(guestCount + 1);
+                                }}
+                                className={`${styles.increase_btn}`}>
+                                +
+                            </div>
                         </div>
-                        <span>{guestCount}</span>
-                        <div
-                         onClick={()=>{setGuestCount(guestCount+1)}}
-                            className={`btn btn-primary ${styles.increase_btn}`}>
-                            +
+                    </div>
+
+                    <div className="w-444">
+                        <label className=" d-block">
+                            İş saatları
+                            <span className={`${styles.asterisk}`}>*</span>
+                        </label>
+                        <WorkDaySelector working_hours={res.working_hours} />
+                        <div className="invalid-feedback d-block">
+                            {error?.workTime}
                         </div>
                     </div>
 
-                    <label className="p-2 ps-0 pt-3 d-block">İş saatları<span className={`${styles.asterisk}`}>*</span></label>
-                    <WorkDaySelector working_hours={res.working_hours} />
-                    <div className="invalid-feedback d-block">
-                        {error?.workTime}
-                    </div>
-
-                    <label className="p-2 ps-0 pt-3 d-block">
-                        Rezervasiya vaxtı
-                    </label>
-                    <OnlineDaySelector
-                        data={res.online_reserv_hours}
-                        disabled={!formData.allowed}
-                    />
-                    <div className="invalid-feedback d-block">
-                        {error?.onlineReservationTime}
-                    </div>
-
-                    <label className="p-2 ps-0 pt-3">
-                        Onlayn rezervasiya etmək mümkünlüyü{' '}
-                        <input
-                            checked={formData.allowed}
-                            onChange={() =>
-                                setFormData({
-                                    ...formData,
-                                    allowed: !formData.allowed,
-                                })
-                            }
-                            type={'checkbox'}
-                            name="allowed"
-                            className="p-2 m-2"
+                    <div className="w-444">
+                        <label className=" d-block">
+                            Onlayn rezervasiya etmək mümkün olan saat aralığı
+                            <span className={`${styles.asterisk}`}>*</span>
+                        </label>
+                        <OnlineDaySelector
+                            data={res.online_reserv_hours}
+                            disabled={!formData.allowed}
                         />
-                    </label>
-                    <div className="invalid-feedback d-block">
-                        {error?.onlineReservationTime}
+                        <div className="invalid-feedback d-block">
+                            {error?.onlineReservationTime}
+                        </div>
                     </div>
-                    {/* <div>
-                        <button
-                            onClick={handleSubmit}
-                            className="btn w-50 btn-primary my-4">
-                            {isUpdate ? 'Yadda Saxla' : 'Tamamla'}
-                        </button>
-                    </div> */}
-                    <div className="d-flex justify-content-end gap-2">
+                    <div className="d-flex justify-content-end gap-2 w-444">
                         <button
                             onClick={() => {
                                 setIsFirstPage(true), setIsSecondPage(false);
@@ -479,6 +574,124 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
                             }}
                             className={`btn btn-primary d-flex align-items-center justify-content-center ${styles.next_button}`}>
                             Növbəti
+                        </button>
+                    </div>
+                </form>
+            )}
+            {isThirdPage && (
+                <form className={`${styles.complete_form} form`}>
+                    <div className="d-flex justify-content-between w-444">
+                        <div>
+                            <label className="pt-0">
+                                Restoran xüsusiyyətləri
+                                <span className={`${styles.asterisk}`}>*</span>
+                            </label>
+                            <SelectOptions
+                                options={tagOptions}
+                                placeholder={'Seçin'}
+                            />
+                        </div>
+                        <div>
+                            <label className="pt-0">
+                                Ortalama qiymət aralığı
+                                <span className={`${styles.asterisk}`}>*</span>
+                            </label>
+                            <input
+                                type="text"
+                                name="price"
+                                value={formData.name}
+                                onChange={handleChange}
+                                placeholder="Min"
+                                className={`form-control ${styles.little_input_size}`}
+                            />
+                            <input
+                                type="text"
+                                name="price"
+                                value={formData.name}
+                                onChange={handleChange}
+                                placeholder="Max"
+                                className={`form-control ${styles.little_input_size}`}
+                            />
+                        </div>
+                    </div>
+                    <div className="w-444">
+                        <label className=" d-block">Minimum yaş həddi</label>
+                        <div className={`d-flex ${styles.increaser}`}>
+                            <div
+                                onClick={() => {
+                                    minAge > 0 && setMinAge(minAge - 1);
+                                }}
+                                className={`btn btn-primary ${styles.decrease_btn}`}>
+                                -
+                            </div>
+                            <span>{minAge}+</span>
+                            <div
+                                onClick={() => {
+                                    setMinAge(minAge + 1);
+                                }}
+                                className={`btn btn-primary ${styles.increase_btn}`}>
+                                +
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-444">
+                        <label className="">Restoranın vebsayt linki</label>
+                        <input
+                            type="text"
+                            name="websiteLink"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder="Restoranın vebsayt linki"
+                            className="form-control"
+                        />
+                    </div>
+                    <div className="d-flex justify-content-between w-444">
+                        <div>
+                            <label className="">İnstagram linki</label>
+                            <input
+                                type="text"
+                                name="instagramLink"
+                                value={formData.name}
+                                onChange={handleChange}
+                                placeholder="İnstagram linkini daxil edin"
+                                className={`form-control ${styles.little_input_size}`}
+                            />
+                        </div>
+                        <div>
+                            <label className="">Facebook linki</label>
+                            <input
+                                type="text"
+                                name="facebookLink"
+                                value={formData.name}
+                                onChange={handleChange}
+                                placeholder="Facebook linkini daxil edin"
+                                className={`form-control ${styles.little_input_size}`}
+                            />
+                        </div>
+                    </div>
+                    <div className="w-444">
+                        <label className="">Qeydlər</label>
+                        <textarea
+                            value={formData.description}
+                            onChange={handleChange}
+                            name="notes"
+                            rows={4}
+                            placeholder="Siqaret çəkmək qadağandır. | Siqaret çəkmək qadağandır. | Siqaret çəkmək..."
+                            className="form-control"
+                        />
+                    </div>
+                    <div className="d-flex justify-content-end gap-2 w-444">
+                        <button
+                            onClick={() => {
+                                setIsSecondPage(true), setIsThirdPage(false);
+                            }}
+                            className={`btn btn-outline-primary d-flex align-items-center justify-content-center ${styles.next_button}`}>
+                            Geri
+                        </button>
+                        <button
+                            onClick={handleSubmit}
+                            className={`btn btn-primary d-flex align-items-center justify-content-center ${styles.next_button}`}>
+                            {isUpdate ? 'Yadda Saxla' : 'Tamamla'}
                         </button>
                     </div>
                 </form>

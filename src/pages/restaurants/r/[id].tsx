@@ -80,6 +80,7 @@ const ReservationRestaurant = ({ res }: any) => {
         dispatch(makeLoading());
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+    console.log(res)
     return (
         <>
             <Head>
@@ -116,7 +117,7 @@ const ReservationRestaurant = ({ res }: any) => {
                     ) : null}
                     <div className="main-container">
                         <div
-                            className={`d-flex flex-column d-block d-md-none position-relative`}>
+                            className={`d-flex flex-column d-block d-md-none`}>
                             <button
                                 className={`d-flex align-items-center justify-content-center ${styles.heart_icon}`}
                                 onClick={() => {

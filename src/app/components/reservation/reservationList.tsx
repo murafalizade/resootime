@@ -9,7 +9,7 @@ const ReservationList = ({ reserv }: { reserv: IReservation[] }) => {
 
     // Reservations state
     const [reservations, setReservations] = useState(reserv);
-
+console.log(reserv)
     // Search function
     const searchGuest = () => {
         const filteredReservations = reserv.filter((r) => {

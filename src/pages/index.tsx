@@ -5,22 +5,27 @@ import RestaurantService from '@/app/api/services/restaurantService';
 import { IRestaurant } from '@/app/types/IRestaurant';
 import withAuth from '@/app/hoc/withAuth';
 import Link from 'next/link';
-import { Suspense, useEffect, useState } from 'react';
+import {  useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '@/app/styles/Home.module.scss';
 import Carousel from '@/app/components/card/carousel';
+import Distance from '@/app/utils/Distance';
 
 function Home({ restaurants }: any) {
     // search restaurant state
     const [search, setSearch] = useState<string>('');
 
-    // filters
-    const [isShowNewOnes, setIsShowNewOnes] = useState<boolean>(false);
-    const [isShowPopularOnes, setIsShowPopularOnes] = useState<boolean>(false);
-    const [isShowNearOnes, setIsShowNearOnes] = useState<boolean>(false);
-
     // restaurant state
     const [rests, setRests] = useState<IRestaurant[]>(restaurants.results);
+    const [popularRests, setPopularRests] = useState<IRestaurant[]>(
+        rests.filter((rest: IRestaurant) => rest.rate >= 4),
+    );
+    const [newRests, setNewRests] = useState<IRestaurant[]>(
+        rests.reverse().slice(0, 5),
+    );
+    const [nearestRests, setNearestRests] = useState<IRestaurant[]>([]);
+
+    const [location, setLocation] = useState(null);
 
     // get query from url
     const router = useRouter();
@@ -30,12 +35,37 @@ function Home({ restaurants }: any) {
     const searchRestaurant = (e: any) => {
         const filteredRestaurants = restaurants.results.filter(
             (rest: IRestaurant) =>
-                rest.name.toLowerCase().includes(search.toLowerCase()) ||
-                rest.category?.name
-                    .toLowerCase()
-                    .includes(search.toLowerCase()),
+                rest.name.toLowerCase().includes(search.toLowerCase()),
         );
         setRests(filteredRestaurants);
+    };
+
+    // find nearest restaurant
+    const findNearest = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                const { latitude, longitude } = position.coords;
+                const sortedRestaurants = rests
+                    .map((restaurant: any) => {
+                        const {
+                            latitude: restaurantLat,
+                            longitude: restaurantLng,
+                        } = Distance.extractCoordinatesFromMapLink(
+                            restaurant.mapLink,
+                        );
+                        const distance = Distance.distanceCalculate(
+                            latitude,
+                            longitude,
+                            restaurantLat,
+                            restaurantLng,
+                        );
+                        return { ...restaurant, distance };
+                    })
+                    .sort((a, b) => a.distance - b.distance)
+                    .slice(0, 5);
+                setNearestRests(sortedRestaurants);
+            });
+        }
     };
 
     // search restaurant when page loaded
@@ -43,6 +73,13 @@ function Home({ restaurants }: any) {
         searchRestaurant(name);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [name]);
+
+    useEffect(() => {
+        findNearest();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    console.log(location);
 
     return (
         <>
@@ -79,10 +116,11 @@ function Home({ restaurants }: any) {
             <Layout>
                 <main className={``}>
                     <div className={`${styles.home_page}`}>
-                        <div className={`main-container`}>
+                        <div className={``}>
                             <div
-                                className={`container fluid ${styles.heading_container}`}>
-                                <div className="col-12 col-xl-6 d-flex justify-content-center flex-column pb-4">
+                                className={`${styles.heading_container} row-width`}>
+                                <div
+                                    className={`col-12 col-xl-6 d-flex justify-content-center flex-column pb-4`}>
                                     <h1 className={`${styles.heading}`}>
                                         Masanı Rezerv et
                                     </h1>
@@ -113,9 +151,9 @@ function Home({ restaurants }: any) {
                     <div className={`pb-5 ${styles.card_section}`}>
                         {rests.length > 4 ? (
                             <div>
-                                <div className="row mt-5">
+                                <div className="row">
                                     <Carousel title="Yeni əlavə olunanlar">
-                                        {rests.map((rest, i: number) => (
+                                        {newRests.map((rest, i: number) => (
                                             <Card key={i} cardInfo={rest} />
                                         ))}
                                     </Carousel>
@@ -129,7 +167,7 @@ function Home({ restaurants }: any) {
                                     </h3>
                                 </div>
                                 <div className="row">
-                                    {rests.map(
+                                    {newRests.map(
                                         (rest: IRestaurant, i: number) => (
                                             <div
                                                 key={i}
@@ -143,9 +181,9 @@ function Home({ restaurants }: any) {
                         )}
                         {rests.length > 4 ? (
                             <div>
-                                <div className="row mt-5">
+                                <div className="row">
                                     <Carousel title="Populyar olanlar">
-                                        {rests.map((rest, i: number) => (
+                                        {popularRests.map((rest, i: number) => (
                                             <Card key={i} cardInfo={rest} />
                                         ))}
                                     </Carousel>
@@ -159,7 +197,7 @@ function Home({ restaurants }: any) {
                                     </h3>
                                 </div>
                                 <div className="row">
-                                    {rests.map(
+                                    {popularRests.map(
                                         (rest: IRestaurant, i: number) => (
                                             <div
                                                 key={i}
@@ -173,9 +211,9 @@ function Home({ restaurants }: any) {
                         )}
                         {rests.length > 4 ? (
                             <div>
-                                <div className="row mt-5">
+                                <div className="row">
                                     <Carousel title="Yaxındakılar">
-                                        {rests.map((rest, i: number) => (
+                                        {nearestRests.map((rest, i: number) => (
                                             <Card key={i} cardInfo={rest} />
                                         ))}
                                     </Carousel>
@@ -189,7 +227,7 @@ function Home({ restaurants }: any) {
                                     </h3>
                                 </div>
                                 <div className="row">
-                                    {rests.map(
+                                    {nearestRests.map(
                                         (rest: IRestaurant, i: number) => (
                                             <div
                                                 key={i}

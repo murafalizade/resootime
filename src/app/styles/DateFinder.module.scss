@@ -82,6 +82,7 @@
     .info {
         text-transform: capitalize;
         color: #6a5ddf;
+        text-align:right;
     }
 
     .details_icon {
@@ -104,7 +105,9 @@
 }
 
 .info_type {
+    // width: 10rem;
     font-weight: 600;
+    word-break: nowrap;
 }
 
 .icon {

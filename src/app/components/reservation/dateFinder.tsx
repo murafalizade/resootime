@@ -26,7 +26,7 @@ const DateFinder = ({
     restName,
     restImage,
     restId,
-    allowed = false,
+    allowed,
     data,
 }: DateFinderProps) => {
     // dates
@@ -38,11 +38,11 @@ const DateFinder = ({
             (item: any) => item.day === days[now.getDay()].name,
         )?.open_at;
         const today = new Date();
-        console.log(time);
         if (!time) {
             return ['23', '59'];
         }
         if (today.getTime() >= now.getTime()) {
+            console.log(time);
             return time.split(':');
         } else {
             return [today.getHours(), today.getMinutes()];
@@ -56,7 +56,9 @@ const DateFinder = ({
         if (!time) {
             return ['23', '59'];
         }
-        console.log(time);
+        if(time.split(':')[0] < getMinHour(now)[0]){
+            return ['23', '59'];
+        }
         return time.split(':');
     };
 
@@ -70,6 +72,7 @@ const DateFinder = ({
             0,
         ),
     );
+
     const [maxTime, setMaxTime] = useState(
         new Date(
             now.getFullYear(),
@@ -92,14 +95,15 @@ const DateFinder = ({
         setCount(e.target.value);
     };
 
+
     useEffect(() => {
         if (minTime.getTime() < maxTime.getTime()) {
             setNoAllowed(false);
         } else {
             setNoAllowed(true);
-            console.log(noAllowed && !allowed);
         }
     }, [minTime, maxTime]);
+
 
     // open modal for make reservation
     const makeReservation = async () => {
@@ -231,12 +235,12 @@ const DateFinder = ({
 
             <button
                 type="button"
-                disabled={!allowed && noAllowed}
+                disabled={noAllowed}
                 onClick={makeReservation}
                 className={`btn btn-primary btn-lg mt-3 mb-2 ${styles.reservation_btn}`}>
                 {table ? `Reserv edin ${table.name}` : 'Masaları axtarın'}
             </button>
-            {allowed || noAllowed ? (
+            {!(allowed && !noAllowed)? (
                 <span className={`text-danger text-center ${styles.warning}`}>
                     Rezervasiya etmək halhazırda mümkün deyil
                 </span>

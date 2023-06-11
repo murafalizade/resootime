@@ -26,7 +26,7 @@ const AdditionalInfo = ({
                         <GiMeal className={`me-2 ${styles.details_icon}`} />
                         <span className={`${styles.info_type}`}>Mətbəx</span>
                     </div>
-                    <div className="col-6 d-flex">
+                    <div className="col-6 d-flex justify-content-end ">
                         <span
                             className={`d-flex align-items-center fw-600 justify-content-end ${styles.info}`}>
                             {cuisine?.map((item: any, index: any) => {

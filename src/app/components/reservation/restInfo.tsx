@@ -74,17 +74,19 @@ const RestInfo = ({
                     </a>
                 </div>
                 <hr />
-                <div className="d-flex align-items-center">
-                    <TbWorld className={`mx-3 ${styles.icon}`} />
-                    <a
-                        href={websiteLink}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={`btn-link text-decoration-none link ${styles.link} ${styles.info}`}>
-                        {websiteLink}
-                    </a>
-                </div>
-                <hr />
+                {websiteLink && (
+                    <div className="d-flex align-items-center">
+                        <TbWorld className={`mx-3 ${styles.icon}`} />
+                        <a
+                            href={websiteLink}
+                            target="_blank"
+                            rel="noreferrer"
+                            className={`btn-link text-decoration-none link ${styles.link} ${styles.info}`}>
+                            {websiteLink}
+                        </a>
+                    </div>
+                )}
+                {websiteLink && <hr />}
                 <div className="d-flex">
                     <AiOutlineClockCircle className={`mx-3 ${styles.icon}`} />
                     <div className="w-100">

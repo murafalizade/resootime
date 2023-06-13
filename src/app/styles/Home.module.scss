@@ -79,12 +79,10 @@
 .card_container {
     width: 12.9rem;
     min-height: 15rem;
-    height: 18rem;
-    max-height: 18rem;
     border: 1px solid rgba(217, 217, 217, 0.04);
     box-shadow: 0px 0px 3.60333px rgba(103, 110, 118, 0.35);
     transition: all 0.3s ease-in;
-    padding: 0.56rem !important;
+    padding: 0.4rem 0.7rem !important;
     .card {
         box-sizing: border-box;
         border: none;

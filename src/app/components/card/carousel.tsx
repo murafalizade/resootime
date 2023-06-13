@@ -70,7 +70,7 @@ const Carousel = ({ children, title }: CarouselProps) => {
                 {showBackButton && (
                     <button
                         onClick={() => previous()}
-                        className={`btn mx-2 btn-outline-secondary btn-sm position-absolute d-none d-sm-block ${styles.back_arrow} ${styles.arrow_button}`}>
+                        className={`btn mx-2 btn-outline-secondary btn-sm position-absolute d-none d-md-block ${styles.back_arrow} ${styles.arrow_button}`}>
                         <MdArrowBackIosNew />
                     </button>
                 )}
@@ -81,7 +81,7 @@ const Carousel = ({ children, title }: CarouselProps) => {
                         onClick={() => {
                             next(), setShowBackButton(true);
                         }}
-                        className={`btn mx-2 btn-outline-secondary btn-sm position-absolute d-none d-sm-block ${styles.forward_arrow} ${styles.arrow_button}`}>
+                        className={`btn mx-2 btn-outline-secondary btn-sm position-absolute d-none d-md-block ${styles.forward_arrow} ${styles.arrow_button}`}>
                         <MdArrowForwardIos />
                     </button>
             </div>

@@ -20,8 +20,6 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
     const [isFirstPage, setIsFirstPage] = React.useState<boolean>(true);
     const [isSecondPage, setIsSecondPage] = React.useState<boolean>(false);
     const [isThirdPage, setIsThirdPage] = React.useState<boolean>(false);
-    const [numberOfPhoneInputs, setNumberOfPhoneInputs] =
-        React.useState<number>(1);
     const [guestCount, setGuestCount] = React.useState<number>(1);
     const [minAge, setMinAge] = React.useState<number>(0);
 
@@ -107,7 +105,7 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
         payment: res?.payment,
         parking: res?.parking,
         tags: res?.tags,
-        city: res?.city
+        city: res?.city,
     });
 
     // handle the change of the input in typescript
@@ -246,9 +244,8 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
             setError({ profileImage: 'Restoranın şəkli boş ola bilməz' });
             return;
         }
-        setIsFirstPage(false),
-        setIsSecondPage(true);
-    }
+        setIsFirstPage(false), setIsSecondPage(true);
+    };
 
     // switch the page two to page third
     const handleNextPage2 = (e: React.FormEvent<HTMLButtonElement>) => {
@@ -264,8 +261,7 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
 
         setIsSecondPage(false);
         setIsThirdPage(true);
-    }
-
+    };
 
     return (
         <div
@@ -296,51 +292,36 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
                     </div>
 
                     <div className="w-444">
-                        <label className="">
+                        <label>
                             Restoranın əlaqə nömrəsi
                             <span className={`${styles.asterisk}`}>*</span>
                         </label>
-                        {Array(numberOfPhoneInputs)
-                            .fill('')
-                            .map((index: number) => (
-                                <div
-                                    className={`position-relative pt-2`}
-                                    key={index}>
-                                    <span
-                                        className={`position-absolute ${styles.flag}`}>
-                                        <Image
-                                            src={'/images/flag-azerbaijan.png'}
-                                            alt={res.name}
-                                            width={18.4}
-                                            height={18.4}
-                                            quality={100}
-                                            className={`me-1`}
-                                        />
-                                        +994
-                                    </span>
-                                    <input
-                                        name="phone"
-                                        type="tel"
-                                        value={formData.phone}
-                                        onChange={handleChange}
-                                        placeholder="Əlaqə nömrəsi"
-                                        className={`form-control ${styles.phone_input}`}
-                                    />
-                                </div>
-                            ))}
-                        <div className="d-flex justify-content-between">
-                            <div className="invalid-feedback d-block">
-                                {error?.phone}
-                            </div>
-                            <div
-                                onClick={() => {
-                                    setNumberOfPhoneInputs(
-                                        numberOfPhoneInputs + 1,
-                                    );
-                                }}
-                                className={`text-nowrap pt-1 ${styles.add_btn}`}>
-                                + Əlavə et
-                            </div>
+                        <div
+                            className={`position-relative
+                            }`}>
+                            <span
+                                className={`position-absolute ${styles.flag}`}>
+                                <Image
+                                    src={'/images/flag-azerbaijan.png'}
+                                    alt={res.name}
+                                    width={18.4}
+                                    height={18.4}
+                                    quality={100}
+                                    className={`me-1`}
+                                />
+                                +994
+                            </span>
+                            <input
+                                name="phone"
+                                type="tel"
+                                value={formData.phone}
+                                onChange={handleChange}
+                                placeholder="Əlaqə nömrəsi"
+                                className={`form-control ${styles.phone_input}`}
+                            />
+                        </div>
+                        <div className="invalid-feedback d-block">
+                            {error?.phone}
                         </div>
                     </div>
 
@@ -436,11 +417,11 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
                             type="file"
                             id="single_file"
                         />
-                        <label
+                        {formData.profileImage && <label
                             htmlFor="single_file"
                             className={`btn text-nowrap btn-outline-primary form-control d-flex align-items-center justify-content-center mt-2 ${styles.profile_img_btn}`}>
                             Şəkili dəyişin{' '}
-                        </label>
+                        </label>}
                         <div className="invalid-feedback d-block">
                             {error?.profileImage}
                         </div>
@@ -504,7 +485,7 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
                                 Restoran tipi
                                 <span className={`${styles.asterisk}`}>*</span>
                             </label>
-                            <SelectOptions
+                            <MultiSelectOptions
                                 options={typeOptions}
                                 placeholder={'Seçin'}
                             />
@@ -514,7 +495,7 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
                                 Mətbəx
                                 <span className={`${styles.asterisk}`}>*</span>
                             </label>
-                            <SelectOptions
+                            <MultiSelectOptions
                                 options={cuisineOptions}
                                 placeholder={'Seçin'}
                             />
@@ -616,7 +597,7 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
                                 Restoran xüsusiyyətləri
                                 <span className={`${styles.asterisk}`}>*</span>
                             </label>
-                            <SelectOptions
+                            <MultiSelectOptions
                                 options={tagOptions}
                                 placeholder={'Seçin'}
                             />

@@ -11,25 +11,33 @@ const SelectOptions = ({ options, placeholder, isHourSelector }: any) => {
     const DropdownIndicator = (props: DropdownIndicatorProps<any, true>) => {
         return (
             <components.DropdownIndicator {...props}>
-                {isHourSelector ? (<div
-                    className="d-flex align-items-center justify-content-center"
-                    style={{
-                        width: '1rem',
-                        height: '1rem',
-                        border: 'none'
-                    }}>
-                    <MdOutlineKeyboardArrowDown size={'1rem'} color="#707070" />
-                </div>) : (<div
-                    className="d-flex align-items-center justify-content-center"
-                    style={{
-                        backgroundColor: '#CDC9ED',
-                        borderRadius: '50%',
-                        width: '1rem',
-                        height: '1rem',
-                        border: 'none'
-                    }}>
-                    <MdOutlineKeyboardArrowDown size={'0.9rem'} color="#6A5DDF" />
-                </div>)}
+                {isHourSelector ? (
+                    <div
+                        className="d-flex align-items-center justify-content-center"
+                        style={{
+                            width: '1rem',
+                            height: '1rem',
+                        }}>
+                        <MdOutlineKeyboardArrowDown
+                            size={'1rem'}
+                            color="#707070"
+                        />
+                    </div>
+                ) : (
+                    <div
+                        className="d-flex align-items-center justify-content-center"
+                        style={{
+                            backgroundColor: '#CDC9ED',
+                            borderRadius: '50%',
+                            width: '1rem',
+                            height: '1rem',
+                        }}>
+                        <MdOutlineKeyboardArrowDown
+                            size={'0.9rem'}
+                            color="#6A5DDF"
+                        />
+                    </div>
+                )}
             </components.DropdownIndicator>
         );
     };
@@ -39,7 +47,9 @@ const SelectOptions = ({ options, placeholder, isHourSelector }: any) => {
     ) => {
         return (
             <div className="">
-                <components.IndicatorsContainer {...props} />
+                <components.IndicatorsContainer
+                    {...props}
+                />
             </div>
         );
     };
@@ -138,7 +148,7 @@ const SelectOptions = ({ options, placeholder, isHourSelector }: any) => {
                             color: '#D3D3D3',
                             border: 'none',
                         }),
-                        input: (base, state) => ({
+                        input: (base) => ({
                             ...base,
                             height: '36px',
                             width: '1px',
@@ -146,6 +156,13 @@ const SelectOptions = ({ options, placeholder, isHourSelector }: any) => {
                             zIndex: '-3',
                             border: 'none',
                         }),
+                        indicatorSeparator: () => ({
+                            display: 'none',
+                        }),
+                        // dropdownIndicator: (base, state) => ({
+                        //     transform: state.selectProps.menuIsOpen && 'rotate(180deg)',
+                        //     marginRight: '18px',
+                        // })
                     }}
                 />
             ) : (
@@ -240,6 +257,13 @@ const SelectOptions = ({ options, placeholder, isHourSelector }: any) => {
                             zIndex: '-3',
                             border: 'none',
                         }),
+                        indicatorSeparator: () => ({
+                            display: 'none',
+                        }),
+                        // dropdownIndicator: (base, state) => ({
+                        //     transform: state.selectProps.menuIsOpen && 'rotate(180deg)',
+                        //     marginRight: '18px'
+                        // })
                     }}
                 />
             )}

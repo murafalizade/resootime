@@ -1,219 +1,218 @@
 [
     {
-      "city": {
-        "az": "Bakı",
-        "en": "Baku"
-      }
-    },
-    {
-        "city":{
-            "az":"Xırdalan",
-            "en":"Agdam"
+        "city": {
+            "az": "Bakı",
+            "en": "Baku"
         }
     },
     {
-      "city": {
-        "az": "Gəncə",
-        "en": "Ganja"
-      }
+        "city": {
+            "az": "Xırdalan",
+            "en": "Agdam"
+        }
     },
     {
-      "city": {
-        "az": "Sumqayıt",
-        "en": "Sumgait"
-      }
+        "city": {
+            "az": "Gəncə",
+            "en": "Ganja"
+        }
     },
     {
-      "city": {
-        "az": "Mingəçevir",
-        "en": "Mingachevir"
-      }
+        "city": {
+            "az": "Sumqayıt",
+            "en": "Sumgait"
+        }
     },
     {
-      "city": {
-        "az": "Naxçıvan",
-        "en": "Nakhchivan"
-      }
+        "city": {
+            "az": "Mingəçevir",
+            "en": "Mingachevir"
+        }
     },
     {
-      "city": {
-        "az": "Şirvan",
-        "en": "Shirvan"
-      }
+        "city": {
+            "az": "Naxçıvan",
+            "en": "Nakhchivan"
+        }
     },
     {
-      "city": {
-        "az": "Lənkəran",
-        "en": "Lankaran"
-      }
+        "city": {
+            "az": "Şirvan",
+            "en": "Shirvan"
+        }
     },
     {
-      "city": {
-        "az": "Göyçay",
-        "en": "Goychay"
-      }
+        "city": {
+            "az": "Lənkəran",
+            "en": "Lankaran"
+        }
     },
     {
-      "city": {
-        "az": "Şəki",
-        "en": "Shaki"
-      }
+        "city": {
+            "az": "Göyçay",
+            "en": "Goychay"
+        }
     },
     {
-      "city": {
-        "az": "Yevlax",
-        "en": "Yevlakh"
-      }
+        "city": {
+            "az": "Şəki",
+            "en": "Shaki"
+        }
     },
     {
-      "city": {
-        "az": "Quba",
-        "en": "Quba"
-      }
+        "city": {
+            "az": "Yevlax",
+            "en": "Yevlakh"
+        }
     },
     {
-      "city": {
-        "az": "Qazax",
-        "en": "Qazakh"
-      }
+        "city": {
+            "az": "Quba",
+            "en": "Quba"
+        }
     },
     {
-      "city": {
-        "az": "İmişli",
-        "en": "Imishli"
-      }
+        "city": {
+            "az": "Qazax",
+            "en": "Qazakh"
+        }
     },
     {
-      "city": {
-        "az": "Xaçmaz",
-        "en": "Khachmaz"
-      }
+        "city": {
+            "az": "İmişli",
+            "en": "Imishli"
+        }
     },
     {
-      "city": {
-        "az": "Bərdə",
-        "en": "Barda"
-      }
+        "city": {
+            "az": "Xaçmaz",
+            "en": "Khachmaz"
+        }
     },
     {
-      "city": {
-        "az": "Lerik",
-        "en": "Lerik"
-      }
+        "city": {
+            "az": "Bərdə",
+            "en": "Barda"
+        }
     },
     {
-      "city": {
-        "az": "Ağdaş",
-        "en": "Agdash"
-      }
+        "city": {
+            "az": "Lerik",
+            "en": "Lerik"
+        }
     },
     {
-      "city": {
-        "az": "Salyan",
-        "en": "Salyan"
-      }
+        "city": {
+            "az": "Ağdaş",
+            "en": "Agdash"
+        }
     },
     {
-      "city": {
-        "az": "Cəlilabad",
-        "en": "Jalilabad"
-      }
+        "city": {
+            "az": "Salyan",
+            "en": "Salyan"
+        }
     },
     {
-      "city": {
-        "az": "Astara",
-        "en": "Astara"
-      }
+        "city": {
+            "az": "Cəlilabad",
+            "en": "Jalilabad"
+        }
     },
     {
-      "city": {
-        "az": "Balakən",
-        "en": "Balakan"
-      }
+        "city": {
+            "az": "Astara",
+            "en": "Astara"
+        }
     },
     {
-      "city": {
-        "az": "Biləsuvar",
-        "en": "Bilasuvar"
-      }
+        "city": {
+            "az": "Balakən",
+            "en": "Balakan"
+        }
     },
     {
-      "city": {
-        "az": "Cəbrayıl",
-        "en": "Jabrayil"
-      }
+        "city": {
+            "az": "Biləsuvar",
+            "en": "Bilasuvar"
+        }
     },
     {
-      "city": {
-        "az": "Culfa",
-        "en": "Julfa"
-      }
+        "city": {
+            "az": "Cəbrayıl",
+            "en": "Jabrayil"
+        }
     },
     {
-      "city": {
-        "az": "Daşkəsən",
-        "en": "Dashkasan"
-      }
+        "city": {
+            "az": "Culfa",
+            "en": "Julfa"
+        }
     },
     {
-      "city": {
-        "az": "Füzuli",
-        "en": "Fuzuli"
-      }
+        "city": {
+            "az": "Daşkəsən",
+            "en": "Dashkasan"
+        }
     },
     {
-      "city": {
-        "az": "Gədəbəy",
-        "en": "Gadabay"
-      }
+        "city": {
+            "az": "Füzuli",
+            "en": "Fuzuli"
+        }
     },
     {
-      "city": {
-        "az": "Goranboy",
-        "en": "Goranboy"
-      }
+        "city": {
+            "az": "Gədəbəy",
+            "en": "Gadabay"
+        }
     },
     {
-      "city": {
-        "az": "Göygöl",
-        "en": "Goygol"
-      }
+        "city": {
+            "az": "Goranboy",
+            "en": "Goranboy"
+        }
     },
     {
-      "city": {
-        "az": "Hacıqabul",
-        "en": "Hajigabul"
-      }
+        "city": {
+            "az": "Göygöl",
+            "en": "Goygol"
+        }
     },
     {
-      "city": {
-        "az": "Xocalı",
-        "en": "Khojaly"
-      }
+        "city": {
+            "az": "Hacıqabul",
+            "en": "Hajigabul"
+        }
     },
     {
-      "city": {
-        "az": "Xocavənd",
-        "en": "Khojavend"
-      }
+        "city": {
+            "az": "Xocalı",
+            "en": "Khojaly"
+        }
     },
     {
-      "city": {
-        "az": "İsmayıllı",
-        "en": "Ismayilli"
-      }
+        "city": {
+            "az": "Xocavənd",
+            "en": "Khojavend"
+        }
     },
     {
-      "city": {
-        "az": "Kəlbəcər",
-        "en": "Kalbajar"
-      }
+        "city": {
+            "az": "İsmayıllı",
+            "en": "Ismayilli"
+        }
     },
     {
-      "city": {
-        "az": "Kürdəmir",
-        "en": "Kurdamir"
+        "city": {
+            "az": "Kəlbəcər",
+            "en": "Kalbajar"
+        }
+    },
+    {
+        "city": {
+            "az": "Kürdəmir",
+            "en": "Kurdamir"
         }
     }
-  ]
-  
+]

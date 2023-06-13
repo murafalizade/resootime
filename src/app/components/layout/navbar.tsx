@@ -27,6 +27,7 @@ const Navbar = (props: IProps) => {
 
     const logout = () => {
         Cookie.delete('token');
+        Cookie.delete('CompleteInfo');
         Router.reload();
     };
 

@@ -5,12 +5,21 @@ import IReservation from '@/app/types/IReservartion';
 import Util from '@/app/utils/Util';
 import withErrorHandeler from '@/app/hof/withErrorHandler';
 
-const MyCustomers = ({ reserv,restId }: { reserv: IReservation[],restId:number }) => {
+const MyCustomers = ({
+    reserv,
+    restId,
+}: {
+    reserv: IReservation[];
+    restId: number;
+}) => {
     const cancelReservation = async (id?: number) => {
         if (!id) return;
         await withErrorHandeler(async (args: any) => {
             await RestaurantService.cancelReservation(args.data, args.id);
-        }, 'Reservasiya uğurla ləğv edildi!')({data:{restaurant_id:restId},id});
+        }, 'Reservasiya uğurla ləğv edildi!')({
+            data: { restaurant_id: restId },
+            id,
+        });
     };
 
     return (

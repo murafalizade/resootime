@@ -97,7 +97,9 @@ const Menu = ({ id }: { id: number }) => {
                                                                 <div className="col-4 d-flex align-items-center ps-0">
                                                                     {product.image && (
                                                                         <Image
-                                                                            alt={product.name}
+                                                                            alt={
+                                                                                product.name
+                                                                            }
                                                                             src={
                                                                                 product.image
                                                                             }

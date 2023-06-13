@@ -28,7 +28,7 @@ const CreateMap = ({ restId, tbls, wall }: any) => {
 
     return (
         <>
-         <Head>
+            <Head>
                 <title>Masa dizaynınızı tamamlayın | ResooTime</title>
                 <meta
                     name="viewport"
@@ -52,10 +52,10 @@ const CreateMap = ({ restId, tbls, wall }: any) => {
                 <meta property="og:site_name" content="ResooTime" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-        <div className="d-flex">
-            <InlineMenu />
-            <CreateMapTool restId={restId} wall={wall} />
-        </div>
+            <div className="d-flex">
+                <InlineMenu />
+                <CreateMapTool restId={restId} wall={wall} />
+            </div>
         </>
     );
 };

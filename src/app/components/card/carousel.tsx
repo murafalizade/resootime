@@ -78,12 +78,12 @@ const Carousel = ({ children, title }: CarouselProps) => {
                     {children}
                 </Slider>
                 <button
-                        onClick={() => {
-                            next(), setShowBackButton(true);
-                        }}
-                        className={`btn mx-2 btn-outline-secondary btn-sm position-absolute d-none d-sm-block ${styles.forward_arrow} ${styles.arrow_button}`}>
-                        <MdArrowForwardIos />
-                    </button>
+                    onClick={() => {
+                        next(), setShowBackButton(true);
+                    }}
+                    className={`btn mx-2 btn-outline-secondary btn-sm position-absolute d-none d-sm-block ${styles.forward_arrow} ${styles.arrow_button}`}>
+                    <MdArrowForwardIos />
+                </button>
             </div>
         </div>
     );

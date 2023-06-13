@@ -26,7 +26,9 @@ const Card = ({ cardInfo }: ICardProps) => {
                     />
                 </a>
                 <div className={`card-body px-0 ${styles.card_body}`}>
-                    <span className={`${styles.res_type}`}>{cardInfo.type[0].type}</span>
+                    <span className={`${styles.res_type}`}>
+                        {cardInfo.type[0].type}
+                    </span>
                     <div className="d-flex align-items-center justify-content-between">
                         <a
                             href={`/restaurants/r/${cardInfo.slug}`}
@@ -49,16 +51,11 @@ const Card = ({ cardInfo }: ICardProps) => {
                         </div>
                     </h6>
                     <div className={`d-flex ${styles.rest_tags}`}>
-                        {
-                            cardInfo?.tag?.map((tag) => (
-                                <div
-                                    key={tag.id}
-                                    className={`${styles.res_tag}`}>
-                                    {tag.name}
-                                </div>
-                            ))
-
-                        }
+                        {cardInfo?.tag?.map((tag) => (
+                            <div key={tag.id} className={`${styles.res_tag}`}>
+                                {tag.name}
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

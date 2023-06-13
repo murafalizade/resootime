@@ -20,7 +20,6 @@ service.interceptors.request.use(
     (config) => {
         config.headers = config.headers ?? {};
         const accessToken = config.headers['permanent-token'];
-        // console.log(accessToken);
         // Check the access token
         if (accessToken) {
             config.headers['Authorization'] = `Token ${accessToken}`;

@@ -121,13 +121,13 @@
             .res_location {
                 margin-bottom: 0.56rem !important;
             }
-            .rest_tags{
+            .rest_tags {
                 margin-top: auto;
                 display: flex;
                 flex-wrap: wrap;
                 max-width: 11.9rem;
                 overflow-x: hidden;
-               // margin-bottom: 0.56rem !important;
+                // margin-bottom: 0.56rem !important;
                 .res_tag {
                     font-size: 0.7rem;
                     font-weight: 300;
@@ -204,21 +204,24 @@
 }
 
 @media screen and (max-width: 1200px) {
-    .home_page, .card_section {
+    .home_page,
+    .card_section {
         padding-left: 120px;
         padding-right: 120px;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .home_page, .card_section {
+    .home_page,
+    .card_section {
         padding-left: 20px;
         padding-right: 20px;
     }
 }
 
 @media screen and (max-width: 576px) {
-    .home_page, .card_section {
+    .home_page,
+    .card_section {
         padding-right: 0px;
     }
     .heading_input {

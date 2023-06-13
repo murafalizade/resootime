@@ -107,7 +107,7 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
         payment: res?.payment,
         parking: res?.parking,
         tags: res?.tags,
-        city: res?.city
+        city: res?.city,
     });
 
     // handle the change of the input in typescript
@@ -246,9 +246,8 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
             setError({ profileImage: 'Restoranın şəkli boş ola bilməz' });
             return;
         }
-        setIsFirstPage(false),
-        setIsSecondPage(true);
-    }
+        setIsFirstPage(false), setIsSecondPage(true);
+    };
 
     // switch the page two to page third
     const handleNextPage2 = (e: React.FormEvent<HTMLButtonElement>) => {
@@ -264,8 +263,7 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
 
         setIsSecondPage(false);
         setIsThirdPage(true);
-    }
-
+    };
 
     return (
         <div

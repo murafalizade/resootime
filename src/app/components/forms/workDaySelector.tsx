@@ -135,10 +135,18 @@ const WorkDaySelector = ({ working_hours }: any) => {
                 })}
             </div>
             <div className="d-flex mt-3 align-items-center w-444">
-                <SelectOptions options={allDayHours} placeholder='Açılma vaxtı' isHourSelector={true}/>
+                <SelectOptions
+                    options={allDayHours}
+                    placeholder="Açılma vaxtı"
+                    isHourSelector={true}
+                />
                 <span className="mx-2">:</span>
-                <SelectOptions options={allDayHours} placeholder='Bağlanma vaxtı' isHourSelector={true}/>
-                
+                <SelectOptions
+                    options={allDayHours}
+                    placeholder="Bağlanma vaxtı"
+                    isHourSelector={true}
+                />
+
                 {/* <input
                     value={workTime[0]?.open_at || '09:00'}
                     onChange={(e) => {

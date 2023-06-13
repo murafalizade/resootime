@@ -70,21 +70,24 @@ const AdditionalInfo = ({
                     </div>
                 )}
                 {minimumAge && <hr />}
-                <div className="row justify-content-between me-2 py-2">
-                    <div className="col-6 d-flex align-items-center">
-                        <FaRegMoneyBillAlt
-                            className={`me-2 ${styles.details_icon}`}
-                        />
-                        <span className={`${styles.info_type}`}>
-                            Ortalama qiymət
+                {minimumPrice && (
+                    <div className="row justify-content-between me-2 py-2">
+                        <div className="col-6 d-flex align-items-center">
+                            <FaRegMoneyBillAlt
+                                className={`me-2 ${styles.details_icon}`}
+                            />
+                            <span className={`${styles.info_type}`}>
+                                Ortalama qiymət
+                            </span>
+                        </div>
+                        <span
+                            className={`col-6 d-flex align-items-center fw-600 justify-content-end ${styles.info}`}>
+                            {minimumPrice ?? 0}-{maximumPrice ?? 0} azn
                         </span>
                     </div>
-                    <span
-                        className={`col-6 d-flex align-items-center fw-600 justify-content-end ${styles.info}`}>
-                        {minimumPrice ?? 0}-{maximumPrice ?? 0} azn
-                    </span>
-                </div>
-                <hr />
+                )}
+
+                {minimumPrice && maximumPrice && <hr />}
                 <div className="row justify-content-between me-2 py-2">
                     <div className="col-6 d-flex align-items-center">
                         <IoMdCard className={`me-2 ${styles.details_icon}`} />

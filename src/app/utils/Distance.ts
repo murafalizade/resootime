@@ -34,7 +34,26 @@ class Distance {
 
         return { latitude: null, longitude: null };
     };
-}
 
+    public static extractMapLink = (embedLink: string): string => {
+        // Extract the latitude and longitude from the embed link
+        if (!embedLink) return '';
+      
+        const regexLatLng = /!2d(-?\d+\.\d+)!3d(-?\d+\.\d+)/;
+        const matchLatLng = embedLink.match(regexLatLng);
+        const latitude = matchLatLng?.[2]!;
+        const longitude = matchLatLng?.[1]!;
+
+        // Extract place name from the embed link
+        const regexPlace = /!1s([^!]+)/;
+        const matchPlace = embedLink.match(regexPlace);
+        const place = matchPlace?.[1];
+
+        // Construct the shareable link
+        const shareableLink = `https://www.google.com/maps/place/${place}/@${latitude},${longitude}`;
+
+        return shareableLink;
+    };
+}
 
 export default Distance;

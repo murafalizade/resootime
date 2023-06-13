@@ -37,7 +37,7 @@ const ReservationRestaurant = ({ res }: any) => {
     const [wall, setWall] = useState('');
     const [date, setDate] = useState(new Date());
     const [canEdit, setCanEdit] = useState(true);
-    const [showMore, setShowMore] = useState(false);
+    const [showMore, setShowMore] = useState(res.description.length < 317);
     const [isClicked, setIsClicked] = useState(false);
     const [isGalleryOpen, setIsGalleryOpen] = useState(false);
     const [twoFingerGesture, setTwoFingerGesture] = useState(false);
@@ -80,7 +80,7 @@ const ReservationRestaurant = ({ res }: any) => {
         dispatch(makeLoading());
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    console.log(res)
+    console.log(res);
     return (
         <>
             <Head>
@@ -116,8 +116,7 @@ const ReservationRestaurant = ({ res }: any) => {
                         />
                     ) : null}
                     <div className="main-container">
-                        <div
-                            className={`d-flex flex-column d-block d-md-none`}>
+                        <div className={`d-flex flex-column d-block d-md-none`}>
                             <button
                                 className={`d-flex align-items-center justify-content-center ${styles.heart_icon}`}
                                 onClick={() => {
@@ -251,17 +250,21 @@ const ReservationRestaurant = ({ res }: any) => {
                                                     : `${res.description.substring(
                                                           0,
                                                           317,
-                                                      )}+'...'`}{' '}
+                                                      )}...`}
                                                 <br />
-                                                <button
-                                                    className={`${styles.res_description} ${styles.description_link}`}
-                                                    onClick={() => {
-                                                        setShowMore(!showMore);
-                                                    }}>
-                                                    {!showMore
-                                                        ? '+ Daha çox'
-                                                        : '- Daha az'}
-                                                </button>
+                                                {!showMore ? (
+                                                    <button
+                                                        className={`${styles.res_description} ${styles.description_link}`}
+                                                        onClick={() => {
+                                                            setShowMore(
+                                                                !showMore,
+                                                            );
+                                                        }}>
+                                                        {!showMore
+                                                            ? '+ Daha çox'
+                                                            : '- Daha az'}
+                                                    </button>
+                                                ) : null}
                                             </p>
                                         )}
                                         <div
@@ -289,21 +292,18 @@ const ReservationRestaurant = ({ res }: any) => {
                                         </button>
                                         <div
                                             className={`d-flex flex-column ${styles.img_container}`}>
-                                            {res.images?.map((image: any) => (
-                                                <Image
-                                                    key={image.id}
-                                                    src={
-                                                        (image.id == 1 &&
-                                                            baseUrl +
-                                                                image?.image) ||
-                                                        '/images/rest_imag.png'
-                                                    }
-                                                    alt={res.name}
-                                                    width={353}
-                                                    height={272}
-                                                    className={`w-100 ${styles.banner_img}`}
-                                                />
-                                            ))}
+                                            <Image
+                                                src={
+                                                    res.images[0]?.image
+                                                        ? baseUrl +
+                                                          res.images[0]?.image
+                                                        : '/images/rest_imag.png'
+                                                }
+                                                alt={res.name}
+                                                width={353}
+                                                height={272}
+                                                className={`w-100 ${styles.banner_img}`}
+                                            />
                                         </div>
                                         {res.images?.length > 1 && (
                                             <button
@@ -395,10 +395,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                                     <h5 className={`fw-600`}>
                                                         Qeydlər
                                                     </h5>
-                                                    <p>
-                                                        {res.notes ||
-                                                            'Saat 12:00-dan 00:00-a kimiişləyirik 23:40-da mətbəx bağlanır / Siz ancaq kiçik heyvanlarıkabinetdən çıxarmadan gələbilərsiniz /Kabinetlərdə siqaretçəkmək olar / Özünüzlə tort gətirəbilərsiniz pulsuz. / Gətirdiyinizhər spirtli içki üçün 20 manatödəmək lazımdır'}
-                                                    </p>
+                                                    <p>{res.notes}</p>
                                                 </div>
                                             )}
                                             <div className="d-none d-md-block mt-5">

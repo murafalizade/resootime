@@ -95,24 +95,24 @@ const Menu = ({ id }: { id: number }) => {
                                                                     </p>
                                                                 </div>
                                                                 <div className="col-4 d-flex align-items-center ps-0">
-                                                                    <Image
-                                                                        alt={
-                                                                            product.name
-                                                                        }
-                                                                        src={
-                                                                            product.image
-                                                                        }
-                                                                        width={
-                                                                            160
-                                                                        }
-                                                                        height={
-                                                                            85
-                                                                        }
-                                                                        quality={
-                                                                            100
-                                                                        }
-                                                                        className={`${styles.menu_item_img}`}
-                                                                    />
+                                                                    {product.image && (
+                                                                        <Image
+                                                                            alt={product.name}
+                                                                            src={
+                                                                                product.image
+                                                                            }
+                                                                            width={
+                                                                                160
+                                                                            }
+                                                                            height={
+                                                                                85
+                                                                            }
+                                                                            quality={
+                                                                                100
+                                                                            }
+                                                                            className={`${styles.menu_item_img}`}
+                                                                        />
+                                                                    )}
                                                                 </div>
                                                             </div>
                                                         </li>

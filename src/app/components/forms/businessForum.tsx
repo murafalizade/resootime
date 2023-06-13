@@ -134,7 +134,7 @@ const BusinessForum = () => {
                         className="form-control"
                     />
                 </div>
-                {/* <div>
+                <div>
                     <label htmlFor="location">
                         Restoranın yerləşdiyi şəhər
                     </label>
@@ -146,7 +146,7 @@ const BusinessForum = () => {
                         placeholder="Restoranın yerləşdiyi şəhər"
                         className="form-control"
                     />
-                </div> */}
+                </div>
                 <div>
                     <label htmlFor="password">Şifrə</label>
                     <input

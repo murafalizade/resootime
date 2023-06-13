@@ -5,6 +5,7 @@ import withClient from '@/app/hoc/withClient';
 import { setTables } from '@/app/redux/commonSlice';
 import Cookie from '@/app/utils/Cookie';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 // import CreateMapTool from "@/app/components/restaurant/createMapTool";
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -26,10 +27,36 @@ const CreateMap = ({ restId, tbls, wall }: any) => {
     }, []);
 
     return (
+        <>
+         <Head>
+                <title>Masa dizaynınızı tamamlayın | ResooTime</title>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
+                <meta
+                    name="description"
+                    content="ResooTime - bütün restoranlar burada. Sevimli restoranlarınızı onlayn rezerv edin və bonus qazanın."
+                />
+                <meta name="og:title" content="ResooTime" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://resootime.com/" />
+                <meta
+                    property="og:image"
+                    content="https://resootime.com/images/logo.png"
+                />
+                <meta
+                    property="og:description"
+                    content="ResooTime - bütün restoranlar burada. Sevimli restoranlarınızı onlayn rezerv edin və bonus qazanın."
+                />
+                <meta property="og:site_name" content="ResooTime" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
         <div className="d-flex">
             <InlineMenu />
             <CreateMapTool restId={restId} wall={wall} />
         </div>
+        </>
     );
 };
 

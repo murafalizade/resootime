@@ -6,6 +6,7 @@ import { AiOutlineClockCircle } from 'react-icons/ai';
 import { BsFacebook, BsInstagram } from 'react-icons/bs';
 import { TbWorld } from 'react-icons/tb';
 import { ImPhone } from 'react-icons/im';
+import Distance from '@/app/utils/Distance';
 
 const RestInfo = ({
     name,
@@ -36,26 +37,30 @@ const RestInfo = ({
                 <div className="mx-3">
                     <h4 className={`mt-2 mb-1 ${styles.res_name}`}>{name}</h4>
                     <p className={`mb-2 ${styles.location}`}>{location}</p>
-                    <a
-                        className={`my-2 link ${styles.social_media_icon}`}
-                        href={instagramLink}
-                        target="_blank"
-                        rel="noreferrer">
-                        <BsInstagram size={'1.2rem'} />
-                    </a>
-                    <a
-                        className={`my-2 ms-4 link ${styles.social_media_icon}`}
-                        href={facebookLink}
-                        target="_blank"
-                        rel="noreferrer">
-                        <BsFacebook size={'1.2rem'} />
-                    </a>
+                    {instagramLink && (
+                        <a
+                            className={`my-2 link ${styles.social_media_icon}`}
+                            href={instagramLink}
+                            target="_blank"
+                            rel="noreferrer">
+                            <BsInstagram size={'1.2rem'} />
+                        </a>
+                    )}
+                    {facebookLink && (
+                        <a
+                            className={`my-2 ms-4 link ${styles.social_media_icon}`}
+                            href={facebookLink}
+                            target="_blank"
+                            rel="noreferrer">
+                            <BsFacebook size={'1.2rem'} />
+                        </a>
+                    )}
                 </div>
                 <hr />
                 <div className="d-flex">
                     <IoLocationSharp className={`mx-3 ${styles.icon}`} />
                     <a
-                        href={googleMapLink}
+                        href={Distance.extractMapLink(googleMapLink)}
                         target="_blank"
                         rel="noreferrer"
                         className={`btn-link text-decoration-none link ${styles.map_link} ${styles.info}`}>
@@ -66,7 +71,7 @@ const RestInfo = ({
                 <div className="d-flex align-items-center">
                     <ImPhone className={`mx-3 ${styles.icon}`} />
                     <a
-                        href=""
+                        href="#"
                         target="_blank"
                         rel="noreferrer"
                         className={`btn-link text-decoration-none link ${styles.link} ${styles.info}`}>

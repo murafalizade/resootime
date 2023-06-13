@@ -71,21 +71,27 @@ const allRestInfo = ({
                     </div>
                 )}
                 {websiteLink && <hr />}
+
                 <div className="me-4 py-2">
-                    <a
-                        className={`my-3 link ${styles.social_media_icon}`}
-                        href={instagramLink}
-                        target="_blank"
-                        rel="noreferrer">
-                        <BsInstagram size={'1.2rem'} />
-                    </a>
-                    <a
-                        className={`my-3 ms-4 link ${styles.social_media_icon}`}
-                        href={facebookLink}
-                        target="_blank"
-                        rel="noreferrer">
-                        <BsFacebook size={'1.2rem'} />
-                    </a>
+                    {instagramLink && (
+                        <a
+                            className={`my-3 link ${styles.social_media_icon}`}
+                            href={instagramLink}
+                            target="_blank"
+                            rel="noreferrer">
+                            <BsInstagram size={'1.2rem'} />
+                        </a>
+                    )}
+
+                    {facebookLink && (
+                        <a
+                            className={`my-3 ms-4 link ${styles.social_media_icon}`}
+                            href={facebookLink}
+                            target="_blank"
+                            rel="noreferrer">
+                            <BsFacebook size={'1.2rem'} />
+                        </a>
+                    )}
                 </div>
                 <hr />
                 <div className="d-flex pt-2">
@@ -182,22 +188,25 @@ const allRestInfo = ({
                     </div>
                 )}
                 {minimumAge && <hr />}
-                <div className="d-flex justify-content-between me-2 py-2">
-                    <div className="d-flex align-items-center">
-                        <FaRegMoneyBillAlt
-                            className={`me-3 ${styles.icon}`}
-                            style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
-                        />
-                        <span className={`${styles.info_type}`}>
-                            Ortalama qiymət
+                {minimumPrice && maximumPrice && (
+                    <div className="d-flex justify-content-between me-2 py-2">
+                        <div className="d-flex align-items-center">
+                            <FaRegMoneyBillAlt
+                                className={`me-3 ${styles.icon}`}
+                                style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
+                            />
+                            <span className={`${styles.info_type}`}>
+                                Ortalama qiymət
+                            </span>
+                        </div>
+                        <span
+                            className={`d-flex align-items-center text-capitalize pe-3 ${styles.info}`}>
+                            {minimumPrice ?? 0}-{maximumPrice ?? 0} azn
                         </span>
                     </div>
-                    <span
-                        className={`d-flex align-items-center text-capitalize pe-3 ${styles.info}`}>
-                        {minimumPrice ?? 0}-{maximumPrice ?? 0} azn
-                    </span>
-                </div>
-                <hr />
+                )}
+
+                {minimumPrice && maximumPrice && <hr />}
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
                         <IoMdCard

@@ -24,6 +24,7 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
         React.useState<number>(1);
     const [guestCount, setGuestCount] = React.useState<number>(1);
     const [minAge, setMinAge] = React.useState<number>(0);
+
     const typeOptions = [
         { value: '1', label: 'Ailəvi' },
         { value: '2', label: 'Restoran ' },
@@ -86,7 +87,6 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
 
     const workTime = useSelector(selectWorkDays);
     const onlineReservHours = useSelector(selectReservationDay);
-    // console.log(res)
 
     // create object state which will be used to store the form data
     const [formData, setFormData] = React.useState<any>({
@@ -100,7 +100,14 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
         phone: res.phone,
         profileImage: '',
         websiteLink: res?.websiteLink,
-        city: res?.city,
+        fbLink: res?.fbLink,
+        instaLink: res?.instaLink,
+        type: res?.type,
+        cuisine: res?.cuisine,
+        payment: res?.payment,
+        parking: res?.parking,
+        tags: res?.tags,
+        city: res?.city
     });
 
     // handle the change of the input in typescript
@@ -143,47 +150,11 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
             setSelectedImages([selectedImages[0], ...srcs]);
         }
     };
-    
+
     // handle the submit of the form
     const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
+        console.log(formData);
         e.preventDefault();
-        if (!formData.name) {
-            setError({ name: 'Restoranın adı boş ola bilməz' });
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            return;
-        }
-        if (!formData.phone) {
-            setError({ phone: 'Restoranın telefon nömrəsi boş ola bilməz' });
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            return;
-        }
-        if (!formData.description) {
-            setError({ description: 'Restoranın təsviri boş ola bilməz' });
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            return;
-        }
-        if (!formData.address) {
-            setError({ address: 'Restoranın ünvanı boş ola bilməz' });
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            return;
-        }
-        if (!formData.googleMapLink) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            setError({
-                googleMapLink: 'Restoranın google map linki boş ola bilməz',
-            });
-            return;
-        }
-        if (!formData.city) {
-            setError({ city: 'Restoranın yerləşdiyi şəhər boş ola bilməz' });
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            return;
-        }
-        if (selectedImages.length === 0) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            setError({ profileImage: 'Restoranın şəkli boş ola bilməz' });
-            return;
-        }
         if (workTime.length === 0) {
             window.scrollTo({ top: 0, behavior: 'smooth' });
             setError({ workTime: 'Restoranın iş saatı boş ola bilməz' });
@@ -234,6 +205,67 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
             '/create-map',
         )(request);
     };
+
+    // switch the page one to page two
+    const handleNextPage = (e: React.FormEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        if (!formData.name) {
+            setError({ name: 'Restoranın adı boş ola bilməz' });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+        if (!formData.phone) {
+            setError({ phone: 'Restoranın telefon nömrəsi boş ola bilməz' });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+        if (!formData.description) {
+            setError({ description: 'Restoranın təsviri boş ola bilməz' });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+        if (!formData.address) {
+            setError({ address: 'Restoranın ünvanı boş ola bilməz' });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+        if (!formData.googleMapLink) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setError({
+                googleMapLink: 'Restoranın google map linki boş ola bilməz',
+            });
+            return;
+        }
+        // if (!formData.city) {
+        //     setError({ city: 'Restoranın yerləşdiyi şəhər boş ola bilməz' });
+        //     window.scrollTo({ top: 0, behavior: 'smooth' });
+        //     return;
+        // }
+        if (selectedImages.length === 0) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setError({ profileImage: 'Restoranın şəkli boş ola bilməz' });
+            return;
+        }
+        setIsFirstPage(false),
+        setIsSecondPage(true);
+    }
+
+    // switch the page two to page third
+    const handleNextPage2 = (e: React.FormEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        if (onlineReservHours.length === 0) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setError({
+                onlineReservHours:
+                    'Restoranın online rezerv saatı boş ola bilməz',
+            });
+            return;
+        }
+
+        setIsSecondPage(false);
+        setIsThirdPage(true);
+    }
+
 
     return (
         <div
@@ -338,6 +370,8 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
                             </label>
                             <SelectOptions
                                 options={cityOptions}
+                                name="city"
+                                onChange={handleChange}
                                 placeholder={formData.city ?? 'Şəhəri seçin'}
                             />
                         </div>
@@ -453,10 +487,7 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
                         />
                         <div className="d-flex justify-content-end">
                             <button
-                                onClick={() => {
-                                    setIsFirstPage(false),
-                                        setIsSecondPage(true);
-                                }}
+                                onClick={handleNextPage}
                                 className={`btn btn-primary d-flex align-items-center justify-content-center ${styles.next_button}`}>
                                 Növbəti
                             </button>
@@ -464,6 +495,7 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
                     </div>
                 </form>
             )}
+
             {isSecondPage && (
                 <form className={`${styles.complete_form} form`}>
                     <div className="d-flex justify-content-between w-444">
@@ -569,9 +601,7 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
                             Geri
                         </button>
                         <button
-                            onClick={() => {
-                                setIsSecondPage(false), setIsThirdPage(true);
-                            }}
+                            onClick={handleNextPage2}
                             className={`btn btn-primary d-flex align-items-center justify-content-center ${styles.next_button}`}>
                             Növbəti
                         </button>

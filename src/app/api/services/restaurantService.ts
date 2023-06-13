@@ -21,7 +21,7 @@ export default class RestaurantService {
     }
 
     static async getRestaurantByToken(token: string): Promise<IRestaurant> {
-        return await fetch.get(`/api/restaurant/token/${token}`, {
+        return await fetch.get(`/api/restaurant/token/${token}/`, {
             headers: {
                 'public-request': true,
             },
@@ -41,7 +41,7 @@ export default class RestaurantService {
     }
 
     static async getTables(id: number): Promise<any> {
-        const map: any[] = await fetch.get(`/api/restaurant/${id}/map`, {
+        const map: any[] = await fetch.get(`/api/restaurant/${id}/map/`, {
             headers: {
                 'public-request': true,
             },
@@ -115,8 +115,8 @@ export default class RestaurantService {
         return filteredTable;
     }
 
-    static async cancelReservation(id: string | number): Promise<any> {
-        return await fetch.patch(`/api/cancel/${id}/`, {
+    static async cancelReservation(data:any,id: string | number): Promise<any> {
+        return await fetch.patch(`/api/cancel/${id}/`, data, {
             headers: {
                 'public-request': 'true',
             },

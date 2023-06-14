@@ -29,17 +29,17 @@ const Card = ({ cardInfo }: ICardProps) => {
                     <span className={`${styles.res_type}`}>
                         {cardInfo.type[0].type}
                     </span>
-                    <div className="d-flex align-items-center justify-content-between">
+                    <div className="d-flex align-items-center justify-content-between pt-1">
                         <a
                             href={`/restaurants/r/${cardInfo.slug}`}
                             className="text-decoration-none text-dark link">
                             <h5 className="card-title">
-                                {cardInfo.name.length > 20
-                                    ? cardInfo.name.slice(0, 20) + '...'
+                                {cardInfo.name.length > 12
+                                    ? cardInfo.name.slice(0, 12) + '...'
                                     : cardInfo.name}
                             </h5>
                         </a>
-                        <span className={`m-0  ${styles.res_rate}`}>
+                        <span className={`m-0 pt-0 ${styles.res_rate}`}>
                             {`${cardInfo.rate ?? 0}.0`}
                         </span>
                     </div>
@@ -51,11 +51,16 @@ const Card = ({ cardInfo }: ICardProps) => {
                         </div>
                     </h6>
                     <div className={`d-flex ${styles.rest_tags}`}>
-                        {cardInfo?.tag?.map((tag) => (
-                            <div key={tag.id} className={`${styles.res_tag}`}>
-                                {tag.name}
-                            </div>
-                        ))}
+                        {cardInfo?.tag?.map(
+                            (tag: any, index: any) =>
+                                index < 2 && (
+                                    <div
+                                        key={tag.id}
+                                        className={`${styles.res_tag}`}>
+                                        {tag.name}
+                                    </div>
+                                ),
+                        )}
                     </div>
                 </div>
             </div>

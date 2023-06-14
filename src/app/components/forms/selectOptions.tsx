@@ -17,7 +17,6 @@ const SelectOptions = ({ options, placeholder, isHourSelector }: any) => {
                         style={{
                             width: '1rem',
                             height: '1rem',
-                            border: 'none',
                         }}>
                         <MdOutlineKeyboardArrowDown
                             size={'1rem'}
@@ -32,7 +31,6 @@ const SelectOptions = ({ options, placeholder, isHourSelector }: any) => {
                             borderRadius: '50%',
                             width: '1rem',
                             height: '1rem',
-                            border: 'none',
                         }}>
                         <MdOutlineKeyboardArrowDown
                             size={'0.9rem'}
@@ -49,7 +47,9 @@ const SelectOptions = ({ options, placeholder, isHourSelector }: any) => {
     ) => {
         return (
             <div className="">
-                <components.IndicatorsContainer {...props} />
+                <components.IndicatorsContainer
+                    {...props}
+                />
             </div>
         );
     };
@@ -148,7 +148,7 @@ const SelectOptions = ({ options, placeholder, isHourSelector }: any) => {
                             color: '#D3D3D3',
                             border: 'none',
                         }),
-                        input: (base, state) => ({
+                        input: (base) => ({
                             ...base,
                             height: '36px',
                             width: '1px',
@@ -156,6 +156,13 @@ const SelectOptions = ({ options, placeholder, isHourSelector }: any) => {
                             zIndex: '-3',
                             border: 'none',
                         }),
+                        indicatorSeparator: () => ({
+                            display: 'none',
+                        }),
+                        // dropdownIndicator: (base, state) => ({
+                        //     transform: state.selectProps.menuIsOpen && 'rotate(180deg)',
+                        //     marginRight: '18px',
+                        // })
                     }}
                 />
             ) : (
@@ -250,6 +257,13 @@ const SelectOptions = ({ options, placeholder, isHourSelector }: any) => {
                             zIndex: '-3',
                             border: 'none',
                         }),
+                        indicatorSeparator: () => ({
+                            display: 'none',
+                        }),
+                        // dropdownIndicator: (base, state) => ({
+                        //     transform: state.selectProps.menuIsOpen && 'rotate(180deg)',
+                        //     marginRight: '18px'
+                        // })
                     }}
                 />
             )}

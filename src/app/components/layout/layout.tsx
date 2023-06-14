@@ -10,7 +10,7 @@ const Layout = ({
     isRestuarantPage?: boolean;
 }) => {
     return (
-        <div className="position-relative">
+        <div className="position-relative overflow-hidden">
             <Navbar isRestuarantPage={isRestuarantPage} />
             {children}
             <Footer />

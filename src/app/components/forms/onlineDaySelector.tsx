@@ -152,7 +152,9 @@ const OnlineDaySelector = ({ data, disabled }: IOnlineDaySelectorProps) => {
                                     : {}
                             }
                             className={`${
-                                day.name === selected ? 'selected-day' : 'unselected-day'
+                                day.name === selected
+                                    ? 'selected-day'
+                                    : 'unselected-day'
                             } col-2 text-center py-2`}>
                             {day.day}
                         </div>
@@ -173,9 +175,17 @@ const OnlineDaySelector = ({ data, disabled }: IOnlineDaySelectorProps) => {
                 </button>
             </div> */}
             <div className="d-flex my-3  align-items-center">
-            <SelectOptions options={allDayHours} placeholder='Açılma vaxtı' isHourSelector={true}/>
+                <SelectOptions
+                    options={allDayHours}
+                    placeholder="Açılma vaxtı"
+                    isHourSelector={true}
+                />
                 <span className="mx-2">:</span>
-                <SelectOptions options={allDayHours} placeholder='Bağlanma vaxtı' isHourSelector={true}/>
+                <SelectOptions
+                    options={allDayHours}
+                    placeholder="Bağlanma vaxtı"
+                    isHourSelector={true}
+                />
                 {/* <input
                     disabled={disabled}
                     value={

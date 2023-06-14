@@ -56,7 +56,7 @@ const DateFinder = ({
         if (!time) {
             return ['23', '59'];
         }
-        if(time.split(':')[0] < getMinHour(now)[0]){
+        if (time.split(':')[0] < getMinHour(now)[0]) {
             return ['23', '59'];
         }
         return time.split(':');
@@ -95,7 +95,6 @@ const DateFinder = ({
         setCount(e.target.value);
     };
 
-
     useEffect(() => {
         if (minTime.getTime() < maxTime.getTime()) {
             setNoAllowed(false);
@@ -103,7 +102,6 @@ const DateFinder = ({
             setNoAllowed(true);
         }
     }, [minTime, maxTime]);
-
 
     // open modal for make reservation
     const makeReservation = async () => {
@@ -240,7 +238,7 @@ const DateFinder = ({
                 className={`btn btn-primary btn-lg mt-3 mb-2 ${styles.reservation_btn}`}>
                 {table ? `Reserv edin ${table.name}` : 'Masaları axtarın'}
             </button>
-            {!(allowed && !noAllowed)? (
+            {!(allowed && !noAllowed) ? (
                 <span className={`text-danger text-center ${styles.warning}`}>
                     Rezervasiya etmək halhazırda mümkün deyil
                 </span>

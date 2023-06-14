@@ -38,7 +38,7 @@ class Distance {
     public static extractMapLink = (embedLink: string): string => {
         // Extract the latitude and longitude from the embed link
         if (!embedLink) return '';
-      
+
         const regexLatLng = /!2d(-?\d+\.\d+)!3d(-?\d+\.\d+)/;
         const matchLatLng = embedLink.match(regexLatLng);
         const latitude = matchLatLng?.[2]!;

@@ -28,6 +28,8 @@ import ResMenu from '@/app/components/reservation/resMenu';
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
 import GalleryModal from '@/app/components/reservation/galleryModal';
+import UserService from '@/app/api/services/userService';
+import Cookie from '@/app/utils/Cookie';
 
 const ReservationRestaurant = ({ res }: any) => {
     const isModalOpen = useSelector(selectIsModelOpen);
@@ -36,11 +38,10 @@ const ReservationRestaurant = ({ res }: any) => {
     const isLoading = useSelector(selectIsLoading);
     const [wall, setWall] = useState('');
     const [date, setDate] = useState(new Date());
-    const [canEdit, setCanEdit] = useState(true);
+    const [canEdit, setCanEdit] = useState(false);
     const [showMore, setShowMore] = useState(res.description.length < 317);
     const [isClicked, setIsClicked] = useState(false);
     const [isGalleryOpen, setIsGalleryOpen] = useState(false);
-    const [twoFingerGesture, setTwoFingerGesture] = useState(false);
 
     const getTables = async () => {
         const map = await RestaurantService.getTables(res.id);
@@ -53,34 +54,23 @@ const ReservationRestaurant = ({ res }: any) => {
         dispatch(filterTables(filterTable));
     };
 
-    let initialDelta: any = null;
-    const handleTouchMove = (event: any) => {
-        console.log(event);
-        if (event.deltaY !== 0) {
-            if (initialDelta === null) {
-                initialDelta = event.deltaY;
-            } else {
-                const deltaDiff = event.deltaY - initialDelta;
-
-                if (Math.abs(deltaDiff) > 100) {
-                    // Adjust this threshold based on your needs
-                    if (deltaDiff < 0) {
-                        console.log('Pinch-in detected');
-                    } else {
-                        console.log('Pinch-out detected');
-                    }
-                }
-            }
-        }
-    };
-
     useEffect(() => {
         dispatch(makeLoading());
         getTables();
         dispatch(makeLoading());
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    console.log(res);
+
+    const likeRestaurant = async () => {
+        const token = Cookie.get('token');
+        if (token) {
+            await UserService.likeRestaurant(res.id, token);
+            setIsClicked(!isClicked);
+        } else {
+            alert('Zəhmət olmasa daxil olun');
+        }
+    };
+
     return (
         <>
             <Head>
@@ -117,14 +107,14 @@ const ReservationRestaurant = ({ res }: any) => {
                     ) : null}
                     <div className="main-container">
                         <div className={`d-flex flex-column d-block d-md-none`}>
-                            <button
+                            {/* <button
                                 className={`d-flex align-items-center justify-content-center ${styles.heart_icon}`}
                                 onClick={() => {
-                                    setIsClicked(!isClicked);
+                                    likeRestaurant();
                                 }}>
                                 {!isClicked && <FiHeart />}
                                 {isClicked && <FaHeart />}
-                            </button>
+                            </button> */}
                             <div
                                 className={`d-flex flex-column ${styles.img_container}`}>
                                 {res.images?.map((image: any) => (
@@ -282,14 +272,14 @@ const ReservationRestaurant = ({ res }: any) => {
                                     </div>
                                     <div
                                         className={`col-5 d-none d-md-block position-relative ps-md-0`}>
-                                        <button
+                                        {/* <button
                                             className={`d-flex align-items-center justify-content-center ${styles.heart_icon}`}
                                             onClick={() => {
-                                                setIsClicked(!isClicked);
+                                                likeRestaurant();
                                             }}>
                                             {!isClicked && <FiHeart />}
                                             {isClicked && <FaHeart />}
-                                        </button>
+                                        </button> */}
                                         <div
                                             className={`d-flex flex-column ${styles.img_container}`}>
                                             <Image
@@ -326,6 +316,9 @@ const ReservationRestaurant = ({ res }: any) => {
                                                 Masanızı Seçin
                                             </h4>
                                             <div
+                                                onClick={() => {
+                                                    setCanEdit(!canEdit);
+                                                }}
                                                 className={`overflow-hidden position-relative border bg-dark mb-4 mt-4 mt-md-0 ${styles.map}`}
                                                 style={{
                                                     height: '23.5rem',
@@ -356,7 +349,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                                     wheel={{
                                                         step: 50,
                                                     }}
-                                                    disabled={!twoFingerGesture}
+                                                    disabled={!canEdit}
                                                     limitToBounds={false}>
                                                     <TransformComponent
                                                         wrapperStyle={{

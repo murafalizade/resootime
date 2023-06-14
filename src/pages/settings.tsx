@@ -8,7 +8,7 @@ import React from 'react';
 const Settings = ({ res }: any) => {
     return (
         <>
-         <Head>
+            <Head>
                 <title>Tənzimləmələr | ResooTime</title>
                 <meta
                     name="viewport"
@@ -32,14 +32,13 @@ const Settings = ({ res }: any) => {
                 <meta property="og:site_name" content="ResooTime" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-        <div className="d-flex">
-            <InlineMenu />
-            <div className="container">
-                <CompleteInfoForum isUpdate={true} res={res} />
+            <div className="d-flex">
+                <InlineMenu />
+                <div className="container">
+                    <CompleteInfoForum isUpdate={true} res={res} />
+                </div>
             </div>
-        </div>
         </>
-
     );
 };
 
@@ -49,7 +48,7 @@ export async function getServerSideProps(context: any) {
     const { req } = context;
     const token = Cookie.getFromSSR(req, 'token');
     const res = await RestaurantService.getRestaurantByToken(token);
-  //  let wildcard = req.headers.host.split('.')[0];
+    //  let wildcard = req.headers.host.split('.')[0];
 
     // if (wildcard === 'www') {
     //     return {

@@ -86,12 +86,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border-right: 0.7px solid #D3D3D3;;
+        border-right: 0.7px solid #d3d3d3;
     }
     textarea {
         height: 82.5px;
     }
-    select, .little_input_size {
+    select,
+    .little_input_size {
         height: 36px;
         width: 12rem;
         border-radius: 3.41px;
@@ -171,16 +172,14 @@
             font-size: 0.7rem;
             font-weight: 400;
             line-height: 0.8rem;
-            color: #6A5DDF;
-            
-
+            color: #6a5ddf;
         }
         div {
             padding: 11px 16px !important;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #6A5DDF;
+            background-color: #6a5ddf;
             color: #fff;
             width: 2.4rem;
             height: 2.2rem;
@@ -196,7 +195,7 @@
     .add_btn {
         border: none;
         background-color: transparent;
-        color: #6A5DDF;
+        color: #6a5ddf;
         font-weight: 400;
         font-size: 0.625rem;
         line-height: 0.75rem;
@@ -215,7 +214,7 @@
 }
 
 @media screen and (max-width: 320px) {
-    .complete_form{
-        width: 20rem
+    .complete_form {
+        width: 20rem;
     }
 }

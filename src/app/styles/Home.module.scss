@@ -92,7 +92,7 @@
         border: none;
         border-radius: 0;
         .card_img {
-            width: 11.5rem !important;
+            width: 11.5rem;
             height: 6rem;
             border-radius: 5px;
             object-fit: cover;
@@ -127,7 +127,7 @@
                 margin-top: auto;
                 display: flex;
                 flex-wrap: wrap;
-                max-width: 11.9rem;
+                max-width: 10.9rem;
                 overflow-x: hidden;
                 // margin-bottom: 0.56rem !important;
                 .res_tag {
@@ -205,6 +205,10 @@
 }
 
 @media screen and (max-width: 576px) {
+    .padding_less{
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
     .home_width,
     .card_section {
         width: 45rem;
@@ -233,3 +237,13 @@
         top: 6px !important;
     }
 }
+
+
+@media screen and (min-width: 1200px) {
+    .padding_less{
+        .card_container,.card_img{
+            width: 100% !important;
+        }
+    }
+}
+

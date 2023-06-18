@@ -37,7 +37,8 @@ const SquareTable1 = (props: TableProps) => {
                     type="text"
                     className={styles.input}
                     value={props.name}
-                    style={{ transform: `rotate(-${props?.deg}deg)` }}
+                    disabled ={true}
+                    style={{ transform: `rotate(-${props?.deg}deg)`,userSelect:"none" }}
                     onChange={(e: any) => props.changeName(e)}
                 />
                 {/* <span style={{ color: "yellow", paddingTop: "3px" }}>

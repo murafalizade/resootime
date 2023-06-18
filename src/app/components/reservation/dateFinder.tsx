@@ -34,10 +34,12 @@ const DateFinder = ({
     const days = weekDay;
     const [noAllowed, setNoAllowed] = useState(false);
     const getMinHour = (now: Date) => {
+        console.log(data.find((item: any) => item.day === days[now.getDay()].name));
         const time = data.find(
             (item: any) => item.day === days[now.getDay()].name,
         )?.open_at;
         const today = new Date();
+        console.log(time);
         if (!time) {
             return ['23', '59'];
         }
@@ -94,6 +96,8 @@ const DateFinder = ({
     const handleCount = (e: any) => {
         setCount(e.target.value);
     };
+
+    console.log(data, maxTime);
 
     useEffect(() => {
         if (minTime.getTime() < maxTime.getTime()) {

@@ -36,6 +36,7 @@ const SquareTable1 = (props: TableProps) => {
                 <input
                     type="text"
                     className={styles.input}
+                    disabled={true}
                     value={props.name}
                     style={{ transform: `rotate(-${props?.deg}deg)` }}
                     onChange={(e: any) => props.changeName(e)}

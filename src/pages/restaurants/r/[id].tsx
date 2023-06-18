@@ -113,9 +113,10 @@ const ReservationRestaurant = ({ res }: any) => {
                                     <Image
                                         key={image.id}
                                         src={
-                                            (image.id == 1 &&
-                                                baseUrl + image?.image) ||
-                                            '/images/rest_imag.png'
+                                            res.images[0]?.image
+                                                ? baseUrl +
+                                                  res.images[0]?.image
+                                                : '/images/rest_imag.png'
                                         }
                                         alt={res.name}
                                         width={386}

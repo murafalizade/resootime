@@ -8,30 +8,24 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '@/app/styles/Home.module.scss';
-import Carousel from '@/app/components/card/carousel';
 import Distance from '@/app/utils/Distance';
 
-function Home({ restaurants }: any) {
+function Restaurants({ restaurants }: any) {
     // search restaurant state
     const [search, setSearch] = useState<string>('');
 
     // restaurant state
     const [rests, setRests] = useState<IRestaurant[]>(restaurants.results);
     const [popularRests, setPopularRests] = useState<IRestaurant[]>(
-        rests.filter((rest: IRestaurant) => rest.rate >= 4),
-    );
+        rests.sort((a:IRestaurant,b:IRestaurant)=> a.rate - b.rate));
     const [newRests, setNewRests] = useState<IRestaurant[]>(
-        rests.reverse().slice(0, 5),
+        rests.reverse()
     );
     const [nearestRests, setNearestRests] = useState<IRestaurant[]>([]);
 
-    const [location, setLocation] = useState(null);
-
-    const [showNormal, setShowNormal] = useState<boolean>(false);
-
     // get query from url
     const router = useRouter();
-    const { name } = router.query;
+    const { filter } = router.query;
 
     // search restaurant function
     const searchRestaurant = (e: any) => {
@@ -41,8 +35,6 @@ function Home({ restaurants }: any) {
         );
         setRests(filteredRestaurants);
     };
-
-
 
     // find nearest restaurant
     const findNearest = () => {
@@ -65,32 +57,36 @@ function Home({ restaurants }: any) {
                         );
                         return { ...restaurant, distance };
                     })
-                    .sort((a, b) => a.distance - b.distance)
-                    .slice(0, 5);
+                    .sort((a, b) => a.distance - b.distance);
                 setNearestRests(sortedRestaurants);
             });
         }
     };
 
-    // search restaurant when page loaded
+    // search filter when filter loaded
     useEffect(() => {
-        console.log(name);
-        searchRestaurant(name);
-        if (name === '' || name === undefined || name === null) {
-            setShowNormal(false);
-        } else {
-            setShowNormal(true);
+        switch (filter) {
+            case 'Populyar olanlar':
+                setRests(popularRests);
+                break;
+            case 'Yeni əlavə olunanlar':
+                setRests(newRests);
+                break;
+            case 'Yaxındakılar':
+                setRests(nearestRests);
+                break;
+            default:
+                router.push('/');
+                break;
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [name]);
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [filter]);
 
     useEffect(() => {
         findNearest();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    console.log(location);
 
     return (
         <>
@@ -126,7 +122,8 @@ function Home({ restaurants }: any) {
 
             <Layout>
                 <main className={``}>
-                    <div className={`d-flex justify-content-center ${styles.home_page}`}>
+                    <div
+                        className={`d-flex justify-content-center ${styles.home_page}`}>
                         <div className={``}>
                             <div
                                 className={`${styles.heading_container} ${styles.home_width}`}>
@@ -148,7 +145,7 @@ function Home({ restaurants }: any) {
                                         />
                                         <Link
                                             href={{
-                                                pathname: '',
+                                                pathname: '/',
                                                 query: { name: search },
                                             }}
                                             className={`btn btn-primary position-relative ${styles.input_btn}`}>
@@ -159,115 +156,11 @@ function Home({ restaurants }: any) {
                             </div>
                         </div>
                     </div>
-                    <div className='d-flex justify-content-center'>
-                    {!showNormal ? (
-                        <div className={`pb-5 ${styles.card_section}`}>
-                            {rests.length > 4 ? (
-                                <div>
-                                    <div className="row">
-                                        <Carousel title="Yeni əlavə olunanlar">
-                                            {newRests.map((rest, i: number) => (
-                                                <Card key={i} cardInfo={rest} />
-                                            ))}
-                                        </Carousel>
-                                    </div>
-                                </div>
-                            ) : (
-                                <div>
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <h3 className={`${styles.filters}`}>
-                                            Yeni əlavə olunanlar
-                                        </h3>
-                                    </div>
-                                    <div className="row">
-                                        {newRests.map(
-                                            (rest: IRestaurant, i: number) => (
-                                                <div
-                                                    key={i}
-                                                    className="col-6 col-md-4 col-xl-3">
-                                                    <Card cardInfo={rest} />
-                                                </div>
-                                            ),
-                                        )}
-                                    </div>
-                                </div>
-                            )}
-                            {rests.length > 4 ? (
-                                <div>
-                                    <div className="row">
-                                        <Carousel title="Populyar olanlar">
-                                            {popularRests.map(
-                                                (rest, i: number) => (
-                                                    <Card
-                                                        key={i}
-                                                        cardInfo={rest}
-                                                    />
-                                                ),
-                                            )}
-                                        </Carousel>
-                                    </div>
-                                </div>
-                            ) : (
-                                <div>
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <h3 className={`${styles.filters}`}>
-                                            Populyar olanlar
-                                        </h3>
-                                    </div>
-                                    <div className="row">
-                                        {popularRests.map(
-                                            (rest: IRestaurant, i: number) => (
-                                                <div
-                                                    key={i}
-                                                    className="col-6 col-md-4 col-xl-3">
-                                                    <Card cardInfo={rest} />
-                                                </div>
-                                            ),
-                                        )}
-                                    </div>
-                                </div>
-                            )}
-                            {rests.length > 4 ? (
-                                <div>
-                                    <div className="row">
-                                        <Carousel title="Yaxındakılar">
-                                            {nearestRests.map(
-                                                (rest, i: number) => (
-                                                    <Card
-                                                        key={i}
-                                                        cardInfo={rest}
-                                                    />
-                                                ),
-                                            )}
-                                        </Carousel>
-                                    </div>
-                                </div>
-                            ) : (
-                                <div>
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <h3 className={`${styles.filters}`}>
-                                            Yaxındakılar
-                                        </h3>
-                                    </div>
-                                    <div className="row">
-                                        {nearestRests.map(
-                                            (rest: IRestaurant, i: number) => (
-                                                <div
-                                                    key={i}
-                                                    className="col-6 col-md-4 col-xl-3">
-                                                    <Card cardInfo={rest} />
-                                                </div>
-                                            ),
-                                        )}
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                    ) : (
-                        <div className={`pb-5 ${styles.card_section+" "+styles.padding_less}`}>
+                    <div className="d-flex justify-content-center">
+                        <div className={`pb-5 ${styles.card_section+" "+styles.padding_less} `}>
                             <div className="d-flex justify-content-between align-items-center">
                                 <h3 className={`${styles.filters}`}>
-                                    {name} üzrə nəticələr
+                                    {filter}
                                 </h3>
                             </div>
                             <div className="row">
@@ -280,7 +173,6 @@ function Home({ restaurants }: any) {
                                 ))}
                             </div>
                         </div>
-                    )}
                     </div>
                 </main>
             </Layout>
@@ -288,7 +180,7 @@ function Home({ restaurants }: any) {
     );
 }
 
-export default withAuth(Home, false);
+export default withAuth(Restaurants, false);
 
 // SSR
 export async function getServerSideProps(context: any) {

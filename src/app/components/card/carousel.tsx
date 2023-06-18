@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import styles from '@/app/styles/Home.module.scss';
+import Link from 'next/link';
 
 interface CarouselProps {
     children: React.ReactNode;
@@ -71,6 +72,14 @@ const Carousel = ({ children, title }: CarouselProps) => {
         <div>
             <div className="d-flex justify-content-between align-items-center">
                 <h3 className={styles.filters}>{title}</h3>
+                <Link
+                    href={{
+                        pathname: '/restoranlar',
+                        query: { filter: title },
+                    }}
+                    className={`text-decoration-none mt-1 text-primary ${styles.filters} fs-6`}>
+                    Hamsına bax
+                </Link>
             </div>
             <div className="position-relative">
                 {showBackButton && (

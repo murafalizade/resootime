@@ -106,15 +106,7 @@ const ReservationRestaurant = ({ res }: any) => {
                         />
                     ) : null}
                     <div className="main-container">
-                        <div className={`d-flex flex-column d-block d-md-none`}>
-                            {/* <button
-                                className={`d-flex align-items-center justify-content-center ${styles.heart_icon}`}
-                                onClick={() => {
-                                    likeRestaurant();
-                                }}>
-                                {!isClicked && <FiHeart />}
-                                {isClicked && <FaHeart />}
-                            </button> */}
+                        <div className={`d-flex flex-column position-relative d-md-none`}>
                             <div
                                 className={`d-flex flex-column ${styles.img_container}`}>
                                 {res.images?.map((image: any) => (

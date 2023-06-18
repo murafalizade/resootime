@@ -29,7 +29,7 @@ const Carousel = ({ children, title }: CarouselProps) => {
                 },
             },
             {
-                breakpoint: 859,
+                breakpoint: 920,
                 settings: {
                     slidesToShow: 2,
                 },
@@ -37,13 +37,19 @@ const Carousel = ({ children, title }: CarouselProps) => {
             {
                 breakpoint: 575,
                 settings: {
-                    slidesToShow: 2.5,
+                    slidesToShow: 2,
                 },
             },
             {
                 breakpoint: 500,
                 settings: {
                     slidesToShow: 2,
+                },
+            },
+            {
+                breakpoint: 350,
+                settings: {
+                    slidesToShow: 1,
                 },
             },
         ],

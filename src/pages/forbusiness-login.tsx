@@ -40,16 +40,17 @@ const ForBusinessLogin = () => {
                 <div className="container-fluid border-bottom">
                     <div className="navbar p-3">
                         <div>
-                            <a href="/" className="navbar-brand">
-                                <Image
-                                    src={'/images/logo2.png'}
-                                    alt="logo"
-                                    width={40}
-                                    height={40}
-                                    className="img-fluid mx-2"
-                                />
-                                ResooTime
-                            </a>
+                        <a
+                            href="/"
+                            className={`navbar-brand ${styles.brand_name}`}>
+                            <Image
+                                src={'/images/logo.png'}
+                                alt="logo"
+                                width={164}
+                                height={34}
+                                className="img-fluid logo icon nav-img"
+                            />
+                        </a>
                         </div>
                     </div>
                 </div>

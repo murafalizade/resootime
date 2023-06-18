@@ -57,11 +57,10 @@ const Navbar = (props: IProps) => {
                             <Image
                                 src={'/images/logo.png'}
                                 alt="logo"
-                                width={34}
+                                width={164}
                                 height={34}
                                 className="img-fluid logo icon nav-img"
                             />
-                            ResooTime
                         </a>
                         <a
                             href="/discovery"

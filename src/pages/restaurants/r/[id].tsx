@@ -140,7 +140,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                         <div className="d-flex justify-content-between">
                                             <div>
                                                 <h1
-                                                    className={`mt-4 mt-md-0 mb-0 mb-md-1 ${styles.res_name}`}>
+                                                    className={`mt-4 mt-md-0 mb-0 mb-md-1 res-name ${styles.res_name}`}>
                                                     {res.name}
                                                 </h1>
                                                 <div className="d-flex flex-md-column">
@@ -218,7 +218,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                             <div className="d-flex d-md-none align-items-center">
                                                 <a
                                                     type="button"
-                                                    className="btn btn-primary btn-md mt-2 mb-2"
+                                                    className="btn btn-primary btn-md mt-3 mb-2 fs-6"
                                                     href={`/restaurants/r/menu/${res.slug}`}>
                                                     Menyu
                                                 </a>

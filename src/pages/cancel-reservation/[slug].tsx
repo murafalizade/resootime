@@ -16,11 +16,16 @@ const CancelReservation = () => {
                 title: 'Rezervasiyanız uğurla ləğv edilmişdir!',
                 showCancelButton: false,
                 confirmButtonText: 'Bəli',
-            }).then(async (result) => {
-                if (result.isConfirmed) {
+            })
+                .then(async (result) => {
+                    if (result.isConfirmed) {
+                        Router.push('/');
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
                     Router.push('/');
-                }
-            });
+                });
         }
 
         // Show confirmation dialog
@@ -34,7 +39,10 @@ const CancelReservation = () => {
                 if (slug && typeof slug === 'string') {
                     await withErrorHandeler(
                         async (args: any) => {
-                            await RestaurantService.cancelReservation(args);
+                            await RestaurantService.cancelReservation(
+                                { resturant_id: '' },
+                                args,
+                            );
                             Cookie.set('reservation', slug, '1');
                         },
                         'Reservasiya uğurla ləğv edildi!',

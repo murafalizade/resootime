@@ -41,7 +41,6 @@ export default class UserService {
         });
     }
 
-
     static async myReservations(id: number, token?: string): Promise<any[]> {
         return await fetch.get(`/api/users/${id}/my-reservations/`, {
             headers: {

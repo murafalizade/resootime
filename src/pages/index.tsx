@@ -123,10 +123,10 @@ function Home({ restaurants }: any) {
 
             <Layout>
                 <main className={``}>
-                    <div className={`${styles.home_page}`}>
+                    <div className={`d-flex justify-content-center ${styles.home_page}`}>
                         <div className={``}>
                             <div
-                                className={`${styles.heading_container} row-width`}>
+                                className={`${styles.heading_container} ${styles.home_width}`}>
                                 <div
                                     className={`col-12 col-xl-6 d-flex justify-content-center flex-column pb-4`}>
                                     <h1 className={`${styles.heading}`}>
@@ -156,6 +156,7 @@ function Home({ restaurants }: any) {
                             </div>
                         </div>
                     </div>
+                    <div className='d-flex justify-content-center'>
                     {!showNormal ? (
                         <div className={`pb-5 ${styles.card_section}`}>
                             {rests.length > 4 ? (
@@ -277,6 +278,7 @@ function Home({ restaurants }: any) {
                             </div>
                         </div>
                     )}
+                    </div>
                 </main>
             </Layout>
         </>

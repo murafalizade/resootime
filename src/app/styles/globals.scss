@@ -298,6 +298,7 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
+    // width: 58.125rem;
 }
 
 .left-arrow,
@@ -362,6 +363,7 @@ input {
         display: flex;
         justify-content: center;
     }
+    
     .row-width {
         width: 56.69rem;
     }
@@ -405,7 +407,7 @@ input {
             }
         }
         .slick-slide > div {
-            margin-left: 180px;
+            // margin-left: 180px;
         }
     }
 }

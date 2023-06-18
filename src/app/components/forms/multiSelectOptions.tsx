@@ -17,10 +17,10 @@ const MultiSelectOptions = ({ options, placeholder }: any) => {
                             type="checkbox"
                             checked={props.isSelected}
                             onChange={() => null}
-                            className='checkbox-input'
+                            className="checkbox-input"
                         />{' '}
-                        <span className='checkmark'></span>
-                        <label className='checkbox-label'>{props.label}</label>
+                        <span className="checkmark"></span>
+                        <label className="checkbox-label">{props.label}</label>
                     </div>
                 </components.Option>
             </div>

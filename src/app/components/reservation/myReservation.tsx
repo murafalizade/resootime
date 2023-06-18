@@ -8,7 +8,10 @@ const MyReservation = ({ reserv }: any) => {
     const cancelReservation = async (id: number) => {
         await withErrorHandeler(
             async (args: any) => {
-                await RestaurantService.cancelReservation({restaurant_id:reserv.restaurant_id.id},args);
+                await RestaurantService.cancelReservation(
+                    { restaurant_id: reserv.restaurant_id.id },
+                    args,
+                );
             },
             'Reservasiya uğurla ləğv edildi!',
             '/',

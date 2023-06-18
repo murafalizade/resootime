@@ -47,9 +47,7 @@ const SelectOptions = ({ options, placeholder, isHourSelector }: any) => {
     ) => {
         return (
             <div className="">
-                <components.IndicatorsContainer
-                    {...props}
-                />
+                <components.IndicatorsContainer {...props} />
             </div>
         );
     };

@@ -417,11 +417,13 @@ const CompleteInfoForum = ({ res, isUpdate }: any) => {
                             type="file"
                             id="single_file"
                         />
-                        {formData.profileImage && <label
-                            htmlFor="single_file"
-                            className={`btn text-nowrap btn-outline-primary form-control d-flex align-items-center justify-content-center mt-2 ${styles.profile_img_btn}`}>
-                            Şəkili dəyişin{' '}
-                        </label>}
+                        {formData.profileImage && (
+                            <label
+                                htmlFor="single_file"
+                                className={`btn text-nowrap btn-outline-primary form-control d-flex align-items-center justify-content-center mt-2 ${styles.profile_img_btn}`}>
+                                Şəkili dəyişin{' '}
+                            </label>
+                        )}
                         <div className="invalid-feedback d-block">
                             {error?.profileImage}
                         </div>

@@ -1,4 +1,5 @@
-export interface TableProps {className?: string;
+export interface TableProps {
+    className?: string;
     isFull?: boolean;
     name: string;
     userName?: string;

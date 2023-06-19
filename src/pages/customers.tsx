@@ -62,7 +62,7 @@ export async function getServerSideProps(context: any) {
         date = new Date().toLocaleDateString(formatDate.locale);
     }
     const token = Cookie.getFromSSR(req, 'token');
-    if(!token){
+    if (!token) {
         return {
             redirect: {
                 destination: '/login',

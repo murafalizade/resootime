@@ -31,10 +31,10 @@ const Navbar = (props: IProps) => {
         Router.reload();
     };
 
-    const close = () =>{
+    const close = () => {
         setCompleteInfo('');
         Cookie.delete('CompleteInfo');
-    }
+    };
 
     const [isMobile, setIsMobile] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
@@ -46,9 +46,7 @@ const Navbar = (props: IProps) => {
                         Mail addressinizə hesabınızı tamamlamaq üçün link
                         göndəriləcəkdir.
                     </p>
-                    <span
-                        onClick={() => close()}
-                        className="pt-3 text-center">
+                    <span onClick={() => close()} className="pt-3 text-center">
                         <TiDeleteOutline size={'1.5rem'} color="white" />
                     </span>
                 </div>

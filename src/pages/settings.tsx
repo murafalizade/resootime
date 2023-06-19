@@ -47,7 +47,7 @@ export default Settings;
 export async function getServerSideProps(context: any) {
     const { req } = context;
     const token = Cookie.getFromSSR(req, 'token');
-    if(!token){
+    if (!token) {
         return {
             redirect: {
                 destination: '/login',

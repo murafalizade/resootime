@@ -96,7 +96,6 @@ const DateFinder = ({
         setCount(e.target.value);
     };
 
-
     useEffect(() => {
         if (minTime.getTime() < maxTime.getTime()) {
             setNoAllowed(false);

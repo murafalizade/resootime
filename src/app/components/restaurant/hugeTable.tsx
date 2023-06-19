@@ -2,7 +2,6 @@ import React from 'react';
 import styles from '@/app/styles/Table.module.scss';
 import { TableProps } from '@/app/types/TableProps';
 
-
 const HugeTable = (props: TableProps) => {
     return (
         <div className="d-flex flex-column">

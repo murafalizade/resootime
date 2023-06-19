@@ -43,8 +43,7 @@ const Navbar = (props: IProps) => {
             {completeInfo ? (
                 <div className="container-fluid justify-content-between d-flex bg-warning text-center border-bottom">
                     <p className="text-light pt-3 text-center ">
-                        Mail addressinizə hesabınızı tamamlamaq üçün link
-                        göndəriləcəkdir.
+                    Sorğunuz qəbul olundu. Qısa müddət ərzində sizinlə əlaqə saxlanılacaq.
                     </p>
                     <span onClick={() => close()} className="pt-3 text-center">
                         <TiDeleteOutline size={'1.5rem'} color="white" />

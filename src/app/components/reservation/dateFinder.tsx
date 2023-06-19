@@ -187,7 +187,9 @@ const DateFinder = ({
                 img={restImage}
             />
             <div className="d-flex justify-content-center mb-3">
-                <h4 className={`modal-title ${styles.modal_title}`}>Rezervasiya</h4>
+                <h4 className={`modal-title ${styles.modal_title}`}>
+                    Rezervasiya
+                </h4>
             </div>
             <div className="row d-flex justify-content-around mb-2">
                 <div className={`col-4 ${styles.picker_container}`}>

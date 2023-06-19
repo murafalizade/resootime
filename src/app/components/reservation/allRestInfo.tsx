@@ -79,7 +79,7 @@ const allRestInfo = ({
                             href={instagramLink}
                             target="_blank"
                             rel="noreferrer">
-                            <BsInstagram className='fs-5 icon'/>
+                            <BsInstagram className="fs-5 icon" />
                         </a>
                     )}
 
@@ -89,13 +89,15 @@ const allRestInfo = ({
                             href={facebookLink}
                             target="_blank"
                             rel="noreferrer">
-                            <BsFacebook className='fs-5 icon'/>
+                            <BsFacebook className="fs-5 icon" />
                         </a>
                     )}
                 </div>
                 <hr />
                 <div className="d-flex pt-2">
-                    <AiOutlineClockCircle className={`me-4 icon ${styles.icon}`} />
+                    <AiOutlineClockCircle
+                        className={`me-4 icon ${styles.icon}`}
+                    />
                     <div className="w-100">
                         <div>
                             <div className="row">
@@ -176,7 +178,9 @@ const allRestInfo = ({
                 {minimumAge && (
                     <div className="d-flex justify-content-between me-2 py-2">
                         <div className="d-flex align-items-center">
-                            <FaChild className={`me-3 me-sm-4 icon ${styles.icon}`} />
+                            <FaChild
+                                className={`me-3 me-sm-4 icon ${styles.icon}`}
+                            />
                             <span className={`${styles.info_type}`}>
                                 Min. yaş həddi{' '}
                             </span>

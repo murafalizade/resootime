@@ -77,7 +77,7 @@ const Carousel = ({ children, title }: CarouselProps) => {
                         pathname: '/restoranlar',
                         query: { filter: title },
                     }}
-                    className={`text-decoration-none mt-1 text-primary ${styles.filters} fs-6`}>
+                    className={`text-decoration-none mt-1 main-color ${styles.filters} fs-6`}>
                     Hamsına bax
                 </Link>
             </div>

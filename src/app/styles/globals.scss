@@ -248,7 +248,7 @@ input {
 // button styles
 .btn {
     border-radius: 10px !important;
-    font-size: 0.8rem !important;
+    font-size: 1rem !important;
 }
 
 .btn-primary {
@@ -279,6 +279,10 @@ input {
     &:hover {
         color: #6a5ddf !important;
     }
+}
+
+.main-color {
+    color: #6a5ddf !important;
 }
 
 .side-link {
@@ -384,7 +388,6 @@ input {
 
 @media screen and (max-width: 768px) {
     html {
-        font-size: 90%;
         .lists {
             font-size: 94%;
         }
@@ -406,9 +409,6 @@ input {
                 height: 100%;
             }
         }
-        .slick-slide > div {
-            // margin-left: 180px;
-        }
     }
 }
 
@@ -424,7 +424,7 @@ input {
     html {
         font-size: 77%;
         .nav-img {
-            width: 30px;
+            width: 145px;
             height: 30px;
         }
         .sect_banner {
@@ -444,7 +444,7 @@ input {
     html {
         font-size: 70%;
         .nav-img {
-            width: 20px;
+            width: 97px;
             height: 20px;
         }
         .sect_banner {

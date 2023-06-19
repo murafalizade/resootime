@@ -9,7 +9,7 @@
     padding: 1.5rem;
 
     .modal_title {
-        font-size: 1rem;
+        font-size: 1.3rem;
         line-height: 1.2rem;
         color: #6a5ddf;
         border-bottom: 1px solid #a5a5a5;
@@ -25,6 +25,11 @@
     .reservation_btn {
         font-size: 1rem !important;
         line-height: 1.2rem;
+    }
+
+    .bg_red {
+        background-color: red !important;
+        border: red;
     }
 
     .label {

@@ -53,11 +53,10 @@ const Gallery = ({ res }: any) => {
                             <Image
                                 src={'/images/logo.png'}
                                 alt="logo"
-                                width={45}
-                                height={45}
-                                className="img-fluid mx-3 logo icon nav-img"
+                                width={164}
+                                height={34}
+                                className="img-fluid logo icon nav-img"
                             />
-                            ResooTime
                         </a>
                     </div>
                 </div>

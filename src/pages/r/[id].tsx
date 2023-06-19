@@ -106,8 +106,7 @@ const ReservationRestaurant = ({ res }: any) => {
                         />
                     ) : null}
                     <div className="main-container">
-                        <div
-                            className={`d-flex flex-column position-relative d-md-none`}>
+                        <div className={`d-flex flex-column position-relative d-md-none`}>
                             <div
                                 className={`d-flex flex-column ${styles.img_container}`}>
                                 {res.images?.map((image: any) => (
@@ -115,7 +114,8 @@ const ReservationRestaurant = ({ res }: any) => {
                                         key={image.id}
                                         src={
                                             res.images[0]?.image
-                                                ? baseUrl + res.images[0]?.image
+                                                ? baseUrl +
+                                                  res.images[0]?.image
                                                 : '/images/rest_imag.png'
                                         }
                                         alt={res.name}
@@ -219,7 +219,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                                 <a
                                                     type="button"
                                                     className="btn btn-primary btn-md mt-2 mb-2"
-                                                    href={`/r/menu/${res.slug}`}>
+                                                    href={`/restaurants/r/menu/${res.slug}`}>
                                                     Menyu
                                                 </a>
                                             </div>

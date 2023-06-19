@@ -130,7 +130,7 @@ button {
     height: 5rem;
     .logo {
         margin-right: 0.58rem;
-        margin-left: 20px;
+        margin-left: 1.25rem;
     }
 }
 
@@ -388,8 +388,15 @@ input {
 
 @media screen and (max-width: 768px) {
     html {
+        font-size: 90%;
+        .res-name {
+            font-size: 2rem;
+        }
         .lists {
             font-size: 94%;
+        }
+        .logo {
+            margin-left: 0 !important
         }
     }
 }
@@ -410,6 +417,21 @@ input {
             }
         }
     }
+    .details-page *, .menu-container * {
+        font-size: 101.5% !important;
+    }
+    .res-name {
+        font-size: 2.1rem !important;
+    }
+    .modal-title, .icon  {
+        font-size: 1.3rem !important;
+    }
+    .icon {
+        font-size: 150% !important
+    }
+    .menu-description {
+        font-size: 80% !important;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -422,9 +444,16 @@ input {
 
 @media screen and (max-width: 426px) {
     html {
-        font-size: 77%;
+        font-size: 80%;
+        .res-name {
+            font-size: 1.9rem !important;
+        }
         .nav-img {
             width: 145px;
+            height: 30px;
+        }
+        .footer-img {
+            width: 30px;
             height: 30px;
         }
         .sect_banner {
@@ -445,6 +474,10 @@ input {
         font-size: 70%;
         .nav-img {
             width: 97px;
+            height: 20px;
+        }
+        .footer-img {
+            width: 20px;
             height: 20px;
         }
         .sect_banner {

@@ -15,7 +15,7 @@ const Footer = () => {
                                 alt="logo"
                                 width={45}
                                 height={45}
-                                className="img-fluid m-3 ms-0 icon nav-img"
+                                className="img-fluid m-3 ms-0 icon footer-img"
                             />
                             ResooTime
                         </a>
@@ -51,7 +51,7 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="row px-5 pb-4">
+                    <div className="row pb-4 px-md-5">
                         <div className="col-6 col-md-4">
                             <div>
                                 <a

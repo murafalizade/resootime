@@ -14,7 +14,7 @@
 
     .menu_nav {
         overflow: auto;
-        button {
+        a {
             padding: 0.5rem 1.1rem;
             background-color: transparent;
             font-weight: 600;
@@ -24,6 +24,7 @@
             border: none;
             transition: all 0.3s ease-in;
             white-space: nowrap;
+            text-decoration: none;
             &:hover,
             .active {
                 background-color: #dedafc;
@@ -49,7 +50,7 @@
                 line-height: 1.2rem;
             }
             .description {
-                font-weight: 600;
+                font-weight: 500;
                 font-size: 0.75rem;
                 line-height: 0.88rem;
                 color: #868686;

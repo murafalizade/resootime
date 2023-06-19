@@ -37,7 +37,7 @@ const Menu = ({ id }: { id: number }) => {
     return (
         <>
             {menuItems.length > 0 && (
-                <div className={`p-4 ${styles.menu_container}`}>
+                <div className={`p-4 menu-container ${styles.menu_container}`}>
                     <h2
                         className={`text-center py-4 d-none d-md-block ${styles.menu_title}`}>
                         Menu
@@ -87,7 +87,7 @@ const Menu = ({ id }: { id: number }) => {
                                                                 {product.name}
                                                             </h5>
                                                             <p
-                                                                className={`w-75 ${styles.description}`}>
+                                                                className={`w-75 menu-description ${styles.description}`}>
                                                                 {
                                                                     product.content
                                                                 }

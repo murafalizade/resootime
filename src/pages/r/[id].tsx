@@ -97,7 +97,7 @@ const ReservationRestaurant = ({ res }: any) => {
                 <meta property="og:site_name" content="ResooTime" />
             </Head>
             <Layout>
-                <main className="mb-md-5 pb-5">
+                <main className="mb-md-5 pb-5 details-page">
                     {isModalOpen ? <div className="overlay"></div> : null}
                     {isGalleryOpen ? (
                         <GalleryModal
@@ -140,7 +140,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                         <div className="d-flex justify-content-between">
                                             <div>
                                                 <h1
-                                                    className={`mt-4 mt-md-0 mb-0 mb-md-1 ${styles.res_name}`}>
+                                                    className={`mt-4 mt-md-0 mb-0 mb-md-1 res-name ${styles.res_name}`}>
                                                     {res.name}
                                                 </h1>
                                                 <div className="d-flex flex-md-column">
@@ -218,8 +218,8 @@ const ReservationRestaurant = ({ res }: any) => {
                                             <div className="d-flex d-md-none align-items-center">
                                                 <a
                                                     type="button"
-                                                    className="btn btn-primary btn-md mt-2 mb-2"
-                                                    href={`/restaurants/r/menu/${res.slug}`}>
+                                                    className="btn btn-primary btn-md mt-3 mb-2"
+                                                    href={`/r/menu/${res.slug}`}>
                                                     Menyu
                                                 </a>
                                             </div>
@@ -305,7 +305,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                     <div className="col-12 col-md-7 pe-md-5 order-first ps-md-0">
                                         <div>
                                             <h4
-                                                className={`d-inline d-md-none fw-bold mt-4`}>
+                                                className={`d-inline d-md-none fw-bold mt-4 modal-title`}>
                                                 Masanızı Seçin
                                             </h4>
                                             <div

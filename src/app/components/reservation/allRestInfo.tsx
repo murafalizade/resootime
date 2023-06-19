@@ -46,7 +46,7 @@ const allRestInfo = ({
             </div>
             <div style={{ color: '#505050' }} className="mt-3">
                 <div className="d-flex py-2 align-items-center">
-                    <IoLocationSharp className={`me-4 ${styles.icon}`} />
+                    <IoLocationSharp className={`me-4 icon ${styles.icon}`} />
                     <p
                         className={`btn-link text-decoration-none link m-0 ${styles.map_link} ${styles.link}`}>
                         {location}
@@ -54,7 +54,7 @@ const allRestInfo = ({
                 </div>
                 <hr />
                 <div className="d-flex py-2 align-items-center">
-                    <ImPhone className={`fs-4 me-4 ${styles.icon}`} />
+                    <ImPhone className={`fs-sm-4 me-4 icon ${styles.icon}`} />
                     <a
                         href=""
                         target="_blank"
@@ -66,7 +66,7 @@ const allRestInfo = ({
                 <hr />
                 {websiteLink && (
                     <div className="d-flex py-2 align-items-center">
-                        <TbWorld className={`me-4 ${styles.icon}`} />
+                        <TbWorld className={`me-4 icon ${styles.icon}`} />
                         <span>{websiteLink}</span>
                     </div>
                 )}
@@ -79,7 +79,7 @@ const allRestInfo = ({
                             href={instagramLink}
                             target="_blank"
                             rel="noreferrer">
-                            <BsInstagram size={'1.2rem'} />
+                            <BsInstagram className='fs-5 icon'/>
                         </a>
                     )}
 
@@ -89,13 +89,13 @@ const allRestInfo = ({
                             href={facebookLink}
                             target="_blank"
                             rel="noreferrer">
-                            <BsFacebook size={'1.2rem'} />
+                            <BsFacebook className='fs-5 icon'/>
                         </a>
                     )}
                 </div>
                 <hr />
                 <div className="d-flex pt-2">
-                    <AiOutlineClockCircle className={`me-4 ${styles.icon}`} />
+                    <AiOutlineClockCircle className={`me-4 icon ${styles.icon}`} />
                     <div className="w-100">
                         <div>
                             <div className="row">
@@ -139,7 +139,7 @@ const allRestInfo = ({
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
                         <GiMeal
-                            className={`me-3 ${styles.icon}`}
+                            className={`me-3 icon ${styles.icon}`}
                             style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
                         />
                         <span className={`${styles.info_type}`}>Mətbəx</span>
@@ -160,7 +160,7 @@ const allRestInfo = ({
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
                         <GiReceiveMoney
-                            className={`me-3 ${styles.icon}`}
+                            className={`me-3 icon ${styles.icon}`}
                             style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
                         />
                         <span className={`${styles.info_type}`}>
@@ -176,7 +176,7 @@ const allRestInfo = ({
                 {minimumAge && (
                     <div className="d-flex justify-content-between me-2 py-2">
                         <div className="d-flex align-items-center">
-                            <FaChild className={`me-4 ${styles.icon}`} />
+                            <FaChild className={`me-3 me-sm-4 icon ${styles.icon}`} />
                             <span className={`${styles.info_type}`}>
                                 Min. yaş həddi{' '}
                             </span>
@@ -192,7 +192,7 @@ const allRestInfo = ({
                     <div className="d-flex justify-content-between me-2 py-2">
                         <div className="d-flex align-items-center">
                             <FaRegMoneyBillAlt
-                                className={`me-3 ${styles.icon}`}
+                                className={`me-3 icon ${styles.icon}`}
                                 style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
                             />
                             <span className={`${styles.info_type}`}>
@@ -210,7 +210,7 @@ const allRestInfo = ({
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
                         <IoMdCard
-                            className={`me-3 ${styles.icon}`}
+                            className={`me-3 icon ${styles.icon}`}
                             style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
                         />
                         <span className={`${styles.info_type}`}>
@@ -226,7 +226,7 @@ const allRestInfo = ({
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
                         <CiParking1
-                            className={`me-3 ${styles.icon}`}
+                            className={`me-3 icon ${styles.icon}`}
                             style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
                         />
                         <span className={`${styles.info_type}`}>Parketmə</span>
@@ -242,7 +242,7 @@ const allRestInfo = ({
                         <div className="d-flex">
                             <div>
                                 <RiPagesLine
-                                    className={`me-3 ${styles.icon}`}
+                                    className={`me-3 icon ${styles.icon}`}
                                     style={{
                                         color: '#6A5DDF',
                                         fontSize: '1.8rem',

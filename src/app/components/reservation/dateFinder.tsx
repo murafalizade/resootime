@@ -238,7 +238,9 @@ const DateFinder = ({
                 type="button"
                 disabled={noAllowed}
                 onClick={makeReservation}
-                className={`btn btn-primary btn-lg mt-3 mb-2 ${table ? styles.bg_red : styles.reservation_btn}`}>
+                className={`btn btn-primary btn-lg mt-3 mb-2 ${
+                    table ? styles.bg_red : styles.reservation_btn
+                }`}>
                 {table ? `Reserv edin ${table.name}` : 'Masaları axtarın'}
             </button>
             {!(allowed && !noAllowed) ? (

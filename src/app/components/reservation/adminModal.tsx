@@ -200,7 +200,7 @@ const AdminModal = ({ date, selectedTable, restId }: any) => {
                                     />
                                 </div>
                             </div>
-                            <div className="mx-3 mt-3">
+                            {/* <div className="mx-3 mt-3">
                                 <label>Əlavələriniz</label>
                                 <textarea
                                     name="comment"
@@ -209,7 +209,7 @@ const AdminModal = ({ date, selectedTable, restId }: any) => {
                                     className="form-control mt-1"
                                     rows={3}
                                 />
-                            </div>
+                            </div> */}
                             <div className="modal-footer">
                                 <button
                                     onClick={makeReservation}

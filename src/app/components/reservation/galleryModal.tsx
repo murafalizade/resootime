@@ -20,17 +20,17 @@ const GalleryModal = ({ setIsGalleryOpen, images }: any) => {
                 <div className="container-fluid border-bottom">
                     <div className="navbar">
                         <div>
-                        <a
-                            href="/"
-                            className={`navbar-brand ${navStyles.brand_name}`}>
-                            <Image
-                                src={'/images/logo.png'}
-                                alt="logo"
-                                width={164}
-                                height={34}
-                                className="img-fluid logo icon nav-img"
-                            />
-                        </a>
+                            <a
+                                href="/"
+                                className={`navbar-brand ${navStyles.brand_name}`}>
+                                <Image
+                                    src={'/images/logo.png'}
+                                    alt="logo"
+                                    width={164}
+                                    height={34}
+                                    className="img-fluid logo icon nav-img"
+                                />
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -1,16 +1,7 @@
 import React from 'react';
 import styles from '@/app/styles/Table.module.scss';
+import { TableProps } from '@/app/types/TableProps';
 
-interface TableProps {
-    className?: string;
-    isFull?: boolean;
-    name: string;
-    userName?: string;
-    color?: string;
-    deg?: number;
-    date?: string;
-    changeName: (e: any) => void;
-}
 
 const HugeTable = (props: TableProps) => {
     return (
@@ -35,6 +26,7 @@ const HugeTable = (props: TableProps) => {
                     type="text"
                     className={styles.input}
                     value={props.name}
+                    disabled={!props.isEdit}
                     style={{ transform: `rotate(-${props?.deg}deg)` }}
                     onChange={(e: any) => props.changeName(e)}
                 />

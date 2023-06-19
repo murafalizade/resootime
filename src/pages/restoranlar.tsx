@@ -17,10 +17,9 @@ function Restaurants({ restaurants }: any) {
     // restaurant state
     const [rests, setRests] = useState<IRestaurant[]>(restaurants.results);
     const [popularRests, setPopularRests] = useState<IRestaurant[]>(
-        rests.sort((a:IRestaurant,b:IRestaurant)=> a.rate - b.rate));
-    const [newRests, setNewRests] = useState<IRestaurant[]>(
-        rests.reverse()
+        rests.sort((a: IRestaurant, b: IRestaurant) => a.rate - b.rate),
     );
+    const [newRests, setNewRests] = useState<IRestaurant[]>(rests.reverse());
     const [nearestRests, setNearestRests] = useState<IRestaurant[]>([]);
 
     // get query from url
@@ -157,7 +156,10 @@ function Restaurants({ restaurants }: any) {
                         </div>
                     </div>
                     <div className="d-flex justify-content-center">
-                        <div className={`pb-5 ${styles.card_section+" "+styles.padding_less} `}>
+                        <div
+                            className={`pb-5 ${
+                                styles.card_section + ' ' + styles.padding_less
+                            } `}>
                             <div className="d-flex justify-content-between align-items-center">
                                 <h3 className={`${styles.filters}`}>
                                     {filter}

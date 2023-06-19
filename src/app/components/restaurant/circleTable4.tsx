@@ -1,16 +1,7 @@
 import React from 'react';
 import styles from '@/app/styles/Table.module.scss';
+import { TableProps } from '@/app/types/TableProps';
 
-interface TableProps {
-    className?: string;
-    isFull?: boolean;
-    name: string;
-    userName?: string;
-    color?: string;
-    deg?: number;
-    date?: string;
-    changeName: (e: any) => void;
-}
 
 const CircleTable4 = (props: TableProps) => {
     return (
@@ -40,6 +31,7 @@ const CircleTable4 = (props: TableProps) => {
                     <input
                         type="text"
                         className={styles.input}
+                        disabled={!props.isEdit}
                         value={props.name}
                         style={{ transform: `rotate(-${props?.deg}deg)` }}
                         onChange={(e: any) => props.changeName(e)}

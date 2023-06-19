@@ -161,6 +161,7 @@ const Table = (props: TableProps) => {
                                 color={color}
                                 changeName={updateName}
                                 deg={deg}
+                                isEdit = {props.isEdit}
                                 isFull={props.table?.is_full}
                                 userName={props?.userName ?? ''}
                                 date={Util.formatDate(props?.date)}
@@ -171,6 +172,7 @@ const Table = (props: TableProps) => {
                                 color={color}
                                 changeName={updateName}
                                 deg={deg}
+                                isEdit = {props.isEdit}
                                 isFull={props.table?.is_full}
                                 userName={props?.userName ?? ''}
                                 date={Util.formatDate(props?.date)}
@@ -181,6 +183,7 @@ const Table = (props: TableProps) => {
                                 color={color}
                                 changeName={updateName}
                                 deg={deg}
+                                isEdit = {props.isEdit}
                                 isFull={props.table?.is_full}
                                 userName={props?.userName ?? ''}
                                 date={Util.formatDate(props?.date)}
@@ -191,6 +194,7 @@ const Table = (props: TableProps) => {
                                 color={color}
                                 changeName={updateName}
                                 deg={deg}
+                                isEdit = {props.isEdit}
                                 isFull={props.table?.is_full}
                                 userName={props?.userName ?? ''}
                                 date={Util.formatDate(props?.date)}
@@ -199,6 +203,7 @@ const Table = (props: TableProps) => {
                         ) : (
                             <CircleTable8
                                 color={color}
+                                isEdit = {props.isEdit}
                                 changeName={updateName}
                                 deg={deg}
                                 isFull={props.table?.is_full}
@@ -212,6 +217,7 @@ const Table = (props: TableProps) => {
                             color={color}
                             changeName={updateName}
                             deg={deg}
+                            isEdit = {props.isEdit}
                             isFull={props.table?.is_full}
                             userName={props?.userName ?? ''}
                             date={Util.formatDate(props?.date)}
@@ -222,6 +228,7 @@ const Table = (props: TableProps) => {
                             color={color}
                             changeName={updateName}
                             deg={deg}
+                            isEdit = {props.isEdit}
                             isFull={props.table?.is_full}
                             userName={props?.userName ?? ''}
                             date={Util.formatDate(props?.date)}
@@ -232,6 +239,7 @@ const Table = (props: TableProps) => {
                             color={color}
                             changeName={updateName}
                             deg={deg}
+                            isEdit = {props.isEdit}
                             isFull={props.table?.is_full}
                             userName={props?.userName ?? ''}
                             date={Util.formatDate(props?.date)}
@@ -242,6 +250,7 @@ const Table = (props: TableProps) => {
                             color={color}
                             changeName={updateName}
                             deg={deg}
+                            isEdit = {props.isEdit}
                             isFull={props.table?.is_full}
                             userName={props?.userName ?? ''}
                             date={Util.formatDate(props?.date)}
@@ -252,6 +261,7 @@ const Table = (props: TableProps) => {
                             color={color}
                             changeName={updateName}
                             deg={deg}
+                            isEdit = {props.isEdit}
                             isFull={props.table?.is_full}
                             userName={props?.userName ?? ''}
                             date={Util.formatDate(props?.date)}
@@ -262,6 +272,7 @@ const Table = (props: TableProps) => {
                             color={color}
                             changeName={updateName}
                             deg={deg}
+                            isEdit = {props.isEdit}
                             isFull={props.table?.is_full}
                             userName={props?.userName ?? ''}
                             date={Util.formatDate(props?.date)}

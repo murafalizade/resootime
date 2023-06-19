@@ -9,6 +9,7 @@ interface TableProps {
     color?: string;
     deg?: number;
     date?: string;
+    isEdit?: boolean;
     changeName: (e: any) => void;
 }
 
@@ -34,6 +35,7 @@ const CircleTable1 = (props: TableProps) => {
                     type="text"
                     className={styles.input}
                     value={props.name}
+                    disabled={!props.isEdit}
                     style={{ transform: `rotate(-${props?.deg}deg)` }}
                     onChange={(e: any) => props.changeName(e)}
                 />

@@ -4,9 +4,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 
-export function reportWebVitals(metric: any) {
-    console.log(metric);
-}
 
 export default function App({ Component, pageProps }: AppProps) {
     return (

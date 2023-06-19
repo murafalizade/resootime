@@ -91,15 +91,24 @@ const UserSettings = ({ user }: any) => {
     );
 };
 
-export default withAuth(UserSettings, false);
 
 export async function getServerSideProps(context: any) {
     const { req } = context;
     const token = Cookie.getFromSSR(req, 'token');
-    const user = await UserService.getUserByToken(token);
+    if(!token){
+        return {
+            redirect: {
+                destination: '/login',
+                permanent: false,
+            },
+        };
+    }
+    const user = await UserService.getUserByToken(token!);
     return {
         props: {
             user,
         },
     };
 }
+
+export default withAuth(UserSettings, true);

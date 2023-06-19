@@ -42,8 +42,6 @@ function Home({ restaurants }: any) {
         setRests(filteredRestaurants);
     };
 
-
-
     // find nearest restaurant
     const findNearest = () => {
         if (navigator.geolocation) {
@@ -83,7 +81,6 @@ function Home({ restaurants }: any) {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [name]);
-
 
     useEffect(() => {
         findNearest();
@@ -126,7 +123,8 @@ function Home({ restaurants }: any) {
 
             <Layout>
                 <main className={``}>
-                    <div className={`d-flex justify-content-center ${styles.home_page}`}>
+                    <div
+                        className={`d-flex justify-content-center ${styles.home_page}`}>
                         <div className={``}>
                             <div
                                 className={`${styles.heading_container} ${styles.home_width}`}>
@@ -159,128 +157,149 @@ function Home({ restaurants }: any) {
                             </div>
                         </div>
                     </div>
-                    <div className='d-flex justify-content-center'>
-                    {!showNormal ? (
-                        <div className={`pb-5 ${styles.card_section}`}>
-                            {rests.length > 4 ? (
-                                <div>
-                                    <div className="row">
-                                        <Carousel title="Yeni əlavə olunanlar">
-                                            {newRests.map((rest, i: number) => (
-                                                <Card key={i} cardInfo={rest} />
-                                            ))}
-                                        </Carousel>
+                    <div className="d-flex justify-content-center">
+                        {!showNormal ? (
+                            <div className={`pb-5 ${styles.card_section}`}>
+                                {rests.length > 4 ? (
+                                    <div>
+                                        <div className="row">
+                                            <Carousel title="Yeni əlavə olunanlar">
+                                                {newRests.map(
+                                                    (rest, i: number) => (
+                                                        <Card
+                                                            key={i}
+                                                            cardInfo={rest}
+                                                        />
+                                                    ),
+                                                )}
+                                            </Carousel>
+                                        </div>
                                     </div>
-                                </div>
-                            ) : (
-                                <div>
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <h3 className={`${styles.filters}`}>
-                                            Yeni əlavə olunanlar
-                                        </h3>
+                                ) : (
+                                    <div>
+                                        <div className="d-flex justify-content-between align-items-center">
+                                            <h3 className={`${styles.filters}`}>
+                                                Yeni əlavə olunanlar
+                                            </h3>
+                                        </div>
+                                        <div className="row">
+                                            {newRests.map(
+                                                (
+                                                    rest: IRestaurant,
+                                                    i: number,
+                                                ) => (
+                                                    <div
+                                                        key={i}
+                                                        className="col-6 col-md-4 col-xl-3">
+                                                        <Card cardInfo={rest} />
+                                                    </div>
+                                                ),
+                                            )}
+                                        </div>
                                     </div>
-                                    <div className="row">
-                                        {newRests.map(
-                                            (rest: IRestaurant, i: number) => (
-                                                <div
-                                                    key={i}
-                                                    className="col-6 col-md-4 col-xl-3">
-                                                    <Card cardInfo={rest} />
-                                                </div>
-                                            ),
-                                        )}
+                                )}
+                                {rests.length > 4 ? (
+                                    <div>
+                                        <div className="row">
+                                            <Carousel title="Populyar olanlar">
+                                                {popularRests.map(
+                                                    (rest, i: number) => (
+                                                        <Card
+                                                            key={i}
+                                                            cardInfo={rest}
+                                                        />
+                                                    ),
+                                                )}
+                                            </Carousel>
+                                        </div>
                                     </div>
-                                </div>
-                            )}
-                            {rests.length > 4 ? (
-                                <div>
-                                    <div className="row">
-                                        <Carousel title="Populyar olanlar">
+                                ) : (
+                                    <div>
+                                        <div className="d-flex justify-content-between align-items-center">
+                                            <h3 className={`${styles.filters}`}>
+                                                Populyar olanlar
+                                            </h3>
+                                        </div>
+                                        <div className="row">
                                             {popularRests.map(
-                                                (rest, i: number) => (
-                                                    <Card
+                                                (
+                                                    rest: IRestaurant,
+                                                    i: number,
+                                                ) => (
+                                                    <div
                                                         key={i}
-                                                        cardInfo={rest}
-                                                    />
+                                                        className="col-6 col-md-4 col-xl-3">
+                                                        <Card cardInfo={rest} />
+                                                    </div>
                                                 ),
                                             )}
-                                        </Carousel>
+                                        </div>
                                     </div>
-                                </div>
-                            ) : (
-                                <div>
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <h3 className={`${styles.filters}`}>
-                                            Populyar olanlar
-                                        </h3>
+                                )}
+                                {rests.length > 4 ? (
+                                    <div>
+                                        <div className="row">
+                                            <Carousel title="Yaxındakılar">
+                                                {nearestRests.map(
+                                                    (rest, i: number) => (
+                                                        <Card
+                                                            key={i}
+                                                            cardInfo={rest}
+                                                        />
+                                                    ),
+                                                )}
+                                            </Carousel>
+                                        </div>
                                     </div>
-                                    <div className="row">
-                                        {popularRests.map(
-                                            (rest: IRestaurant, i: number) => (
-                                                <div
-                                                    key={i}
-                                                    className="col-6 col-md-4 col-xl-3">
-                                                    <Card cardInfo={rest} />
-                                                </div>
-                                            ),
-                                        )}
-                                    </div>
-                                </div>
-                            )}
-                            {rests.length > 4 ? (
-                                <div>
-                                    <div className="row">
-                                        <Carousel title="Yaxındakılar">
+                                ) : (
+                                    <div>
+                                        <div className="d-flex justify-content-between align-items-center">
+                                            <h3 className={`${styles.filters}`}>
+                                                Yaxındakılar
+                                            </h3>
+                                        </div>
+                                        <div className="row">
                                             {nearestRests.map(
-                                                (rest, i: number) => (
-                                                    <Card
+                                                (
+                                                    rest: IRestaurant,
+                                                    i: number,
+                                                ) => (
+                                                    <div
                                                         key={i}
-                                                        cardInfo={rest}
-                                                    />
+                                                        className="col-6 col-md-4 col-xl-3">
+                                                        <Card cardInfo={rest} />
+                                                    </div>
                                                 ),
                                             )}
-                                        </Carousel>
+                                        </div>
                                     </div>
-                                </div>
-                            ) : (
-                                <div>
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <h3 className={`${styles.filters}`}>
-                                            Yaxındakılar
-                                        </h3>
-                                    </div>
-                                    <div className="row">
-                                        {nearestRests.map(
-                                            (rest: IRestaurant, i: number) => (
-                                                <div
-                                                    key={i}
-                                                    className="col-6 col-md-4 col-xl-3">
-                                                    <Card cardInfo={rest} />
-                                                </div>
-                                            ),
-                                        )}
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                    ) : (
-                        <div className={`pb-5 ${styles.card_section+" "+styles.padding_less}`}>
-                            <div className="d-flex justify-content-between align-items-center">
-                                <h3 className={`${styles.filters}`}>
-                                    {name} üzrə nəticələr
-                                </h3>
+                                )}
                             </div>
-                            <div className="row">
-                                {rests.map((rest: IRestaurant, i: number) => (
-                                    <div
-                                        key={i}
-                                        className="col-6 my-2 col-md-4 col-xl-3">
-                                        <Card cardInfo={rest} />
-                                    </div>
-                                ))}
+                        ) : (
+                            <div
+                                className={`pb-5 ${
+                                    styles.card_section +
+                                    ' ' +
+                                    styles.padding_less
+                                }`}>
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <h3 className={`${styles.filters}`}>
+                                        {name} üzrə nəticələr
+                                    </h3>
+                                </div>
+                                <div className="row">
+                                    {rests.map(
+                                        (rest: IRestaurant, i: number) => (
+                                            <div
+                                                key={i}
+                                                className="col-6 my-2 col-md-4 col-xl-3">
+                                                <Card cardInfo={rest} />
+                                            </div>
+                                        ),
+                                    )}
+                                </div>
                             </div>
-                        </div>
-                    )}
+                        )}
                     </div>
                 </main>
             </Layout>

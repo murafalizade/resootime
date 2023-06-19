@@ -34,12 +34,11 @@ const DateFinder = ({
     const days = weekDay;
     const [noAllowed, setNoAllowed] = useState(false);
     const getMinHour = (now: Date) => {
-        console.log(data.find((item: any) => item.day === days[now.getDay()].name));
+        console.log(days[now.getDay()].name);
         const time = data.find(
             (item: any) => item.day === days[now.getDay()].name,
         )?.open_at;
         const today = new Date();
-        console.log(time);
         if (!time) {
             return ['23', '59'];
         }
@@ -97,7 +96,6 @@ const DateFinder = ({
         setCount(e.target.value);
     };
 
-    console.log(data, maxTime);
 
     useEffect(() => {
         if (minTime.getTime() < maxTime.getTime()) {
@@ -132,6 +130,7 @@ const DateFinder = ({
             date.getMonth(),
             date.getDate(),
         );
+        console.log(date.getTime() >= tomorrow.getTime());
         if (date.getTime() >= tomorrow.getTime()) {
             // Allow selecting from 00:01 tomorrow
             setMinTime(
@@ -176,6 +175,7 @@ const DateFinder = ({
                 ),
             );
         }
+        console.log(minTime, maxTime);
     };
 
     return (
@@ -244,7 +244,7 @@ const DateFinder = ({
             </button>
             {!(allowed && !noAllowed) ? (
                 <span className={`text-danger text-center ${styles.warning}`}>
-                    Rezervasiya etmək halhazırda mümkün deyil
+                    Hal-hazırda bütün masalar doludur.
                 </span>
             ) : null}
         </div>

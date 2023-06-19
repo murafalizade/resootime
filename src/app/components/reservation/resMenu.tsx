@@ -109,9 +109,7 @@ const Menu = ({ id }: { id: number }) => {
                                                                             height={
                                                                                 85
                                                                             }
-                                                                            quality={
-                                                                                100
-                                                                            }
+                                                                            quality={100}
                                                                             className={`${styles.menu_item_img}`}
                                                                         />
                                                                     )}

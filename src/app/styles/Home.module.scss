@@ -200,12 +200,11 @@
     .home_width,
     .card_section {
         width: 50rem;
-        
     }
 }
 
 @media screen and (max-width: 576px) {
-    .padding_less{
+    .padding_less {
         padding-left: 10px !important;
         padding-right: 10px !important;
     }
@@ -238,12 +237,11 @@
     }
 }
 
-
 @media screen and (min-width: 1200px) {
-    .padding_less{
-        .card_container,.card_img{
+    .padding_less {
+        .card_container,
+        .card_img {
             width: 100% !important;
         }
     }
 }
-

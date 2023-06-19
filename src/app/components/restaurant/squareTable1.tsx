@@ -1,16 +1,7 @@
 import React from 'react';
 import styles from '@/app/styles/Table.module.scss';
+import { TableProps } from '@/app/types/TableProps';
 
-interface TableProps {
-    className?: string;
-    isFull?: boolean;
-    name: string;
-    userName?: string;
-    changeName: (e: any) => void;
-    date?: string;
-    deg?: number;
-    color?: string;
-}
 
 const SquareTable1 = (props: TableProps) => {
     return (
@@ -37,8 +28,11 @@ const SquareTable1 = (props: TableProps) => {
                     type="text"
                     className={styles.input}
                     value={props.name}
-                    disabled ={true}
-                    style={{ transform: `rotate(-${props?.deg}deg)`,userSelect:"none" }}
+                    disabled={!props.isEdit}
+                    style={{
+                        transform: `rotate(-${props?.deg}deg)`,
+                        userSelect: 'none',
+                    }}
                     onChange={(e: any) => props.changeName(e)}
                 />
                 {/* <span style={{ color: "yellow", paddingTop: "3px" }}>

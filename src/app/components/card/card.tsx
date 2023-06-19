@@ -13,7 +13,7 @@ const Card = ({ cardInfo }: ICardProps) => {
         <div
             className={`d-flex align-items-center justify-content-center ${styles.card_container}`}>
             <div className={`card ${styles.card}`}>
-                <a href={`/restaurants/r/${cardInfo.slug}`}>
+                <a href={`/r/${cardInfo.slug}`}>
                     <Image
                         src={
                             cardInfo.images[0]?.image || '/images/rest_imag.png'
@@ -31,7 +31,7 @@ const Card = ({ cardInfo }: ICardProps) => {
                     </span>
                     <div className="d-flex align-items-center justify-content-between pt-1">
                         <a
-                            href={`/restaurants/r/${cardInfo.slug}`}
+                            href={`/r/${cardInfo.slug}`}
                             className="text-decoration-none text-dark link">
                             <h5 className="card-title">
                                 {cardInfo.name.length > 12

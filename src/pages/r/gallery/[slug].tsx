@@ -115,6 +115,7 @@ const Gallery = ({ res }: any) => {
                                                 alt="logo"
                                                 width={45}
                                                 height={144}
+                                                quality={100}
                                                 className={`${galleryStyles.gallery_img}`}
                                             />
                                         </div>
@@ -131,6 +132,7 @@ const Gallery = ({ res }: any) => {
                                                 }
                                                 alt="logo"
                                                 width={45}
+                                                quality={100}
                                                 height={144}
                                                 className={`${galleryStyles.gallery_img}`}
                                             />

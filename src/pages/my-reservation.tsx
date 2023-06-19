@@ -60,4 +60,4 @@ const Myreservation = () => {
     );
 };
 
-export default withAuth(Myreservation, false);
+export default withAuth(Myreservation, true);

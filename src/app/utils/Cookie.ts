@@ -28,6 +28,7 @@ class Cookie {
         const cookies = parseCookies({ req });
         const cryptedName = Cryption.encrypt(key).slice(0, 7);
         const encryptedValue = cookies[cryptedName];
+        if(!encryptedValue) return null;
         return Cryption.decrypt(encryptedValue);
     }
 

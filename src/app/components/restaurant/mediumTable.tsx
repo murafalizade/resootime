@@ -1,16 +1,6 @@
 import React from 'react';
 import styles from '@/app/styles/Table.module.scss';
-
-interface TableProps {
-    className?: string;
-    isFull?: boolean;
-    name: string;
-    userName?: string;
-    date?: string;
-    deg?: number;
-    changeName: (e: any) => void;
-    color?: string;
-}
+import { TableProps } from '@/app/types/TableProps';
 
 const MediumTable = (props: TableProps) => {
     return (
@@ -32,6 +22,7 @@ const MediumTable = (props: TableProps) => {
                     type="text"
                     className={styles.input}
                     value={props.name}
+                    disabled={!props.isEdit}
                     style={{ transform: `rotate(-${props?.deg}deg)` }}
                     onChange={(e: any) => props.changeName(e)}
                 />

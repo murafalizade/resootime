@@ -37,7 +37,7 @@ const Menu = ({ id }: { id: number }) => {
     return (
         <>
             {menuItems.length > 0 && (
-                <div className={`p-4 ${styles.menu_container}`}>
+                <div className={`p-4 menu-container ${styles.menu_container}`}>
                     <h2
                         className={`text-center py-4 d-none d-md-block ${styles.menu_title}`}>
                         Menu
@@ -78,12 +78,26 @@ const Menu = ({ id }: { id: number }) => {
                                                         className={` ${styles.menu_item}`}
                                                         key={product.id}>
                                                         <div
-                                                            className={`row pt-3 ps-0`}>
-                                                            <div
-                                                                className={`col-8`}>
-                                                                <h5
-                                                                    className={`fw-bold my-1 ${styles.item_name}`}>
-                                                                    {
+                                                            className={`col-8`}>
+                                                            <h5
+                                                                className={`fw-bold my-1 ${styles.item_name}`}>
+                                                                {product.name}
+                                                            </h5>
+                                                            <p
+                                                                className={`w-75 menu-description ${styles.description}`}>
+                                                                {
+                                                                    product.content
+                                                                }
+                                                            </p>
+                                                            <p
+                                                                className={`mt-2 ${styles.price}`}>
+                                                                {`${product.price} Azn`}
+                                                            </p>
+                                                        </div>
+                                                        <div className="col-4 d-flex align-items-center ps-0">
+                                                            {product.image && (
+                                                                <Image
+                                                                    alt={
                                                                         product.name
                                                                     }
                                                                 </h5>

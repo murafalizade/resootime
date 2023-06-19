@@ -137,21 +137,6 @@ const Table = (props: TableProps) => {
                         </>
                     ) : null}
                 </div>
-                {!props.isEdit && choosenTable?.id === props.table.id ? (
-                    <div
-                        className={`${styles.popup} sm-block top-50 p-3 bg-light start-100 translate-middle`}>
-                        <p>
-                            {props.table?.name} - {props.table?.count} nəfərlik
-                        </p>
-                        <button
-                            onClick={() => {
-                                dispatch(openModal());
-                            }}
-                            className="btn h-25 word-nowrap btn-primary">
-                            Rezervasiya et
-                        </button>
-                    </div>
-                ) : null}
                 <div
                     style={{ transform: `rotate(${deg}deg)` }}
                     onClick={chooseTable}>

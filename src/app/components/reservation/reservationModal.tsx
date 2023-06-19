@@ -223,7 +223,7 @@ const ReservationModal = (props: Props) => {
                                 </div>
                             </div>
 
-                            <div className="mx-3 mt-3">
+                            {/* <div className="mx-3 mt-3">
                                 <label>Əlavələriniz</label>
                                 <textarea
                                     name="comment"
@@ -232,7 +232,7 @@ const ReservationModal = (props: Props) => {
                                     className="form-control"
                                     rows={3}
                                 />
-                            </div>
+                            </div> */}
                         </div>
                         <div className="modal-footer">
                             <button

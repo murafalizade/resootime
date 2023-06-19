@@ -66,59 +66,65 @@ const Menu = ({ id }: { id: number }) => {
                         </div>
                     </div>
                     <div className={`${styles.menu}`}>
-                        <ul className="p-1"
-                       >
+                        <ul className="p-1">
                             {menuItems.map((item: any) => {
                                 return (
                                     <>
-                                        {item.products.map((product: any, index: any) => {
-                                            return (
-                                                <li
-                                                    id={item.id}
-                                                    className={` ${styles.menu_item}`}
-                                                    key={product.id}>
-                                                    <div
-                                                        className={`row pt-3 ps-0`}
-                                                        >
+                                        {item.products.map(
+                                            (product: any, index: any) => {
+                                                return (
+                                                    <li
+                                                        id={item.id}
+                                                        className={` ${styles.menu_item}`}
+                                                        key={product.id}>
                                                         <div
-                                                            className={`col-8`}>
-                                                            <h5
-                                                                className={`fw-bold my-1 ${styles.item_name}`}>
-                                                                {product.name}
-                                                            </h5>
-                                                            <p
-                                                                className={`w-75 ${styles.description}`}>
-                                                                {
-                                                                    product.content
-                                                                }
-                                                            </p>
-                                                            <p
-                                                                className={`mt-2 ${styles.price}`}>
-                                                                {`${product.price} Azn`}
-                                                            </p>
-                                                        </div>
-                                                        <div className="col-4 d-flex align-items-center ps-0">
-                                                            {product.image && (
-                                                                <Image
-                                                                    alt={
+                                                            className={`row pt-3 ps-0`}>
+                                                            <div
+                                                                className={`col-8`}>
+                                                                <h5
+                                                                    className={`fw-bold my-1 ${styles.item_name}`}>
+                                                                    {
                                                                         product.name
                                                                     }
-                                                                    src={
-                                                                        product.image
+                                                                </h5>
+                                                                <p
+                                                                    className={`w-75 ${styles.description}`}>
+                                                                    {
+                                                                        product.content
                                                                     }
-                                                                    width={160}
-                                                                    height={85}
-                                                                    quality={
-                                                                        100
-                                                                    }
-                                                                    className={`${styles.menu_item_img}`}
-                                                                />
-                                                            )}
+                                                                </p>
+                                                                <p
+                                                                    className={`mt-2 ${styles.price}`}>
+                                                                    {`${product.price} Azn`}
+                                                                </p>
+                                                            </div>
+                                                            <div className="col-4 d-flex align-items-center ps-0">
+                                                                {product.image && (
+                                                                    <Image
+                                                                        alt={
+                                                                            product.name
+                                                                        }
+                                                                        src={
+                                                                            product.image
+                                                                        }
+                                                                        width={
+                                                                            160
+                                                                        }
+                                                                        height={
+                                                                            85
+                                                                        }
+                                                                        quality={
+                                                                            100
+                                                                        }
+                                                                        className={`${styles.menu_item_img}`}
+                                                                    />
+                                                                )}
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </li>
-                                            );
-                                        })}
+                                                    </li>
+                                                );
+                                            },
+                                        )}
                                     </>
                                 );
                             })}

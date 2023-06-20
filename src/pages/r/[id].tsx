@@ -304,10 +304,20 @@ const ReservationRestaurant = ({ res }: any) => {
                                 <div className="row d-flex flex-md-row md-reverse row-width">
                                     <div className="col-12 col-md-7 pe-md-5 order-first ps-md-0">
                                         <div>
-                                            <h4
-                                                className={`d-inline d-md-none fw-bold mt-4 modal-title`}>
-                                                Masanızı Seçin
-                                            </h4>
+                                            <div className='d-flex d-md-none align-items-center justify-content-between mt-4'>
+                                                <h4
+                                                    className={`fw-bold modal-title`}>
+                                                    Masanızı Seçin
+                                                </h4>
+                                                <div className="d-flex align-items-center">
+                                                    <div
+                                                        className={`me-1 ${styles.green_circle}`}></div>
+                                                    <span
+                                                        className={`${styles.empty_tables}`}>
+                                                        Boş masalar
+                                                    </span>
+                                                </div>
+                                            </div>
                                             <div
                                                 onClick={() => {
                                                     setCanEdit(!canEdit);
@@ -320,12 +330,23 @@ const ReservationRestaurant = ({ res }: any) => {
                                                 <div
                                                     style={{ zIndex: 2 }}
                                                     className="text-light">
-                                                    <div className="d-none d-md-flex my-2 align-items-center justify-content-center">
-                                                        <span
-                                                            className={`${styles.bottom_border}`}>
-                                                            Masanızı Seçin
-                                                        </span>
-                                                        <br />
+                                                    <div>
+                                                        <div className="d-none d-md-flex my-2 align-items-center justify-content-between">
+                                                            <div className="w-25"></div>
+                                                            <span
+                                                                className={` ${styles.bottom_border}`}>
+                                                                Masanızı Seçin
+                                                            </span>
+                                                            <div className="d-flex align-items-center w-25">
+                                                                <div
+                                                                    className={`me-1 ${styles.green_circle}`}></div>
+                                                                <span
+                                                                    className={`${styles.empty_tables}`}>
+                                                                    Boş masalar
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <br className="d-none d-md-block" />
                                                     </div>
                                                 </div>
                                                 {isLoading ? (

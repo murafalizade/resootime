@@ -2,8 +2,7 @@ import styles from '@/app/styles/DateFinder.module.scss';
 import { GiReceiveMoney, GiMeal } from 'react-icons/gi';
 import { FaRegMoneyBillAlt, FaChild } from 'react-icons/fa';
 import { IoMdCard } from 'react-icons/io';
-import { CiParking1 } from 'react-icons/ci';
-import { rest } from 'cypress/types/lodash';
+import { LuParkingCircle } from 'react-icons/lu';
 
 const AdditionalInfo = ({
     cuisine,
@@ -103,7 +102,7 @@ const AdditionalInfo = ({
                 <hr />
                 <div className="row justify-content-between me-2 py-2">
                     <div className="col-6 d-flex align-items-center">
-                        <CiParking1 className={`me-2 ${styles.details_icon}`} />
+                        <LuParkingCircle className={`me-2 ${styles.details_icon}`} />
                         <span className={`${styles.info_type}`}>Parketmə</span>
                     </div>
                     <span

@@ -9,7 +9,7 @@ import { ImPhone } from 'react-icons/im';
 import { GiReceiveMoney, GiMeal } from 'react-icons/gi';
 import { FaRegMoneyBillAlt, FaChild } from 'react-icons/fa';
 import { IoMdCard } from 'react-icons/io';
-import { CiParking1 } from 'react-icons/ci';
+import { LuParkingCircle } from 'react-icons/lu';
 import { RiPagesLine } from 'react-icons/ri';
 
 const allRestInfo = ({
@@ -93,8 +93,8 @@ const allRestInfo = ({
                         </a>
                     )}
                 </div>
-                <hr />
-                <div className="d-flex pt-2">
+                {(instagramLink ?? facebookLink) ?? <hr />}
+                <div className="d-flex">
                     <AiOutlineClockCircle
                         className={`me-4 icon ${styles.icon}`}
                     />
@@ -229,7 +229,7 @@ const allRestInfo = ({
                 <hr />
                 <div className="d-flex justify-content-between me-2 py-2">
                     <div className="d-flex align-items-center">
-                        <CiParking1
+                        <LuParkingCircle
                             className={`me-3 icon ${styles.icon}`}
                             style={{ color: '#6A5DDF', fontSize: '1.8rem' }}
                         />

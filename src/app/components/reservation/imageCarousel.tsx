@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from '@/app/styles/Gallery.module.scss';
-import Image from 'next/dist/client/image';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import baseUrl from '@/app/constants/baseUrl';
 export type ImageType = { id: number; url: string };
@@ -65,6 +64,7 @@ const ImageCarousel: React.FC<{ images?: ImageType[] }> = ({ images }) => {
                     className={`${styles.selected_image}`}
                     style={{
                         backgroundImage: `url(${baseUrl}${selectedImage})`,
+                        width: '100%',
                     }}></div>
             </div>
             <div className={`${styles.carousel}`}>

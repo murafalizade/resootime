@@ -38,7 +38,9 @@
     overflow-x: hidden;
 }
 .menu_container .menu .menu_item {
+    display: flex;
     border-bottom: 1px solid #eaeaea;
+    margin-bottom: 5rem;
 }
 .menu_container .menu .menu_item:last-child {
     border: none;

@@ -75,7 +75,7 @@ const Menu = ({ id }: { id: number }) => {
                                                 return (
                                                     <li
                                                         id={item.id}
-                                                        className={` ${styles.menu_item}`}
+                                                        className={` ${styles.menu_item} d-flex mb-2`}
                                                         key={product.id}>
                                                         <div
                                                             className={`col-8`}>
@@ -83,28 +83,6 @@ const Menu = ({ id }: { id: number }) => {
                                                                 className={`fw-bold my-1 ${styles.item_name}`}>
                                                                 {product.name}
                                                             </h5>
-                                                            <p
-                                                                className={`w-75 menu-description ${styles.description}`}>
-                                                                {
-                                                                    product.content
-                                                                }
-                                                            </p>
-                                                            <p
-                                                                className={`mt-2 ${styles.price}`}>
-                                                                {`${product.price} Azn`}
-                                                            </p>
-                                                        </div>
-                                                        <div className="col-4 d-flex align-items-center ps-0">
-                                                            {product.image && (
-                                                                <Image
-                                                                    src={
-                                                                        product.image
-                                                                    }
-                                                                    alt={
-                                                                        product.name
-                                                                    }
-                                                                />
-                                                            )}
                                                             <p
                                                                 className={`w-75 ${styles.description}`}>
                                                                 {

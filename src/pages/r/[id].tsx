@@ -30,6 +30,7 @@ import { FaHeart } from 'react-icons/fa';
 import GalleryModal from '@/app/components/reservation/galleryModal';
 import UserService from '@/app/api/services/userService';
 import Cookie from '@/app/utils/Cookie';
+import { MdAssistantNavigation } from 'react-icons/md';
 
 const ReservationRestaurant = ({ res }: any) => {
     const isModalOpen = useSelector(selectIsModelOpen);
@@ -37,21 +38,24 @@ const ReservationRestaurant = ({ res }: any) => {
     const resTable = useSelector(selectFilteredTables);
     const isLoading = useSelector(selectIsLoading);
     const [wall, setWall] = useState('');
-    const [date, setDate] = useState(new Date());
+    const [initialScale, setInitialScale] = useState(0.75);
     const [canEdit, setCanEdit] = useState(false);
     const [showMore, setShowMore] = useState(res.description.length < 317);
     const [isClicked, setIsClicked] = useState(false);
     const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
+    const MemoizedTransformWrapper = React.memo(TransformWrapper);
+
+
     const getTables = async () => {
         const map = await RestaurantService.getTables(res.id);
         setWall(map?.wall);
-        const filterTable = await RestaurantService.getAvailableTables(
-            res.id,
-            date.toLocaleDateString(formatDate.locale),
-            1,
-        );
-        dispatch(filterTables(filterTable));
+        // const filterTable = await RestaurantService.getAvailableTables(
+        //     res.id,
+        //     date.toLocaleDateString(formatDate.locale),
+        //     1,
+        // );
+        dispatch(filterTables(map?.table));
     };
 
     useEffect(() => {
@@ -304,7 +308,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                 <div className="row d-flex flex-md-row md-reverse row-width">
                                     <div className="col-12 col-md-7 pe-md-5 order-first ps-md-0">
                                         <div>
-                                            <div className='d-flex d-md-none align-items-center justify-content-between mt-4'>
+                                            <div className="d-flex d-md-none align-items-center justify-content-between mt-4">
                                                 <h4
                                                     className={`fw-bold modal-title`}>
                                                     Masanızı Seçin
@@ -356,8 +360,8 @@ const ReservationRestaurant = ({ res }: any) => {
                                                         }
                                                     />
                                                 ) : null}
-                                                <TransformWrapper
-                                                    initialScale={0.75}
+                                                <MemoizedTransformWrapper
+                                                    initialScale={initialScale}
                                                     minScale={0.5}
                                                     maxScale={2}
                                                     wheel={{
@@ -394,7 +398,17 @@ const ReservationRestaurant = ({ res }: any) => {
                                                             ),
                                                         )}
                                                     </TransformComponent>
-                                                </TransformWrapper>
+                                                </MemoizedTransformWrapper>
+                                                <div
+                                                    onClick={() => {
+                                                        setInitialScale(0.5);
+                                                        console.log("Scale olundu", initialScale)
+                                                    }}
+                                                    className="text-light position-absolute bottom-0 end-0 p-3">
+                                                    <MdAssistantNavigation
+                                                        size={25}
+                                                    />
+                                                </div>
                                             </div>
                                             {res.notes && (
                                                 <div

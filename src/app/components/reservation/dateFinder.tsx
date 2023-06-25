@@ -33,6 +33,7 @@ const DateFinder = ({
     const now = new Date();
     const days = weekDay;
     const [noAllowed, setNoAllowed] = useState(false);
+    const [isChooseable, setIsChooseable] = useState(false);
     const getMinHour = (now: Date) => {
         console.log(days[now.getDay()].name);
         const time = data.find(
@@ -42,8 +43,7 @@ const DateFinder = ({
         if (!time) {
             return ['23', '59'];
         }
-        if (today.getTime() >= now.getTime()) {
-            console.log(time);
+        if (today.getTime() <= now.getTime()) {
             return time.split(':');
         } else {
             return [today.getHours(), today.getMinutes()];
@@ -108,6 +108,7 @@ const DateFinder = ({
     const makeReservation = async () => {
         if (table) {
             dispatch(openModal());
+            setIsChooseable(false);
         } else {
             dispatch(makeLoading());
             const filterTable = await RestaurantService.getAvailableTables(
@@ -117,6 +118,7 @@ const DateFinder = ({
             );
             dispatch(filterTables(filterTable));
             dispatch(makeLoading());
+            setIsChooseable(true);
         }
     };
 
@@ -250,6 +252,12 @@ const DateFinder = ({
                     Hal-hazırda bütün masalar doludur.
                 </span>
             ) : null}
+
+            {isChooseable && (
+                <span className={`text-danger text-center ${styles.warning}`}>
+                    Zəhmət olmasa xəritədən masanızı seçin
+                </span>
+            )}
         </div>
     );
 };

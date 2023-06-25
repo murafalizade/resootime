@@ -102,7 +102,9 @@ const AdditionalInfo = ({
                 <hr />
                 <div className="row justify-content-between me-2 py-2">
                     <div className="col-6 d-flex align-items-center">
-                        <LuParkingCircle className={`me-2 ${styles.details_icon}`} />
+                        <LuParkingCircle
+                            className={`me-2 ${styles.details_icon}`}
+                        />
                         <span className={`${styles.info_type}`}>Parketmə</span>
                     </div>
                     <span

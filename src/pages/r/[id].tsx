@@ -46,7 +46,6 @@ const ReservationRestaurant = ({ res }: any) => {
 
     const MemoizedTransformWrapper = React.memo(TransformWrapper);
 
-
     const getTables = async () => {
         const map = await RestaurantService.getTables(res.id);
         setWall(map?.wall);
@@ -57,6 +56,33 @@ const ReservationRestaurant = ({ res }: any) => {
         // );
         dispatch(filterTables(map?.table));
     };
+
+
+    const twoFingerPan = (event:any, rootPage:boolean=false) => { 
+        if (event.ctrlKey && !rootPage) {
+            setCanEdit(true);
+        } else {
+            setCanEdit(false);
+        }
+    };
+
+    useEffect(() => {
+        const handleZoom = (event:any) => {
+          if (event.ctrlKey) {
+            event.preventDefault();
+    
+            // Your zoom logic for the specific div
+            // Perform the necessary zoom operations on divElement
+          }
+        };
+    
+        window.addEventListener('wheel', handleZoom, { passive: false });
+    
+        return () => {
+          window.removeEventListener('wheel', handleZoom);
+        };
+      }, []);
+    
 
     useEffect(() => {
         dispatch(makeLoading());
@@ -101,7 +127,7 @@ const ReservationRestaurant = ({ res }: any) => {
                 <meta property="og:site_name" content="ResooTime" />
             </Head>
             <Layout>
-                <main className="mb-md-5 pb-5 details-page">
+                <main  onWheel={(e)=>!e.ctrlKey?setCanEdit(false):null} className="mb-md-5 pb-5 details-page">
                     {isModalOpen ? <div className="overlay"></div> : null}
                     {isGalleryOpen ? (
                         <GalleryModal
@@ -323,9 +349,18 @@ const ReservationRestaurant = ({ res }: any) => {
                                                 </div>
                                             </div>
                                             <div
-                                                onClick={() => {
-                                                    setCanEdit(!canEdit);
+                                                onWheel={(e)=>twoFingerPan(e)} 
+                                                onKeyDown={(e)=>{
+                                                    if (e.key === 'Control') {
+                                                        setCanEdit(true);
+                                                      }
                                                 }}
+
+                                                onKeyUp={(event) => {
+                                                    if (event.key === 'Control') {
+                                                      setCanEdit(false);
+                                                    }
+                                                  }}
                                                 className={`overflow-hidden position-relative border bg-dark mb-4 mt-4 mt-md-0 ${styles.map}`}
                                                 style={{
                                                     height: '23.5rem',
@@ -402,7 +437,6 @@ const ReservationRestaurant = ({ res }: any) => {
                                                 <div
                                                     onClick={() => {
                                                         setInitialScale(0.5);
-                                                        console.log("Scale olundu", initialScale)
                                                     }}
                                                     className="text-light position-absolute bottom-0 end-0 p-3">
                                                     <MdAssistantNavigation
@@ -470,7 +504,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="d-md-none d-flex">
+                                <div onWheel={(e)=>console.log(e,"Event")}  onClick={(e)=>console.log(e,"ad")} className="d-md-none d-flex">
                                     <AllRestInfo
                                         phone={res.phone}
                                         location={res.location}

@@ -253,7 +253,7 @@ const DateFinder = ({
                 </span>
             ) : null}
 
-            {isChooseable && (
+            {(isChooseable && !table) && (
                 <span className={`text-danger text-center ${styles.warning}`}>
                     Zəhmət olmasa xəritədən masanızı seçin
                 </span>

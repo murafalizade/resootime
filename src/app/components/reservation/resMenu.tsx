@@ -2,8 +2,10 @@ import React, { useRef } from 'react';
 import styles from '@/app/styles/Menu.module.scss';
 import Image from 'next/image';
 import RestaurantService from '@/app/api/services/restaurantService';
+import { FiSearch } from 'react-icons/fi';
+import { IoIosArrowBack } from 'react-icons/io';
 
-const Menu = ({ id }: { id: number }) => {
+const Menu = ({ id, res }: { id: number; res: any }) => {
     const [menuItems, setMenuItems] = React.useState([]);
     const [category, setCategory] = React.useState('');
     const [active, setActive] = React.useState('');
@@ -37,35 +39,53 @@ const Menu = ({ id }: { id: number }) => {
     return (
         <>
             {menuItems.length > 0 && (
-                <div className={`p-4 menu-container ${styles.menu_container}`}>
+                <div className={`menu-container ${styles.menu_container}`}>
                     <h2
                         className={`text-center py-4 d-none d-md-block ${styles.menu_title}`}>
                         Menu
                     </h2>
-                    <div className={`${styles.menu_nav}`}>
-                        <div className="d-flex align-items-center">
-                            {menuItems.map((menuItem: any) => {
-                                return (
-                                    menuItem.products.length > 0 && (
-                                        <a
-                                            href={`#${menuItem.id}`}
-                                            onClick={() => {
-                                                setCategory(menuItem.category);
-                                                handleClick(menuItem.id);
-                                            }}
-                                            className={`me-1 ${
-                                                active == menuItem.id &&
-                                                styles.active
-                                            }`}
-                                            key={menuItem.id}>
-                                            {menuItem.category}
-                                        </a>
-                                    )
-                                );
-                            })}
+                    <div className={`${styles.fixed_nav}`}>
+                        <div className="ps-3 pe-4 d-flex d-md-none align-items-center justify-content-between">
+                            <a
+                                onClick={() => {
+                                    history.back();
+                                }}
+                                className="text-dark ">
+                                <IoIosArrowBack size={'2rem'} />
+                            </a>
+                            <h2
+                                className={`text-center pt-4 pb-2 fs-3 ${styles.res_name}`}>
+                                {res.name}
+                            </h2>
+                            <FiSearch size={'2rem'} />
+                        </div>
+                        <div className={`px-4 ${styles.menu_nav}`}>
+                            <div className="d-flex align-items-center">
+                                {menuItems.map((menuItem: any) => {
+                                    return (
+                                        menuItem.products.length > 0 && (
+                                            <a
+                                                href={`#${menuItem.id}`}
+                                                onClick={() => {
+                                                    setCategory(
+                                                        menuItem.category,
+                                                    );
+                                                    handleClick(menuItem.id);
+                                                }}
+                                                className={`me-1 ${
+                                                    active == menuItem.id &&
+                                                    styles.active
+                                                }`}
+                                                key={menuItem.id}>
+                                                {menuItem.category}
+                                            </a>
+                                        )
+                                    );
+                                })}
+                            </div>
                         </div>
                     </div>
-                    <div className={`${styles.menu}`}>
+                    <div className={`p-4 ${styles.menu}`}>
                         <ul className="p-1">
                             {menuItems.map((item: any) => {
                                 return (

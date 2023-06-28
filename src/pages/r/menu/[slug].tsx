@@ -41,13 +41,10 @@ const Menu = ({ res }: any) => {
                 <meta property="og:site_name" content="ResooTime" />
             </Head>
             <div className="d-md-none">
-                <div className={`navbar py-4 px-0`}>
+                <div className={`navbar py-4 px-3 position-fixed bg-white w-100`}>
                     <div>
                         <a
-                            href="#"
-                            onClick={() => {
-                                history.back();
-                            }}
+                            href="/"
                             title="Geri"
                             className={`navbar-brand ${navStyles.brand_name}`}>
                             <Image
@@ -61,7 +58,7 @@ const Menu = ({ res }: any) => {
                     </div>
                 </div>
                 <div className={`${menuStyles.menu_container}`}>
-                    <div className="ps-3 pe-4 d-flex align-items-center justify-content-between">
+                    {/* <div className="ps-3 pe-4 d-flex align-items-center justify-content-between">
                         <a
                             onClick={() => {
                                 history.back();
@@ -74,8 +71,8 @@ const Menu = ({ res }: any) => {
                             {res.name}
                         </h2>
                         <FiSearch size={'2rem'} />
-                    </div>
-                    <ResMenu id={res.id} />
+                    </div> */}
+                    <ResMenu id={res.id} res={res} />
                 </div>
                 <Footer />
             </div>

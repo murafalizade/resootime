@@ -454,7 +454,7 @@ const ReservationRestaurant = ({ res }: any) => {
                                                 </div>
                                             )}
                                             <div className="d-none d-md-block mt-5">
-                                                <ResMenu id={res.id} />
+                                                <ResMenu id={res.id} res={res} />
                                             </div>
                                         </div>
                                     </div>

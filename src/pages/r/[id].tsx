@@ -57,8 +57,7 @@ const ReservationRestaurant = ({ res }: any) => {
         dispatch(filterTables(map?.table));
     };
 
-
-    const twoFingerPan = (event:any, rootPage:boolean=false) => { 
+    const twoFingerPan = (event: any, rootPage: boolean = false) => {
         if (event.ctrlKey && !rootPage) {
             setCanEdit(true);
         } else {
@@ -67,22 +66,21 @@ const ReservationRestaurant = ({ res }: any) => {
     };
 
     useEffect(() => {
-        const handleZoom = (event:any) => {
-          if (event.ctrlKey) {
-            event.preventDefault();
-    
-            // Your zoom logic for the specific div
-            // Perform the necessary zoom operations on divElement
-          }
+        const handleZoom = (event: any) => {
+            if (event.ctrlKey) {
+                event.preventDefault();
+
+                // Your zoom logic for the specific div
+                // Perform the necessary zoom operations on divElement
+            }
         };
-    
+
         window.addEventListener('wheel', handleZoom, { passive: false });
-    
+
         return () => {
-          window.removeEventListener('wheel', handleZoom);
+            window.removeEventListener('wheel', handleZoom);
         };
-      }, []);
-    
+    }, []);
 
     useEffect(() => {
         dispatch(makeLoading());
@@ -127,7 +125,9 @@ const ReservationRestaurant = ({ res }: any) => {
                 <meta property="og:site_name" content="ResooTime" />
             </Head>
             <Layout>
-                <main  onWheel={(e)=>!e.ctrlKey?setCanEdit(false):null} className="mb-md-5 pb-5 details-page">
+                <main
+                    onWheel={(e) => (!e.ctrlKey ? setCanEdit(false) : null)}
+                    className="mb-md-5 pb-5 details-page">
                     {isModalOpen ? <div className="overlay"></div> : null}
                     {isGalleryOpen ? (
                         <GalleryModal
@@ -349,18 +349,19 @@ const ReservationRestaurant = ({ res }: any) => {
                                                 </div>
                                             </div>
                                             <div
-                                                onWheel={(e)=>twoFingerPan(e)} 
-                                                onKeyDown={(e)=>{
+                                                onWheel={(e) => twoFingerPan(e)}
+                                                onKeyDown={(e) => {
                                                     if (e.key === 'Control') {
                                                         setCanEdit(true);
-                                                      }
-                                                }}
-
-                                                onKeyUp={(event) => {
-                                                    if (event.key === 'Control') {
-                                                      setCanEdit(false);
                                                     }
-                                                  }}
+                                                }}
+                                                onKeyUp={(event) => {
+                                                    if (
+                                                        event.key === 'Control'
+                                                    ) {
+                                                        setCanEdit(false);
+                                                    }
+                                                }}
                                                 className={`overflow-hidden position-relative border bg-dark mb-4 mt-4 mt-md-0 ${styles.map}`}
                                                 style={{
                                                     height: '23.5rem',
@@ -504,7 +505,10 @@ const ReservationRestaurant = ({ res }: any) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div onWheel={(e)=>console.log(e,"Event")}  onClick={(e)=>console.log(e,"ad")} className="d-md-none d-flex">
+                                <div
+                                    onWheel={(e) => console.log(e, 'Event')}
+                                    onClick={(e) => console.log(e, 'ad')}
+                                    className="d-md-none d-flex">
                                     <AllRestInfo
                                         phone={res.phone}
                                         location={res.location}

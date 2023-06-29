@@ -106,9 +106,9 @@ const DateFinder = ({
         }
     }, [minTime, maxTime]);
 
-    useEffect(()=>{
+    useEffect(() => {
         setDate(minTime);
-    },[])
+    }, []);
 
     // open modal for make reservation
     const makeReservation = async () => {

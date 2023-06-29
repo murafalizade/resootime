@@ -41,7 +41,8 @@ const Menu = ({ res }: any) => {
                 <meta property="og:site_name" content="ResooTime" />
             </Head>
             <div className="d-md-none">
-                <div className={`navbar py-4 px-3 position-fixed bg-white w-100`}>
+                <div
+                    className={`navbar py-4 px-3 position-fixed bg-white w-100`}>
                     <div>
                         <a
                             href="/"

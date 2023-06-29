@@ -74,6 +74,8 @@ const DateFinder = ({
         ),
     );
 
+    console.log(minTime);
+
     const [maxTime, setMaxTime] = useState(
         new Date(
             now.getFullYear(),
@@ -104,6 +106,10 @@ const DateFinder = ({
         }
     }, [minTime, maxTime]);
 
+    useEffect(()=>{
+        setDate(minTime);
+    },[])
+
     // open modal for make reservation
     const makeReservation = async () => {
         if (table) {
@@ -124,14 +130,12 @@ const DateFinder = ({
 
     // change date
     const handleChangeDate = (date: any) => {
-        setDate(date);
         const now = new Date();
         const tomorrow = new Date(
             date.getFullYear(),
             date.getMonth(),
             date.getDate(),
         );
-        console.log(date.getTime() >= tomorrow.getTime());
         if (date.getTime() >= tomorrow.getTime()) {
             // Allow selecting from 00:01 tomorrow
             setMinTime(
@@ -176,7 +180,6 @@ const DateFinder = ({
                 ),
             );
         }
-        console.log(minTime, maxTime);
     };
 
     return (

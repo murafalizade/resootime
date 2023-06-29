@@ -56,13 +56,11 @@ const ReservationRestaurant = ({ res }: any) => {
         // );
         dispatch(filterTables(map?.table));
     };
-
     const twoFingerDetection = (event: any) => {
         if (event.touches.length === 2) {
             setCanEdit(true);
         }
     };
-
     const twoFingerPan = (event: any, rootPage: boolean = false) => {
         if (event.ctrlKey && !rootPage) {
             setCanEdit(true);
@@ -466,7 +464,6 @@ const ReservationRestaurant = ({ res }: any) => {
                                             <div className="d-none d-md-block mt-5">
                                                 <ResMenu
                                                     id={res.id}
-                                                    res={res}
                                                 />
                                             </div>
                                         </div>

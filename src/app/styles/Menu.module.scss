@@ -99,16 +99,10 @@
             }
         }
     }
-    .fixed_nav {
-        background-color: #fff;
-        position: sticky;
-        top: 12.5%;
-        width: 100%;
-    }
 }
 
 .res_name {
-    font-size: 2rem;
+    font-size: 1.3rem;
     font-weight: 600;
     line-height: 1.35rem;
     border-bottom: none;
@@ -118,15 +112,10 @@
     padding-left: 12px !important;
     padding-right: 12px !important;
 }
-.helper {
-    height: 10rem;
-    background-color: red;
-    width: 100%;
-}
 
 @media screen and (min-width: 768px) {
     .menu {
-        max-height: 43rem;
+        max-height: 35rem;
     }
 }
 
@@ -134,11 +123,10 @@
     .menu_container {
         border: none;
         padding-top: 0 !important;
-        padding-bottom: 2rem;
+        padding-bottom: 7.8rem;
         min-height: 28vh;
         .menu {
             overflow-y: visible !important;
-            margin-top: 4.5rem;
             .menu_item {
                 &:last-child {
                     border-bottom: 1px solid #eaeaea;

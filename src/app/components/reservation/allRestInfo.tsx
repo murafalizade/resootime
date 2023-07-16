@@ -93,7 +93,7 @@ const allRestInfo = ({
                         </a>
                     )}
                 </div>
-                {instagramLink ?? facebookLink ?? <hr />}
+                 <hr />
                 <div className="d-flex">
                     <AiOutlineClockCircle
                         className={`me-4 icon ${styles.icon}`}

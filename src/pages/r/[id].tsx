@@ -79,10 +79,19 @@ const ReservationRestaurant = ({ res }: any) => {
             }
         };
 
+        const preventZoom = (event: any) => {
+            const touches = event.touches;
+            if (touches.length > 1) {
+                event.preventDefault();
+            }
+        };
+
         window.addEventListener('wheel', handleZoom, { passive: false });
+        document.addEventListener('touchmove', preventZoom, { passive: false });
 
         return () => {
             window.removeEventListener('wheel', handleZoom);
+            document.removeEventListener('touchmove', preventZoom);
         };
     }, []);
 
@@ -101,6 +110,10 @@ const ReservationRestaurant = ({ res }: any) => {
         } else {
             alert('Zəhmət olmasa daxil olun');
         }
+    };
+
+    const handleTouchStart = (event: any) => {
+        event.preventDefault();
     };
 
     return (
@@ -130,6 +143,7 @@ const ReservationRestaurant = ({ res }: any) => {
             </Head>
             <Layout>
                 <main
+                    onTouchStart={handleTouchStart}
                     onWheel={(e) => (!e.ctrlKey ? setCanEdit(false) : null)}
                     className="mb-md-5 pb-5 details-page">
                     {isModalOpen ? <div className="overlay"></div> : null}

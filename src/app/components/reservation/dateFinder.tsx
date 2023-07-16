@@ -84,7 +84,61 @@ const DateFinder = ({
             0,
         ),
     );
+
     const [date, setDate] = useState(now);
+
+    useEffect(()=>{
+        const tomorrow = new Date(
+            date.getFullYear(),
+            date.getMonth(),
+            date.getDate(),
+        );
+        console.log(date.getTime() >= tomorrow.getTime());
+        if (date.getTime() >= tomorrow.getTime()) {
+            // Allow selecting from 00:01 tomorrow
+            setMinTime(
+                new Date(
+                    tomorrow.getFullYear(),
+                    tomorrow.getMonth(),
+                    tomorrow.getDate(),
+                    Number(getMinHour(tomorrow)[0]),
+                    Number(getMinHour(tomorrow)[1]),
+                    0,
+                ),
+            );
+            setMaxTime(
+                new Date(
+                    tomorrow.getFullYear(),
+                    tomorrow.getMonth(),
+                    tomorrow.getDate(),
+                    Number(getMaxHour(tomorrow)[0]),
+                    Number(getMaxHour(tomorrow)[1]),
+                    0,
+                ),
+            );
+        } else {
+            // Set minimum time to now and maximum time to end of day
+            setMinTime(
+                new Date(
+                    now.getFullYear(),
+                    now.getMonth(),
+                    now.getDate(),
+                    Number(getMinHour(now)[0]),
+                    Number(getMinHour(now)[1]),
+                ),
+            );
+            setMaxTime(
+                new Date(
+                    now.getFullYear(),
+                    now.getMonth(),
+                    now.getDate(),
+                    Number(getMaxHour(now)[0]),
+                    Number(getMaxHour(now)[1]),
+                    0,
+                ),
+            );
+        }
+    }, [])
 
     const [count, setCount] = useState(1);
 
